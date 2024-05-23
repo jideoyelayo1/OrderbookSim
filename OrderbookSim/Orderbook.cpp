@@ -286,6 +286,10 @@ Trades Orderbook::ModifyOrder(OrderModify order) {
 }
 
 
+std::vector<OrderDetail> Orderbook::getAllOrders() const {
+    // i want to return: type, amount, buy/sell, price
+    // make a data type called OrderDetail
+}
 
 
 std::size_t Orderbook::Size() const { return _orders.size(); }
