@@ -53,7 +53,7 @@ private:
     void UpdateLevelData(Price price, Quantity quantity, LevelData::Action action);
 
     Trades MatchOrder(OrderModify order);
-    std::vector<OrderPtr> getAllOrders() const;
+    std::vector<OrderDetail> getAllOrders() const;
 
     
 
