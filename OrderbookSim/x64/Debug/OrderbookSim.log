@@ -1,14 +1,5 @@
-﻿  OrderDetailHistory.cpp
-C:\Users\BabajideOyelayo\Documents\temp_files\OrderbookSim\OrderbookSim\OrderDetailHistory.h(91,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
-  (compiling source file 'OrderDetailHistory.cpp')
-  
-  Orderbook.cpp
-C:\Users\BabajideOyelayo\Documents\temp_files\OrderbookSim\OrderbookSim\OrderDetailHistory.h(91,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
-  (compiling source file 'Orderbook.cpp')
-  
-  OrderbookSim.cpp
+﻿  OrderbookSim.cpp
 C:\Users\BabajideOyelayo\Documents\temp_files\OrderbookSim\OrderbookSim\OrderDetailHistory.h(91,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
   (compiling source file 'OrderbookSim.cpp')
   
-  Generating Code...
   OrderbookSim.vcxproj -> C:\Users\BabajideOyelayo\Documents\temp_files\OrderbookSim\x64\Debug\OrderbookSim.exe

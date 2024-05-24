@@ -89,7 +89,8 @@ public:
         _orderDetailHistory._printSellHistory();
         _orderDetailHistory._printBuyHistory();
         _orderDetailHistory._printPurchaseHistory();
-        std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
+        if (_orderDetailHistory.getVWAP() == -1) std::cout << "No purchases made" << std::endl;
+        else std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
     }
 
 

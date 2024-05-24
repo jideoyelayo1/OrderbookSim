@@ -10,8 +10,10 @@ int main()
 
     const OrderId orderId = 1;
 
-    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 1, Side::Buy, 100, 10));
+    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 1, Side::Buy, 50, 10));
     orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 100, 10));
+    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Buy, 70, 21));
+    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 140, 95));
 
     
     orderbook.printAllOrders();
