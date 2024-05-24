@@ -1,0 +1,20 @@
+cmake_minimum_required(VERSION 3.10)
+project(OrderbookSim)
+
+# Set the C++ standard
+set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD_REQUIRED True)
+
+# Find the nlohmann/json package
+find_package(nlohmann_json 3.2.0 REQUIRED)
+
+# Add the executable
+add_executable(OrderbookSim
+    OrderbookSim.cpp
+    OrderDetail.cpp
+    OrderDetailHistory.cpp
+    # Add other source files here
+)
+
+# Link the nlohmann/json library to your target
+target_link_libraries(OrderbookSim PRIVATE nlohmann_json::nlohmann_json)
