@@ -56,8 +56,8 @@ Trades Orderbook::MatchOrders()
                 TradeInfo{ ask->getOrderId(), ask->getPrice(), quantity }
                 });
 
-            onOrderMatchedWithHistoryUpdate(bid->getPrice(), quantity, bid->isFilled());
             onOrderMatched(ask->getPrice(), quantity, ask->isFilled());
+            onOrderMatchedWithHistoryUpdate(bid->getPrice(), quantity, bid->isFilled());
         }
 
         if (bids.empty())
