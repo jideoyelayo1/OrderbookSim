@@ -80,6 +80,18 @@ public:
         std::cout << std::endl;
     }
 
+    Price getVWAP() {
+        Price price = -1;
+        long long num = 0;
+        long long dom = 0;
+        for (MatchedOrderDetail sold : _purchaseHistory) {
+            num += sold.getPrice() * sold.getQuantity();
+            dom += sold.getQuantity();
+        }
+        if (dom != 0) price = num / dom;
+
+        return price;
+    }
 
     // Method to convert OrderDetailHistory to JSON
     /*

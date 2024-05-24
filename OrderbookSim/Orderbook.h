@@ -89,6 +89,7 @@ public:
         _orderDetailHistory._printSellHistory();
         _orderDetailHistory._printBuyHistory();
         _orderDetailHistory._printPurchaseHistory();
+        std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
     }
 
 
