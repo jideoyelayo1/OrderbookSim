@@ -56,7 +56,7 @@ Trades Orderbook::MatchOrders()
                 TradeInfo{ ask->getOrderId(), ask->getPrice(), quantity }
                 });
 
-            onOrderMatched(bid->getPrice(), quantity, bid->isFilled());
+            onOrderMatchedWithHistoryUpdate(bid->getPrice(), quantity, bid->isFilled());
             onOrderMatched(ask->getPrice(), quantity, ask->isFilled());
         }
 
@@ -153,9 +153,21 @@ void Orderbook::onOrderCanceleld(OrderPtr order) {
 void Orderbook::onOrderAdded(OrderPtr order) {
     UpdateLevelData(order->getPrice(), order->getInitialQty(), LevelData::Action::Add);
 }
-void Orderbook::onOrderMatched(Price price, Quantity quantity, bool isFullyFilled) {
+
+void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled) {
+
+    if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(price, quantity);
+    else _orderDetailHistory.addOrderToPurchaseHistory(price, std::min(quantity, _data[price]._quantity));
+
     UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
+
 }
+void Orderbook::onOrderMatched(Price price, Quantity quantity, bool isFullyFilled) {
+
+    UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
+
+}
+
 void Orderbook::UpdateLevelData(Price price, Quantity quantity, LevelData::Action action) {
     auto& data = _data[price];
 
@@ -222,9 +234,11 @@ void Orderbook::PruneGoodForDayOrders() {
     }
 }
 
-
 Trades Orderbook::addOrder(OrderPtr order) {
     std::scoped_lock ordersLock{ _ordersMutex };
+
+    // add to history
+    _orderDetailHistory.addOrderToHistory(order->getOrderType(), order->getOrderId(), order->getSide(), order->getPrice(), order->getQty());
 
     if (_orders.contains(order->getOrderId())) return { };
 
@@ -273,6 +287,7 @@ void Orderbook::CancelOrder(OrderId orderId) {
     CancelOrderInternal(orderId);
 
 }
+
 Trades Orderbook::ModifyOrder(OrderModify order) {
     OrderType orderType;
     {
@@ -283,12 +298,6 @@ Trades Orderbook::ModifyOrder(OrderModify order) {
     }
     CancelOrder(order.getOrderId());
     return addOrder(order.toOrderPtr(orderType));
-}
-
-
-std::vector<OrderDetail> Orderbook::getAllOrders() const {
-    // i want to return: type, amount, buy/sell, price
-    // make a data type called OrderDetail
 }
 
 

@@ -6,12 +6,15 @@
 #include "Order.h"
 #include "OrderModify.h"
 #include "OrderbookLevelInfos.h"
+#include "OrderDetailHistory.h"
 
 #include <map>
 #include <unordered_map>
 #include <optional>
 #include <mutex>
 #include <condition_variable>
+#include <cmath>
+
 
 
 
@@ -22,6 +25,7 @@ private:
         OrderPtr _order{ nullptr };
         OrderPtrs::iterator _location;
     };
+
     struct LevelData {
         Quantity _quantity{};
         Quantity _count{};
@@ -31,6 +35,7 @@ private:
             Match, // A fully match: affects count and quantity, Partial match: order remains but we only impact quantity
         };
     };
+
     std::map<Price, OrderPtrs, std::greater<Price>> _asks;
     std::map<Price, OrderPtrs, std::less<Price>> _bids;
     std::unordered_map<OrderId, OrderEntry> _orders;
@@ -39,6 +44,9 @@ private:
     std::thread _ordersPruneThread;
     std::condition_variable _shutdownConditionVariable;
     std::atomic<bool> _shutdown{ false };
+
+    OrderDetailHistory _orderDetailHistory;
+    
 
     bool canMatch(Side side, Price price) const;
     Trades MatchOrders();
@@ -49,11 +57,12 @@ private:
     // Private Event handlers (event APIs): revelent for fill or kill
     void onOrderCanceleld(OrderPtr order);
     void onOrderAdded(OrderPtr order);
+    
+    void onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled);
     void onOrderMatched(Price price, Quantity quantity, bool isFullyFilled);
     void UpdateLevelData(Price price, Quantity quantity, LevelData::Action action);
 
     Trades MatchOrder(OrderModify order);
-    std::vector<OrderDetail> getAllOrders() const;
 
     
 
@@ -76,7 +85,11 @@ public:
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
-
+    void printAllOrders() {
+        _orderDetailHistory._printSellHistory();
+        _orderDetailHistory._printBuyHistory();
+        _orderDetailHistory._printPurchaseHistory();
+    }
 
 
     std::size_t Size() const;

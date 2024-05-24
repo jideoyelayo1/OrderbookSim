@@ -1,7 +1,7 @@
 #pragma once
 
 #include <chrono>
-#include <nlohmann/json.hpp>
+//#include <nlohmann/json.hpp>
 #include "OrderType.h"
 #include "Side.h"
 #include "Usings.h"
@@ -24,10 +24,24 @@ public:
         _time = std::chrono::system_clock::now();
     }
 
-    time_t getTime() const {
-        return std::chrono::system_clock::to_time_t(_time);
+
+    std::string getOrderType() const { return orderTypeToString(_type); }
+    OrderId getOrderId() const { return _id; }
+    std::string getSide() const { return sideToString(_side);}
+    Price getPrice() const { return _price; }
+    Quantity getQuantity() const { return _quantity; }
+    std::string getTime() const {
+        std::time_t timeT = std::chrono::system_clock::to_time_t(_time);
+        std::tm tm;
+        localtime_s(&tm, &timeT);  // Use localtime_s instead of localtime
+        std::ostringstream oss;
+        oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
+        return oss.str();
     }
 
+
+
+    /*
     // Define how to serialize OrderDetail to JSON
     friend void to_json(nlohmann::json& j, const OrderDetail& o) {
         j = nlohmann::json{
@@ -50,4 +64,6 @@ public:
         time_t time = j.at("time").get<time_t>();
         o._time = std::chrono::system_clock::from_time_t(time);
     }
+    */
+
 };

@@ -128,19 +128,25 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="MatchedOrderDetails.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Orderbook.cpp" />
     <ClCompile Include="OrderbookLevelInfos.cpp" />
     <ClCompile Include="OrderbookSim.cpp" />
+    <ClCompile Include="OrderDetail.cpp" />
+    <ClCompile Include="OrderDetailHistory.cpp" />
     <ClCompile Include="OrderModify.cpp" />
     <ClCompile Include="Trade.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
     <ClInclude Include="LevelInfo.h" />
+    <ClInclude Include="MatchedOrderDetails.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Orderbook.h" />
     <ClInclude Include="OrderbookLevelInfos.h" />
+    <ClInclude Include="OrderDetail.h" />
+    <ClInclude Include="OrderDetailHistory.h" />
     <ClInclude Include="OrderModify.h" />
     <ClInclude Include="OrderType.h" />
     <ClInclude Include="Side.h" />

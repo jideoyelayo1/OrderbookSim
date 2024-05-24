@@ -1,8 +1,4 @@
-﻿  Order.cpp
-  Orderbook.cpp
-  OrderbookLevelInfos.cpp
+﻿  Orderbook.cpp
   OrderbookSim.cpp
-  OrderModify.cpp
-  Trade.cpp
   Generating Code...
   OrderbookSim.vcxproj -> C:\Users\BabajideOyelayo\Documents\temp_files\OrderbookSim\x64\Debug\OrderbookSim.exe

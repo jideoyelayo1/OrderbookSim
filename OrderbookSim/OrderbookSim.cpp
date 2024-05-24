@@ -6,10 +6,18 @@
 
 int main()
 {
-    Orderbook b;
+    Orderbook orderbook;
+
+    const OrderId orderId = 1;
+
+    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 1, Side::Buy, 100, 10));
+    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 100, 10));
+
+    
+    orderbook.printAllOrders();
 
 
-    std::cout << "Hello World!\n";
+    //std::cout << "Hello World!\n";
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
