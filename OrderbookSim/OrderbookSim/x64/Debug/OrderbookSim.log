@@ -1,0 +1,9 @@
+﻿  OrderDetailHistory.cpp
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(80,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(86,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(86,31): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(97,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
+  Orderbook.cpp
+  OrderbookSim.cpp
+  Generating Code...
+  OrderbookSim.vcxproj -> C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\x64\Debug\OrderbookSim.exe

@@ -9,15 +9,18 @@ int main()
     Orderbook orderbook;
 
     const OrderId orderId = 1;
-
-    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 1, Side::Buy, 50, 10));
+    /*
+    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 1, Side::Buy, 70, 10));
     orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 100, 10));
     orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Buy, 70, 21));
     orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 140, 95));
-
+    */
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Sell, 50, 10);
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Buy, 100, 10);
     
     orderbook.printAllOrders();
 
+    std::cout << "OrderBook Size " << orderbook.Size();
 
     //std::cout << "Hello World!\n";
 }

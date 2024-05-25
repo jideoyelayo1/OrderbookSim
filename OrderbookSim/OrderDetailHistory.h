@@ -16,82 +16,27 @@ private:
     
     
 
-    void addOrderToBuyHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
-        OrderDetail newOrderDetail(type, id, side, price, qty);
-        buyHistory.push_back(newOrderDetail);
-    }
+    void addOrderToBuyHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty);
 
-    void addOrderToSellHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
-        OrderDetail newOrderDetail(type, id, side, price, qty);
-        sellHistory.push_back(newOrderDetail);
-    }
+    void addOrderToSellHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty);
 
 public:
     OrderDetailHistory() = default;
 
-    void addOrderToHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
-        if (side == Side::Buy) {
-            addOrderToBuyHistory(type, id, side, price, qty);
-        }
-        else if (side == Side::Sell) {
-            addOrderToSellHistory(type, id, side, price, qty);
-        }
-    }
-    void addOrderToPurchaseHistory(Price price, Quantity qty) {
-        auto newPurchasedOrder = MatchedOrderDetail(price, qty);
-        _purchaseHistory.push_back(newPurchasedOrder);
-    }
+    void addOrderToHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty);
+
+    void addOrderToPurchaseHistory(Price price, Quantity qty);
 
 
-    void _printSellHistory() {
-        std::cout << "Sell Order History" << std::endl;
-        for (const OrderDetail detail : sellHistory) {
-            std::cout << "OrderType: " << detail.getOrderType() << " ";
-            std::cout << "Id: " << detail.getOrderId() << " ";
-            std::cout << "Side: " << detail.getSide() << " ";
-            std::cout << "Price: " << detail.getPrice() << " ";
-            std::cout << "Quantity: " << detail.getQuantity() << " ";
-            std::cout << "Time: " << detail.getTime() << std::endl;
-        }
-        std::cout << std::endl;
+    void _printSellHistory();
 
-    }
+    void _printBuyHistory();
 
-    void _printBuyHistory() {
-        std::cout << "Buy Order History" << std::endl;
-        for (const OrderDetail detail : buyHistory) {
-            std::cout << "OrderType: " << detail.getOrderType() << " ";
-            std::cout << "Id: " << detail.getOrderId() << " ";
-            std::cout << "Side: " << detail.getSide() << " ";
-            std::cout << "Price: " << detail.getPrice() << " ";
-            std::cout << "Quantity: " << detail.getQuantity() << " ";
-            std::cout << "Time: " << detail.getTime() << std::endl;
-        }
-        std::cout << std::endl;
-    }
+    void _printPurchaseHistory();
 
-    void _printPurchaseHistory() {
-        std::cout << "Purchase History" << std::endl;
-        for (const MatchedOrderDetail detail : _purchaseHistory) {
-            std::cout << "Price: " << detail.getPrice() << " ";
-            std::cout << "Quantity: " << detail.getQuantity() << " ";
-            std::cout << "Time: " << detail.getTime() << std::endl;
-        }
-        std::cout << std::endl;
-    }
-
-    Price getVWAP() {
-        Price price = -1;
-        long long num = 0;
-        long long dom = 0;
-        for (MatchedOrderDetail sold : _purchaseHistory) {
-            num += sold.getPrice() * sold.getQuantity();
-            dom += sold.getQuantity();
-        }
-        if (dom != 0) price = num / dom;
-
-        return price;
-    }
+    Price getVWAP();
+    
+    Price getVWAP(int n);
 
     // Method to convert OrderDetailHistory to JSON
     /*

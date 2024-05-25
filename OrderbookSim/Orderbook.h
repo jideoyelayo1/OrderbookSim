@@ -58,7 +58,7 @@ private:
     void onOrderCanceleld(OrderPtr order);
     void onOrderAdded(OrderPtr order);
     
-    void onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled);
+    void onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled,Price purchasePrice);
     void onOrderMatched(Price price, Quantity quantity, bool isFullyFilled);
     void UpdateLevelData(Price price, Quantity quantity, LevelData::Action action);
 
@@ -82,6 +82,7 @@ public:
     void PruneGoodForDayOrders();
 
     Trades addOrder(OrderPtr order);
+    Trades addOrder(OrderType type, Side side, Price price, Quantity qty);
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
@@ -89,7 +90,7 @@ public:
         _orderDetailHistory._printSellHistory();
         _orderDetailHistory._printBuyHistory();
         _orderDetailHistory._printPurchaseHistory();
-        if (_orderDetailHistory.getVWAP() == -1) std::cout << "No purchases made" << std::endl;
+        if (_orderDetailHistory.getVWAP() == 0) std::cout << "No purchases made" << std::endl;
         else std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
     }
 

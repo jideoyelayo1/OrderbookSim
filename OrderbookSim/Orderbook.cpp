@@ -25,7 +25,7 @@ Trades Orderbook::MatchOrders()
         auto& [bidPrice, bids] = *_bids.begin();
         auto& [askPrice, asks] = *_asks.begin();
 
-        if (bidPrice > askPrice) // for some reasoon this works: bidPrice > askPrice should be the other way around
+        if (bidPrice < askPrice) // for some reasoon this works: bidPrice > askPrice should be the other way around
             break;
 
         while (!bids.empty() && !asks.empty())
@@ -56,8 +56,8 @@ Trades Orderbook::MatchOrders()
                 TradeInfo{ ask->getOrderId(), ask->getPrice(), quantity }
                 });
 
-            onOrderMatched(ask->getPrice(), quantity, ask->isFilled());
-            onOrderMatchedWithHistoryUpdate(bid->getPrice(), quantity, bid->isFilled());
+            onOrderMatched(bid->getPrice(), quantity, bid->isFilled());
+            onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(),std::max(ask->getPrice(),bid->getPrice())); // we are purchasing at the max price
         }
 
         if (bids.empty())
@@ -154,10 +154,10 @@ void Orderbook::onOrderAdded(OrderPtr order) {
     UpdateLevelData(order->getPrice(), order->getInitialQty(), LevelData::Action::Add);
 }
 
-void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled) {
+void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled, Price purchasePrice) {
 
-    if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(price, quantity);
-    else _orderDetailHistory.addOrderToPurchaseHistory(price, std::min(quantity, _data[price]._quantity));
+    if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, quantity);
+    else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, std::min(quantity, _data[price]._quantity));
 
     UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
 
@@ -232,6 +232,11 @@ void Orderbook::PruneGoodForDayOrders() {
         CancelOrders(orderIds);
 
     }
+}
+
+Trades Orderbook::addOrder(OrderType type, Side side, Price price, Quantity qty) {
+    return addOrder(std::make_shared<Order>(type, Size() + 1, side, price, qty));
+
 }
 
 Trades Orderbook::addOrder(OrderPtr order) {
