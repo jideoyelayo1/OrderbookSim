@@ -82,7 +82,8 @@ public:
     void PruneGoodForDayOrders();
 
     Trades addOrder(OrderPtr order);
-    Trades addOrder(OrderType type, Side side, Price price, Quantity qty);
+    Trades addOrder(OrderType type, Side side, Price price, Quantity qty); // Do not use for lots of orders
+    Trades addOrder(OrderType type, OrderId orderId, Side side, Price price, Quantity qty);
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 

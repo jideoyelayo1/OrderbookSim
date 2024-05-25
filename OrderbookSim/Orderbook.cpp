@@ -25,7 +25,7 @@ Trades Orderbook::MatchOrders()
         auto& [bidPrice, bids] = *_bids.begin();
         auto& [askPrice, asks] = *_asks.begin();
 
-        if (bidPrice < askPrice) // for some reasoon this works: bidPrice > askPrice should be the other way around
+        if (bidPrice > askPrice) // for some reasoon this works: bidPrice > askPrice should be the other way around
             break;
 
         while (!bids.empty() && !asks.empty())
@@ -236,6 +236,11 @@ void Orderbook::PruneGoodForDayOrders() {
 
 Trades Orderbook::addOrder(OrderType type, Side side, Price price, Quantity qty) {
     return addOrder(std::make_shared<Order>(type, Size() + 1, side, price, qty));
+
+}
+
+Trades Orderbook::addOrder(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
+    return addOrder(std::make_shared<Order>(type, id, side, price, qty));
 
 }
 

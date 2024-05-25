@@ -4,34 +4,64 @@
 #include <iostream>
 #include "Orderbook.h"
 
+#include <random>
+
+//prototyping
+void randomOrderSimulation(const int n);
+
 int main()
 {
-    Orderbook orderbook;
 
-    const OrderId orderId = 1;
     /*
-    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 1, Side::Buy, 70, 10));
-    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 100, 10));
-    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Buy, 70, 21));
-    orderbook.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, 2, Side::Sell, 140, 95));
+    Orderbook orderbook;
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Buy, 53, 32);
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Sell, 42, 43);
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Sell, 31, 21);
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Sell, 53, 95);
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Sell, 32, 35);
+    orderbook.addOrder(OrderType::GoodTillCancel, Side::Buy, 324, 65);
     */
-    orderbook.addOrder(OrderType::GoodTillCancel, Side::Sell, 50, 10);
-    orderbook.addOrder(OrderType::GoodTillCancel, Side::Buy, 100, 10);
+
+    const int n = 10000;
+    randomOrderSimulation(n);
     
+
+}
+
+
+void randomOrderSimulation(const int n) {
+    Orderbook orderbook;
+    /*
+    Processed 100000 randoms in 5.02383
+    Processed 10000 randoms in 0.0998076
+
+    */
+    
+
+    std::random_device rd;
+
+    std::mt19937 gen(rd());
+
+    std::uniform_int_distribution<> type(1, 5);
+    std::uniform_int_distribution<> side(1, 100);
+    std::uniform_int_distribution<> price(1, 500);
+    std::uniform_int_distribution<> quantity(1, 500);
+
+    //auto start = std::chrono::high_resolution_clock::now();
+
+    for (int i = 0; i < n; i++) {
+        orderbook.addOrder(intToOrdertType(type(gen)), i , side(gen) == 1 ? Side::Buy : Side::Sell, price(gen), quantity(gen));
+        //std::this_thread::sleep_for(std::chrono::microseconds(10));
+
+    }
+    //auto end = std::chrono::high_resolution_clock::now();
+
+    //std::chrono::duration<double> duration = end - start;
+    //std::cout << "Elapsed time: " << duration.count() << " seconds" << std::endl;
+
+    //return;
+
     orderbook.printAllOrders();
 
     std::cout << "OrderBook Size " << orderbook.Size();
-
-    //std::cout << "Hello World!\n";
 }
-
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
-
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
