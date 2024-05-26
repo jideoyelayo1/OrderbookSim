@@ -22,7 +22,7 @@ int main()
     orderbook.addOrder(OrderType::GoodTillCancel, Side::Buy, 324, 65);
     */
 
-    const int n = 10000;
+    const int n = 1000;
     randomOrderSimulation(n);
     
 
@@ -64,4 +64,5 @@ void randomOrderSimulation(const int n) {
     orderbook.printAllOrders();
 
     std::cout << "OrderBook Size " << orderbook.Size();
+    orderbook.saveToJson();
 }

@@ -19,15 +19,18 @@ private:
     timeChrono _time;
 
 public:
+
     OrderDetail(OrderType type, OrderId id, Side side, Price price, Quantity qty)
         : _type{ type }, _id{ id }, _side{ side }, _price{ price }, _quantity{ qty } {
         _time = std::chrono::system_clock::now();
     }
 
+    OrderDetail() = default;
 
     std::string getOrderType() const { return orderTypeToString(_type); }
     OrderId getOrderId() const { return _id; }
     std::string getSide() const { return sideToString(_side);}
+    Side Side() const { return _side; }
     Price getPrice() const { return _price; }
     Quantity getQuantity() const { return _quantity; }
     std::string getTime() const {
@@ -38,7 +41,10 @@ public:
         oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
         return oss.str();
     }
-
+    void setQuantity(Quantity newValue) {
+        _quantity = newValue;
+        // if (_quantity <= 0) delete this; // would be unsafe
+    }
 
 
     /*

@@ -25,6 +25,11 @@ private:
         OrderPtr _order{ nullptr };
         OrderPtrs::iterator _location;
     };
+    enum class ExecutionTypes {
+        BuyersPrice, 
+        SellersPrice,
+        MidPrice
+    };
 
     struct LevelData {
         Quantity _quantity{};
@@ -45,6 +50,8 @@ private:
     std::condition_variable _shutdownConditionVariable;
     std::atomic<bool> _shutdown{ false };
 
+    ExecutionTypes _executionType = ExecutionTypes::BuyersPrice;
+
     OrderDetailHistory _orderDetailHistory;
     
 
@@ -64,6 +71,7 @@ private:
 
     Trades MatchOrder(OrderModify order);
 
+
     
 
 
@@ -80,6 +88,7 @@ public:
     }
 
     void PruneGoodForDayOrders();
+    void changeExecutionType(int type);
 
     Trades addOrder(OrderPtr order);
     Trades addOrder(OrderType type, Side side, Price price, Quantity qty); // Do not use for lots of orders

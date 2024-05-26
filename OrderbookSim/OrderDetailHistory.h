@@ -39,7 +39,7 @@ public:
 
     void saveHistoryToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json");
 
-    void removeMatchedOrder(OrderId id);
+    void removeMatchedOrder(OrderId bidId, OrderId askID);
     
     void _printSellHistory();
 

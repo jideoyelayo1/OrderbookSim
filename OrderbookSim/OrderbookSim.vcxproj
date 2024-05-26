@@ -133,6 +133,7 @@
     <ClCompile Include="Orderbook.cpp" />
     <ClCompile Include="OrderbookLevelInfos.cpp" />
     <ClCompile Include="OrderbookSim.cpp" />
+    <ClCompile Include="orderbook_pybind.cpp" />
     <ClCompile Include="OrderDetail.cpp" />
     <ClCompile Include="OrderDetailHistory.cpp" />
     <ClCompile Include="OrderModify.cpp" />
@@ -140,6 +141,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Constants.h" />
+    <ClInclude Include="json.hpp" />
     <ClInclude Include="LevelInfo.h" />
     <ClInclude Include="MatchedOrderDetails.h" />
     <ClInclude Include="Order.h" />

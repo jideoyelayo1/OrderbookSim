@@ -42,6 +42,9 @@
     <ClCompile Include="MatchedOrderDetails.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="orderbook_pybind.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LevelInfo.h">
@@ -84,6 +87,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MatchedOrderDetails.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="json.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

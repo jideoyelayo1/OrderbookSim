@@ -6,15 +6,39 @@
 
     void OrderDetailHistory::addOrderToBuyHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
         OrderDetail newOrderDetail(type, id, side, price, qty);
+        _liveOrders[id] = newOrderDetail;
         buyHistory.push_back(newOrderDetail);
     }
 
     void OrderDetailHistory::addOrderToSellHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
         OrderDetail newOrderDetail(type, id, side, price, qty);
+        _liveOrders[id] = newOrderDetail;
         sellHistory.push_back(newOrderDetail);
     }
 
 
+    void OrderDetailHistory::removeMatchedOrder(OrderId bidId, OrderId askId) {
+
+        if (_liveOrders.find(bidId) == _liveOrders.end()) return;
+        if (_liveOrders.find(askId) == _liveOrders.end()) return;
+
+        Quantity bid = _liveOrders[bidId].getQuantity();
+        Quantity ask = _liveOrders[askId].getQuantity();
+        
+        if (bid == ask) {
+            _liveOrders.erase(askId);
+            _liveOrders.erase(bidId);
+        }else if (bid > ask) {
+            bid -= ask;
+            _liveOrders.erase(askId);
+            _liveOrders[bidId].setQuantity(bid);
+        }else if (ask > bid) {
+            ask -= bid;
+            _liveOrders.erase(bidId);
+            _liveOrders[askId].setQuantity(ask);
+        }
+        
+    }
 
 
     void OrderDetailHistory::addOrderToHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
@@ -43,6 +67,19 @@
         }
         std::cout << std::endl;
 
+    }
+
+    void OrderDetailHistory::_printAHistory(const std::vector<OrderDetail> history) {
+
+        for (const OrderDetail detail : history) {
+            std::cout << "OrderType: " << detail.getOrderType() << " ";
+            std::cout << "Id: " << detail.getOrderId() << " ";
+            std::cout << "Side: " << detail.getSide() << " ";
+            std::cout << "Price: " << detail.getPrice() << " ";
+            std::cout << "Quantity: " << detail.getQuantity() << " ";
+            std::cout << "Time: " << detail.getTime() << std::endl;
+        }
+        std::cout << std::endl;
     }
 
     void OrderDetailHistory::_printBuyHistory() {
@@ -149,4 +186,24 @@
         saveBuyHistoryToJson(buyfilename);
         saveSellHistoryToJson(sellfilename);
         savePurchaseHistoryToJson(purchasefilename);
+    }
+
+
+    std::pair< std::vector<OrderDetail>, std::vector<OrderDetail>> OrderDetailHistory::_getLiveOrders() {
+        std::vector<OrderDetail> _currentLiveBuys, _currentLiveSells;
+        for (const std::pair<OrderId, OrderDetail> p : _liveOrders) {
+            if (p.second.Side() == Side::Buy) { _currentLiveBuys.push_back(p.second); }
+            else if (p.second.Side() == Side::Sell) { _currentLiveSells.push_back(p.second); }
+        }
+        return std::make_pair(_currentLiveSells, _currentLiveBuys);
+    }
+
+
+    void OrderDetailHistory::_printLiveOrders() {
+        const auto [liveSells, liveBuys] = _getLiveOrders();
+        std::cout << "Live Sell Orders" << std::endl;
+        _printAHistory(liveSells);
+        std::cout << "Live Buys Orders" << std::endl;
+        _printAHistory(liveBuys);
+
     }

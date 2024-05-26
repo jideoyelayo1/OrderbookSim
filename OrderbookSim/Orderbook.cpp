@@ -56,8 +56,25 @@ Trades Orderbook::MatchOrders()
                 TradeInfo{ ask->getOrderId(), ask->getPrice(), quantity }
                 });
 
+            Price purchasedPrice = 0;
+
+            switch (_executionType) {
+            case ExecutionTypes::BuyersPrice:
+                purchasedPrice = std::max(ask->getPrice(), bid->getPrice());
+                break;
+            case ExecutionTypes::SellersPrice:
+                purchasedPrice = std::min(ask->getPrice(), bid->getPrice());
+                break;
+            case ExecutionTypes::MidPrice:
+                purchasedPrice = (ask->getPrice() + bid->getPrice()) / 2;
+                break;
+            default: break;
+            }
+            
+            _orderDetailHistory.removeMatchedOrder(bid->getOrderId(), ask->getOrderId());
+
             onOrderMatched(bid->getPrice(), quantity, bid->isFilled());
-            onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(),std::max(ask->getPrice(),bid->getPrice())); // we are purchasing at the max price
+            onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(), purchasedPrice); // we are purchasing at the max price
         }
 
         if (bids.empty())
@@ -156,7 +173,8 @@ void Orderbook::onOrderAdded(OrderPtr order) {
 
 void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled, Price purchasePrice) {
 
-    if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, quantity);
+    if (purchasePrice == 0) {/*DO NOTHING*/; }
+    else if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, quantity);
     else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, std::min(quantity, _data[price]._quantity));
 
     UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
@@ -341,10 +359,21 @@ void Orderbook::printAllOrders() {
     _orderDetailHistory._printSellHistory();
     _orderDetailHistory._printBuyHistory();
     _orderDetailHistory._printPurchaseHistory();
+    _orderDetailHistory._printLiveOrders();
     if (_orderDetailHistory.getVWAP() == 0) std::cout << "No purchases made" << std::endl;
     else std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
 }
 
 void Orderbook::saveToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {
     _orderDetailHistory.saveHistoryToJson(buyfilename, sellfilename, purchasefilename);
+}
+
+
+void Orderbook::changeExecutionType(int type) {
+    switch (type) {
+    case 0: _executionType = ExecutionTypes::BuyersPrice; return;
+    case 1: _executionType = ExecutionTypes::SellersPrice; return;
+    case 2: _executionType = ExecutionTypes::MidPrice; return;
+    default: return;
+    }
 }
