@@ -1,4 +1,7 @@
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\MatchedOrderDetails.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\MatchedOrderDetails.obj
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\Net.obj
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\NeuralNetwork.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\NeuralNetwork.obj
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Neuron.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\Neuron.obj
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Order.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\Order.obj
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Orderbook.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\Orderbook.obj
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookLevelInfos.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\OrderbookLevelInfos.obj
@@ -8,3 +11,4 @@ C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetail.c
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\OrderDetailHistory.obj
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderModify.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\OrderModify.obj
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Trade.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\Trade.obj
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\TrainingData.cpp;C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderbookSim\x64\Debug\TrainingData.obj

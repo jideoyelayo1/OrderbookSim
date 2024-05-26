@@ -9,22 +9,12 @@ void NeuralNetwork::loadTogology(const std::vector<unsigned>& topology) {
 
 void NeuralNetwork::Run(std::vector<double>& inputVals, std::vector<double>& targetVals, std::vector<double>& resultVals) {
     trainingPass++;
-    std::cout << "\n" << "Pass" << trainingPass << "\n";
-    allData += "\nPass:" + trainingPass;
-    allData += '\n';
 
-    showVectorVals(" : Inputs:", inputVals);
-    allData += printVectorVals(" : Inputs:", inputVals);
 
     myNet.feedForward(inputVals);
 
     myNet.getResults(resultVals);
-    showVectorVals("Outputs:", resultVals);
-    allData += printVectorVals("Outputs:", resultVals);
 
-    //trainData.getTargetOutputs(targetVals);
-    showVectorVals("Targets:", targetVals);
-    allData += printVectorVals("Targets:", targetVals);
 
     assert(targetVals.size() == topology.back());
 

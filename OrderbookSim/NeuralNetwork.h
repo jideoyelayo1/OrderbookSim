@@ -6,8 +6,6 @@
 class NeuralNetwork
 {
 private:
-    std::string filename = "FlipFlop";
-    std::string allData = "";
     std::vector<unsigned> topology;
     Net myNet;
     std::vector<double> inputVals, targetVals, resultVals;
