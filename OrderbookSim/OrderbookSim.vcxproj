@@ -129,6 +129,9 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="MatchedOrderDetails.cpp" />
+    <ClCompile Include="Net.cpp" />
+    <ClCompile Include="NeuralNetwork.cpp" />
+    <ClCompile Include="Neuron.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Orderbook.cpp" />
     <ClCompile Include="OrderbookLevelInfos.cpp" />
@@ -138,12 +141,17 @@
     <ClCompile Include="OrderDetailHistory.cpp" />
     <ClCompile Include="OrderModify.cpp" />
     <ClCompile Include="Trade.cpp" />
+    <ClCompile Include="TrainingData.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Connection.h" />
     <ClInclude Include="Constants.h" />
     <ClInclude Include="json.hpp" />
     <ClInclude Include="LevelInfo.h" />
     <ClInclude Include="MatchedOrderDetails.h" />
+    <ClInclude Include="Net.h" />
+    <ClInclude Include="NeuralNetwork.h" />
+    <ClInclude Include="Neuron.h" />
     <ClInclude Include="Order.h" />
     <ClInclude Include="Orderbook.h" />
     <ClInclude Include="OrderbookLevelInfos.h" />
@@ -154,6 +162,7 @@
     <ClInclude Include="Side.h" />
     <ClInclude Include="Trade.h" />
     <ClInclude Include="TradeInfo.h" />
+    <ClInclude Include="TrainingData.h" />
     <ClInclude Include="Usings.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

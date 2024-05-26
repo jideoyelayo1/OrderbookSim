@@ -1,9 +1,47 @@
-﻿  OrderDetailHistory.cpp
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(80,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(86,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(86,31): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(97,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
-  Orderbook.cpp
+﻿  Orderbook.cpp
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Orderbook.cpp')
+  
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'Orderbook.cpp')
+  
   OrderbookSim.cpp
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'OrderbookSim.cpp')
+  
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'OrderbookSim.cpp')
+  
+  OrderDetailHistory.cpp
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'OrderDetailHistory.cpp')
+  
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
+  (compiling source file 'OrderDetailHistory.cpp')
+  
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(122,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(128,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(128,31): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(139,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244: '=': conversion from '_Ty' to 'Price', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:         with
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:         [
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:             _Ty=double
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:         ]
+  TrainingData.cpp
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\TrainingData.cpp(52,26): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\TrainingData.cpp(68,34): warning C4267: 'return': conversion from 'size_t' to 'unsigned int', possible loss of data
   Generating Code...
-  OrderbookSim.vcxproj -> C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\x64\Debug\OrderbookSim.exe
+NeuralNetwork.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl printVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?printVectorVals@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+NeuralNetwork.obj : error LNK2005: "void __cdecl saveStringToFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?saveStringToFile@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) already defined in Net.obj
+NeuralNetwork.obj : error LNK2005: "void __cdecl showVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?showVectorVals@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+Orderbook.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl printVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?printVectorVals@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+Orderbook.obj : error LNK2005: "void __cdecl saveStringToFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?saveStringToFile@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) already defined in Net.obj
+Orderbook.obj : error LNK2005: "void __cdecl showVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?showVectorVals@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+OrderbookSim.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl printVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?printVectorVals@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+OrderbookSim.obj : error LNK2005: "void __cdecl saveStringToFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?saveStringToFile@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) already defined in Net.obj
+OrderbookSim.obj : error LNK2005: "void __cdecl showVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?showVectorVals@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+OrderDetailHistory.obj : error LNK2005: "class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > __cdecl printVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?printVectorVals@@YA?AV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@V12@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+OrderDetailHistory.obj : error LNK2005: "void __cdecl saveStringToFile(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &,class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> > const &)" (?saveStringToFile@@YAXAEBV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@0@Z) already defined in Net.obj
+OrderDetailHistory.obj : error LNK2005: "void __cdecl showVectorVals(class std::basic_string<char,struct std::char_traits<char>,class std::allocator<char> >,class std::vector<double,class std::allocator<double> > &)" (?showVectorVals@@YAXV?$basic_string@DU?$char_traits@D@std@@V?$allocator@D@2@@std@@AEAV?$vector@NV?$allocator@N@std@@@2@@Z) already defined in Net.obj
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\x64\Debug\OrderbookSim.exe : fatal error LNK1169: one or more multiply defined symbols found

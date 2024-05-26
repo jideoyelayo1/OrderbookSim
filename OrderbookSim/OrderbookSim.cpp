@@ -22,7 +22,7 @@ int main()
     orderbook.addOrder(OrderType::GoodTillCancel, Side::Buy, 324, 65);
     */
 
-    const int n = 1000;
+    const int n = 10;
     randomOrderSimulation(n);
     
 

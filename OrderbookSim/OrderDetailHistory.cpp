@@ -22,8 +22,13 @@
         if (_liveOrders.find(bidId) == _liveOrders.end()) return;
         if (_liveOrders.find(askId) == _liveOrders.end()) return;
 
+
+
+
         Quantity bid = _liveOrders[bidId].getQuantity();
         Quantity ask = _liveOrders[askId].getQuantity();
+
+
         
         if (bid == ask) {
             _liveOrders.erase(askId);
@@ -191,7 +196,7 @@
 
     std::pair< std::vector<OrderDetail>, std::vector<OrderDetail>> OrderDetailHistory::_getLiveOrders() const {
         std::vector<OrderDetail> _currentLiveBuys, _currentLiveSells;
-        for (const std::pair<OrderId, OrderDetail> p : _liveOrders) {
+        for (const std::pair<OrderId, OrderDetail> &p : _liveOrders) {
             if (p.second.Side() == Side::Buy) { _currentLiveBuys.push_back(p.second); }
             else if (p.second.Side() == Side::Sell) { _currentLiveSells.push_back(p.second); }
         }
@@ -207,3 +212,28 @@
         _printAHistory(liveBuys);
 
     }
+
+
+    void OrderDetailHistory::loadHistoryToNeuralNetwork(std::vector<Price> inputPrice, std::vector<Price> outputPrice) {
+
+        /*SHOULD ADD DIFFERENT TYPES OF SCALES*/
+        Price SCALE = PRICESCALE;
+        //Price SCALE = PRICESCALE;
+
+
+        std::vector<double> inputs(inputPrice.size());
+        std::vector<double> targets(outputPrice.size());
+
+        std::transform(inputPrice.begin(), inputPrice.end(), inputs.begin(), [SCALE](Price p) { return static_cast<double>(p) / SCALE; });
+        std::transform(outputPrice.begin(), outputPrice.end(), targets.begin(), [SCALE](Price p) { return static_cast<double>(p) / SCALE; });
+
+        std::vector<double> results;
+
+        neutralNetwork.Run(inputs, targets, results);
+
+        if (!results.empty()) {
+            lastPrediction = results[0];
+        }
+    }
+
+
