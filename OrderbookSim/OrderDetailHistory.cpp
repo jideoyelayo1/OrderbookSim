@@ -4,20 +4,20 @@
 
 
 
-    void OrderDetailHistory::addOrderToBuyHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
+    void OrderDetailHistory::addOrderToBuyHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty) {
         OrderDetail newOrderDetail(type, id, side, price, qty);
         _liveOrders[id] = newOrderDetail;
         buyHistory.push_back(newOrderDetail);
     }
 
-    void OrderDetailHistory::addOrderToSellHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
+    void OrderDetailHistory::addOrderToSellHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty) {
         OrderDetail newOrderDetail(type, id, side, price, qty);
         _liveOrders[id] = newOrderDetail;
         sellHistory.push_back(newOrderDetail);
     }
 
 
-    void OrderDetailHistory::removeMatchedOrder(OrderId bidId, OrderId askId) {
+    void OrderDetailHistory::removeMatchedOrder(const OrderId bidId, const OrderId askId) {
 
         if (_liveOrders.find(bidId) == _liveOrders.end()) return;
         if (_liveOrders.find(askId) == _liveOrders.end()) return;
@@ -41,7 +41,7 @@
     }
 
 
-    void OrderDetailHistory::addOrderToHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty) {
+    void OrderDetailHistory::addOrderToHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty) {
         if (side == Side::Buy) {
             addOrderToBuyHistory(type, id, side, price, qty);
         }
@@ -49,7 +49,7 @@
             addOrderToSellHistory(type, id, side, price, qty);
         }
     }
-    void OrderDetailHistory::addOrderToPurchaseHistory(Price price, Quantity qty) {
+    void OrderDetailHistory::addOrderToPurchaseHistory(const Price price, const Quantity qty) {
         auto newPurchasedOrder = MatchedOrderDetail(price, qty);
         _purchaseHistory.push_back(newPurchasedOrder);
     }
@@ -69,7 +69,7 @@
 
     }
 
-    void OrderDetailHistory::_printAHistory(const std::vector<OrderDetail> history) {
+    void OrderDetailHistory::_printAHistory(const std::vector<OrderDetail> &history) {
 
         for (const OrderDetail detail : history) {
             std::cout << "OrderType: " << detail.getOrderType() << " ";
@@ -189,7 +189,7 @@
     }
 
 
-    std::pair< std::vector<OrderDetail>, std::vector<OrderDetail>> OrderDetailHistory::_getLiveOrders() {
+    std::pair< std::vector<OrderDetail>, std::vector<OrderDetail>> OrderDetailHistory::_getLiveOrders() const {
         std::vector<OrderDetail> _currentLiveBuys, _currentLiveSells;
         for (const std::pair<OrderId, OrderDetail> p : _liveOrders) {
             if (p.second.Side() == Side::Buy) { _currentLiveBuys.push_back(p.second); }

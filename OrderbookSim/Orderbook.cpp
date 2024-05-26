@@ -30,8 +30,8 @@ Trades Orderbook::MatchOrders()
 
         while (!bids.empty() && !asks.empty())
         {
-            auto bid = bids.front();
-            auto ask = asks.front();
+            OrderPtr bid = bids.front();
+            OrderPtr ask = asks.front();
 
             Quantity quantity = std::min(bid->getRemainingQty(), ask->getRemainingQty());
 
@@ -114,7 +114,7 @@ void Orderbook::CancelOrders(OrderIds orderIds) {
 }
 void Orderbook::CancelOrderInternal(OrderId orderId) { // You would have to take the mutex a lot of times wasting time (only taking the mutex one)
     if (!_orders.contains(orderId)) return;
-    const auto [order, orderIter] = _orders.at(orderId);
+    const auto [order, orderIter] = _orders.at(orderId); // types returned OrderId, OrderEntry
 
     if (order->getSide() == Side::Sell) {
         auto price = order->getPrice();
