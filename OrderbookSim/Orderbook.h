@@ -87,14 +87,9 @@ public:
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
-    void printAllOrders() {
-        _orderDetailHistory._printSellHistory();
-        _orderDetailHistory._printBuyHistory();
-        _orderDetailHistory._printPurchaseHistory();
-        if (_orderDetailHistory.getVWAP() == 0) std::cout << "No purchases made" << std::endl;
-        else std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
-    }
+    void printAllOrders();
 
+    void saveToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json");
 
     std::size_t Size() const;
 

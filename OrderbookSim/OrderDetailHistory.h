@@ -22,13 +22,19 @@ private:
 
     void addOrderToSellHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty);
 
+    void saveBuyHistoryToJson(const std::string& filename);
+    void saveSellHistoryToJson(const std::string& filename);
+    void savePurchaseHistoryToJson(const std::string& filename);
+
 public:
+
     OrderDetailHistory() = default;
 
     void addOrderToHistory(OrderType type, OrderId id, Side side, Price price, Quantity qty);
 
     void addOrderToPurchaseHistory(Price price, Quantity qty);
 
+    void saveHistoryToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json");
 
     void _printSellHistory();
 
@@ -40,9 +46,6 @@ public:
     
     Price getVWAP(int n);
 
-void saveBuyHistoryToJson(const std::string& filename);
-void saveSellHistoryToJson(const std::string& filename);
-void savePurchaseHistoryToJson(const std::string& filename);
 
     
 };

@@ -335,3 +335,16 @@ OrderbookLevelInfos Orderbook::getOrderInfos() const {
     return OrderbookLevelInfos{ bidInfos, askInfos };
 
 }
+
+
+void Orderbook::printAllOrders() {
+    _orderDetailHistory._printSellHistory();
+    _orderDetailHistory._printBuyHistory();
+    _orderDetailHistory._printPurchaseHistory();
+    if (_orderDetailHistory.getVWAP() == 0) std::cout << "No purchases made" << std::endl;
+    else std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
+}
+
+void Orderbook::saveToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {
+    _orderDetailHistory.saveHistoryToJson(buyfilename, sellfilename, purchasefilename);
+}

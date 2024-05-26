@@ -144,3 +144,9 @@
         std::ofstream file(filename);
         file << jsonPurchaseHistory.dump(4);
     }
+
+    void OrderDetailHistory::saveHistoryToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {
+        saveBuyHistoryToJson(buyfilename);
+        saveSellHistoryToJson(sellfilename);
+        savePurchaseHistoryToJson(purchasefilename);
+    }
