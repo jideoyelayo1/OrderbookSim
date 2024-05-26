@@ -1,6 +1,7 @@
-/vs
-vs
-x64
-/64
-./vs
-./x64
+*.json
+x64/
+vs/
+debug/
+BuyHistory
+SellHistory
+PurchaseHistory
