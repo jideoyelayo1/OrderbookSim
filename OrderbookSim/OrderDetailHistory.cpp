@@ -99,31 +99,48 @@
         return price;
     }
 
-    // Method to convert OrderDetailHistory to JSON
-    /*
-    nlohmann::json toJSON() const {
-        return nlohmann::json{ {"buyHistory", buyHistory}, {"sellHistory", sellHistory} };
+    // Save histories to JSON
+    void OrderDetailHistory::saveBuyHistoryToJson(const std::string& filename) {
+        nlohmann::json jsonBuyHistory = nlohmann::json::array();
+        for (const OrderDetail& detail : buyHistory) {
+            jsonBuyHistory.push_back({
+                {"order_type", detail.getOrderType()},
+                {"order_id", detail.getOrderId()},
+                {"side", detail.getSide()},
+                {"price", detail.getPrice()},
+                {"quantity", detail.getQuantity()},
+                {"time", detail.getTime()}
+                });
+        }
+        std::ofstream file(filename);
+        file << jsonBuyHistory.dump(4);
     }
 
-
-    // Method to populate OrderDetailHistory from JSON
-    static OrderDetailHistory fromJSON(const nlohmann::json& j) {
-        OrderDetailHistory history;
-        j.at("buyHistory").get_to(history.buyHistory);
-        j.at("sellHistory").get_to(history.sellHistory);
-        return history;
+    void OrderDetailHistory::saveSellHistoryToJson(const std::string& filename) {
+        nlohmann::json jsonSellHistory = nlohmann::json::array();
+        for (const OrderDetail& detail : sellHistory) {
+            jsonSellHistory.push_back({
+                {"order_type", detail.getOrderType()},
+                {"order_id", detail.getOrderId()},
+                {"side", detail.getSide()},
+                {"price", detail.getPrice()},
+                {"quantity", detail.getQuantity()},
+                {"time", detail.getTime()}
+                });
+        }
+        std::ofstream file(filename);
+        file << jsonSellHistory.dump(4);
     }
-    */
 
-/*
-// Define how to serialize and deserialize OrderDetailHistory to/from JSON
-void to_json(nlohmann::json& j, const OrderDetailHistory& history) {
-    j = history.toJSON();
-}
-
-void from_json(const nlohmann::json& j, OrderDetailHistory& history) {
-    history = OrderDetailHistory::fromJSON(j);
-}
-*/
-
-
+    void OrderDetailHistory::savePurchaseHistoryToJson(const std::string& filename) {
+        nlohmann::json jsonPurchaseHistory = nlohmann::json::array();
+        for (const MatchedOrderDetail& detail : _purchaseHistory) {
+            jsonPurchaseHistory.push_back({
+                {"price", detail.getPrice()},
+                {"quantity", detail.getQuantity()},
+                {"time", detail.getTime()}
+                });
+        }
+        std::ofstream file(filename);
+        file << jsonPurchaseHistory.dump(4);
+    }

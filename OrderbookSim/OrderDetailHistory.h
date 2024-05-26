@@ -2,6 +2,8 @@
 
 #include <vector>
 #include <iostream>
+#include  "json.hpp"
+#include <fstream> 
 
 //#include <nlohmann/json.hpp>
 #include "OrderDetail.h"
@@ -38,31 +40,11 @@ public:
     
     Price getVWAP(int n);
 
-    // Method to convert OrderDetailHistory to JSON
-    /*
-    nlohmann::json toJSON() const {
-        return nlohmann::json{ {"buyHistory", buyHistory}, {"sellHistory", sellHistory} };
-    }
+void saveBuyHistoryToJson(const std::string& filename);
+void saveSellHistoryToJson(const std::string& filename);
+void savePurchaseHistoryToJson(const std::string& filename);
+
     
-
-    // Method to populate OrderDetailHistory from JSON
-    static OrderDetailHistory fromJSON(const nlohmann::json& j) {
-        OrderDetailHistory history;
-        j.at("buyHistory").get_to(history.buyHistory);
-        j.at("sellHistory").get_to(history.sellHistory);
-        return history;
-    }
-    */
 };
-/*
-// Define how to serialize and deserialize OrderDetailHistory to/from JSON
-void to_json(nlohmann::json& j, const OrderDetailHistory& history) {
-    j = history.toJSON();
-}
-
-void from_json(const nlohmann::json& j, OrderDetailHistory& history) {
-    history = OrderDetailHistory::fromJSON(j);
-}
-*/
 
 
