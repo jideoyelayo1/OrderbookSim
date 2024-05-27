@@ -97,6 +97,14 @@ public:
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
+    void setPriceScale(Price _price) {
+        _orderDetailHistory.PRICESCALE = _price;
+    }
+
+    Price getPriceScale() {
+        return _orderDetailHistory.PRICESCALE;
+    }
+
     void printAllOrders();
 
     void saveToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json");

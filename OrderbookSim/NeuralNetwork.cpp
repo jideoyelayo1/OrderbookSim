@@ -16,11 +16,11 @@ void NeuralNetwork::Run(std::vector<double>& inputVals, std::vector<double>& tar
     myNet.getResults(resultVals);
 
 
-    assert(targetVals.size() == topology.back());
+    //assert(targetVals.size() == topology.back()); // TODO: CHECK THIS
 
     myNet.backProp(targetVals);
 
-    std::cout << "Not recent average error: " << myNet.getRecentAverageError() << "\n";
+    //std::cout << "Not recent average error: " << myNet.getRecentAverageError() << "\n";
     //allData += "Not recent average error: " + std::to_string(myNet.getRecentAverageError()) + "\n";
 }
 

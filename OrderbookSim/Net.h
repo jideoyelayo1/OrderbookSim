@@ -22,7 +22,7 @@ public:
 
             for (unsigned neuronNum = 0; neuronNum <= topology[layerNum]; ++neuronNum) { // one more for bias
                 _layers.back().push_back(Neuron(numOutputs, neuronNum)); //
-                std::cout << "made a neuron" << std::endl;
+                //std::cout << "made a neuron" << std::endl;
             }
             // force bias to 1.0
             _layers.back().back().setOutputVal(1.0);
@@ -37,7 +37,7 @@ public:
 
             for (unsigned neuronNum = 0; neuronNum <= topology[layerNum]; ++neuronNum) { // one more for bias
                 _layers.back().push_back(Neuron(numOutputs, neuronNum)); //
-                std::cout << "made a neuron" << std::endl;
+                //std::cout << "made a neuron" << std::endl;
             }
             // force bias to 1.0
             _layers.back().back().setOutputVal(1.0);

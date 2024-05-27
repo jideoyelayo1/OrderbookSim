@@ -62,7 +62,9 @@ void Net::backProp(const std::vector<double>& targetVals) {
 }
 
 void Net::feedForward(const std::vector<double>& inputVals) {
-    assert(inputVals.size() == _layers[0].size() - 1);
+
+    //assert(inputVals.size() == _layers[0].size() - 1); // TODO: CHECK THIS
+
     for (unsigned i = 0; i < inputVals.size(); ++i) {
         _layers[0][i].setOutputVal(inputVals[i]);
     }

@@ -1,48 +1,17 @@
-﻿  Net.cpp
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'Net.cpp')
-  
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'Net.cpp')
-  
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.cpp(41,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.cpp(52,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  NeuralNetwork.cpp
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'NeuralNetwork.cpp')
-  
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'NeuralNetwork.cpp')
-  
-  OrderDetailHistory.cpp
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'OrderDetailHistory.cpp')
-  
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'OrderDetailHistory.cpp')
-  
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(122,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(128,54): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(128,31): warning C4267: 'initializing': conversion from 'size_t' to 'const int', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(139,35): warning C4244: '=': conversion from '__int64' to 'Price', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244: '=': conversion from '_Ty' to 'Price', possible loss of data
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:         with
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:         [
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:             _Ty=double
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.cpp(235,39): warning C4244:         ]
-  Orderbook.cpp
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'Orderbook.cpp')
-  
-C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
-  (compiling source file 'Orderbook.cpp')
-  
-  OrderbookSim.cpp
+﻿  OrderbookSim.cpp
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(18,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'OrderbookSim.cpp')
   
 C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\Net.h(33,28): warning C4267: 'initializing': conversion from 'size_t' to 'unsigned int', possible loss of data
   (compiling source file 'OrderbookSim.cpp')
   
-  Generating Code...
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.h(79,31): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OrderbookSim.cpp')
+  
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.h(82,32): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OrderbookSim.cpp')
+  
+C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\OrderDetailHistory.h(86,37): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
+  (compiling source file 'OrderbookSim.cpp')
+  
   OrderbookSim.vcxproj -> C:\Users\JideO\Documents\coding_projects\OrderbookSim\OrderbookSim\x64\Debug\OrderbookSim.exe

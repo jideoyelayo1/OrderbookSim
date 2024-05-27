@@ -177,6 +177,8 @@ void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, 
     else if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, quantity);
     else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, std::min(quantity, _data[price]._quantity));
 
+    _orderDetailHistory.updateNeutralNetwork(purchasePrice, std::min(quantity, _data[price]._quantity));
+
     UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
 
 }
@@ -356,12 +358,21 @@ OrderbookLevelInfos Orderbook::getOrderInfos() const {
 
 
 void Orderbook::printAllOrders() {
-    _orderDetailHistory._printSellHistory();
-    _orderDetailHistory._printBuyHistory();
+    //_orderDetailHistory._printSellHistory();
+    //_orderDetailHistory._printBuyHistory();
     _orderDetailHistory._printPurchaseHistory();
-    _orderDetailHistory._printLiveOrders();
+    //_orderDetailHistory._printLiveOrders();
+
+    std::cout << "Purchase History Size: " << _orderDetailHistory.purchaseHistorySize();
+
+    std::cout << "Sell History Size: " << _orderDetailHistory.sellHistorySize();
+    std::cout << "Buy History Size: " << _orderDetailHistory.buyHistorySize();
+    
     if (_orderDetailHistory.getVWAP() == 0) std::cout << "No purchases made" << std::endl;
     else std::cout << "The VWAP of this item is " << _orderDetailHistory.getVWAP() << std::endl;
+
+    std::cout << "PREDICTION " << _orderDetailHistory.getPrediction() << std::endl;
+    
 }
 
 void Orderbook::saveToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {

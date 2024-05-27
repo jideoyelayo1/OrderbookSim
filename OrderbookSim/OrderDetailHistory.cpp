@@ -23,8 +23,6 @@
         if (_liveOrders.find(askId) == _liveOrders.end()) return;
 
 
-
-
         Quantity bid = _liveOrders[bidId].getQuantity();
         Quantity ask = _liveOrders[askId].getQuantity();
 
@@ -232,7 +230,7 @@
         neutralNetwork.Run(inputs, targets, results);
 
         if (!results.empty()) {
-            lastPrediction = results[0];
+            lastPrediction = results[0]*SCALE;
         }
     }
 
