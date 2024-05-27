@@ -27,49 +27,16 @@ public:
 
     OrderDetail() = default;
 
-    std::string getOrderType() const { return orderTypeToString(_type); }
-    OrderId getOrderId() const { return _id; }
-    std::string getSide() const { return sideToString(_side);}
-    Side Side() const { return _side; }
-    Price getPrice() const { return _price; }
-    Quantity getQuantity() const { return _quantity; }
-    std::string getTime() const {
-        std::time_t timeT = std::chrono::system_clock::to_time_t(_time);
-        std::tm tm;
-        localtime_s(&tm, &timeT);  // Use localtime_s instead of localtime
-        std::ostringstream oss;
-        oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
-        return oss.str();
-    }
-    void setQuantity(Quantity newValue) {
-        _quantity = newValue;
-        // if (_quantity <= 0) delete this; // would be unsafe
-    }
+    std::string getOrderType() const;
+    OrderType OrderType() const;
+    OrderId getOrderId() const;
+    std::string getSide() const;
+    Side Side() const;
+    Price getPrice() const;
+    Quantity getQuantity() const;
+    std::string getTime() const;
 
+    void setQuantity(Quantity newValue);
 
-    /*
-    // Define how to serialize OrderDetail to JSON
-    friend void to_json(nlohmann::json& j, const OrderDetail& o) {
-        j = nlohmann::json{
-            {"type", o._type},
-            {"id", o._id},
-            {"side", o._side},
-            {"price", o._price},
-            {"quantity", o._quantity},
-            {"time", o.getTime()}
-        };
-    }
-
-    // Define how to deserialize OrderDetail from JSON
-    friend void from_json(const nlohmann::json& j, OrderDetail& o) {
-        o._type = j.at("type").get<OrderType>();
-        o._id = j.at("id").get<OrderId>();
-        o._side = j.at("side").get<Side>();
-        o._price = j.at("price").get<Price>();
-        o._quantity = j.at("quantity").get<Quantity>();
-        time_t time = j.at("time").get<time_t>();
-        o._time = std::chrono::system_clock::from_time_t(time);
-    }
-    */
 
 };

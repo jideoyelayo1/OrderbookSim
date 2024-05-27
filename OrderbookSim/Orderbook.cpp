@@ -395,3 +395,73 @@ void Orderbook::changeExecutionType(int type) {
     default: return;
     }
 }
+
+
+
+void Orderbook::EndOfDay() {
+    std::unordered_map<OrderId, bool> goodToCancels;
+
+    // Handle live orders
+    for (const auto& m : _orderDetailHistory.getLiveOrders()) {
+        if (m.second.OrderType() != OrderType::GoodForDay) continue;
+        goodToCancels[m.first] = true;
+        _orderDetailHistory.deleteALiveOrder(m.first);
+    }
+
+    // Remove orders not in goodToCancels
+    for (auto it = _orders.begin(); it != _orders.end(); ) {
+        if (goodToCancels.find(it->first) != goodToCancels.end()) {
+            ++it;
+        }
+        else {
+            it = _orders.erase(it);
+        }
+    }
+
+    // Clean up bids
+    for (auto it = _bids.begin(); it != _bids.end(); ) {
+        auto& orderptrs = it->second;
+        for (auto orderIt = orderptrs.begin(); orderIt != orderptrs.end(); ) {
+            if (goodToCancels.find((*orderIt)->getOrderId()) != goodToCancels.end()) {
+                orderIt = orderptrs.erase(orderIt);
+            }
+            else {
+                ++orderIt;
+            }
+        }
+        if (orderptrs.empty()) {
+            it = _bids.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+
+    // Clean up asks
+    for (auto it = _asks.begin(); it != _asks.end(); ) {
+        auto& orderptrs = it->second;
+        for (auto orderIt = orderptrs.begin(); orderIt != orderptrs.end(); ) {
+            if (goodToCancels.find((*orderIt)->getOrderId()) != goodToCancels.end()) {
+                orderIt = orderptrs.erase(orderIt);
+            }
+            else {
+                ++orderIt;
+            }
+        }
+        if (orderptrs.empty()) {
+            it = _asks.erase(it);
+        }
+        else {
+            ++it;
+        }
+    }
+}
+
+
+void Orderbook::setPriceScale(Price _price) {
+    _orderDetailHistory.PRICESCALE = _price;
+}
+
+Price Orderbook::getPriceScale() {
+    return _orderDetailHistory.PRICESCALE;
+}

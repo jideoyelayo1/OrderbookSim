@@ -251,3 +251,30 @@
     }
 
 
+    Price OrderDetailHistory::getPrediction() { return lastPrediction; }
+
+    std::unordered_map<OrderId, OrderDetail> OrderDetailHistory::getLiveOrders() {
+        return _liveOrders;
+    }
+
+    void OrderDetailHistory::deleteALiveOrder(OrderId id) {
+        if (_liveOrders.find(id) == _liveOrders.end()) return;
+        _liveOrders.erase(id);
+    }
+
+
+    int OrderDetailHistory::buyHistorySize() const {
+        return buyHistory.size();
+    }
+    int OrderDetailHistory::sellHistorySize()const {
+        return sellHistory.size();
+    }
+
+    int OrderDetailHistory::purchaseHistorySize() const {
+        return _purchaseHistory.size();
+    }
+
+    void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity) {
+        loadHistoryToNeuralNetwork({ static_cast<int> (getCurrentTimeAsFractionOfDay()) * 100,static_cast<int>(quantity) }, { price });
+        //std::cout << "The predicted price is " << getPrediction() << std::endl;
+    }

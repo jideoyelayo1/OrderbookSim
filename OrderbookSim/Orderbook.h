@@ -98,13 +98,9 @@ public:
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
-    void setPriceScale(Price _price) {
-        _orderDetailHistory.PRICESCALE = _price;
-    }
+    void setPriceScale(Price _price);
 
-    Price getPriceScale() {
-        return _orderDetailHistory.PRICESCALE;
-    }
+    Price getPriceScale();
 
     void printAllOrders();
 
@@ -114,6 +110,9 @@ public:
 
     // Orderbook levels info object to represnet the aggreatate internal state of order book: useful for testing or market data decimination
     OrderbookLevelInfos getOrderInfos() const;
+
+    void EndOfDay();
+
 
 };
 

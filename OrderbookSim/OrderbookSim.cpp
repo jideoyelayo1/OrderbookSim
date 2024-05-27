@@ -23,7 +23,7 @@ int main()
     orderbook.printAllOrders();
     return 0;
     */
-    const int n = 1000;
+    const int n = 100;
     randomOrderSimulation(n);
     
 
@@ -65,6 +65,8 @@ void randomOrderSimulation(const int n) {
     //std::cout << "Elapsed time: " << duration.count() << " seconds" << std::endl;
 
     //return;
+
+    //orderbook.EndOfDay(); // Run at the end of Day
 
     orderbook.printAllOrders();
 

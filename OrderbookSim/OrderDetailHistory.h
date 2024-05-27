@@ -76,21 +76,15 @@ public:
         neutralNetwork.loadTogology(topology);
     }
 
-    int buyHistorySize() {
-        return buyHistory.size();
-    }
-    int sellHistorySize() {
-        return sellHistory.size();
-    }
-    
-    int purchaseHistorySize() {
-        return _purchaseHistory.size();
-    }
+    int buyHistorySize() const;
 
-    void updateNeutralNetwork( Price price, Quantity quantity) {
-        loadHistoryToNeuralNetwork({ static_cast<int> (getCurrentTimeAsFractionOfDay()) * 100,static_cast<int>(quantity) }, { price });
-        //std::cout << "The predicted price is " << getPrediction() << std::endl;
-    }
+    int sellHistorySize() const;
+    
+    int purchaseHistorySize() const;
+
+    void updateNeutralNetwork(Price price, Quantity quantity);
+
+
     void addOrderToHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty);
 
     void addOrderToPurchaseHistory(const Price price, const Quantity qty);
@@ -114,12 +108,13 @@ public:
     
     Price getVWAP(int n);
 
-
-    Price getPrediction() { return lastPrediction; }
-
     Price PRICESCALE = 500;
-   
 
+    Price getPrediction();
+   
+    std::unordered_map<OrderId, OrderDetail> getLiveOrders();
+
+    void deleteALiveOrder(OrderId id);
 
     
 };
