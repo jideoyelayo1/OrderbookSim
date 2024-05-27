@@ -23,7 +23,7 @@ int main()
     orderbook.printAllOrders();
     return 0;
     */
-    const int n = 100000;
+    const int n = 1000;
     randomOrderSimulation(n);
     
 
@@ -51,7 +51,7 @@ void randomOrderSimulation(const int n) {
     //auto start = std::chrono::high_resolution_clock::now();
 
     for (int i = 0; i < n; i++) {
-        orderbook.addOrder(intToOrdertType(type(gen)), i , side(gen) == 1 ? Side::Buy : Side::Sell, price(gen), quantity(gen));
+        orderbook.addOrder(intToOrdertType(type(gen)), i, side(gen) == 1 ? Side::Buy : Side::Sell, price(gen), quantity(gen));
         if(false and i % 1000 == 0) 
         {
             std::this_thread::sleep_for(std::chrono::seconds(1));
@@ -69,5 +69,6 @@ void randomOrderSimulation(const int n) {
     orderbook.printAllOrders();
 
     std::cout << "OrderBook Size " << orderbook.Size();
+
     orderbook.saveToJson();
 }

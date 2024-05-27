@@ -94,6 +94,7 @@ public:
     Trades addOrder(OrderPtr order);
     Trades addOrder(OrderType type, Side side, Price price, Quantity qty); // Do not use for lots of orders
     Trades addOrder(OrderType type, OrderId orderId, Side side, Price price, Quantity qty);
+    Trades addOrderViaPython(int type, int id, int side, int price, int qty);
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
@@ -107,7 +108,7 @@ public:
 
     void printAllOrders();
 
-    void saveToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json");
+    void saveToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json", const std::string& buyLivefilename = "BuyLiveHistory.json", const std::string& sellLivefilename = "SellLiveHistory.json");
 
     std::size_t Size() const;
 

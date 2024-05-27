@@ -27,9 +27,10 @@ private:
 
     void addOrderToSellHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty);
 
-    void saveBuyHistoryToJson(const std::string& filename);
-    void saveSellHistoryToJson(const std::string& filename);
-    void savePurchaseHistoryToJson(const std::string& filename);
+    void saveHistoryToJson(const std::string& filename, const std::vector<OrderDetail> history);
+    void saveHistoryToJson(const std::string& filename, const std::vector<MatchedOrderDetail> history);
+    void _loadJsonLiveOrders(const std::string& SellFilename, const std::string& buyFilename);
+    void _printLiveOrders(const std::string& SellFilename, const std::string& buyFilename);
 
     Price lastPrediction = 0;
 
@@ -94,7 +95,10 @@ public:
 
     void addOrderToPurchaseHistory(const Price price, const Quantity qty);
 
-    void saveHistoryToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json");
+    void saveHistoryToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename);
+
+    void saveHistoryToJson(const std::string& buyfilename = "BuyHistory.json", const std::string& sellfilename = "SellHistory.json", const std::string& purchasefilename = "PurchaseHistory.json", const std::string& liveSellOrdersFilename = "LiveSellHistory.json", const std::string& buySellOrdersFilename = "LiveBuyHistory.json");
+
 
     void removeMatchedOrder(const OrderId bidId, const OrderId askID);
     

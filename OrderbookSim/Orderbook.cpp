@@ -264,6 +264,12 @@ Trades Orderbook::addOrder(OrderType type, OrderId id, Side side, Price price, Q
 
 }
 
+
+Trades Orderbook::addOrderViaPython(int type, int id, int side, int price, int qty) {
+
+    return addOrder(std::make_shared<Order>(intToOrdertType(type), id, side % 2 == 1 ? Side::Buy : Side::Sell , price, qty));
+}
+
 Trades Orderbook::addOrder(OrderPtr order) {
     std::scoped_lock ordersLock{ _ordersMutex };
 
@@ -375,8 +381,8 @@ void Orderbook::printAllOrders() {
     
 }
 
-void Orderbook::saveToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {
-    _orderDetailHistory.saveHistoryToJson(buyfilename, sellfilename, purchasefilename);
+void Orderbook::saveToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename, const std::string& buyLivefilename, const std::string& sellLivefilename) {
+    _orderDetailHistory.saveHistoryToJson(buyfilename, sellfilename, purchasefilename, sellLivefilename, buyLivefilename);
 }
 
 

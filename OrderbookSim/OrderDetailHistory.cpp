@@ -140,10 +140,11 @@
     }
 
     // Save histories to JSON
-    void OrderDetailHistory::saveBuyHistoryToJson(const std::string& filename) {
-        nlohmann::json jsonBuyHistory = nlohmann::json::array();
-        for (const OrderDetail& detail : buyHistory) {
-            jsonBuyHistory.push_back({
+    void OrderDetailHistory::saveHistoryToJson(const std::string& filename, const std::vector<OrderDetail> history) {
+        nlohmann::json jsonHistory = nlohmann::json::array();
+
+        for (const OrderDetail& detail : history) {
+            jsonHistory.push_back({
                 {"order_type", detail.getOrderType()},
                 {"order_id", detail.getOrderId()},
                 {"side", detail.getSide()},
@@ -153,42 +154,37 @@
                 });
         }
         std::ofstream file(filename);
-        file << jsonBuyHistory.dump(4);
+        file << jsonHistory.dump(4);
     }
 
-    void OrderDetailHistory::saveSellHistoryToJson(const std::string& filename) {
-        nlohmann::json jsonSellHistory = nlohmann::json::array();
-        for (const OrderDetail& detail : sellHistory) {
-            jsonSellHistory.push_back({
-                {"order_type", detail.getOrderType()},
-                {"order_id", detail.getOrderId()},
-                {"side", detail.getSide()},
+
+    void OrderDetailHistory::saveHistoryToJson(const std::string& filename, const std::vector<MatchedOrderDetail> history) {
+        nlohmann::json jsonHistory = nlohmann::json::array();
+        for (const MatchedOrderDetail& detail : history) {
+            jsonHistory.push_back({
                 {"price", detail.getPrice()},
                 {"quantity", detail.getQuantity()},
                 {"time", detail.getTime()}
                 });
         }
         std::ofstream file(filename);
-        file << jsonSellHistory.dump(4);
+        file << jsonHistory.dump(4);
     }
 
-    void OrderDetailHistory::savePurchaseHistoryToJson(const std::string& filename) {
-        nlohmann::json jsonPurchaseHistory = nlohmann::json::array();
-        for (const MatchedOrderDetail& detail : _purchaseHistory) {
-            jsonPurchaseHistory.push_back({
-                {"price", detail.getPrice()},
-                {"quantity", detail.getQuantity()},
-                {"time", detail.getTime()}
-                });
-        }
-        std::ofstream file(filename);
-        file << jsonPurchaseHistory.dump(4);
-    }
 
     void OrderDetailHistory::saveHistoryToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {
-        saveBuyHistoryToJson(buyfilename);
-        saveSellHistoryToJson(sellfilename);
-        savePurchaseHistoryToJson(purchasefilename);
+        saveHistoryToJson(buyfilename, buyHistory);
+        saveHistoryToJson(sellfilename, sellHistory);
+        saveHistoryToJson(purchasefilename, _purchaseHistory);
+
+    }
+
+    void OrderDetailHistory::saveHistoryToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename, const std::string& liveSellOrdersFilename, const std::string& buySellOrdersFilename) {
+        saveHistoryToJson(buyfilename, buyHistory);
+        saveHistoryToJson(sellfilename, sellHistory);
+        saveHistoryToJson(purchasefilename, _purchaseHistory);
+        _printLiveOrders(liveSellOrdersFilename, buySellOrdersFilename);
+
     }
 
 
@@ -201,9 +197,28 @@
         return std::make_pair(_currentLiveSells, _currentLiveBuys);
     }
 
+    void OrderDetailHistory::_loadJsonLiveOrders(const std::string& SellFilename, const std::string& buyFilename) {
+        const auto [liveSells, liveBuys] = _getLiveOrders();
+        saveHistoryToJson(SellFilename, liveSells);
+        saveHistoryToJson(buyFilename, liveBuys);
+
+    }
 
     void OrderDetailHistory::_printLiveOrders() {
         const auto [liveSells, liveBuys] = _getLiveOrders();
+
+        std::cout << "Live Sell Orders" << std::endl;
+        _printAHistory(liveSells);
+        std::cout << "Live Buys Orders" << std::endl;
+        _printAHistory(liveBuys);
+
+    }
+
+    void OrderDetailHistory::_printLiveOrders(const std::string& SellFilename, const std::string& buyFilename) {
+        const auto [liveSells, liveBuys] = _getLiveOrders();
+        saveHistoryToJson(SellFilename, liveSells);
+        saveHistoryToJson(buyFilename, liveBuys);
+
         std::cout << "Live Sell Orders" << std::endl;
         _printAHistory(liveSells);
         std::cout << "Live Buys Orders" << std::endl;
@@ -231,6 +246,7 @@
 
         if (!results.empty()) {
             lastPrediction = results[0]*SCALE;
+            //std::cout << lastPrediction << "\n";
         }
     }
 
