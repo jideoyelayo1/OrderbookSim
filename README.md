@@ -2,7 +2,7 @@
 
 ## Overview
 
-OrderbookSim is a C++ application that simulates an order book used in financial markets. It manages and matches buy and sell orders efficiently and calculates the volume-weighted average price (VWAP). This project is designed to help understand how order books work and to simulate trading scenarios with different types of orders.
+OrderbookSim is a C++ application that simulates an order book used in financial markets. It manages and matches buy and sell orders efficiently and calculates the volume-weighted average price (VWAP). The project also includes a neural network built from scratch to predict sell prices. This simulation helps users understand how order books work and how neural networks can be applied to financial data.
 
 ## Key Components
 
@@ -28,6 +28,9 @@ Represents a trade executed between a buy and sell order.
 
 ### VWAP (Volume-Weighted Average Price)
 Calculates the average price of orders based on their volume.
+
+### Neural Network for Price Prediction
+A custom-built neural network designed to predict sell prices based on historical order data. This neural network provides a foundation for applying machine learning to financial market simulations.
 
 ## Usage
 
@@ -92,6 +95,9 @@ void randomOrderSimulation(const int n) {
 }
 ```
 
+### Neural Network Price Prediction
+To use the neural network for predicting sell prices, you need to provide training data and configure the network parameters. The neural network implementation is integrated into the project to enhance the simulation's predictive capabilities.
+
 ## Dependencies
 The project relies on standard C++ libraries and includes the Google Test framework for testing purposes.
 
@@ -106,7 +112,9 @@ Contributions are welcome! Feel free to open issues or pull requests for any imp
 ## License
 This project is licensed under the MIT License - see the LICENSE file for details.
 
-## Additional Features
-The project now includes an order history and the calculation of the volume-weighted average price (VWAP).
+## Contact
+For any inquiries or feedback, please contact [JideOyelayo1@Gmail.com].
 
-Feel free to customize this README further to provide more detailed information about your project's features, usage, or any other relevant details.
+---
+
+This README provides an overview of the project's features and usage. Feel free to customize it further to provide more detailed information about your project's features, usage, or any other relevant details.
