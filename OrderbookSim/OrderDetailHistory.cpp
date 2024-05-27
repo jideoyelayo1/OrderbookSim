@@ -60,7 +60,7 @@
 
     void OrderDetailHistory::_printSellHistory() {
         std::cout << "Sell Order History" << std::endl;
-        for (const OrderDetail detail : sellHistory) {
+        for (const OrderDetail &detail : sellHistory) {
             std::cout << "OrderType: " << detail.getOrderType() << " ";
             std::cout << "Id: " << detail.getOrderId() << " ";
             std::cout << "Side: " << detail.getSide() << " ";
@@ -74,7 +74,7 @@
 
     void OrderDetailHistory::_printAHistory(const std::vector<OrderDetail> &history) {
 
-        for (const OrderDetail detail : history) {
+        for (const OrderDetail &detail : history) {
             std::cout << "OrderType: " << detail.getOrderType() << " ";
             std::cout << "Id: " << detail.getOrderId() << " ";
             std::cout << "Side: " << detail.getSide() << " ";
@@ -87,7 +87,7 @@
 
     void OrderDetailHistory::_printBuyHistory() {
         std::cout << "Buy Order History" << std::endl;
-        for (const OrderDetail detail : buyHistory) {
+        for (const OrderDetail &detail : buyHistory) {
             std::cout << "OrderType: " << detail.getOrderType() << " ";
             std::cout << "Id: " << detail.getOrderId() << " ";
             std::cout << "Side: " << detail.getSide() << " ";

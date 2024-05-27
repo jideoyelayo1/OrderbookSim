@@ -50,8 +50,8 @@ public:
     double getRecentAverageError(void) const { return _recentAverageError; }
 private:
     std::vector<Layer> _layers; // _layers[layerNum][neuronNum]
-    double _error;
-    double _recentAverageError;
+    double _error = 0;
+    double _recentAverageError = 0;
     static double _recentAverageSmoothFactor;
 
 };
