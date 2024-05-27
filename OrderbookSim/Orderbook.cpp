@@ -265,9 +265,10 @@ Trades Orderbook::addOrder(OrderType type, OrderId id, Side side, Price price, Q
 }
 
 
-Trades Orderbook::addOrderViaPython(int type, int id, int side, int price, int qty) {
+void Orderbook::addOrderViaPython(int type, int id, int side, int price, int qty) {
 
-    return addOrder(std::make_shared<Order>(intToOrdertType(type), id, side % 2 == 1 ? Side::Buy : Side::Sell , price, qty));
+    addOrder(std::make_shared<Order>(intToOrdertType(type), id, side % 2 == 1 ? Side::Buy : Side::Sell , price, qty));
+    saveToJson();
 }
 
 Trades Orderbook::addOrder(OrderPtr order) {

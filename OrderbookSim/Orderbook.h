@@ -94,7 +94,7 @@ public:
     Trades addOrder(OrderPtr order);
     Trades addOrder(OrderType type, Side side, Price price, Quantity qty); // Do not use for lots of orders
     Trades addOrder(OrderType type, OrderId orderId, Side side, Price price, Quantity qty);
-    Trades addOrderViaPython(int type, int id, int side, int price, int qty);
+    void addOrderViaPython(int type, int id, int side, int price, int qty); // Add order and then updates Json
     void CancelOrder(OrderId orderId);
     Trades ModifyOrder(OrderModify order);
 
