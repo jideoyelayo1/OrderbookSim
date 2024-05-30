@@ -17,52 +17,39 @@ events:
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
-      Compiler:  
+      Compiler: C:/Program Files/LLVM/bin/clang.exe 
       Build flags: 
       Id flags:  
       
       The output was:
       0
-      MSBuild version 17.9.8+b34f75857 for .NET Framework
-      Build started 27/05/2024 13:59:12.
-      
-      Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.vcxproj" on node 1 (default targets).
-      PrepareForBuild:
-        Creating directory "Debug\\".
-        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-        Creating directory "Debug\\CompilerIdC.tlog\\".
-      InitializeBuildStatus:
-        Creating "Debug\\CompilerIdC.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-        Touching "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
-      ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TC /FC /errorReport:queue CMakeCCompilerId.c
-        CMakeCCompilerId.c
-      Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdC.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdC.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdC.lib" /MACHINE:X64 Debug\\CMakeCCompilerId.obj
-        CompilerIdC.vcxproj -> C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.exe
-      PostBuildEvent:
-        for %%i in (cl.exe) do @echo CMAKE_C_COMPILER=%%~$PATH:i
-        :VCEnd
-        CMAKE_C_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe
-      FinalizeBuildStatus:
-        Deleting file "Debug\\CompilerIdC.tlog\\unsuccessfulbuild".
-        Touching "Debug\\CompilerIdC.tlog\\CompilerIdC.lastbuildstate".
-      Done Building Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\3.29.3\\CompilerIdC\\CompilerIdC.vcxproj" (default targets).
-      
-      Build succeeded.
-          0 Warning(s)
-          0 Error(s)
-      
-      Time Elapsed 00:00:01.06
       
       
-      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.exe"
+      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
       
-      Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "CompilerIdC.vcxproj"
+      The C compiler identification is Clang, found in:
+        C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/3.29.3/CompilerIdC/a.exe
       
-      The C compiler identification is MSVC, found in:
-        C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/3.29.3/CompilerIdC/CompilerIdC.exe
-      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCCompiler.cmake:123 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting C compiler /showIncludes prefix:
+        
   -
     kind: "message-v1"
     backtrace:
@@ -72,52 +59,39 @@ events:
       - "CMakeLists.txt:2 (project)"
     message: |
       Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
-      Compiler:  
+      Compiler: C:/Program Files/LLVM/bin/clang++.exe 
       Build flags: 
       Id flags:  
       
       The output was:
       0
-      MSBuild version 17.9.8+b34f75857 for .NET Framework
-      Build started 27/05/2024 13:59:13.
-      
-      Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" on node 1 (default targets).
-      PrepareForBuild:
-        Creating directory "Debug\\".
-        Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-        Creating directory "Debug\\CompilerIdCXX.tlog\\".
-      InitializeBuildStatus:
-        Creating "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-        Touching "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
-      ClCompile:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /nologo /W0 /WX- /diagnostics:column /Od /D _MBCS /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"Debug\\\\" /Fd"Debug\\vc143.pdb" /external:W0 /Gd /TP /FC /errorReport:queue CMakeCXXCompilerId.cpp
-        CMakeCXXCompilerId.cpp
-      Link:
-        C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:".\\CompilerIdCXX.exe" /INCREMENTAL:NO /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /PDB:".\\CompilerIdCXX.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:".\\CompilerIdCXX.lib" /MACHINE:X64 Debug\\CMakeCXXCompilerId.obj
-        CompilerIdCXX.vcxproj -> C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.exe
-      PostBuildEvent:
-        for %%i in (cl.exe) do @echo CMAKE_CXX_COMPILER=%%~$PATH:i
-        :VCEnd
-        CMAKE_CXX_COMPILER=C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\Hostx64\\x64\\cl.exe
-      FinalizeBuildStatus:
-        Deleting file "Debug\\CompilerIdCXX.tlog\\unsuccessfulbuild".
-        Touching "Debug\\CompilerIdCXX.tlog\\CompilerIdCXX.lastbuildstate".
-      Done Building Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\3.29.3\\CompilerIdCXX\\CompilerIdCXX.vcxproj" (default targets).
-      
-      Build succeeded.
-          0 Warning(s)
-          0 Error(s)
-      
-      Time Elapsed 00:00:01.08
       
       
-      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.exe"
+      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
       
-      Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "CompilerIdCXX.vcxproj"
+      The CXX compiler identification is Clang, found in:
+        C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/3.29.3/CompilerIdCXX/a.exe
       
-      The CXX compiler identification is MSVC, found in:
-        C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/3.29.3/CompilerIdCXX/CompilerIdCXX.exe
-      
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:1216 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerId.cmake:250 (CMAKE_DETERMINE_MSVC_SHOWINCLUDES_PREFIX)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCXXCompiler.cmake:126 (CMAKE_DETERMINE_COMPILER_ID)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Detecting CXX compiler /showIncludes prefix:
+        
   -
     kind: "try_compile-v1"
     backtrace:
@@ -127,50 +101,32 @@ events:
     checks:
       - "Detecting C compiler ABI info"
     directories:
-      source: "C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-qobq6p"
-      binary: "C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-qobq6p"
+      source: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq"
+      binary: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq"
     cmakeVariables:
-      CMAKE_C_FLAGS: "/DWIN32 /D_WINDOWS"
-      CMAKE_C_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Program Files/LLVM/bin/clang-scan-deps.exe"
+      CMAKE_C_FLAGS: ""
+      CMAKE_C_FLAGS_DEBUG: "-O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
     buildResult:
       variable: "CMAKE_C_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-qobq6p'
+        Change Dir: 'C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_fabf1.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
-        MSBuild version 17.9.8+b34f75857 for .NET Framework
-        Build started 27/05/2024 13:59:14.
-        
-        Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qobq6p\\cmTC_fabf1.vcxproj" on node 1 (default targets).
-        PrepareForBuild:
-          Creating directory "cmTC_fabf1.dir\\Debug\\".
-          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qobq6p\\Debug\\".
-          Creating directory "cmTC_fabf1.dir\\Debug\\cmTC_fabf1.tlog\\".
-        InitializeBuildStatus:
-          Creating "cmTC_fabf1.dir\\Debug\\cmTC_fabf1.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_fabf1.dir\\Debug\\cmTC_fabf1.tlog\\unsuccessfulbuild".
-        ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fabf1.dir\\Debug\\\\" /Fd"cmTC_fabf1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33523 for x64
-          Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_fabf1.dir\\Debug\\\\" /Fd"cmTC_fabf1.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TC /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCCompilerABI.c"
-          CMakeCCompilerABI.c
-        Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qobq6p\\Debug\\cmTC_fabf1.exe" /INCREMENTAL /ILK:"cmTC_fabf1.dir\\Debug\\cmTC_fabf1.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-qobq6p/Debug/cmTC_fabf1.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-qobq6p/Debug/cmTC_fabf1.lib" /MACHINE:X64  /machine:x64 cmTC_fabf1.dir\\Debug\\CMakeCCompilerABI.obj
-          cmTC_fabf1.vcxproj -> C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qobq6p\\Debug\\cmTC_fabf1.exe
-        FinalizeBuildStatus:
-          Deleting file "cmTC_fabf1.dir\\Debug\\cmTC_fabf1.tlog\\unsuccessfulbuild".
-          Touching "cmTC_fabf1.dir\\Debug\\cmTC_fabf1.tlog\\cmTC_fabf1.lastbuildstate".
-        Done Building Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-qobq6p\\cmTC_fabf1.vcxproj" (default targets).
-        
-        Build succeeded.
-            0 Warning(s)
-            0 Error(s)
-        
-        Time Elapsed 00:00:01.14
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~2/GnuWin32/bin/make.exe -f Makefile cmTC_36a37/fast
+        C:/PROGRA~2/GnuWin32/bin/make.exe  -f CMakeFiles/cmTC_36a37.dir/build.make CMakeFiles/cmTC_36a37.dir/build
+        make.exe[1]: Entering directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq'
+        Building C object CMakeFiles/cmTC_36a37.dir/CMakeCCompilerABI.c.obj
+        "C:/Program Files/LLVM/bin/clang.exe"   -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -MD -MT CMakeFiles/cmTC_36a37.dir/CMakeCCompilerABI.c.obj -MF CMakeFiles/cmTC_36a37.dir/CMakeCCompilerABI.c.obj.d -o CMakeFiles/cmTC_36a37.dir/CMakeCCompilerABI.c.obj -c "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCCompilerABI.c"
+        Linking C executable cmTC_36a37.exe
+        "C:/Program Files/LLVM/bin/clang.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview  -v -Xlinker /subsystem:console -fuse-ld=lld-link @CMakeFiles/cmTC_36a37.dir/objects1.rsp -o cmTC_36a37.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_36a37.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq/cmTC_36a37.pdb -Xlinker /version:0.0 
+        clang version 18.1.5
+        Target: x86_64-pc-windows-msvc
+        Thread model: posix
+        InstalledDir: C:\\Program Files\\LLVM\\bin
+         "C:\\\\Program Files\\\\LLVM\\\\bin\\\\lld-link" -out:cmTC_36a37.exe "-libpath:C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Professional\\\\VC\\\\Tools\\\\MSVC\\\\14.38.33130\\\\lib\\\\x64" "-libpath:C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Professional\\\\VC\\\\Tools\\\\MSVC\\\\14.38.33130\\\\atlmfc\\\\lib\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.22621.0\\\\ucrt\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.22621.0\\\\um\\\\x64" "-libpath:C:\\\\Program Files\\\\LLVM\\\\lib\\\\clang\\\\18\\\\lib\\\\windows" -nologo -debug /subsystem:console CMakeFiles/cmTC_36a37.dir/CMakeCCompilerABI.c.obj /MANIFEST:EMBED /implib:cmTC_36a37.lib /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq/cmTC_36a37.pdb /version:0.0
+        make.exe[1]: Leaving directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-i2p4vq'
         
       exitCode: 0
   -
@@ -183,7 +139,7 @@ events:
       Parsed C implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'C': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe
+        linker tool for 'C': C:/Program Files/LLVM/bin/lld-link
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -198,9 +154,30 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Running the C compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.39.33523.0
-      Copyright (C) Microsoft Corporation.  All rights reserved.
+      Running the C compiler's linker: "C:/Program Files/LLVM/bin/lld-link" "-v"
+      lld-link: warning: ignoring unknown argument '-v'
+      lld-link: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/LLVM/bin/lld-link" "-V"
+      lld-link: warning: ignoring unknown argument '-V'
+      lld-link: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the C compiler's linker: "C:/Program Files/LLVM/bin/lld-link" "--version"
+      LLD 18.1.5
   -
     kind: "try_compile-v1"
     backtrace:
@@ -210,51 +187,33 @@ events:
     checks:
       - "Detecting CXX compiler ABI info"
     directories:
-      source: "C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-aez05z"
-      binary: "C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-aez05z"
+      source: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn"
+      binary: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn"
     cmakeVariables:
-      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
-      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Program Files/LLVM/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-O0"
       CMAKE_CXX_SCAN_FOR_MODULES: "OFF"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_EXE_LINKER_FLAGS: ""
     buildResult:
       variable: "CMAKE_CXX_ABI_COMPILED"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-aez05z'
+        Change Dir: 'C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_c2ae5.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
-        MSBuild version 17.9.8+b34f75857 for .NET Framework
-        Build started 27/05/2024 13:59:16.
-        
-        Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-aez05z\\cmTC_c2ae5.vcxproj" on node 1 (default targets).
-        PrepareForBuild:
-          Creating directory "cmTC_c2ae5.dir\\Debug\\".
-          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-aez05z\\Debug\\".
-          Creating directory "cmTC_c2ae5.dir\\Debug\\cmTC_c2ae5.tlog\\".
-        InitializeBuildStatus:
-          Creating "cmTC_c2ae5.dir\\Debug\\cmTC_c2ae5.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_c2ae5.dir\\Debug\\cmTC_c2ae5.tlog\\unsuccessfulbuild".
-        ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c2ae5.dir\\Debug\\\\" /Fd"cmTC_c2ae5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33523 for x64
-          Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /D _MBCS /D WIN32 /D _WINDOWS /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_c2ae5.dir\\Debug\\\\" /Fd"cmTC_c2ae5.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Program Files\\CMake\\share\\cmake-3.29\\Modules\\CMakeCXXCompilerABI.cpp"
-          CMakeCXXCompilerABI.cpp
-        Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-aez05z\\Debug\\cmTC_c2ae5.exe" /INCREMENTAL /ILK:"cmTC_c2ae5.dir\\Debug\\cmTC_c2ae5.ilk" /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-aez05z/Debug/cmTC_c2ae5.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-aez05z/Debug/cmTC_c2ae5.lib" /MACHINE:X64  /machine:x64 cmTC_c2ae5.dir\\Debug\\CMakeCXXCompilerABI.obj
-          cmTC_c2ae5.vcxproj -> C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-aez05z\\Debug\\cmTC_c2ae5.exe
-        FinalizeBuildStatus:
-          Deleting file "cmTC_c2ae5.dir\\Debug\\cmTC_c2ae5.tlog\\unsuccessfulbuild".
-          Touching "cmTC_c2ae5.dir\\Debug\\cmTC_c2ae5.tlog\\cmTC_c2ae5.lastbuildstate".
-        Done Building Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-aez05z\\cmTC_c2ae5.vcxproj" (default targets).
-        
-        Build succeeded.
-            0 Warning(s)
-            0 Error(s)
-        
-        Time Elapsed 00:00:01.20
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~2/GnuWin32/bin/make.exe -f Makefile cmTC_1b5d5/fast
+        C:/PROGRA~2/GnuWin32/bin/make.exe  -f CMakeFiles/cmTC_1b5d5.dir/build.make CMakeFiles/cmTC_1b5d5.dir/build
+        make.exe[1]: Entering directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn'
+        Building CXX object CMakeFiles/cmTC_1b5d5.dir/CMakeCXXCompilerABI.cpp.obj
+        "C:/Program Files/LLVM/bin/clang++.exe"   -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -MD -MT CMakeFiles/cmTC_1b5d5.dir/CMakeCXXCompilerABI.cpp.obj -MF CMakeFiles/cmTC_1b5d5.dir/CMakeCXXCompilerABI.cpp.obj.d -o CMakeFiles/cmTC_1b5d5.dir/CMakeCXXCompilerABI.cpp.obj -c "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeCXXCompilerABI.cpp"
+        Linking CXX executable cmTC_1b5d5.exe
+        "C:/Program Files/LLVM/bin/clang++.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview  -v -Xlinker /subsystem:console -fuse-ld=lld-link @CMakeFiles/cmTC_1b5d5.dir/objects1.rsp -o cmTC_1b5d5.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_1b5d5.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn/cmTC_1b5d5.pdb -Xlinker /version:0.0 
+        clang version 18.1.5
+        Target: x86_64-pc-windows-msvc
+        Thread model: posix
+        InstalledDir: C:\\Program Files\\LLVM\\bin
+         "C:\\\\Program Files\\\\LLVM\\\\bin\\\\lld-link" -out:cmTC_1b5d5.exe "-libpath:C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Professional\\\\VC\\\\Tools\\\\MSVC\\\\14.38.33130\\\\lib\\\\x64" "-libpath:C:\\\\Program Files\\\\Microsoft Visual Studio\\\\2022\\\\Professional\\\\VC\\\\Tools\\\\MSVC\\\\14.38.33130\\\\atlmfc\\\\lib\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.22621.0\\\\ucrt\\\\x64" "-libpath:C:\\\\Program Files (x86)\\\\Windows Kits\\\\10\\\\Lib\\\\10.0.22621.0\\\\um\\\\x64" "-libpath:C:\\\\Program Files\\\\LLVM\\\\lib\\\\clang\\\\18\\\\lib\\\\windows" -nologo -debug /subsystem:console CMakeFiles/cmTC_1b5d5.dir/CMakeCXXCompilerABI.cpp.obj /MANIFEST:EMBED /implib:cmTC_1b5d5.lib /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn/cmTC_1b5d5.pdb /version:0.0
+        make.exe[1]: Leaving directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-9fp7tn'
         
       exitCode: 0
   -
@@ -267,7 +226,7 @@ events:
       Parsed CXX implicit link information:
         link line regex: [^( *|.*[/\\])(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\\]+-)?ld|collect2)[^/\\]*( |$)]
         linker tool regex: [^[ 	]*(->|")?[ 	]*(([^"]*[/\\])?(ld[0-9]*(\\.[a-z]+)?|link\\.exe|lld-link(\\.exe)?))("|,| |$)]
-        linker tool for 'CXX': C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe
+        linker tool for 'CXX': C:/Program Files/LLVM/bin/lld-link
         implicit libs: []
         implicit objs: []
         implicit dirs: []
@@ -282,9 +241,100 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
       - "CMakeLists.txt:2 (project)"
     message: |
-      Running the CXX compiler's linker: "C:/Program Files/Microsoft Visual Studio/2022/Community/VC/Tools/MSVC/14.39.33519/bin/HostX64/x64/link.exe" "-v"
-      Microsoft (R) Incremental Linker Version 14.39.33523.0
-      Copyright (C) Microsoft Corporation.  All rights reserved.
+      Running the CXX compiler's linker: "C:/Program Files/LLVM/bin/lld-link" "-v"
+      lld-link: warning: ignoring unknown argument '-v'
+      lld-link: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/LLVM/bin/lld-link" "-V"
+      lld-link: warning: ignoring unknown argument '-V'
+      lld-link: error: no input files
+  -
+    kind: "message-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CMakeDetermineLinkerId.cmake:40 (message)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompilerABI.cmake:210 (cmake_determine_linker_id)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:26 (CMAKE_DETERMINE_COMPILER_ABI)"
+      - "CMakeLists.txt:2 (project)"
+    message: |
+      Running the CXX compiler's linker: "C:/Program Files/LLVM/bin/lld-link" "--version"
+      LLD 18.1.5
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake:34 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake:84 (_record_compiler_features)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake:121 (_record_compiler_features_cxx)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompileFeatures.cmake:70 (cmake_record_cxx_compile_features)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:83 (CMAKE_DETERMINE_COMPILE_FEATURES)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compile features"
+    directories:
+      source: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh"
+      binary: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Program Files/LLVM/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_FEATURE_TEST"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~2/GnuWin32/bin/make.exe -f Makefile cmTC_5e6ab/fast
+        C:/PROGRA~2/GnuWin32/bin/make.exe  -f CMakeFiles/cmTC_5e6ab.dir/build.make CMakeFiles/cmTC_5e6ab.dir/build
+        make.exe[1]: Entering directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh'
+        Building CXX object CMakeFiles/cmTC_5e6ab.dir/feature_tests.cxx.obj
+        "C:/Program Files/LLVM/bin/clang++.exe"   -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview   -std=c++14 -MD -MT CMakeFiles/cmTC_5e6ab.dir/feature_tests.cxx.obj -MF CMakeFiles/cmTC_5e6ab.dir/feature_tests.cxx.obj.d -o CMakeFiles/cmTC_5e6ab.dir/feature_tests.cxx.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh/feature_tests.cxx
+        Linking CXX executable cmTC_5e6ab.exe
+        "C:/Program Files/LLVM/bin/clang++.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Xlinker /subsystem:console -fuse-ld=lld-link @CMakeFiles/cmTC_5e6ab.dir/objects1.rsp -o cmTC_5e6ab.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_5e6ab.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh/cmTC_5e6ab.pdb -Xlinker /version:0.0  @CMakeFiles/cmTC_5e6ab.dir/linkLibs.rsp
+        make.exe[1]: Leaving directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-2qnfoh'
+        
+      exitCode: 0
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake:34 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/FeatureTesting.cmake:84 (_record_compiler_features)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Compiler/CMakeCommonCompilerMacros.cmake:129 (_record_compiler_features_cxx)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeDetermineCompileFeatures.cmake:70 (cmake_record_cxx_compile_features)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CMakeTestCXXCompiler.cmake:83 (CMAKE_DETERMINE_COMPILE_FEATURES)"
+      - "CMakeLists.txt:2 (project)"
+    checks:
+      - "Detecting CXX compile features"
+    directories:
+      source: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx"
+      binary: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Program Files/LLVM/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+    buildResult:
+      variable: "CMAKE_CXX_FEATURE_TEST"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx'
+        
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~2/GnuWin32/bin/make.exe -f Makefile cmTC_36dde/fast
+        C:/PROGRA~2/GnuWin32/bin/make.exe  -f CMakeFiles/cmTC_36dde.dir/build.make CMakeFiles/cmTC_36dde.dir/build
+        make.exe[1]: Entering directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx'
+        Building CXX object CMakeFiles/cmTC_36dde.dir/feature_tests.cxx.obj
+        "C:/Program Files/LLVM/bin/clang++.exe"   -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview   -std=c++14 -MD -MT CMakeFiles/cmTC_36dde.dir/feature_tests.cxx.obj -MF CMakeFiles/cmTC_36dde.dir/feature_tests.cxx.obj.d -o CMakeFiles/cmTC_36dde.dir/feature_tests.cxx.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx/feature_tests.cxx
+        Linking CXX executable cmTC_36dde.exe
+        "C:/Program Files/LLVM/bin/clang++.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Xlinker /subsystem:console -fuse-ld=lld-link @CMakeFiles/cmTC_36dde.dir/objects1.rsp -o cmTC_36dde.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_36dde.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx/cmTC_36dde.pdb -Xlinker /version:0.0  @CMakeFiles/cmTC_36dde.dir/linkLibs.rsp
+        make.exe[1]: Leaving directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-51a9cx'
+        
+      exitCode: 0
   -
     kind: "try_compile-v1"
     backtrace:
@@ -292,65 +342,74 @@ events:
       - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
       - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
       - "pybind11/tools/pybind11Common.cmake:287 (check_cxx_compiler_flag)"
-      - "pybind11/tools/pybind11Common.cmake:354 (_pybind11_return_if_cxx_and_linker_flags_work)"
+      - "pybind11/tools/pybind11Common.cmake:327 (_pybind11_return_if_cxx_and_linker_flags_work)"
       - "pybind11/tools/pybind11Common.cmake:399 (_pybind11_generate_lto)"
       - "pybind11/CMakeLists.txt:247 (include)"
     checks:
-      - "Performing Test HAS_MSVC_GL_LTCG"
+      - "Performing Test HAS_FLTO_THIN"
     directories:
-      source: "C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-vafpzr"
-      binary: "C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-vafpzr"
+      source: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq"
+      binary: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq"
     cmakeVariables:
-      CMAKE_CXX_FLAGS: "/DWIN32 /D_WINDOWS /EHsc"
-      CMAKE_CXX_FLAGS_DEBUG: "/Ob0 /Od /RTC1"
-      CMAKE_EXE_LINKER_FLAGS: "/machine:x64"
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Program Files/LLVM/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
       CMAKE_MODULE_PATH: ""
     buildResult:
-      variable: "HAS_MSVC_GL_LTCG"
+      variable: "HAS_FLTO_THIN"
       cached: true
       stdout: |
-        Change Dir: 'C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-vafpzr'
+        Change Dir: 'C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq'
         
-        Run Build Command(s): "C:/Program Files/Microsoft Visual Studio/2022/Community/MSBuild/Current/Bin/amd64/MSBuild.exe" cmTC_b4f0d.vcxproj /p:Configuration=Debug /p:Platform=x64 /p:VisualStudioVersion=17.0 /v:n
-        MSBuild version 17.9.8+b34f75857 for .NET Framework
-        Build started 27/05/2024 13:59:18.
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~2/GnuWin32/bin/make.exe -f Makefile cmTC_ae3ad/fast
+        C:/PROGRA~2/GnuWin32/bin/make.exe  -f CMakeFiles/cmTC_ae3ad.dir/build.make CMakeFiles/cmTC_ae3ad.dir/build
+        make.exe[1]: Entering directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq'
+        Building CXX object CMakeFiles/cmTC_ae3ad.dir/src.cxx.obj
+        "C:/Program Files/LLVM/bin/clang++.exe" -DHAS_FLTO_THIN  -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview   -flto -MD -MT CMakeFiles/cmTC_ae3ad.dir/src.cxx.obj -MF CMakeFiles/cmTC_ae3ad.dir/src.cxx.obj.d -o CMakeFiles/cmTC_ae3ad.dir/src.cxx.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq/src.cxx
+        Linking CXX executable cmTC_ae3ad.exe
+        "C:/Program Files/LLVM/bin/clang++.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Xlinker /subsystem:console -fuse-ld=lld-link @CMakeFiles/cmTC_ae3ad.dir/objects1.rsp -o cmTC_ae3ad.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_ae3ad.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq/cmTC_ae3ad.pdb -Xlinker /version:0.0  @CMakeFiles/cmTC_ae3ad.dir/linkLibs.rsp
+        clang++: error: unsupported argument '' to option '-flto='
+        make.exe[1]: *** [cmTC_ae3ad.exe] Error 1
+        make.exe[1]: Leaving directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-sgl0yq'
+        make.exe: *** [cmTC_ae3ad/fast] Error 2
         
-        Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\cmTC_b4f0d.vcxproj" on node 1 (default targets).
-        PrepareForBuild:
-          Creating directory "cmTC_b4f0d.dir\\Debug\\".
-          Structured output is enabled. The formatting of compiler diagnostics will reflect the error hierarchy. See https://aka.ms/cpp/structured-output for more details.
-          Creating directory "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\Debug\\".
-          Creating directory "cmTC_b4f0d.dir\\Debug\\cmTC_b4f0d.tlog\\".
-        InitializeBuildStatus:
-          Creating "cmTC_b4f0d.dir\\Debug\\cmTC_b4f0d.tlog\\unsuccessfulbuild" because "AlwaysCreate" was specified.
-          Touching "cmTC_b4f0d.dir\\Debug\\cmTC_b4f0d.tlog\\unsuccessfulbuild".
-        ClCompile:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\CL.exe /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b4f0d.dir\\Debug\\\\" /Fd"cmTC_b4f0d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\src.cxx"
-          Microsoft (R) C/C++ Optimizing Compiler Version 19.39.33523 for x64
-          Copyright (C) Microsoft Corporation.  All rights reserved.
-          cl /c /Zi /W1 /WX- /diagnostics:column /Od /Ob0 /GL /D _MBCS /D WIN32 /D _WINDOWS /D HAS_MSVC_GL_LTCG /D "CMAKE_INTDIR=\\"Debug\\"" /Gm- /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Zc:inline /Fo"cmTC_b4f0d.dir\\Debug\\\\" /Fd"cmTC_b4f0d.dir\\Debug\\vc143.pdb" /external:W1 /Gd /TP /errorReport:queue "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\src.cxx"
-          src.cxx
-        Link:
-          C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\VC\\Tools\\MSVC\\14.39.33519\\bin\\HostX64\\x64\\link.exe /ERRORREPORT:QUEUE /OUT:"C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\Debug\\cmTC_b4f0d.exe" /INCREMENTAL /ILK:"cmTC_b4f0d.dir\\Debug\\cmTC_b4f0d.ilk" /NOLOGO "-LTCG" kernel32.lib user32.lib gdi32.lib winspool.lib shell32.lib ole32.lib oleaut32.lib uuid.lib comdlg32.lib advapi32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-vafpzr/Debug/cmTC_b4f0d.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-vafpzr/Debug/cmTC_b4f0d.lib" /MACHINE:X64  /machine:x64 cmTC_b4f0d.dir\\Debug\\src.obj
-        LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\cmTC_b4f0d.vcxproj]
-          Generating code
-          Finished generating code
-          cmTC_b4f0d.vcxproj -> C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\Debug\\cmTC_b4f0d.exe
-        FinalizeBuildStatus:
-          Deleting file "cmTC_b4f0d.dir\\Debug\\cmTC_b4f0d.tlog\\unsuccessfulbuild".
-          Touching "cmTC_b4f0d.dir\\Debug\\cmTC_b4f0d.tlog\\cmTC_b4f0d.lastbuildstate".
-        Done Building Project "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\cmTC_b4f0d.vcxproj" (default targets).
+      exitCode: 2
+  -
+    kind: "try_compile-v1"
+    backtrace:
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CheckSourceCompiles.cmake:101 (try_compile)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/Internal/CheckCompilerFlag.cmake:18 (cmake_check_source_compiles)"
+      - "C:/Program Files/CMake/share/cmake-3.29/Modules/CheckCXXCompilerFlag.cmake:34 (cmake_check_compiler_flag)"
+      - "pybind11/tools/pybind11Common.cmake:287 (check_cxx_compiler_flag)"
+      - "pybind11/tools/pybind11Common.cmake:332 (_pybind11_return_if_cxx_and_linker_flags_work)"
+      - "pybind11/tools/pybind11Common.cmake:399 (_pybind11_generate_lto)"
+      - "pybind11/CMakeLists.txt:247 (include)"
+    checks:
+      - "Performing Test HAS_FLTO"
+    directories:
+      source: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr"
+      binary: "C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr"
+    cmakeVariables:
+      CMAKE_CXX_COMPILER_CLANG_SCAN_DEPS: "C:/Program Files/LLVM/bin/clang-scan-deps.exe"
+      CMAKE_CXX_FLAGS: ""
+      CMAKE_CXX_FLAGS_DEBUG: "-O0"
+      CMAKE_EXE_LINKER_FLAGS: ""
+      CMAKE_MODULE_PATH: ""
+    buildResult:
+      variable: "HAS_FLTO"
+      cached: true
+      stdout: |
+        Change Dir: 'C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr'
         
-        Build succeeded.
-        
-        "C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\cmTC_b4f0d.vcxproj" (default target) (1) ->
-        (Link target) -> 
-          LINK : warning LNK4075: ignoring '/INCREMENTAL' due to '/LTCG' specification [C:\\Users\\JideO\\Documents\\coding_projects\\OrderbookSim\\OrderbookSim\\build\\CMakeFiles\\CMakeScratch\\TryCompile-vafpzr\\cmTC_b4f0d.vcxproj]
-        
-            1 Warning(s)
-            0 Error(s)
-        
-        Time Elapsed 00:00:01.14
+        Run Build Command(s): "C:/Program Files/CMake/bin/cmake.exe" -E env VERBOSE=1 C:/PROGRA~2/GnuWin32/bin/make.exe -f Makefile cmTC_b653e/fast
+        C:/PROGRA~2/GnuWin32/bin/make.exe  -f CMakeFiles/cmTC_b653e.dir/build.make CMakeFiles/cmTC_b653e.dir/build
+        make.exe[1]: Entering directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr'
+        Building CXX object CMakeFiles/cmTC_b653e.dir/src.cxx.obj
+        "C:/Program Files/LLVM/bin/clang++.exe" -DHAS_FLTO  -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview   -flto -MD -MT CMakeFiles/cmTC_b653e.dir/src.cxx.obj -MF CMakeFiles/cmTC_b653e.dir/src.cxx.obj.d -o CMakeFiles/cmTC_b653e.dir/src.cxx.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr/src.cxx
+        Linking CXX executable cmTC_b653e.exe
+        "C:/Program Files/LLVM/bin/clang++.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -Xlinker /subsystem:console -fuse-ld=lld-link @CMakeFiles/cmTC_b653e.dir/objects1.rsp -o cmTC_b653e.exe -Xlinker /MANIFEST:EMBED -Xlinker /implib:cmTC_b653e.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr/cmTC_b653e.pdb -Xlinker /version:0.0  @CMakeFiles/cmTC_b653e.dir/linkLibs.rsp
+        make.exe[1]: Leaving directory `C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/CMakeScratch/TryCompile-w7mayr'
         
       exitCode: 0
 ...

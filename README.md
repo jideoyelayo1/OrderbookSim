@@ -4,6 +4,14 @@
 
 OrderbookSim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-weighted average price (VWAP). The project also includes a neural network built from scratch to predict sell prices, and now features GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.
 
+## Running the program
+In order to run the otherbook stimulation navigate to build 
+
+```bash
+python .\OrderbookView.py # to view orders
+python .\addOrder.py
+```
+
 ## Key Components
 
 ### Orderbook

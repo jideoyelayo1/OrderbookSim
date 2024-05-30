@@ -5,6 +5,7 @@
 #include <stdexcept>
 #include <format>
 #include <list>
+#include <memory> 
 
 #include "Usings.h"
 #include "Constants.h"
