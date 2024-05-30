@@ -1,8 +1,30 @@
 cmake_minimum_required(VERSION 3.25)
 project(OrderbookSim)
 
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+
 # Add pybind11 subdirectory
 add_subdirectory(pybind11)
 
+# List all source files
+set(SOURCES
+    OrderDetailHistory.cpp
+    OrderModify.cpp
+    MatchedOrderDetails.cpp
+    Orderbook.cpp
+    OrderbookLevelInfos.cpp
+    NeuralNetwork.cpp
+    Neuron.cpp
+    Order.cpp
+    OrderDetail.cpp
+    Trade.cpp
+    TrainingData.cpp
+    orderbook_pybind.cpp
+)
+
 # Create the Python extension module
-pybind11_add_module(orderbook orderbook_pybind.cpp)
+pybind11_add_module(orderbook ${SOURCES})
+
+# Include directories
+include_directories(${CMAKE_SOURCE_DIR})
