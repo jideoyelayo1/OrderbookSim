@@ -21,6 +21,7 @@ set(SOURCES
     Trade.cpp
     TrainingData.cpp
     orderbook_pybind.cpp
+    Net.cpp
 )
 
 # Create the Python extension module
