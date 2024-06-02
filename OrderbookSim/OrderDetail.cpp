@@ -1,4 +1,4 @@
-#include "OrderDetail.h"
+#include "OrderDetail.hpp"
 
 std::string OrderDetail::getOrderType() const { return orderTypeToString(_type); }
 OrderType OrderDetail::OrderType() const { return _type; }

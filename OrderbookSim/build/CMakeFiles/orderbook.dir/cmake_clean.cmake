@@ -25,9 +25,9 @@ file(REMOVE_RECURSE
   "CMakeFiles/orderbook.dir/TrainingData.cpp.obj.d"
   "CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj"
   "CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj.d"
-  "orderbook.cp312-win_amd64.pyd"
-  "orderbook.cp312-win_amd64.pyd.manifest"
-  "orderbook.lib"
+  "liborderbook.dll.a"
+  "orderbook.cp311-win_amd64.pyd"
+  "orderbook.cp311-win_amd64.pyd.manifest"
   "orderbook.pdb"
 )
 

@@ -54,10 +54,10 @@ RM = "C:/Program Files/CMake/bin/cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim
+CMAKE_SOURCE_DIR = C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build
+CMAKE_BINARY_DIR = C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -98,14 +98,14 @@ pybind11/clean:
 CMakeFiles/orderbook.dir/all:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/orderbook.dir/build.make CMakeFiles/orderbook.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/orderbook.dir/build.make CMakeFiles/orderbook.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target orderbook"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14 "Built target orderbook"
 .PHONY : CMakeFiles/orderbook.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/orderbook.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles 14
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/orderbook.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles 0
 .PHONY : CMakeFiles/orderbook.dir/rule
 
 # Convenience name for target.

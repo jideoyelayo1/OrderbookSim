@@ -53,10 +53,10 @@ RM = "C:/Program Files/CMake/bin/cmake.exe" -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim
+CMAKE_SOURCE_DIR = C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build
+CMAKE_BINARY_DIR = C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build
 
 # Include any dependencies generated for this target.
 include CMakeFiles/orderbook.dir/depend.make
@@ -71,198 +71,198 @@ include CMakeFiles/orderbook.dir/flags.make
 
 CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderDetailHistory.cpp
+CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetailHistory.cpp
 CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj -MF CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderDetailHistory.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building CXX object CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj -MF CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetailHistory.cpp
 
 CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetailHistory.cpp > CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.i
 
 CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetailHistory.cpp -o CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.s
 
 CMakeFiles/orderbook.dir/OrderModify.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/OrderModify.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/OrderModify.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderModify.cpp
+CMakeFiles/orderbook.dir/OrderModify.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderModify.cpp
 CMakeFiles/orderbook.dir/OrderModify.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/orderbook.dir/OrderModify.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderModify.cpp.obj -MF CMakeFiles/orderbook.dir/OrderModify.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderModify.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderModify.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/orderbook.dir/OrderModify.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderModify.cpp.obj -MF CMakeFiles/orderbook.dir/OrderModify.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderModify.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderModify.cpp
 
 CMakeFiles/orderbook.dir/OrderModify.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/OrderModify.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderModify.cpp > CMakeFiles/orderbook.dir/OrderModify.cpp.i
 
 CMakeFiles/orderbook.dir/OrderModify.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/OrderModify.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderModify.cpp -o CMakeFiles/orderbook.dir/OrderModify.cpp.s
 
 CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/MatchedOrderDetails.cpp
+CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/MatchedOrderDetails.cpp
 CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj -MF CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj.d -o CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/MatchedOrderDetails.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj -MF CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj.d -o CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/MatchedOrderDetails.cpp
 
 CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/MatchedOrderDetails.cpp > CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.i
 
 CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/MatchedOrderDetails.cpp -o CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.s
 
 CMakeFiles/orderbook.dir/Orderbook.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/Orderbook.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/Orderbook.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Orderbook.cpp
+CMakeFiles/orderbook.dir/Orderbook.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Orderbook.cpp
 CMakeFiles/orderbook.dir/Orderbook.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/orderbook.dir/Orderbook.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Orderbook.cpp.obj -MF CMakeFiles/orderbook.dir/Orderbook.cpp.obj.d -o CMakeFiles/orderbook.dir/Orderbook.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Orderbook.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/orderbook.dir/Orderbook.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Orderbook.cpp.obj -MF CMakeFiles/orderbook.dir/Orderbook.cpp.obj.d -o CMakeFiles/orderbook.dir/Orderbook.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Orderbook.cpp
 
 CMakeFiles/orderbook.dir/Orderbook.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/Orderbook.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Orderbook.cpp > CMakeFiles/orderbook.dir/Orderbook.cpp.i
 
 CMakeFiles/orderbook.dir/Orderbook.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/Orderbook.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Orderbook.cpp -o CMakeFiles/orderbook.dir/Orderbook.cpp.s
 
 CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderbookLevelInfos.cpp
+CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderbookLevelInfos.cpp
 CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj -MF CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderbookLevelInfos.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj -MF CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderbookLevelInfos.cpp
 
 CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderbookLevelInfos.cpp > CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.i
 
 CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderbookLevelInfos.cpp -o CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.s
 
 CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/NeuralNetwork.cpp
+CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/NeuralNetwork.cpp
 CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj -MF CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj.d -o CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/NeuralNetwork.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj -MF CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj.d -o CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/NeuralNetwork.cpp
 
 CMakeFiles/orderbook.dir/NeuralNetwork.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/NeuralNetwork.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/NeuralNetwork.cpp > CMakeFiles/orderbook.dir/NeuralNetwork.cpp.i
 
 CMakeFiles/orderbook.dir/NeuralNetwork.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/NeuralNetwork.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/NeuralNetwork.cpp -o CMakeFiles/orderbook.dir/NeuralNetwork.cpp.s
 
 CMakeFiles/orderbook.dir/Neuron.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/Neuron.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/Neuron.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Neuron.cpp
+CMakeFiles/orderbook.dir/Neuron.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Neuron.cpp
 CMakeFiles/orderbook.dir/Neuron.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/orderbook.dir/Neuron.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Neuron.cpp.obj -MF CMakeFiles/orderbook.dir/Neuron.cpp.obj.d -o CMakeFiles/orderbook.dir/Neuron.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Neuron.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/orderbook.dir/Neuron.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Neuron.cpp.obj -MF CMakeFiles/orderbook.dir/Neuron.cpp.obj.d -o CMakeFiles/orderbook.dir/Neuron.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Neuron.cpp
 
 CMakeFiles/orderbook.dir/Neuron.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/Neuron.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Neuron.cpp > CMakeFiles/orderbook.dir/Neuron.cpp.i
 
 CMakeFiles/orderbook.dir/Neuron.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/Neuron.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Neuron.cpp -o CMakeFiles/orderbook.dir/Neuron.cpp.s
 
 CMakeFiles/orderbook.dir/Order.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/Order.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/Order.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Order.cpp
+CMakeFiles/orderbook.dir/Order.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Order.cpp
 CMakeFiles/orderbook.dir/Order.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/orderbook.dir/Order.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Order.cpp.obj -MF CMakeFiles/orderbook.dir/Order.cpp.obj.d -o CMakeFiles/orderbook.dir/Order.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Order.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/orderbook.dir/Order.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Order.cpp.obj -MF CMakeFiles/orderbook.dir/Order.cpp.obj.d -o CMakeFiles/orderbook.dir/Order.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Order.cpp
 
 CMakeFiles/orderbook.dir/Order.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/Order.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Order.cpp > CMakeFiles/orderbook.dir/Order.cpp.i
 
 CMakeFiles/orderbook.dir/Order.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/Order.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Order.cpp -o CMakeFiles/orderbook.dir/Order.cpp.s
 
 CMakeFiles/orderbook.dir/OrderDetail.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/OrderDetail.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/OrderDetail.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderDetail.cpp
+CMakeFiles/orderbook.dir/OrderDetail.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetail.cpp
 CMakeFiles/orderbook.dir/OrderDetail.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/orderbook.dir/OrderDetail.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderDetail.cpp.obj -MF CMakeFiles/orderbook.dir/OrderDetail.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderDetail.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/OrderDetail.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/orderbook.dir/OrderDetail.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/OrderDetail.cpp.obj -MF CMakeFiles/orderbook.dir/OrderDetail.cpp.obj.d -o CMakeFiles/orderbook.dir/OrderDetail.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetail.cpp
 
 CMakeFiles/orderbook.dir/OrderDetail.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/OrderDetail.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetail.cpp > CMakeFiles/orderbook.dir/OrderDetail.cpp.i
 
 CMakeFiles/orderbook.dir/OrderDetail.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/OrderDetail.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/OrderDetail.cpp -o CMakeFiles/orderbook.dir/OrderDetail.cpp.s
 
 CMakeFiles/orderbook.dir/Trade.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/Trade.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/Trade.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Trade.cpp
+CMakeFiles/orderbook.dir/Trade.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Trade.cpp
 CMakeFiles/orderbook.dir/Trade.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/orderbook.dir/Trade.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Trade.cpp.obj -MF CMakeFiles/orderbook.dir/Trade.cpp.obj.d -o CMakeFiles/orderbook.dir/Trade.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Trade.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/orderbook.dir/Trade.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Trade.cpp.obj -MF CMakeFiles/orderbook.dir/Trade.cpp.obj.d -o CMakeFiles/orderbook.dir/Trade.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Trade.cpp
 
 CMakeFiles/orderbook.dir/Trade.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/Trade.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Trade.cpp > CMakeFiles/orderbook.dir/Trade.cpp.i
 
 CMakeFiles/orderbook.dir/Trade.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/Trade.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Trade.cpp -o CMakeFiles/orderbook.dir/Trade.cpp.s
 
 CMakeFiles/orderbook.dir/TrainingData.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/TrainingData.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/TrainingData.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/TrainingData.cpp
+CMakeFiles/orderbook.dir/TrainingData.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/TrainingData.cpp
 CMakeFiles/orderbook.dir/TrainingData.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/orderbook.dir/TrainingData.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/TrainingData.cpp.obj -MF CMakeFiles/orderbook.dir/TrainingData.cpp.obj.d -o CMakeFiles/orderbook.dir/TrainingData.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/TrainingData.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/orderbook.dir/TrainingData.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/TrainingData.cpp.obj -MF CMakeFiles/orderbook.dir/TrainingData.cpp.obj.d -o CMakeFiles/orderbook.dir/TrainingData.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/TrainingData.cpp
 
 CMakeFiles/orderbook.dir/TrainingData.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/TrainingData.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/TrainingData.cpp > CMakeFiles/orderbook.dir/TrainingData.cpp.i
 
 CMakeFiles/orderbook.dir/TrainingData.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/TrainingData.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/TrainingData.cpp -o CMakeFiles/orderbook.dir/TrainingData.cpp.s
 
 CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/orderbook_pybind.cpp
+CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/orderbook_pybind.cpp
 CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj -MF CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj.d -o CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/orderbook_pybind.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj -MF CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj.d -o CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/orderbook_pybind.cpp
 
 CMakeFiles/orderbook.dir/orderbook_pybind.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/orderbook_pybind.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/orderbook_pybind.cpp > CMakeFiles/orderbook.dir/orderbook_pybind.cpp.i
 
 CMakeFiles/orderbook.dir/orderbook_pybind.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/orderbook_pybind.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/orderbook_pybind.cpp -o CMakeFiles/orderbook.dir/orderbook_pybind.cpp.s
 
 CMakeFiles/orderbook.dir/Net.cpp.obj: CMakeFiles/orderbook.dir/flags.make
 CMakeFiles/orderbook.dir/Net.cpp.obj: CMakeFiles/orderbook.dir/includes_CXX.rsp
-CMakeFiles/orderbook.dir/Net.cpp.obj: C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Net.cpp
+CMakeFiles/orderbook.dir/Net.cpp.obj: C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Net.cpp
 CMakeFiles/orderbook.dir/Net.cpp.obj: CMakeFiles/orderbook.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/orderbook.dir/Net.cpp.obj"
-	"C:/Program Files/LLVM/bin/clang++.exe" $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Net.cpp.obj -MF CMakeFiles/orderbook.dir/Net.cpp.obj.d -o CMakeFiles/orderbook.dir/Net.cpp.obj -c C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/Net.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/orderbook.dir/Net.cpp.obj"
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/orderbook.dir/Net.cpp.obj -MF CMakeFiles/orderbook.dir/Net.cpp.obj.d -o CMakeFiles/orderbook.dir/Net.cpp.obj -c C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Net.cpp
 
 CMakeFiles/orderbook.dir/Net.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/orderbook.dir/Net.cpp.i"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_PREPROCESSED_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Net.cpp > CMakeFiles/orderbook.dir/Net.cpp.i
 
 CMakeFiles/orderbook.dir/Net.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/orderbook.dir/Net.cpp.s"
-	$(CMAKE_COMMAND) -E cmake_unimplemented_variable CMAKE_CXX_CREATE_ASSEMBLY_SOURCE
+	C:/mingw64/bin/c++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/Net.cpp -o CMakeFiles/orderbook.dir/Net.cpp.s
 
 # Object files for target orderbook
 orderbook_OBJECTS = \
@@ -283,28 +283,31 @@ orderbook_OBJECTS = \
 # External object files for target orderbook
 orderbook_EXTERNAL_OBJECTS =
 
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderModify.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/Orderbook.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/Neuron.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/Order.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderDetail.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/Trade.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/TrainingData.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/Net.cpp.obj
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/build.make
-orderbook.cp312-win_amd64.pyd: C:/Program\ Files/WindowsApps/PythonSoftwareFoundation.Python.3.12_3.12.1008.0_x64__qbz5n2kfra8p0/libs/python312.lib
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/linkLibs.rsp
-orderbook.cp312-win_amd64.pyd: CMakeFiles/orderbook.dir/objects1.rsp
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared module orderbook.cp312-win_amd64.pyd"
-	"C:/Program Files/LLVM/bin/clang++.exe" -nostartfiles -nostdlib -O0 -D_DEBUG -D_DLL -D_MT -Xclang --dependent-lib=msvcrtd -g -Xclang -gcodeview -fuse-ld=lld-link -shared -o orderbook.cp312-win_amd64.pyd  -Xlinker /MANIFEST:EMBED -Xlinker /implib:orderbook.lib -Xlinker /pdb:C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/orderbook.pdb -Xlinker /version:0.0 @CMakeFiles/orderbook.dir/objects1.rsp @CMakeFiles/orderbook.dir/linkLibs.rsp
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderDetailHistory.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderModify.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/MatchedOrderDetails.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/Orderbook.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderbookLevelInfos.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/NeuralNetwork.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/Neuron.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/Order.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/OrderDetail.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/Trade.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/TrainingData.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/orderbook_pybind.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/Net.cpp.obj
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/build.make
+orderbook.cp311-win_amd64.pyd: C:/Users/JideO/AppData/Local/Programs/Python/Python311/libs/python311.lib
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/linkLibs.rsp
+orderbook.cp311-win_amd64.pyd: CMakeFiles/orderbook.dir/objects1.rsp
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX shared module orderbook.cp311-win_amd64.pyd"
+	"C:/Program Files/CMake/bin/cmake.exe" -E rm -f CMakeFiles/orderbook.dir/objects.a
+	C:/mingw64/bin/ar.exe qc CMakeFiles/orderbook.dir/objects.a @CMakeFiles/orderbook.dir/objects1.rsp
+	C:/mingw64/bin/c++.exe -shared -o orderbook.cp311-win_amd64.pyd -Wl,--major-image-version,0,--minor-image-version,0 -Wl,--whole-archive CMakeFiles/orderbook.dir/objects.a -Wl,--no-whole-archive @CMakeFiles/orderbook.dir/linkLibs.rsp
+	C:/mingw64/bin/strip.exe C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/orderbook.cp311-win_amd64.pyd
 
 # Rule to build all files generated by this target.
-CMakeFiles/orderbook.dir/build: orderbook.cp312-win_amd64.pyd
+CMakeFiles/orderbook.dir/build: orderbook.cp311-win_amd64.pyd
 .PHONY : CMakeFiles/orderbook.dir/build
 
 CMakeFiles/orderbook.dir/clean:
@@ -312,6 +315,6 @@ CMakeFiles/orderbook.dir/clean:
 .PHONY : CMakeFiles/orderbook.dir/clean
 
 CMakeFiles/orderbook.dir/depend:
-	$(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build C:/Users/BabajideOyelayo/Documents/temp_files/OrderbookSim/OrderbookSim/build/CMakeFiles/orderbook.dir/DependInfo.cmake "--color=$(COLOR)"
+	$(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build C:/Users/JideO/Documents/coding_projects/OrderbookSim/OrderbookSim/build/CMakeFiles/orderbook.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : CMakeFiles/orderbook.dir/depend
 

@@ -1,4 +1,4 @@
-#include "Neuron.h"
+#include "Neuron.hpp"
 
 double Neuron::eta = 0.15;
 double Neuron::alpha = 0.5;

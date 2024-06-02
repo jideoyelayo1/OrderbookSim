@@ -1,4 +1,4 @@
-#include "TrainingData.h"
+#include "TrainingData.hpp"
 
 void TrainingData::getTopology(std::vector<unsigned>& topology) {
     std::string line;
