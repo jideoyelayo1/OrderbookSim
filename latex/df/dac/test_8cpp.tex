@@ -1,0 +1,108 @@
+\doxysection{Orderbook\+Sim/\+Orderbook\+Test/test.cpp File Reference}
+\hypertarget{test_8cpp}{}\label{test_8cpp}\index{OrderbookSim/OrderbookTest/test.cpp@{OrderbookSim/OrderbookTest/test.cpp}}
+{\ttfamily \#include "{}pch.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Orderbook.\+cpp"{}}\newline
+{\ttfamily \#include "{}../\+Orderbook.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Orderbook\+Level\+Infos.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Orderbook\+Level\+Infos.\+cpp"{}}\newline
+{\ttfamily \#include "{}../\+Order.\+h"{}}\newline
+{\ttfamily \#include "{}../\+Order.\+cpp"{}}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_information}{Information}}
+\begin{DoxyCompactList}\small\item\em Holds information about an action to be performed on the order book. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{struct_result}{Result}}
+\begin{DoxyCompactList}\small\item\em Holds expected results for order book counts used for assertions. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{struct_input_handler}{Input\+Handler}}
+\begin{DoxyCompactList}\small\item\em Parses test input files to extract actions and expected results. \end{DoxyCompactList}\item 
+class \mbox{\hyperlink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture}}
+\begin{DoxyCompactList}\small\item\em Test fixture for \doxylink{class_orderbook}{Orderbook} tests, providing setup for test files and paths. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{test_8cpp_a28a8d726ddce9d00302608cbf4a73613}{Informations}} = std\+::vector$<$\mbox{\hyperlink{struct_information}{Information}}$>$
+\item 
+using \mbox{\hyperlink{test_8cpp_a7a813e7b05f6647b451fe580798f4dcc}{Results}} = std\+::vector$<$\mbox{\hyperlink{struct_result}{Result}}$>$
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum class \mbox{\hyperlink{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b}{Action\+Type}} \{ \mbox{\hyperlink{test_8cpp_a21d5e8f8cdaa838586b31007df0a950baec211f7c20af43e742bf2570c3cb84f9}{Add}}
+, \mbox{\hyperlink{test_8cpp_a21d5e8f8cdaa838586b31007df0a950baea4788705e6873b424c65e91c2846b19}{Cancel}}
+, \mbox{\hyperlink{test_8cpp_a21d5e8f8cdaa838586b31007df0a950ba7f090bbab1cc7f9c08bf4e54d932d3c0}{Modify}}
+ \}
+\begin{DoxyCompactList}\small\item\em Defines the types of actions that can be performed on the order book. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{test_8cpp_a2a4f665610d01ba2dc09affc5fc5ecb8}{TEST\+\_\+P}} (\mbox{\hyperlink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture}}, Orderbook\+Test\+Suite)
+\begin{DoxyCompactList}\small\item\em Test case for the \doxylink{class_orderbook}{Orderbook} functionality. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{test_8cpp_ae3e5462160a49f0a0ba4719fb2a786bd}{INSTANTIATE\+\_\+\+TEST\+\_\+\+CASE\+\_\+P}} (Tests, \mbox{\hyperlink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture}}, googletest\+::\+Values\+In(\{ "{}Match\+\_\+\+Good\+Till\+Cancel.\+txt"{}, "{}Match\+\_\+\+Fill\+And\+Kill.\+txt"{}, "{}Match\+\_\+\+Fill\+Or\+Kill\+\_\+\+Hit.\+txt"{}, "{}Match\+\_\+\+Fill\+Or\+Kill\+\_\+\+Miss.\+txt"{}, "{}Cancel\+\_\+\+Success.\+txt"{}, "{}Modify\+\_\+\+Side.\+txt"{}, "{}Match\+\_\+\+Market.\+txt"{} \}))
+\begin{DoxyCompactList}\small\item\em Instantiates test cases for \doxylink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture} using predefined test files. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Typedef Documentation}
+\Hypertarget{test_8cpp_a28a8d726ddce9d00302608cbf4a73613}\index{test.cpp@{test.cpp}!Informations@{Informations}}
+\index{Informations@{Informations}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{Informations}{Informations}}
+{\footnotesize\ttfamily \label{test_8cpp_a28a8d726ddce9d00302608cbf4a73613} 
+using \mbox{\hyperlink{test_8cpp_a28a8d726ddce9d00302608cbf4a73613}{Informations}} = std\+::vector$<$\mbox{\hyperlink{struct_information}{Information}}$>$}
+
+\Hypertarget{test_8cpp_a7a813e7b05f6647b451fe580798f4dcc}\index{test.cpp@{test.cpp}!Results@{Results}}
+\index{Results@{Results}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{Results}{Results}}
+{\footnotesize\ttfamily \label{test_8cpp_a7a813e7b05f6647b451fe580798f4dcc} 
+using \mbox{\hyperlink{test_8cpp_a7a813e7b05f6647b451fe580798f4dcc}{Results}} = std\+::vector$<$\mbox{\hyperlink{struct_result}{Result}}$>$}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\Hypertarget{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b}\index{test.cpp@{test.cpp}!ActionType@{ActionType}}
+\index{ActionType@{ActionType}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{ActionType}{ActionType}}
+{\footnotesize\ttfamily \label{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b} 
+enum class \mbox{\hyperlink{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b}{Action\+Type}}\hspace{0.3cm}{\ttfamily [strong]}}
+
+
+
+Defines the types of actions that can be performed on the order book. 
+
+\begin{DoxyEnumFields}[2]{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Add@{Add}!test.cpp@{test.cpp}}\index{test.cpp@{test.cpp}!Add@{Add}}}\Hypertarget{test_8cpp_a21d5e8f8cdaa838586b31007df0a950baec211f7c20af43e742bf2570c3cb84f9}\label{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b} 
+Add&Add a new order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Cancel@{Cancel}!test.cpp@{test.cpp}}\index{test.cpp@{test.cpp}!Cancel@{Cancel}}}\Hypertarget{test_8cpp_a21d5e8f8cdaa838586b31007df0a950baea4788705e6873b424c65e91c2846b19}\label{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b} 
+Cancel&Cancel an existing order. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{Modify@{Modify}!test.cpp@{test.cpp}}\index{test.cpp@{test.cpp}!Modify@{Modify}}}\Hypertarget{test_8cpp_a21d5e8f8cdaa838586b31007df0a950ba7f090bbab1cc7f9c08bf4e54d932d3c0}\label{test_8cpp_a21d5e8f8cdaa838586b31007df0a950b} 
+Modify&Modify an existing order. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{test_8cpp_ae3e5462160a49f0a0ba4719fb2a786bd}\index{test.cpp@{test.cpp}!INSTANTIATE\_TEST\_CASE\_P@{INSTANTIATE\_TEST\_CASE\_P}}
+\index{INSTANTIATE\_TEST\_CASE\_P@{INSTANTIATE\_TEST\_CASE\_P}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{INSTANTIATE\_TEST\_CASE\_P()}{INSTANTIATE\_TEST\_CASE\_P()}}
+{\footnotesize\ttfamily \label{test_8cpp_ae3e5462160a49f0a0ba4719fb2a786bd} 
+INSTANTIATE\+\_\+\+TEST\+\_\+\+CASE\+\_\+P (\begin{DoxyParamCaption}\item[{Tests}]{}{, }\item[{\mbox{\hyperlink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture}}}]{}{, }\item[{googletest\+::\+Values\+In(\{ "{}Match\+\_\+\+Good\+Till\+Cancel.\+txt"{}, "{}Match\+\_\+\+Fill\+And\+Kill.\+txt"{}, "{}Match\+\_\+\+Fill\+Or\+Kill\+\_\+\+Hit.\+txt"{}, "{}Match\+\_\+\+Fill\+Or\+Kill\+\_\+\+Miss.\+txt"{}, "{}Cancel\+\_\+\+Success.\+txt"{}, "{}Modify\+\_\+\+Side.\+txt"{}, "{}Match\+\_\+\+Market.\+txt"{} \})}]{}{}\end{DoxyParamCaption})}
+
+
+
+Instantiates test cases for \doxylink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture} using predefined test files. 
+
+\Hypertarget{test_8cpp_a2a4f665610d01ba2dc09affc5fc5ecb8}\index{test.cpp@{test.cpp}!TEST\_P@{TEST\_P}}
+\index{TEST\_P@{TEST\_P}!test.cpp@{test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST\_P()}{TEST\_P()}}
+{\footnotesize\ttfamily \label{test_8cpp_a2a4f665610d01ba2dc09affc5fc5ecb8} 
+TEST\+\_\+P (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_orderbook_tests_fixture}{Orderbook\+Tests\+Fixture}}}]{}{, }\item[{Orderbook\+Test\+Suite}]{}{}\end{DoxyParamCaption})}
+
+
+
+Test case for the \doxylink{class_orderbook}{Orderbook} functionality. 
+
+This test case uses parameterized inputs to verify various \doxylink{class_orderbook}{Orderbook} behaviors, including adding, modifying, and canceling orders. 

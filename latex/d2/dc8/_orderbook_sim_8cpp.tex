@@ -1,0 +1,73 @@
+\doxysection{Orderbook\+Sim/\+Orderbook\+Sim.cpp File Reference}
+\hypertarget{_orderbook_sim_8cpp}{}\label{_orderbook_sim_8cpp}\index{OrderbookSim/OrderbookSim.cpp@{OrderbookSim/OrderbookSim.cpp}}
+
+
+Contains the main function for simulating an orderbook with random orders.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include "{}Orderbook.\+hpp"{}}\newline
+{\ttfamily \#include $<$random$>$}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_orderbook_sim_8cpp_ae52fcd22aaaf890f8cc082e7b5f1088e}{random\+Order\+Simulation}} (const int n)
+\begin{DoxyCompactList}\small\item\em Simulates random order entries in the orderbook. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{_orderbook_sim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em The main function where program execution begins. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Contains the main function for simulating an orderbook with random orders. 
+
+This file initializes an \doxylink{class_orderbook}{Orderbook} instance and performs a simulation by adding randomly generated orders. It demonstrates the functionality of the \doxylink{class_orderbook}{Orderbook} class, including adding orders, printing the orderbook, and saving it to JSON. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_orderbook_sim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{OrderbookSim.cpp@{OrderbookSim.cpp}!main@{main}}
+\index{main@{main}!OrderbookSim.cpp@{OrderbookSim.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_orderbook_sim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+The main function where program execution begins. 
+
+Initializes the orderbook simulation with a predefined number of random orders.
+
+\begin{DoxyReturn}{Returns}
+An integer representing the program\textquotesingle{}s exit status. 
+\end{DoxyReturn}
+\Hypertarget{_orderbook_sim_8cpp_ae52fcd22aaaf890f8cc082e7b5f1088e}\index{OrderbookSim.cpp@{OrderbookSim.cpp}!randomOrderSimulation@{randomOrderSimulation}}
+\index{randomOrderSimulation@{randomOrderSimulation}!OrderbookSim.cpp@{OrderbookSim.cpp}}
+\doxysubsubsection{\texorpdfstring{randomOrderSimulation()}{randomOrderSimulation()}}
+{\footnotesize\ttfamily \label{_orderbook_sim_8cpp_ae52fcd22aaaf890f8cc082e7b5f1088e} 
+void random\+Order\+Simulation (\begin{DoxyParamCaption}\item[{const int}]{n}{}\end{DoxyParamCaption})}
+
+
+
+Simulates random order entries in the orderbook. 
+
+Simulates the addition of random orders to an \doxylink{class_orderbook}{Orderbook} instance.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of random orders to simulate.\\
+\hline
+\end{DoxyParams}
+Generates {\ttfamily n} random orders with randomized types, sides, prices, and quantities. After adding all orders, it prints the orderbook and saves its data to JSON.
+
+
+\begin{DoxyParams}{Parameters}
+{\em n} & The number of random orders to add to the orderbook. \\
+\hline
+\end{DoxyParams}
+\texorpdfstring{$<$}{<} \doxylink{class_orderbook}{Orderbook} instance for the simulation.
+
+\texorpdfstring{$<$}{<} Distribution for random order types.
+
+\texorpdfstring{$<$}{<} Distribution for random order sides.
+
+\texorpdfstring{$<$}{<} Distribution for random order prices.
+
+\texorpdfstring{$<$}{<} Distribution for random order quantities.

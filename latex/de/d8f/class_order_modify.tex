@@ -1,0 +1,135 @@
+\doxysection{Order\+Modify Class Reference}
+\hypertarget{class_order_modify}{}\label{class_order_modify}\index{OrderModify@{OrderModify}}
+
+
+Represents a modification to an existing order.  
+
+
+
+
+{\ttfamily \#include $<$Order\+Modify.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_order_modify_a6d5e86fd80300c4fc1b1a6e58667b180}{Order\+Modify}} (\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} order\+Id, \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} side, \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} price, \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} quantity)
+\begin{DoxyCompactList}\small\item\em Constructs an \doxylink{class_order_modify}{Order\+Modify} object with the specified parameters. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} \mbox{\hyperlink{class_order_modify_a692c19566738eaf577ec4f667370959e}{get\+Order\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Gets the order ID of the modified order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} \mbox{\hyperlink{class_order_modify_a903f882864e3fe4b21a0e016aeaf9407}{get\+Price}} () const
+\begin{DoxyCompactList}\small\item\em Gets the price of the modified order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} \mbox{\hyperlink{class_order_modify_ac0fcb75b47104378bad02ffe65874c38}{get\+Side}} () const
+\begin{DoxyCompactList}\small\item\em Gets the side (buy or sell) of the modified order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} \mbox{\hyperlink{class_order_modify_af4e374438daf088084a1c9321f530c00}{get\+Quantity}} () const
+\begin{DoxyCompactList}\small\item\em Gets the quantity of the modified order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{Order\+Ptr}} \mbox{\hyperlink{class_order_modify_a5437e58124c8d3c858aa4501b673b456}{to\+Order\+Ptr}} (\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}} type) const
+\begin{DoxyCompactList}\small\item\em Converts the order modification into a shared pointer to a new \doxylink{class_order}{Order} object. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a modification to an existing order. 
+
+The \doxylink{class_order_modify}{Order\+Modify} class is used to store and apply modifications to an order. It includes details such as the modified order\textquotesingle{}s ID, price, side (buy/sell), and quantity. The class also provides a method to convert these modifications into a new \doxylink{class_order}{Order} object. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_order_modify_a6d5e86fd80300c4fc1b1a6e58667b180}\index{OrderModify@{OrderModify}!OrderModify@{OrderModify}}
+\index{OrderModify@{OrderModify}!OrderModify@{OrderModify}}
+\doxysubsubsection{\texorpdfstring{OrderModify()}{OrderModify()}}
+{\footnotesize\ttfamily \label{class_order_modify_a6d5e86fd80300c4fc1b1a6e58667b180} 
+Order\+Modify\+::\+Order\+Modify (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{order\+Id}{, }\item[{\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}}]{side}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}}]{price}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{quantity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an \doxylink{class_order_modify}{Order\+Modify} object with the specified parameters. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+Id} & The unique identifier of the order to modify. \\
+\hline
+{\em side} & The side (buy or sell) of the order. \\
+\hline
+{\em price} & The updated price of the order. \\
+\hline
+{\em quantity} & The updated quantity of the order. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_order_modify_a692c19566738eaf577ec4f667370959e}\index{OrderModify@{OrderModify}!getOrderId@{getOrderId}}
+\index{getOrderId@{getOrderId}!OrderModify@{OrderModify}}
+\doxysubsubsection{\texorpdfstring{getOrderId()}{getOrderId()}}
+{\footnotesize\ttfamily \label{class_order_modify_a692c19566738eaf577ec4f667370959e} 
+\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} Order\+Modify\+::get\+Order\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the order ID of the modified order. 
+
+\begin{DoxyReturn}{Returns}
+The Order\+Id of the modified order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_modify_a903f882864e3fe4b21a0e016aeaf9407}\index{OrderModify@{OrderModify}!getPrice@{getPrice}}
+\index{getPrice@{getPrice}!OrderModify@{OrderModify}}
+\doxysubsubsection{\texorpdfstring{getPrice()}{getPrice()}}
+{\footnotesize\ttfamily \label{class_order_modify_a903f882864e3fe4b21a0e016aeaf9407} 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} Order\+Modify\+::get\+Price (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the price of the modified order. 
+
+\begin{DoxyReturn}{Returns}
+The updated Price of the modified order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_modify_af4e374438daf088084a1c9321f530c00}\index{OrderModify@{OrderModify}!getQuantity@{getQuantity}}
+\index{getQuantity@{getQuantity}!OrderModify@{OrderModify}}
+\doxysubsubsection{\texorpdfstring{getQuantity()}{getQuantity()}}
+{\footnotesize\ttfamily \label{class_order_modify_af4e374438daf088084a1c9321f530c00} 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} Order\+Modify\+::get\+Quantity (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the quantity of the modified order. 
+
+\begin{DoxyReturn}{Returns}
+The updated Quantity of the modified order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_modify_ac0fcb75b47104378bad02ffe65874c38}\index{OrderModify@{OrderModify}!getSide@{getSide}}
+\index{getSide@{getSide}!OrderModify@{OrderModify}}
+\doxysubsubsection{\texorpdfstring{getSide()}{getSide()}}
+{\footnotesize\ttfamily \label{class_order_modify_ac0fcb75b47104378bad02ffe65874c38} 
+\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} Order\+Modify\+::get\+Side (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Gets the side (buy or sell) of the modified order. 
+
+\begin{DoxyReturn}{Returns}
+The updated Side of the modified order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_modify_a5437e58124c8d3c858aa4501b673b456}\index{OrderModify@{OrderModify}!toOrderPtr@{toOrderPtr}}
+\index{toOrderPtr@{toOrderPtr}!OrderModify@{OrderModify}}
+\doxysubsubsection{\texorpdfstring{toOrderPtr()}{toOrderPtr()}}
+{\footnotesize\ttfamily \label{class_order_modify_a5437e58124c8d3c858aa4501b673b456} 
+\mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{Order\+Ptr}} Order\+Modify\+::to\+Order\+Ptr (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}}}]{type}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Converts the order modification into a shared pointer to a new \doxylink{class_order}{Order} object. 
+
+Creates a new Order\+Ptr from the modification details using the specified order type.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the new order to create (e.\+g., market, limit). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A shared pointer (Order\+Ptr) to a newly created \doxylink{class_order}{Order} with the modification details. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Orderbook\+Sim/\mbox{\hyperlink{_order_modify_8hpp}{Order\+Modify.\+hpp}}\end{DoxyCompactItemize}

@@ -1,0 +1,124 @@
+\doxysection{Orderbook.\+hpp}
+\hypertarget{_orderbook_8hpp_source}{}\label{_orderbook_8hpp_source}\index{OrderbookSim/Orderbook.hpp@{OrderbookSim/Orderbook.hpp}}
+\mbox{\hyperlink{_orderbook_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_8hpp}{Order.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_trade_8hpp}{Trade.hpp}}"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_usings_8hpp}{Usings.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_8hpp}{Order.hpp}}"{}}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_modify_8hpp}{OrderModify.hpp}}"{}}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_orderbook_level_infos_8hpp}{OrderbookLevelInfos.hpp}}"{}}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_detail_history_8hpp}{OrderDetailHistory.hpp}}"{}}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <unordered\_map>}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <optional>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <mutex>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <condition\_variable>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <cmath>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_orderbook}{Orderbook}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ using\ a\ map\ to\ represent\ the\ bids\ and\ asks}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{struct\ }OrderEntry\ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{OrderPtr}}\ \_order\{\ \textcolor{keyword}{nullptr}\ \};}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ OrderPtrs::iterator\ \_location;}
+\DoxyCodeLine{00028\ \ \ \ \ \};}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keyword}{enum\ class}\ ExecutionTypes\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ BuyersPrice,\ }
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ SellersPrice,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ MidPrice}
+\DoxyCodeLine{00033\ \ \ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{struct\ }LevelData\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_quantity\{\};}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_count\{\};}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{enum\ class}\ Action\ \{\ \textcolor{comment}{//\ how\ can\ metadara\ be\ impacted}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{test_8cpp_a21d5e8f8cdaa838586b31007df0a950baec211f7c20af43e742bf2570c3cb84f9}{Add}},\ \textcolor{comment}{//\ add\ new\ order\ to\ level}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \ \ \ \ Remove,\ \textcolor{comment}{//\ remove\ a\ order\ from\ level:\ remove\ quantity\ remove\ count}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \ \ \ \ Match,\ \textcolor{comment}{//\ A\ fully\ match:\ affects\ count\ and\ quantity,\ Partial\ match:\ order\ remains\ but\ we\ only\ impact\ quantity}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \};}
+\DoxyCodeLine{00043\ \ \ \ \ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ std::map<Price,\ OrderPtrs,\ std::greater<Price>>\ \_asks;}
+\DoxyCodeLine{00046\ \ \ \ \ std::map<Price,\ OrderPtrs,\ std::less<Price>>\ \_bids;}
+\DoxyCodeLine{00047\ \ \ \ \ std::unordered\_map<OrderId,\ OrderEntry>\ \_orders;}
+\DoxyCodeLine{00048\ \ \ \ \ std::unordered\_map<Price,\ LevelData>\ \_data;}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{mutable}\ std::mutex\ \_ordersMutex;}
+\DoxyCodeLine{00050\ \ \ \ \ std::thread\ \_ordersPruneThread;}
+\DoxyCodeLine{00051\ \ \ \ \ std::condition\_variable\ \_shutdownConditionVariable;}
+\DoxyCodeLine{00052\ \ \ \ \ std::atomic<bool>\ \_shutdown\{\ \textcolor{keyword}{false}\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ ExecutionTypes\ \_executionType\ =\ ExecutionTypes::BuyersPrice;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_order_detail_history}{OrderDetailHistory}}\ \_orderDetailHistory;}
+\DoxyCodeLine{00057\ \ \ \ \ }
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ canMatch(\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{_trade_8hpp_a2ac952e5c0e734c3b7ab2068eb3d6527}{Trades}}\ MatchOrders();}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ CancelOrders(\mbox{\hyperlink{_usings_8hpp_a486ef20e0a73d508bd0cce5f8217810b}{OrderIds}}\ orderIds);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ CancelOrderInternal(\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ orderId);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ canFullyFill(\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity)\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//\ Private\ Event\ handlers\ (event\ APIs):\ revelent\ for\ fill\ or\ kill}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ onOrderCanceleld(\mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{OrderPtr}}\ order);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ onOrderAdded(\mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{OrderPtr}}\ order);}
+\DoxyCodeLine{00068\ \ \ \ \ }
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ onOrderMatchedWithHistoryUpdate(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity,\ \textcolor{keywordtype}{bool}\ isFullyFilled,\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ purchasePrice);}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ onOrderMatched(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity,\ \textcolor{keywordtype}{bool}\ isFullyFilled);}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateLevelData(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity,\ LevelData::Action\ action);}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \mbox{\hyperlink{_trade_8hpp_a2ac952e5c0e734c3b7ab2068eb3d6527}{Trades}}\ MatchOrder(\mbox{\hyperlink{class_order_modify}{OrderModify}}\ order);}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ }
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00080\ \ \ \ \ \mbox{\hyperlink{class_orderbook_a521fdf132ea09cc850841a297c430cf8}{Orderbook}}()\ :\_ordersPruneThread\{\ [this]\ \{\mbox{\hyperlink{class_orderbook_ae453ca6847a10f582b6ad4793fa6f9f8}{PruneGoodForDayOrders}}();\ \}\ \}\ \{\}}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_orderbook_ae5d180f91097539104f0f03349403b39}{Orderbook}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_orderbook}{Orderbook}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_orderbook_a573bcef2f870628ac57a3a24fb58a9df}{operator=}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{class_orderbook}{Orderbook}}\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00083\ \ \ \ \ \mbox{\hyperlink{class_orderbook_a889f02b725a5bce9c683c19543adfdec}{Orderbook}}(\mbox{\hyperlink{class_orderbook}{Orderbook}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_orderbook_aab0e3ce19014d476754c7f6d0c38d0b4}{operator=}}(\mbox{\hyperlink{class_orderbook}{Orderbook}}\&\&)\ =\ \textcolor{keyword}{delete};}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_orderbook_aca29249ec0f8e13a892b5f5d822e48ac}{\string~Orderbook}}()\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \_shutdown.store(\textcolor{keyword}{true},\ std::memory\_order\_release);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \_shutdownConditionVariable.notify\_one();}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \_ordersPruneThread.join();}
+\DoxyCodeLine{00089\ \ \ \ \ \}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{void}\ PruneGoodForDayOrders();}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ changeExecutionType(\textcolor{keywordtype}{int}\ type);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{_trade_8hpp_a2ac952e5c0e734c3b7ab2068eb3d6527}{Trades}}\ \mbox{\hyperlink{namespaceadd_order}{addOrder}}(\mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{OrderPtr}}\ order);}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{_trade_8hpp_a2ac952e5c0e734c3b7ab2068eb3d6527}{Trades}}\ \mbox{\hyperlink{namespaceadd_order}{addOrder}}(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type,\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);\ \textcolor{comment}{//\ Do\ not\ use\ for\ lots\ of\ orders}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{_trade_8hpp_a2ac952e5c0e734c3b7ab2068eb3d6527}{Trades}}\ \mbox{\hyperlink{namespaceadd_order}{addOrder}}(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type,\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ orderId,\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ addOrderViaPython(\textcolor{keywordtype}{int}\ type,\ \textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id},\ \textcolor{keywordtype}{int}\ side,\ \textcolor{keywordtype}{int}\ price,\ \textcolor{keywordtype}{int}\ qty);\ \textcolor{comment}{//\ Add\ order\ and\ then\ updates\ Json}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{void}\ CancelOrder(\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ orderId);}
+\DoxyCodeLine{00099\ \ \ \ \ \mbox{\hyperlink{_trade_8hpp_a2ac952e5c0e734c3b7ab2068eb3d6527}{Trades}}\ ModifyOrder(\mbox{\hyperlink{class_order_modify}{OrderModify}}\ order);}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ setPriceScale(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \_price);}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ getPriceScale();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ printAllOrders();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{void}\ saveToJson(\textcolor{keyword}{const}\ std::string\&\ buyfilename\ =\ \textcolor{stringliteral}{"{}BuyHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ sellfilename\ =\ \textcolor{stringliteral}{"{}SellHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ purchasefilename\ =\ \textcolor{stringliteral}{"{}PurchaseHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ buyLivefilename\ =\ \textcolor{stringliteral}{"{}BuyLiveHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ sellLivefilename\ =\ \textcolor{stringliteral}{"{}SellLiveHistory.json"{}});}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \ \ \ \ std::size\_t\ Size()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{comment}{//\ Orderbook\ levels\ info\ object\ to\ represnet\ the\ aggreatate\ internal\ state\ of\ order\ book:\ useful\ for\ testing\ or\ market\ data\ decimination}}
+\DoxyCodeLine{00112\ \ \ \ \ \mbox{\hyperlink{class_orderbook_level_infos}{OrderbookLevelInfos}}\ getOrderInfos()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ EndOfDay();}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \};}
+\DoxyCodeLine{00118\ }
+
+\end{DoxyCode}

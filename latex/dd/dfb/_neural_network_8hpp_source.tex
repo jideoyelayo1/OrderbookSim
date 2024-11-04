@@ -1,0 +1,30 @@
+\doxysection{Neural\+Network.\+hpp}
+\hypertarget{_neural_network_8hpp_source}{}\label{_neural_network_8hpp_source}\index{OrderbookSim/NeuralNetwork.hpp@{OrderbookSim/NeuralNetwork.hpp}}
+\mbox{\hyperlink{_neural_network_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_net_8hpp}{Net.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_training_data_8hpp}{TrainingData.hpp}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_neural_network}{NeuralNetwork}}\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00024\ \ \ \ \ std::vector<unsigned>\ topology;\ }
+\DoxyCodeLine{00025\ \ \ \ \ \mbox{\hyperlink{class_net}{Net}}\ myNet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00026\ \ \ \ \ std::vector<double>\ inputVals;\ \ }
+\DoxyCodeLine{00027\ \ \ \ \ std::vector<double>\ targetVals;\ }
+\DoxyCodeLine{00028\ \ \ \ \ std::vector<double>\ resultVals;\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{int}\ trainingPass\ =\ 0;\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{class_neural_network_ad82b854462d9f95b88ab16fc732a3cad}{NeuralNetwork}}()\ =\ \textcolor{keywordflow}{default};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neural_network_a27f6289789e3b1eb34ce393b96f5bd88}{loadTogology}}(\textcolor{keyword}{const}\ std::vector<unsigned>\&\ topology);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_neural_network_a8268eb1c86d0eee375f1b9a1e5bd893b}{Run}}(std::vector<double>\&\ inputVals,\ std::vector<double>\&\ targetVals,\ std::vector<double>\&\ resultVals);}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00072\ \ \ \ \ std::vector<double>\ \mbox{\hyperlink{class_neural_network_a6a2957fb4aec6cfbb80589916931d5c8}{RunWithReturn}}(std::vector<double>\&\ inputVals,\ std::vector<double>\&\ targetVals,\ std::vector<double>\&\ resultVals);}
+\DoxyCodeLine{00073\ \};}
+
+\end{DoxyCode}

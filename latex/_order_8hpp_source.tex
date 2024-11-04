@@ -1,0 +1,56 @@
+\doxysection{Order.\+hpp}
+\hypertarget{_order_8hpp_source}{}\label{_order_8hpp_source}\index{OrderbookSim/Order.hpp@{OrderbookSim/Order.hpp}}
+\mbox{\hyperlink{_order_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_type_8hpp}{OrderType.hpp}}"{}}}
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_side_8hpp}{Side.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <cstdint>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <stdexcept>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <format>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <memory>}\ }
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_usings_8hpp}{Usings.hpp}}"{}}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_constants_8hpp}{Constants.hpp}}"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order}{Order}}\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ Member\ variables}}
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ \_type;}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \_id;}
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ \_side;}
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \_price;}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_quantity;}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_initialQty;}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_remainingQty;}
+\DoxyCodeLine{00025\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ Constructor\ and\ member\ functions\ declarations}}
+\DoxyCodeLine{00027\ \ \ \ \ \mbox{\hyperlink{class_order_a028ba0cdfe5555f61da0fa8d53fdfbfd}{Order}}(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type,\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \textcolor{keywordtype}{id},\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty)}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ :\ \_type\{\ type\ \},\ \_id\{\ id\ \},\ \_side\{\ side\ \},\ \_price\{\ price\ \},\ \_quantity\{\ qty\ \},\ \_initialQty\{\ qty\ \},\ \_remainingQty\{\ qty\ \}\ \{\}\ \textcolor{comment}{//\ setter\ in\ c++}}
+\DoxyCodeLine{00029\ \ \ \ \ \mbox{\hyperlink{class_order_ab02f71c29d4691be51e2596994c53255}{Order}}(\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ orderId,\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity)}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ :\ \mbox{\hyperlink{class_order}{Order}}(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}::\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418a31840a66a8d6d223e5b0540138768838}{Market}},\ orderId,\ side,\ \mbox{\hyperlink{struct_constants}{Constants}}::InvalidPrice,\ quantity)}
+\DoxyCodeLine{00031\ \ \ \ \ \{\}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ getter\ in\ c++}}
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \mbox{\hyperlink{class_order_a90585a4d11846c5b6dc3a808847494fb}{getOrderId}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ \mbox{\hyperlink{class_order_a04619a9805550d70c3b47773422826e2}{getOrderType}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00036\ \ \ \ \ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ \mbox{\hyperlink{class_order_a266702a73501ecdf281f8d7727e558f3}{getSide}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00037\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_order_af26b59ca7d846124831a03bf735c7b94}{getPrice}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00038\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \mbox{\hyperlink{class_order_ab39e7dee503eb6536a9db2f0212533bd}{getInitialQty}}()\ \textcolor{keyword}{const};\ \textcolor{comment}{//\ may\ not\ be\ used\ }}
+\DoxyCodeLine{00039\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \mbox{\hyperlink{class_order_a679649bd8e91b8da06492828659545fe}{getQty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00040\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \mbox{\hyperlink{class_order_a8b3897b09a63c02fb6c4f0f4034f604b}{getRemainingQty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00041\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \mbox{\hyperlink{class_order_a6b38f224103e2f62af53840118d0476f}{getFilledQty}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_order_a9cc60ef92e158809ce99475b3adf3d59}{isFilled}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_a94a958f4f5b62ee8d01af084e515b9f5}{Fill}}(\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_ad9e26bc403cef408a1283641c2319984}{toGoodTillCancel}}(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \};}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{OrderPtr}}\ =\ std::shared\_ptr<Order>;}
+\DoxyCodeLine{00049\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_order_8hpp_aa7f24058c403f699fbc193d03b0b854a}{OrderPtrs}}\ =\ std::list<OrderPtr>;\ \textcolor{comment}{//\ a\ vector\ is\ better\ and\ show\ upgrade\ with\ vector\ done}}
+\DoxyCodeLine{00050\ }
+
+\end{DoxyCode}

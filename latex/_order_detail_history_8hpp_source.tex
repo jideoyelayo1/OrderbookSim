@@ -1,0 +1,128 @@
+\doxysection{Order\+Detail\+History.\+hpp}
+\hypertarget{_order_detail_history_8hpp_source}{}\label{_order_detail_history_8hpp_source}\index{OrderbookSim/OrderDetailHistory.hpp@{OrderbookSim/OrderDetailHistory.hpp}}
+\mbox{\hyperlink{_order_detail_history_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ \ "{}\mbox{\hyperlink{json_8hpp}{json.hpp}}"{}}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <fstream>}\ }
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_neural_network_8hpp}{NeuralNetwork.hpp}}"{}}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//\#include\ <nlohmann/json.hpp>}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_detail_8hpp}{OrderDetail.hpp}}"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_matched_order_details_8hpp}{MatchedOrderDetails.hpp}}"{}}}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order_detail_history}{OrderDetailHistory}}\ \{}
+\DoxyCodeLine{00015\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00016\ \ \ \ \ std::vector<OrderDetail>\ buyHistory;}
+\DoxyCodeLine{00017\ \ \ \ \ std::vector<OrderDetail>\ sellHistory;}
+\DoxyCodeLine{00018\ \ \ \ \ std::vector\ <MatchedOrderDetail>\ \_purchaseHistory;}
+\DoxyCodeLine{00019\ \ \ \ \ std::unordered\_map<OrderId,\ OrderDetail>\ \_liveOrders;}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ std::pair<\ std::vector<OrderDetail>,\ std::vector<OrderDetail>>\ \_getLiveOrders()\ \textcolor{keyword}{const};\ \ \ \ }
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{class_neural_network}{NeuralNetwork}}\ neutralNetwork;}
+\DoxyCodeLine{00024\ \ \ \ \ }
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keywordtype}{void}\ addOrderToBuyHistory(\textcolor{keyword}{const}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ addOrderToSellHistory(\textcolor{keyword}{const}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ saveHistoryToJson(\textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keyword}{const}\ std::vector<OrderDetail>\ history);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ saveHistoryToJson(\textcolor{keyword}{const}\ std::string\&\ filename,\ \textcolor{keyword}{const}\ std::vector<MatchedOrderDetail>\ history);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ \_loadJsonLiveOrders(\textcolor{keyword}{const}\ std::string\&\ SellFilename,\ \textcolor{keyword}{const}\ std::string\&\ buyFilename);}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a3e7da6ed4559a65e5f8eb7b7fa550efe}{\_printLiveOrders}}(\textcolor{keyword}{const}\ std::string\&\ SellFilename,\ \textcolor{keyword}{const}\ std::string\&\ buyFilename);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ lastPrediction\ =\ 0;}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ \_printAHistory(\textcolor{keyword}{const}\ std::vector<OrderDetail>\ \&history);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{double}\ getCurrentTimeAsFractionOfDay()\ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Get\ the\ current\ time\ point}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{auto}\ now\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Convert\ to\ time\_t\ to\ extract\ the\ time\ of\ day}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ time\_t\ now\_c\ =\ std::chrono::system\_clock::to\_time\_t(now);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Define\ a\ tm\ structure\ to\ hold\ the\ local\ time}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ tm\ local\_tm;}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Use\ localtime\_s\ to\ convert\ time\_t\ to\ tm\ structure}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ localtime\_s(\&local\_tm,\ \&now\_c);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calculate\ the\ number\ of\ seconds\ since\ midnight}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ seconds\_since\_midnight\ =\ local\_tm.tm\_hour\ *\ 3600\ +\ local\_tm.tm\_min\ *\ 60\ +\ local\_tm.tm\_sec;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Total\ number\ of\ seconds\ in\ a\ day}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ seconds\_per\_day\ =\ 24\ *\ 3600;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Scale\ to\ a\ range\ of\ 0\ to\ 1}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{double}\ fraction\_of\_day\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{double}\textcolor{keyword}{>}(seconds\_since\_midnight)\ /\ seconds\_per\_day;}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ fraction\_of\_day;}
+\DoxyCodeLine{00065\ \ \ \ \ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ loadHistoryToNeuralNetwork(std::vector<Price>\ inputPrice,\ std::vector<Price>\ outputPrice);}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//OrderDetailHistory()\ =\ default;}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ \mbox{\hyperlink{class_order_detail_history_a1ca9243f646c0f0b3f48c986b75256c6}{OrderDetailHistory}}()\ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ std::vector<unsigned>\ topology\ =\ \{\ 2,3,1\ \};}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ neutralNetwork.\mbox{\hyperlink{class_neural_network_a27f6289789e3b1eb34ce393b96f5bd88}{loadTogology}}(topology);}
+\DoxyCodeLine{00077\ \ \ \ \ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_order_detail_history_a8c6d46b597381a834d361ee510839c93}{buyHistorySize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_order_detail_history_a6bed3ea20f7b2f16e453fcb5dfed9fd1}{sellHistorySize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00082\ \ \ \ \ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_order_detail_history_add68962f12a00beadf15c2d3f19f2838}{purchaseHistorySize}}()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_addcc5e1737508a1974689610d20d4c27}{updateNeutralNetwork}}(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity);}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a65eb92a2eb981e3e765ee7e98c00f112}{addOrderToHistory}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \textcolor{keywordtype}{id},\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a0209579741cc6ff09b61e37a4d2bda5e}{addOrderToPurchaseHistory}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty);}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{void}\ saveHistoryToJson(\textcolor{keyword}{const}\ std::string\&\ buyfilename,\ \textcolor{keyword}{const}\ std::string\&\ sellfilename,\ \textcolor{keyword}{const}\ std::string\&\ purchasefilename);}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{void}\ saveHistoryToJson(\textcolor{keyword}{const}\ std::string\&\ buyfilename\ =\ \textcolor{stringliteral}{"{}BuyHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ sellfilename\ =\ \textcolor{stringliteral}{"{}SellHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ purchasefilename\ =\ \textcolor{stringliteral}{"{}PurchaseHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ liveSellOrdersFilename\ =\ \textcolor{stringliteral}{"{}LiveSellHistory.json"{}},\ \textcolor{keyword}{const}\ std::string\&\ buySellOrdersFilename\ =\ \textcolor{stringliteral}{"{}LiveBuyHistory.json"{}});}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a022cf43ca89b41961555b35b38f55111}{removeMatchedOrder}}(\textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ bidId,\ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ askID);}
+\DoxyCodeLine{00098\ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_ab2a02f0281c6bcc0b9fda78f27d6f901}{\_printSellHistory}}();}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a6134431de80ddbe9281fa17306fcf30d}{\_printBuyHistory}}();}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_ae1699409e402747d0249b4cacb69e08b}{\_printPurchaseHistory}}();}
+\DoxyCodeLine{00104\ }
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a3e7da6ed4559a65e5f8eb7b7fa550efe}{\_printLiveOrders}}();}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_order_detail_history_ace0afa64e4e248705363c6e35fc9dbbc}{getVWAP}}();}
+\DoxyCodeLine{00108\ \ \ \ \ }
+\DoxyCodeLine{00109\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_order_detail_history_ace0afa64e4e248705363c6e35fc9dbbc}{getVWAP}}(\textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{00110\ }
+\DoxyCodeLine{00111\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_order_detail_history_a0f61c9092fdc0a7ec354695cb122f0ff}{PRICESCALE}}\ =\ 500;}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_order_detail_history_a7901c7d902a3e0412328432978781da0}{getPrediction}}();}
+\DoxyCodeLine{00114\ \ \ \ }
+\DoxyCodeLine{00115\ \ \ \ \ std::unordered\_map<OrderId,\ OrderDetail>\ \mbox{\hyperlink{class_order_detail_history_a2125b507c1f6844d995b2ce67b63f340}{getLiveOrders}}();}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_order_detail_history_a850bb8c0917adec18a552e7a093b0be2}{deleteALiveOrder}}(\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \textcolor{keywordtype}{id});}
+\DoxyCodeLine{00118\ }
+\DoxyCodeLine{00119\ \ \ \ \ }
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ }
+
+\end{DoxyCode}

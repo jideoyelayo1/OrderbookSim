@@ -1,0 +1,22 @@
+\doxysection{Side.\+hpp}
+\hypertarget{_side_8hpp_source}{}\label{_side_8hpp_source}\index{OrderbookSim/Side.hpp@{OrderbookSim/Side.hpp}}
+\mbox{\hyperlink{_side_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00016\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ \{}
+\DoxyCodeLine{00017\ \ \ \ \ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a831a28f1e8df07c553fcd59546465d13}{Buy}},\ \ }
+\DoxyCodeLine{00018\ \ \ \ \ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a3068c5a98c003498f1fec0c489212e8b}{Sell}}\ \ }
+\DoxyCodeLine{00019\ \};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{_side_8hpp_a23c860de760403038295e884c9dfbfd4}{sideToString}}(\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side)\ \{}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordflow}{switch}\ (side)\ \{}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a831a28f1e8df07c553fcd59546465d13}{Side::Buy}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Buy"{}};}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a3068c5a98c003498f1fec0c489212e8b}{Side::Sell}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Sell"{}};}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Unknown"{}};}
+\DoxyCodeLine{00034\ \ \ \ \ \}}
+\DoxyCodeLine{00035\ \}}
+
+\end{DoxyCode}
