@@ -19,6 +19,10 @@ jobs:
     - name: Install Doxygen
       run: sudo apt-get install -y doxygen
 
+    - name: Create output directory
+      # Ensure the `docs/doxygen` directory exists before generating documentation
+      run: mkdir -p docs/doxygen
+
     - name: Generate Documentation
       run: doxygen Doxyfile
 
