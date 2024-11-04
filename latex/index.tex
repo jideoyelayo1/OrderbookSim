@@ -1,0 +1,285 @@
+\chapter{Orderbook\+Sim}
+\hypertarget{index}{}\label{index}\index{OrderbookSim@{OrderbookSim}}
+\label{index_md__r_e_a_d_m_e}%
+\Hypertarget{index_md__r_e_a_d_m_e}%
+\hypertarget{index_autotoc_md1}{}\doxysection{\texorpdfstring{Overview}{Overview}}\label{index_autotoc_md1}
+Orderbook\+Sim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-\/weighted average price (VWAP). The project also includes a neural network built from scratch to predict sell prices, and now features GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.\hypertarget{index_autotoc_md2}{}\doxysection{\texorpdfstring{Running the program}{Running the program}}\label{index_autotoc_md2}
+In order to run the otherbook stimulation navigate to build
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{python\ .\(\backslash\)OrderbookView.py\ \#\ to\ view\ orders}
+\DoxyCodeLine{python\ .\(\backslash\)addOrder.py}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md3}{}\doxysection{\texorpdfstring{Key Components}{Key Components}}\label{index_autotoc_md3}
+\hypertarget{index_autotoc_md4}{}\doxysubsection{\texorpdfstring{Orderbook}{Orderbook}}\label{index_autotoc_md4}
+The main class representing the order book. It manages buy and sell orders, matches them based on price-\/time priority, maintains an order history, and calculates VWAP.\hypertarget{index_autotoc_md5}{}\doxysubsection{\texorpdfstring{Order}{Order}}\label{index_autotoc_md5}
+Represents an individual order with attributes such as order type, side (buy/sell), price, and quantity.\hypertarget{index_autotoc_md6}{}\doxysubsection{\texorpdfstring{Order Types}{Order Types}}\label{index_autotoc_md6}
+The project supports various order types including\+:
+\begin{DoxyItemize}
+\item {\bfseries{Good Till Cancel}}\+: The order remains active until filled, canceled, or it expires.
+\item {\bfseries{Fill and Kill}}\+: The order is filled as much as possible, and any remaining quantity is canceled immediately.
+\item {\bfseries{Market \doxylink{class_order}{Order}}}\+: Filled at the best available price.
+\item {\bfseries{Good For Day}}\+: Similar to Good Till Cancel, but automatically canceled at the end of the trading day.
+\item {\bfseries{Fill or Kill}}\+: Must be filled immediately and entirely or canceled.
+\end{DoxyItemize}\hypertarget{index_autotoc_md7}{}\doxysubsection{\texorpdfstring{Order Modify}{Order Modify}}\label{index_autotoc_md7}
+Handles modifications to existing orders, such as price or quantity adjustments.\hypertarget{index_autotoc_md8}{}\doxysubsection{\texorpdfstring{Trade}{Trade}}\label{index_autotoc_md8}
+Represents a trade executed between a buy and sell order.\hypertarget{index_autotoc_md9}{}\doxysubsection{\texorpdfstring{VWAP (Volume-\/\+Weighted Average Price)}{VWAP (Volume-\/\+Weighted Average Price)}}\label{index_autotoc_md9}
+Calculates the average price of orders based on their volume.\hypertarget{index_autotoc_md10}{}\doxysubsection{\texorpdfstring{Neural Network for Price Prediction}{Neural Network for Price Prediction}}\label{index_autotoc_md10}
+A custom-\/built neural network designed to predict sell prices based on historical order data. This neural network provides a foundation for applying machine learning to financial market simulations.\hypertarget{index_autotoc_md11}{}\doxysection{\texorpdfstring{GUI Integration}{GUI Integration}}\label{index_autotoc_md11}
+\hypertarget{index_autotoc_md12}{}\doxysubsection{\texorpdfstring{Python Bindings}{Python Bindings}}\label{index_autotoc_md12}
+Orderbook\+Sim now includes Python bindings using Pybind11, allowing for integration with Python GUIs.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <pybind11/pybind11.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <pybind11/stl.h>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Orderbook.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{namespace\ }py\ =\ pybind11;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\mbox{\hyperlink{orderbook__pybind_8cpp_a1a5aa81d812c5def9710c3ce9161846f}{PYBIND11\_MODULE}}(orderbook,\ handle)\ \{}
+\DoxyCodeLine{\ \ \ \ handle.doc()\ =\ \textcolor{stringliteral}{"{}Orderbook"{}};\ \textcolor{comment}{//\ optional\ module\ docstring}}
+\DoxyCodeLine{\ \ \ \ py::class\_<Orderbook>(handle,\ \textcolor{stringliteral}{"{}Orderbook"{}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .def(py::init<>())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}addOrder"{}},\ \&\mbox{\hyperlink{class_orderbook_a01b99124d091e1ceab16c44c15e67513}{Orderbook::addOrderViaPython}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ .def(\textcolor{stringliteral}{"{}loadToJson"{}},\ \&\mbox{\hyperlink{class_orderbook_a9702e3466bf51d56b6c05573271f9547}{Orderbook::saveToJson}});}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md13}{}\doxysubsection{\texorpdfstring{GUI for Viewing Orderbook}{GUI for Viewing Orderbook}}\label{index_autotoc_md13}
+A Python GUI to view the order book using Tkinter\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{import}\ json}
+\DoxyCodeLine{\textcolor{keyword}{import}\ tkinter\ \textcolor{keyword}{as}\ tk}
+\DoxyCodeLine{\textcolor{keyword}{from}\ tkinter\ \textcolor{keyword}{import}\ ttk}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{def\ }load\_json(filename):}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{with}\ open(filename,\ \textcolor{stringliteral}{'r'})\ \textcolor{keyword}{as}\ file:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ json.load(file)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{def\ }create\_table(frame,\ headers,\ data):}
+\DoxyCodeLine{\ \ \ \ tree\ =\ ttk.Treeview(frame,\ columns=headers,\ show=\textcolor{stringliteral}{'headings'})}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ header\ \textcolor{keywordflow}{in}\ headers:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tree.heading(header,\ text=header)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tree.column(header,\ width=100)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ row\ \textcolor{keywordflow}{in}\ data:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tree.insert(\textcolor{stringliteral}{''},\ \textcolor{stringliteral}{'end'},\ values=[row.get(header,\ \textcolor{stringliteral}{''})\ \textcolor{keywordflow}{for}\ header\ \textcolor{keywordflow}{in}\ headers])}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ tree.pack(expand=\textcolor{keyword}{True},\ fill=\textcolor{stringliteral}{'both'})}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ tree}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{def\ }refresh\_data():}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{global}\ sell\_orders,\ buy\_orders,\ purchases,\ live\_sell\_orders,\ live\_buy\_orders}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ sell\_orders\ =\ load\_json(\textcolor{stringliteral}{'SellHistory.json'})}
+\DoxyCodeLine{\ \ \ \ buy\_orders\ =\ load\_json(\textcolor{stringliteral}{'BuyHistory.json'})}
+\DoxyCodeLine{\ \ \ \ purchases\ =\ load\_json(\textcolor{stringliteral}{'PurchaseHistory.json'})}
+\DoxyCodeLine{\ \ \ \ live\_sell\_orders\ =\ load\_json(\textcolor{stringliteral}{'SellLiveHistory.json'})}
+\DoxyCodeLine{\ \ \ \ live\_buy\_orders\ =\ load\_json(\textcolor{stringliteral}{'BuyLiveHistory.json'})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ update\_table(frame\_sell\_orders,\ sell\_order\_headers,\ sell\_orders)}
+\DoxyCodeLine{\ \ \ \ update\_table(frame\_buy\_orders,\ buy\_order\_headers,\ buy\_orders)}
+\DoxyCodeLine{\ \ \ \ update\_table(frame\_purchases,\ purchase\_headers,\ purchases)}
+\DoxyCodeLine{\ \ \ \ update\_table(frame\_live\_sell\_orders,\ live\_sell\_order\_headers,\ live\_sell\_orders)}
+\DoxyCodeLine{\ \ \ \ update\_table(frame\_live\_buy\_orders,\ live\_buy\_order\_headers,\ live\_buy\_orders)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ root.after(10000,\ refresh\_data)\ \ \textcolor{comment}{\#\ Schedule\ the\ next\ refresh\ in\ 10\ seconds}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{def\ }update\_table(frame,\ headers,\ data):}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ widget\ \textcolor{keywordflow}{in}\ frame.winfo\_children():}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ widget.destroy()}
+\DoxyCodeLine{\ \ \ \ create\_table(frame,\ headers,\ data)}
+\DoxyCodeLine{}
+\DoxyCodeLine{root\ =\ tk.Tk()}
+\DoxyCodeLine{root.title(\textcolor{stringliteral}{"{}Order\ Book"{}})}
+\DoxyCodeLine{root.geometry(\textcolor{stringliteral}{"{}1000x600"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{notebook\ =\ ttk.Notebook(root)}
+\DoxyCodeLine{notebook.pack(expand=\textcolor{keyword}{True},\ fill=\textcolor{stringliteral}{"{}both"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{frame\_sell\_orders\ =\ tk.Frame(notebook)}
+\DoxyCodeLine{frame\_buy\_orders\ =\ tk.Frame(notebook)}
+\DoxyCodeLine{frame\_purchases\ =\ tk.Frame(notebook)}
+\DoxyCodeLine{frame\_live\_sell\_orders\ =\ tk.Frame(notebook)}
+\DoxyCodeLine{frame\_live\_buy\_orders\ =\ tk.Frame(notebook)}
+\DoxyCodeLine{}
+\DoxyCodeLine{notebook.add(frame\_sell\_orders,\ text=\textcolor{stringliteral}{"{}Sell\ Orders"{}})}
+\DoxyCodeLine{notebook.add(frame\_buy\_orders,\ text=\textcolor{stringliteral}{"{}Buy\ Orders"{}})}
+\DoxyCodeLine{notebook.add(frame\_purchases,\ text=\textcolor{stringliteral}{"{}Purchases"{}})}
+\DoxyCodeLine{notebook.add(frame\_live\_sell\_orders,\ text=\textcolor{stringliteral}{"{}Live\ Sell\ Orders"{}})}
+\DoxyCodeLine{notebook.add(frame\_live\_buy\_orders,\ text=\textcolor{stringliteral}{"{}Live\ Buy\ Orders"{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{sell\_order\_headers\ =\ [\textcolor{stringliteral}{"{}order\_id"{}},\ \textcolor{stringliteral}{"{}order\_type"{}},\ \textcolor{stringliteral}{"{}price"{}},\ \textcolor{stringliteral}{"{}quantity"{}},\ \textcolor{stringliteral}{"{}side"{}},\ \textcolor{stringliteral}{"{}time"{}}]}
+\DoxyCodeLine{buy\_order\_headers\ =\ [\textcolor{stringliteral}{"{}order\_id"{}},\ \textcolor{stringliteral}{"{}order\_type"{}},\ \textcolor{stringliteral}{"{}price"{}},\ \textcolor{stringliteral}{"{}quantity"{}},\ \textcolor{stringliteral}{"{}side"{}},\ \textcolor{stringliteral}{"{}time"{}}]}
+\DoxyCodeLine{purchase\_headers\ =\ [\textcolor{stringliteral}{"{}price"{}},\ \textcolor{stringliteral}{"{}quantity"{}},\ \textcolor{stringliteral}{"{}time"{}}]}
+\DoxyCodeLine{live\_sell\_order\_headers\ =\ [\textcolor{stringliteral}{"{}order\_id"{}},\ \textcolor{stringliteral}{"{}order\_type"{}},\ \textcolor{stringliteral}{"{}price"{}},\ \textcolor{stringliteral}{"{}quantity"{}},\ \textcolor{stringliteral}{"{}side"{}},\ \textcolor{stringliteral}{"{}time"{}}]}
+\DoxyCodeLine{live\_buy\_order\_headers\ =\ [\textcolor{stringliteral}{"{}order\_id"{}},\ \textcolor{stringliteral}{"{}order\_type"{}},\ \textcolor{stringliteral}{"{}price"{}},\ \textcolor{stringliteral}{"{}quantity"{}},\ \textcolor{stringliteral}{"{}side"{}},\ \textcolor{stringliteral}{"{}time"{}}]}
+\DoxyCodeLine{}
+\DoxyCodeLine{refresh\_data()}
+\DoxyCodeLine{}
+\DoxyCodeLine{root.mainloop()}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md14}{}\doxysubsection{\texorpdfstring{GUI for Adding Orders}{GUI for Adding Orders}}\label{index_autotoc_md14}
+A Python GUI to add orders to the order book using Tkinter\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{keyword}{import}\ tkinter\ \textcolor{keyword}{as}\ tk}
+\DoxyCodeLine{\textcolor{keyword}{from}\ tkinter\ \textcolor{keyword}{import}\ messagebox}
+\DoxyCodeLine{\textcolor{keyword}{import}\ orderbook\ \ \textcolor{comment}{\#\ Made\ via\ pybind}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keyword}{class\ }OrderEntryGUI:}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self,\ master):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.master\ =\ master}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.orderbook\ =\ orderbook.Orderbook()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.order\_id\_counter\ =\ 0}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.order\_type\_mapping\ =\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'GoodTillCancel'}:\ 1,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'FillAndKill'}:\ 2,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'Market'}:\ 3,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'GoodForDay'}:\ 4,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{'FillOrKill'}:\ 5}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.type\_var\ =\ tk.StringVar(master)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.side\_var\ =\ tk.StringVar(master)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.price\_entry\ =\ tk.Entry(master)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.qty\_entry\ =\ tk.Entry(master)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.create\_widgets()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }create\_widgets(self):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.Label(self.master,\ text=\textcolor{stringliteral}{"{}Type"{}}).grid(row=0,\ column=0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.Label(self.master,\ text=\textcolor{stringliteral}{"{}Side"{}}).grid(row=1,\ column=0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.Label(self.master,\ text=\textcolor{stringliteral}{"{}Price"{}}).grid(row=2,\ column=0)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.Label(self.master,\ text=\textcolor{stringliteral}{"{}Quantity"{}}).grid(row=3,\ column=0)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ types\ =\ [\textcolor{stringliteral}{'GoodTillCancel'},\ \textcolor{stringliteral}{'FillAndKill'},\ \textcolor{stringliteral}{'Market'},\ \textcolor{stringliteral}{'GoodForDay'},\ \textcolor{stringliteral}{'FillOrKill'}]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.OptionMenu(self.master,\ self.type\_var,\ *types).grid(row=0,\ column=1)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ sides\ =\ [\textcolor{stringliteral}{'Buy'},\ \textcolor{stringliteral}{'Sell'}]}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.OptionMenu(self.master,\ self.side\_var,\ *sides).grid(row=1,\ column=1)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.price\_entry.grid(row=2,\ column=1)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.qty\_entry.grid(row=3,\ column=1)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.Button(self.master,\ text=\textcolor{stringliteral}{"{}Add\ Order"{}},\ command=self.add\_order).grid(row=4,\ column=0,\ columnspan=2)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ tk.Button(self.master,\ text=\textcolor{stringliteral}{"{}Reset"{}},\ command=self.reset).grid(row=5,\ column=0,\ columnspan=2)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }add\_order(self):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ order\_type\_str\ =\ self.type\_var.get()}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ order\_type\ =\ self.order\_type\_mapping.get(order\_type\_str)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ side\ =\ self.side\_var.get()}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ price\ =\ int(self.price\_entry.get())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ qty\ =\ int(self.qty\_entry.get())}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ ValueError:}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ messagebox.showerror(\textcolor{stringliteral}{"{}Error"{}},\ \textcolor{stringliteral}{"{}Price\ and\ quantity\ must\ be\ numbers."{}})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ order\_id\ =\ self.order\_id\_counter}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.order\_id\_counter\ +=\ 1}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.orderbook.\mbox{\hyperlink{namespaceadd_order}{addOrder}}(order\_type,\ order\_id,\ 1\ \textcolor{keywordflow}{if}\ side\ ==\ \textcolor{stringliteral}{'Buy'}\ \textcolor{keywordflow}{else}\ 2,\ price,\ qty)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ print(\textcolor{stringliteral}{"{}Order\ added:"{}},\ order\_type\_str,\ order\_id,\ side,\ price,\ qty)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ messagebox.showinfo(\textcolor{stringliteral}{"{}Order\ Added"{}},\ \textcolor{stringliteral}{"{}Order\ added\ successfully."{}})}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.type\_var.set(\textcolor{stringliteral}{''})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.side\_var.set(\textcolor{stringliteral}{''})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.price\_entry.delete(0,\ tk.END)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.qty\_entry.delete(0,\ tk.END)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{def\ }reset(self):}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.type\_var.set(\textcolor{stringliteral}{''})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.side\_var.set(\textcolor{stringliteral}{''})}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.price\_entry.delete(0,\ tk.END)}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ self.qty\_entry.delete(0,\ tk.END)}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordflow}{if}\ \_\_name\_\_\ ==\ \textcolor{stringliteral}{"{}\_\_main\_\_"{}}:}
+\DoxyCodeLine{\ \ \ \ root\ =\ tk.Tk()}
+\DoxyCodeLine{\ \ \ \ root.title(\textcolor{stringliteral}{"{}Order\ Entry"{}})}
+\DoxyCodeLine{\ \ \ \ app\ =\ OrderEntryGUI(root)}
+\DoxyCodeLine{\ \ \ \ root.mainloop()}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md15}{}\doxysection{\texorpdfstring{Usage}{Usage}}\label{index_autotoc_md15}
+\hypertarget{index_autotoc_md16}{}\doxysubsection{\texorpdfstring{Example}{Example}}\label{index_autotoc_md16}
+Here\textquotesingle{}s a simple example of how to use the order book\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Orderbook.h"{}}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{_orderbook_sim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{class_orderbook}{Orderbook}}\ orderbook;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ orderId\ =\ 1;}
+\DoxyCodeLine{\ \ \ \ orderbook.\mbox{\hyperlink{class_orderbook_aa8ee3a736e8a72797565fdc645361c77}{addOrder}}(std::make\_shared<Order>(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418afcf8eb033b88c617c04f00c00cbc734e}{OrderType::GoodTillCancel}},\ orderId,\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a831a28f1e8df07c553fcd59546465d13}{Side::Buy}},\ 100,\ 10));}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Orderbook\ size:\ "{}}\ <<\ orderbook.Size()\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ orderbook.CancelOrder(orderId);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Orderbook\ size\ after\ cancellation:\ "{}}\ <<\ orderbook.Size()\ <<\ std::endl;}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md17}{}\doxysubsection{\texorpdfstring{Simulation}{Simulation}}\label{index_autotoc_md17}
+The {\ttfamily \doxylink{_orderbook_sim_8cpp}{Orderbook\+Sim.\+cpp}} file contains the main function and a simulation function {\ttfamily random\+Order\+Simulation} to generate random orders\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ "{}Orderbook.h"{}}}
+\DoxyCodeLine{\textcolor{preprocessor}{\#include\ <random>}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{_orderbook_sim_8cpp_ae52fcd22aaaf890f8cc082e7b5f1088e}{randomOrderSimulation}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{int}\ \mbox{\hyperlink{_orderbook_sim_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}}()\ \{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n\ =\ 1000;}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{_orderbook_sim_8cpp_ae52fcd22aaaf890f8cc082e7b5f1088e}{randomOrderSimulation}}(n);}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{}
+\DoxyCodeLine{}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\textcolor{keywordtype}{void}\ \mbox{\hyperlink{_orderbook_sim_8cpp_ae52fcd22aaaf890f8cc082e7b5f1088e}{randomOrderSimulation}}(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ n)\ \{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{class_orderbook}{Orderbook}}\ orderbook;}
+\DoxyCodeLine{\ \ \ \ std::random\_device\ rd;}
+\DoxyCodeLine{\ \ \ \ std::mt19937\ gen(rd());}
+\DoxyCodeLine{\ \ \ \ std::uniform\_int\_distribution<>\ type(1,\ 5);}
+\DoxyCodeLine{\ \ \ \ std::uniform\_int\_distribution<>\ side(1,\ 100);}
+\DoxyCodeLine{\ \ \ \ std::uniform\_int\_distribution<>\ price(1,\ 500);}
+\DoxyCodeLine{\ \ \ \ std::uniform\_int\_distribution<>\ quantity(1,\ 500);}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{for}\ (\textcolor{keywordtype}{int}\ i\ =\ 0;\ i\ <\ n;\ i++)\ \{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ orderbook.addOrder(intToOrderType(type(gen)),\ i,\ side(gen)\ ==\ 1\ ?\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a831a28f1e8df07c553fcd59546465d13}{Side::Buy}}\ :\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00a3068c5a98c003498f1fec0c489212e8b}{Side::Sell}},\ price(gen),\ quantity(gen));}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{}
+\DoxyCodeLine{\ \ \ \ orderbook.printAllOrders();}
+\DoxyCodeLine{\ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}OrderBook\ Size:\ "{}}\ <<\ orderbook.Size()\ <<\ std::endl;}
+\DoxyCodeLine{\}}
+
+\end{DoxyCode}
+\hypertarget{index_autotoc_md18}{}\doxysubsection{\texorpdfstring{Neural Network Price Prediction}{Neural Network Price Prediction}}\label{index_autotoc_md18}
+To use the neural network for predicting sell prices, you need to provide training data and configure the network parameters. The neural network implementation is integrated into the project to enhance the simulation\textquotesingle{}s predictive capabilities.\hypertarget{index_autotoc_md19}{}\doxysection{\texorpdfstring{Dependencies}{Dependencies}}\label{index_autotoc_md19}
+The project relies on standard C++ libraries and includes the Google Test framework for testing purposes.\hypertarget{index_autotoc_md20}{}\doxysection{\texorpdfstring{Testing}{Testing}}\label{index_autotoc_md20}
+The project includes comprehensive unit tests implemented using the Google Test framework to ensure correctness and reliability. To run the tests, use the following file\+:
+
+
+\begin{DoxyItemize}
+\item {\ttfamily \doxylink{test_8cpp}{test.\+cpp}}
+\end{DoxyItemize}\hypertarget{index_autotoc_md21}{}\doxysection{\texorpdfstring{Contributing}{Contributing}}\label{index_autotoc_md21}
+Contributions are welcome! Feel free to open issues or pull requests for any improvements or bug fixes.\hypertarget{index_autotoc_md22}{}\doxysection{\texorpdfstring{License}{License}}\label{index_autotoc_md22}
+This project is licensed under the MIT License -\/ see the LICENSE file for details.\hypertarget{index_autotoc_md23}{}\doxysection{\texorpdfstring{Contact}{Contact}}\label{index_autotoc_md23}
+For any inquiries or feedback, please contact \mbox{[}\href{mailto:JideOyelayo1@Gmail.com}{\texttt{ Jide\+Oyelayo1@\+Gmail.\+com}}\mbox{]}. 

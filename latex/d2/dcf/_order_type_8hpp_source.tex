@@ -1,0 +1,39 @@
+\doxysection{Order\+Type.\+hpp}
+\hypertarget{_order_type_8hpp_source}{}\label{_order_type_8hpp_source}\index{OrderbookSim/OrderType.hpp@{OrderbookSim/OrderType.hpp}}
+\mbox{\hyperlink{_order_type_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00018\ \textcolor{keyword}{enum\ class}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ \{}
+\DoxyCodeLine{00019\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418afcf8eb033b88c617c04f00c00cbc734e}{GoodTillCancel}},\ \ \ }
+\DoxyCodeLine{00020\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aecbd0e0c1a29b254d42a648d45b65fb9}{FillAndKill}},\ \ \ \ \ \ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418a31840a66a8d6d223e5b0540138768838}{Market}},\ \ \ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aba4a0e6c0bf4a4e1ac97580ed933f063}{GoodForDay}},\ \ \ \ \ \ \ }
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aaca8c369e3b611e1109cc77a7feaf872}{FillOrKill}}\ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00024\ \};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00034\ \textcolor{keyword}{inline}\ std::string\ \mbox{\hyperlink{_order_type_8hpp_a192f10a9a2f27d0b19f9156de4a3b6ee}{orderTypeToString}}(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type)\ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418afcf8eb033b88c617c04f00c00cbc734e}{OrderType::GoodTillCancel}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GoodTillCancel"{}};\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aecbd0e0c1a29b254d42a648d45b65fb9}{OrderType::FillAndKill}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}FillAndKill"{}};}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418a31840a66a8d6d223e5b0540138768838}{OrderType::Market}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Market"{}};}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aba4a0e6c0bf4a4e1ac97580ed933f063}{OrderType::GoodForDay}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}GoodForDay"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordflow}{case}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aaca8c369e3b611e1109cc77a7feaf872}{OrderType::FillOrKill}}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}FillOrKill"{}};}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \textcolor{stringliteral}{"{}Unknown"{}};}
+\DoxyCodeLine{00042\ \ \ \ \ \}}
+\DoxyCodeLine{00043\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{inline}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ \mbox{\hyperlink{_order_type_8hpp_a45b54c9e8c1e53ef77a5d2c89fb4e4c7}{intToOrdertType}}(\textcolor{keywordtype}{int}\ type)\ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordflow}{switch}\ (type)\ \{}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordflow}{case}\ 1:\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418afcf8eb033b88c617c04f00c00cbc734e}{OrderType::GoodTillCancel}};}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordflow}{case}\ 2:\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aecbd0e0c1a29b254d42a648d45b65fb9}{OrderType::FillAndKill}};}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordflow}{case}\ 3:\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418a31840a66a8d6d223e5b0540138768838}{OrderType::Market}};}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordflow}{case}\ 4:\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aba4a0e6c0bf4a4e1ac97580ed933f063}{OrderType::GoodForDay}};}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordflow}{case}\ 5:\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418aaca8c369e3b611e1109cc77a7feaf872}{OrderType::FillOrKill}};}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordflow}{default}:\ \textcolor{keywordflow}{return}\ \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418afcf8eb033b88c617c04f00c00cbc734e}{OrderType::GoodTillCancel}};}
+\DoxyCodeLine{00062\ \ \ \ \ \}}
+\DoxyCodeLine{00063\ \}}
+
+\end{DoxyCode}

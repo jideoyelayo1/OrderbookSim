@@ -1,0 +1,272 @@
+\doxysection{Order Class Reference}
+\hypertarget{class_order}{}\label{class_order}\index{Order@{Order}}
+
+
+Represents a trading order with attributes and functionality to manage its state.  
+
+
+
+
+{\ttfamily \#include $<$Order.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_order_a028ba0cdfe5555f61da0fa8d53fdfbfd}{Order}} (\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}} type, \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} id, \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} side, \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} price, \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} qty)
+\begin{DoxyCompactList}\small\item\em Constructs an order with specified type, ID, side, price, and quantity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_order_ab02f71c29d4691be51e2596994c53255}{Order}} (\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} order\+Id, \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} side, \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} quantity)
+\begin{DoxyCompactList}\small\item\em Constructs a market order with specified ID, side, and quantity. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} \mbox{\hyperlink{class_order_a90585a4d11846c5b6dc3a808847494fb}{get\+Order\+Id}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the unique ID of the order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}} \mbox{\hyperlink{class_order_a04619a9805550d70c3b47773422826e2}{get\+Order\+Type}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the type of the order (e.\+g., Market, Good\+Till\+Cancel). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} \mbox{\hyperlink{class_order_a266702a73501ecdf281f8d7727e558f3}{get\+Side}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the side of the order (Buy or Sell). \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} \mbox{\hyperlink{class_order_af26b59ca7d846124831a03bf735c7b94}{get\+Price}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the price of the order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} \mbox{\hyperlink{class_order_ab39e7dee503eb6536a9db2f0212533bd}{get\+Initial\+Qty}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the initial quantity of the order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} \mbox{\hyperlink{class_order_a679649bd8e91b8da06492828659545fe}{get\+Qty}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the current quantity of the order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} \mbox{\hyperlink{class_order_a8b3897b09a63c02fb6c4f0f4034f604b}{get\+Remaining\+Qty}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the remaining quantity of the order. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} \mbox{\hyperlink{class_order_a6b38f224103e2f62af53840118d0476f}{get\+Filled\+Qty}} () const
+\begin{DoxyCompactList}\small\item\em Retrieves the filled quantity of the order. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_order_a9cc60ef92e158809ce99475b3adf3d59}{is\+Filled}} () const
+\begin{DoxyCompactList}\small\item\em Checks if the order is fully filled. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_a94a958f4f5b62ee8d01af084e515b9f5}{Fill}} (\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} qty)
+\begin{DoxyCompactList}\small\item\em Fills the order by a specified quantity. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_order_ad9e26bc403cef408a1283641c2319984}{to\+Good\+Till\+Cancel}} (\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} price)
+\begin{DoxyCompactList}\small\item\em Converts a market order to a Good Till Cancel order with a specified price. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a trading order with attributes and functionality to manage its state. 
+
+The \doxylink{class_order}{Order} class stores details of an order such as its type, ID, side (buy/sell), price, and quantities (initial, remaining, and filled). It provides methods for retrieving these details, filling the order, and adjusting its state. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_order_a028ba0cdfe5555f61da0fa8d53fdfbfd}\index{Order@{Order}!Order@{Order}}
+\index{Order@{Order}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_order_a028ba0cdfe5555f61da0fa8d53fdfbfd} 
+Order\+::\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}}}]{type}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{id}{, }\item[{\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}}]{side}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}}]{price}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{qty}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs an order with specified type, ID, side, price, and quantity. 
+
+Initializes an order with the specified attributes and sets the initial and remaining quantities to the specified quantity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em type} & The type of the order (e.\+g., Market, Good\+Till\+Cancel). \\
+\hline
+{\em id} & The unique identifier for the order. \\
+\hline
+{\em side} & The side of the order (Buy or Sell). \\
+\hline
+{\em price} & The price of the order. \\
+\hline
+{\em qty} & The quantity of the order. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_order_ab02f71c29d4691be51e2596994c53255}\index{Order@{Order}!Order@{Order}}
+\index{Order@{Order}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{Order()}{Order()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_order_ab02f71c29d4691be51e2596994c53255} 
+Order\+::\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{order\+Id}{, }\item[{\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}}]{side}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{quantity}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Constructs a market order with specified ID, side, and quantity. 
+
+This constructor initializes a market order with the specified ID, side, and quantity, setting the price to an invalid state.
+
+
+\begin{DoxyParams}{Parameters}
+{\em order\+Id} & The unique identifier for the order. \\
+\hline
+{\em side} & The side of the order (Buy or Sell). \\
+\hline
+{\em quantity} & The quantity of the order. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_order_a94a958f4f5b62ee8d01af084e515b9f5}\index{Order@{Order}!Fill@{Fill}}
+\index{Fill@{Fill}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{Fill()}{Fill()}}
+{\footnotesize\ttfamily \label{class_order_a94a958f4f5b62ee8d01af084e515b9f5} 
+void Order\+::\+Fill (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{qty}{}\end{DoxyParamCaption})}
+
+
+
+Fills the order by a specified quantity. 
+
+Reduces the remaining quantity by the specified amount. If the quantity exceeds the remaining quantity, an exception is thrown.
+
+
+\begin{DoxyParams}{Parameters}
+{\em qty} & The quantity by which to fill the order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::logic\+\_\+error} & if the specified quantity exceeds the remaining quantity. \\
+\hline
+\end{DoxyExceptions}
+\Hypertarget{class_order_a6b38f224103e2f62af53840118d0476f}\index{Order@{Order}!getFilledQty@{getFilledQty}}
+\index{getFilledQty@{getFilledQty}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getFilledQty()}{getFilledQty()}}
+{\footnotesize\ttfamily \label{class_order_a6b38f224103e2f62af53840118d0476f} 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} Order\+::get\+Filled\+Qty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the filled quantity of the order. 
+
+This represents the difference between the initial quantity and the remaining quantity.
+
+\begin{DoxyReturn}{Returns}
+The quantity of the order that has been filled. 
+\end{DoxyReturn}
+\Hypertarget{class_order_ab39e7dee503eb6536a9db2f0212533bd}\index{Order@{Order}!getInitialQty@{getInitialQty}}
+\index{getInitialQty@{getInitialQty}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getInitialQty()}{getInitialQty()}}
+{\footnotesize\ttfamily \label{class_order_ab39e7dee503eb6536a9db2f0212533bd} 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} Order\+::get\+Initial\+Qty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the initial quantity of the order. 
+
+This represents the original quantity specified when the order was created.
+
+\begin{DoxyReturn}{Returns}
+The initial quantity of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_a90585a4d11846c5b6dc3a808847494fb}\index{Order@{Order}!getOrderId@{getOrderId}}
+\index{getOrderId@{getOrderId}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getOrderId()}{getOrderId()}}
+{\footnotesize\ttfamily \label{class_order_a90585a4d11846c5b6dc3a808847494fb} 
+\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} Order\+::get\+Order\+Id (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the unique ID of the order. 
+
+\begin{DoxyReturn}{Returns}
+The ID of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_a04619a9805550d70c3b47773422826e2}\index{Order@{Order}!getOrderType@{getOrderType}}
+\index{getOrderType@{getOrderType}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getOrderType()}{getOrderType()}}
+{\footnotesize\ttfamily \label{class_order_a04619a9805550d70c3b47773422826e2} 
+\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}} Order\+::get\+Order\+Type (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the type of the order (e.\+g., Market, Good\+Till\+Cancel). 
+
+\begin{DoxyReturn}{Returns}
+The type of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_af26b59ca7d846124831a03bf735c7b94}\index{Order@{Order}!getPrice@{getPrice}}
+\index{getPrice@{getPrice}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getPrice()}{getPrice()}}
+{\footnotesize\ttfamily \label{class_order_af26b59ca7d846124831a03bf735c7b94} 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} Order\+::get\+Price (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the price of the order. 
+
+\begin{DoxyReturn}{Returns}
+The price of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_a679649bd8e91b8da06492828659545fe}\index{Order@{Order}!getQty@{getQty}}
+\index{getQty@{getQty}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getQty()}{getQty()}}
+{\footnotesize\ttfamily \label{class_order_a679649bd8e91b8da06492828659545fe} 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} Order\+::get\+Qty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the current quantity of the order. 
+
+This value may change if the order is partially filled.
+
+\begin{DoxyReturn}{Returns}
+The current quantity of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_a8b3897b09a63c02fb6c4f0f4034f604b}\index{Order@{Order}!getRemainingQty@{getRemainingQty}}
+\index{getRemainingQty@{getRemainingQty}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getRemainingQty()}{getRemainingQty()}}
+{\footnotesize\ttfamily \label{class_order_a8b3897b09a63c02fb6c4f0f4034f604b} 
+\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} Order\+::get\+Remaining\+Qty (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the remaining quantity of the order. 
+
+This represents the unfilled portion of the order.
+
+\begin{DoxyReturn}{Returns}
+The remaining quantity of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_a266702a73501ecdf281f8d7727e558f3}\index{Order@{Order}!getSide@{getSide}}
+\index{getSide@{getSide}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{getSide()}{getSide()}}
+{\footnotesize\ttfamily \label{class_order_a266702a73501ecdf281f8d7727e558f3} 
+\mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} Order\+::get\+Side (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Retrieves the side of the order (Buy or Sell). 
+
+\begin{DoxyReturn}{Returns}
+The side of the order. 
+\end{DoxyReturn}
+\Hypertarget{class_order_a9cc60ef92e158809ce99475b3adf3d59}\index{Order@{Order}!isFilled@{isFilled}}
+\index{isFilled@{isFilled}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{isFilled()}{isFilled()}}
+{\footnotesize\ttfamily \label{class_order_a9cc60ef92e158809ce99475b3adf3d59} 
+bool Order\+::is\+Filled (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+
+
+Checks if the order is fully filled. 
+
+\begin{DoxyReturn}{Returns}
+True if the order is fully filled, false otherwise. 
+\end{DoxyReturn}
+\Hypertarget{class_order_ad9e26bc403cef408a1283641c2319984}\index{Order@{Order}!toGoodTillCancel@{toGoodTillCancel}}
+\index{toGoodTillCancel@{toGoodTillCancel}!Order@{Order}}
+\doxysubsubsection{\texorpdfstring{toGoodTillCancel()}{toGoodTillCancel()}}
+{\footnotesize\ttfamily \label{class_order_ad9e26bc403cef408a1283641c2319984} 
+void Order\+::to\+Good\+Till\+Cancel (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}}]{price}{}\end{DoxyParamCaption})}
+
+
+
+Converts a market order to a Good Till Cancel order with a specified price. 
+
+Changes the order type to Good\+Till\+Cancel and sets the price. Only market orders can be converted; otherwise, an exception is thrown.
+
+
+\begin{DoxyParams}{Parameters}
+{\em price} & The price to set for the Good Till Cancel order. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em std\+::logic\+\_\+error} & if the order is not a market order. \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orderbook\+Sim/\mbox{\hyperlink{_order_8hpp}{Order.\+hpp}}\item 
+Orderbook\+Sim/\mbox{\hyperlink{_order_8cpp}{Order.\+cpp}}\end{DoxyCompactItemize}

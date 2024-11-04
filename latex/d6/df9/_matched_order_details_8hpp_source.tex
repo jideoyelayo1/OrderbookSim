@@ -1,0 +1,44 @@
+\doxysection{Matched\+Order\+Details.\+hpp}
+\hypertarget{_matched_order_details_8hpp_source}{}\label{_matched_order_details_8hpp_source}\index{OrderbookSim/MatchedOrderDetails.hpp@{OrderbookSim/MatchedOrderDetails.hpp}}
+\mbox{\hyperlink{_matched_order_details_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ }
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ <chrono>}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ <sstream>}\ \ \textcolor{comment}{//\ For\ std::ostringstream}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ <iomanip>}\ \ \textcolor{comment}{//\ For\ std::put\_time}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_type_8hpp}{OrderType.hpp}}"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_side_8hpp}{Side.hpp}}"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_usings_8hpp}{Usings.hpp}}"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_constants_8hpp}{Constants.hpp}}"{}}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ }\mbox{\hyperlink{_matched_order_details_8hpp_ad7fbaa367981ede1836a80a5846487f5}{timeChrono}}\ =\ std::chrono::system\_clock::time\_point;}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_matched_order_detail}{MatchedOrderDetail}}\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00032\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \_price;\ \ \ \ \ \ \ }
+\DoxyCodeLine{00033\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_quantity;\ }
+\DoxyCodeLine{00034\ \ \ \ \ \mbox{\hyperlink{_matched_order_details_8hpp_ad7fbaa367981ede1836a80a5846487f5}{timeChrono}}\ \_time;\ \ \ }
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \mbox{\hyperlink{class_matched_order_detail_a410452d2a2883649317fd47b3f3a23fe}{MatchedOrderDetail}}(\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ qty)\ :\ \_price\{\ price\ \},\ \_quantity\{\ qty\ \}\ \{}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \_time\ =\ std::chrono::system\_clock::now();}
+\DoxyCodeLine{00048\ \ \ \ \ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00054\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_matched_order_detail_add0e55daba75c512f1b1fdfd4b484a2f}{getPrice}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_price;\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \mbox{\hyperlink{class_matched_order_detail_a446fc05fd8d8e0349397e15c1e03dd4f}{getQuantity}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_quantity;\ \}}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00069\ \ \ \ \ std::string\ \mbox{\hyperlink{class_matched_order_detail_a2b95045e58de34529bbdfcf118179845}{getTime}}()\textcolor{keyword}{\ const\ }\{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ std::time\_t\ timeT\ =\ std::chrono::system\_clock::to\_time\_t(\_time);}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ std::tm\ tm;}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ localtime\_s(\&tm,\ \&timeT);\ \ \textcolor{comment}{//\ Use\ localtime\_s\ instead\ of\ localtime\ for\ thread\ safety}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ std::ostringstream\ oss;}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ oss\ <<\ std::put\_time(\&tm,\ \textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}});}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ oss.str();}
+\DoxyCodeLine{00076\ \ \ \ \ \}}
+\DoxyCodeLine{00077\ \};}
+
+\end{DoxyCode}

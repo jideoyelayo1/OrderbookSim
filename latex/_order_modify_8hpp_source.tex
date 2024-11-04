@@ -1,0 +1,38 @@
+\doxysection{Order\+Modify.\+hpp}
+\hypertarget{_order_modify_8hpp_source}{}\label{_order_modify_8hpp_source}\index{OrderbookSim/OrderModify.hpp@{OrderbookSim/OrderModify.hpp}}
+\mbox{\hyperlink{_order_modify_8hpp}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}\mbox{\hyperlink{_order_8hpp}{Order.hpp}}"{}}}
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <memory>}\ }
+\DoxyCodeLine{00005\ }
+\DoxyCodeLine{00006\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_order_modify}{OrderModify}}}
+\DoxyCodeLine{00007\ \{}
+\DoxyCodeLine{00008\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00009\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \_orderId;}
+\DoxyCodeLine{00010\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \_price;}
+\DoxyCodeLine{00011\ \ \ \ \ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ \_side;}
+\DoxyCodeLine{00012\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \_quantity;}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \mbox{\hyperlink{class_order_modify_a6d5e86fd80300c4fc1b1a6e58667b180}{OrderModify}}(\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ orderId,\ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ side,\ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ price,\ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ quantity)}
+\DoxyCodeLine{00015\ \ \ \ \ \ \ \ \ :\ \_orderId\{\ orderId\ \}}
+\DoxyCodeLine{00016\ \ \ \ \ \ \ \ \ ,\ \_price\{\ price\ \}}
+\DoxyCodeLine{00017\ \ \ \ \ \ \ \ \ ,\ \_side\{\ side\ \}}
+\DoxyCodeLine{00018\ \ \ \ \ \ \ \ \ ,\ \_quantity\{\ quantity\ \}}
+\DoxyCodeLine{00019\ \ \ \ \ \{\ \}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{OrderId}}\ \mbox{\hyperlink{class_order_modify_a692c19566738eaf577ec4f667370959e}{getOrderId}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_orderId;\ \}}
+\DoxyCodeLine{00022\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}\ \mbox{\hyperlink{class_order_modify_a903f882864e3fe4b21a0e016aeaf9407}{getPrice}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_price;\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}\ \mbox{\hyperlink{class_order_modify_ac0fcb75b47104378bad02ffe65874c38}{getSide}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_side;\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}\ \mbox{\hyperlink{class_order_modify_af4e374438daf088084a1c9321f530c00}{getQuantity}}()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ \_quantity;\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \mbox{\hyperlink{_order_8hpp_abd4d2b4dd984ef7a42731f33c665be3e}{OrderPtr}}\ \mbox{\hyperlink{class_order_modify_a5437e58124c8d3c858aa4501b673b456}{toOrderPtr}}(\mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{OrderType}}\ type)\textcolor{keyword}{\ const}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{\ \ \ \ }\{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ std::make\_shared<Order>(type,\ \mbox{\hyperlink{class_order_modify_a692c19566738eaf577ec4f667370959e}{getOrderId}}(),\ \mbox{\hyperlink{class_order_modify_ac0fcb75b47104378bad02ffe65874c38}{getSide}}(),\ \mbox{\hyperlink{class_order_modify_a903f882864e3fe4b21a0e016aeaf9407}{getPrice}}(),\ \mbox{\hyperlink{class_order_modify_af4e374438daf088084a1c9321f530c00}{getQuantity}}());}
+\DoxyCodeLine{00029\ \ \ \ \ \}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \};}
+
+\end{DoxyCode}

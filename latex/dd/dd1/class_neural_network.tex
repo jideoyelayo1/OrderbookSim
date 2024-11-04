@@ -1,0 +1,111 @@
+\doxysection{Neural\+Network Class Reference}
+\hypertarget{class_neural_network}{}\label{class_neural_network}\index{NeuralNetwork@{NeuralNetwork}}
+
+
+Manages a neural network\textquotesingle{}s structure, data, and training process.  
+
+
+
+
+{\ttfamily \#include $<$Neural\+Network.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_neural_network_ad82b854462d9f95b88ab16fc732a3cad}{Neural\+Network}} ()=default
+\begin{DoxyCompactList}\small\item\em Default constructor for the \doxylink{class_neural_network}{Neural\+Network} class. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_neural_network_a27f6289789e3b1eb34ce393b96f5bd88}{load\+Togology}} (const std\+::vector$<$ unsigned $>$ \&topology)
+\begin{DoxyCompactList}\small\item\em Loads the topology of the neural network. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_neural_network_a8268eb1c86d0eee375f1b9a1e5bd893b}{Run}} (std\+::vector$<$ double $>$ \&input\+Vals, std\+::vector$<$ double $>$ \&target\+Vals, std\+::vector$<$ double $>$ \&result\+Vals)
+\begin{DoxyCompactList}\small\item\em Runs a single training pass through the network. \end{DoxyCompactList}\item 
+std\+::vector$<$ double $>$ \mbox{\hyperlink{class_neural_network_a6a2957fb4aec6cfbb80589916931d5c8}{Run\+With\+Return}} (std\+::vector$<$ double $>$ \&input\+Vals, std\+::vector$<$ double $>$ \&target\+Vals, std\+::vector$<$ double $>$ \&result\+Vals)
+\begin{DoxyCompactList}\small\item\em Runs the network with input and target values, and returns the result. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Manages a neural network\textquotesingle{}s structure, data, and training process. 
+
+The \doxylink{class_neural_network}{Neural\+Network} class provides functionality to set up the network topology, run the network with input and target values, and retrieve the results. It acts as a high-\/level manager for the neural network operations. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_neural_network_ad82b854462d9f95b88ab16fc732a3cad}\index{NeuralNetwork@{NeuralNetwork}!NeuralNetwork@{NeuralNetwork}}
+\index{NeuralNetwork@{NeuralNetwork}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{NeuralNetwork()}{NeuralNetwork()}}
+{\footnotesize\ttfamily \label{class_neural_network_ad82b854462d9f95b88ab16fc732a3cad} 
+Neural\+Network\+::\+Neural\+Network (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [default]}}
+
+
+
+Default constructor for the \doxylink{class_neural_network}{Neural\+Network} class. 
+
+Initializes an empty \doxylink{class_neural_network}{Neural\+Network} object. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_neural_network_a27f6289789e3b1eb34ce393b96f5bd88}\index{NeuralNetwork@{NeuralNetwork}!loadTogology@{loadTogology}}
+\index{loadTogology@{loadTogology}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{loadTogology()}{loadTogology()}}
+{\footnotesize\ttfamily \label{class_neural_network_a27f6289789e3b1eb34ce393b96f5bd88} 
+void Neural\+Network\+::load\+Togology (\begin{DoxyParamCaption}\item[{const std\+::vector$<$ unsigned $>$ \&}]{topology}{}\end{DoxyParamCaption})}
+
+
+
+Loads the topology of the neural network. 
+
+Sets up the network structure based on the provided topology, where each element in the vector specifies the number of neurons in each layer.
+
+
+\begin{DoxyParams}{Parameters}
+{\em topology} & A vector representing the number of neurons in each layer of the network. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_neural_network_a8268eb1c86d0eee375f1b9a1e5bd893b}\index{NeuralNetwork@{NeuralNetwork}!Run@{Run}}
+\index{Run@{Run}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{Run()}{Run()}}
+{\footnotesize\ttfamily \label{class_neural_network_a8268eb1c86d0eee375f1b9a1e5bd893b} 
+void Neural\+Network\+::\+Run (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{input\+Vals}{, }\item[{std\+::vector$<$ double $>$ \&}]{target\+Vals}{, }\item[{std\+::vector$<$ double $>$ \&}]{result\+Vals}{}\end{DoxyParamCaption})}
+
+
+
+Runs a single training pass through the network. 
+
+This function performs forward propagation with the input values, retrieves the results, and then executes backpropagation with the target values to adjust weights.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Vals} & A vector containing input values for the network. \\
+\hline
+{\em target\+Vals} & A vector containing target values for the network\textquotesingle{}s output neurons. \\
+\hline
+{\em result\+Vals} & A vector to store the output values produced by the network. \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_neural_network_a6a2957fb4aec6cfbb80589916931d5c8}\index{NeuralNetwork@{NeuralNetwork}!RunWithReturn@{RunWithReturn}}
+\index{RunWithReturn@{RunWithReturn}!NeuralNetwork@{NeuralNetwork}}
+\doxysubsubsection{\texorpdfstring{RunWithReturn()}{RunWithReturn()}}
+{\footnotesize\ttfamily \label{class_neural_network_a6a2957fb4aec6cfbb80589916931d5c8} 
+std\+::vector$<$ double $>$ Neural\+Network\+::\+Run\+With\+Return (\begin{DoxyParamCaption}\item[{std\+::vector$<$ double $>$ \&}]{input\+Vals}{, }\item[{std\+::vector$<$ double $>$ \&}]{target\+Vals}{, }\item[{std\+::vector$<$ double $>$ \&}]{result\+Vals}{}\end{DoxyParamCaption})}
+
+
+
+Runs the network with input and target values, and returns the result. 
+
+This function is similar to Run but also returns the result values vector. It performs forward and backward propagation to adjust network weights.
+
+
+\begin{DoxyParams}{Parameters}
+{\em input\+Vals} & A vector containing input values for the network. \\
+\hline
+{\em target\+Vals} & A vector containing target values for the network\textquotesingle{}s output neurons. \\
+\hline
+{\em result\+Vals} & A vector to store the output values produced by the network. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A vector containing the output values from the network after running. 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orderbook\+Sim/\mbox{\hyperlink{_neural_network_8hpp}{Neural\+Network.\+hpp}}\item 
+Orderbook\+Sim/\mbox{\hyperlink{_neural_network_8cpp}{Neural\+Network.\+cpp}}\end{DoxyCompactItemize}

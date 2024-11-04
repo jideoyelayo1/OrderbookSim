@@ -1,0 +1,187 @@
+\doxysection{Order\+Detail\+History Class Reference}
+\hypertarget{class_order_detail_history}{}\label{class_order_detail_history}\index{OrderDetailHistory@{OrderDetailHistory}}
+
+
+{\ttfamily \#include $<$Order\+Detail\+History.\+hpp$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_order_detail_history_a1ca9243f646c0f0b3f48c986b75256c6}{Order\+Detail\+History}} ()
+\item 
+int \mbox{\hyperlink{class_order_detail_history_a8c6d46b597381a834d361ee510839c93}{buy\+History\+Size}} () const
+\item 
+int \mbox{\hyperlink{class_order_detail_history_a6bed3ea20f7b2f16e453fcb5dfed9fd1}{sell\+History\+Size}} () const
+\item 
+int \mbox{\hyperlink{class_order_detail_history_add68962f12a00beadf15c2d3f19f2838}{purchase\+History\+Size}} () const
+\item 
+void \mbox{\hyperlink{class_order_detail_history_addcc5e1737508a1974689610d20d4c27}{update\+Neutral\+Network}} (\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} price, \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} quantity)
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a65eb92a2eb981e3e765ee7e98c00f112}{add\+Order\+To\+History}} (const \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}} type, const \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} id, const \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}} side, const \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} price, const \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} qty)
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a0209579741cc6ff09b61e37a4d2bda5e}{add\+Order\+To\+Purchase\+History}} (const \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} price, const \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}} qty)
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a40d7d4c3578d61c9f151b5cf38c45ce0}{save\+History\+To\+Json}} (const std\+::string \&buyfilename, const std\+::string \&sellfilename, const std\+::string \&purchasefilename)
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a8fa375dfc0626eb44346bb12ccd2b77c}{save\+History\+To\+Json}} (const std\+::string \&buyfilename="{}Buy\+History.\+json"{}, const std\+::string \&sellfilename="{}Sell\+History.\+json"{}, const std\+::string \&purchasefilename="{}Purchase\+History.\+json"{}, const std\+::string \&live\+Sell\+Orders\+Filename="{}Live\+Sell\+History.\+json"{}, const std\+::string \&buy\+Sell\+Orders\+Filename="{}Live\+Buy\+History.\+json"{})
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a022cf43ca89b41961555b35b38f55111}{remove\+Matched\+Order}} (const \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} bid\+Id, const \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} ask\+ID)
+\item 
+void \mbox{\hyperlink{class_order_detail_history_ab2a02f0281c6bcc0b9fda78f27d6f901}{\+\_\+print\+Sell\+History}} ()
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a6134431de80ddbe9281fa17306fcf30d}{\+\_\+print\+Buy\+History}} ()
+\item 
+void \mbox{\hyperlink{class_order_detail_history_ae1699409e402747d0249b4cacb69e08b}{\+\_\+print\+Purchase\+History}} ()
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a3e7da6ed4559a65e5f8eb7b7fa550efe}{\+\_\+print\+Live\+Orders}} ()
+\item 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} \mbox{\hyperlink{class_order_detail_history_ace0afa64e4e248705363c6e35fc9dbbc}{get\+VWAP}} ()
+\item 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} \mbox{\hyperlink{class_order_detail_history_a5e1420836e7f4fdd449e16774eed04cd}{get\+VWAP}} (int n)
+\item 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} \mbox{\hyperlink{class_order_detail_history_a7901c7d902a3e0412328432978781da0}{get\+Prediction}} ()
+\item 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}, \mbox{\hyperlink{class_order_detail}{Order\+Detail}} $>$ \mbox{\hyperlink{class_order_detail_history_a2125b507c1f6844d995b2ce67b63f340}{get\+Live\+Orders}} ()
+\item 
+void \mbox{\hyperlink{class_order_detail_history_a850bb8c0917adec18a552e7a093b0be2}{delete\+ALive\+Order}} (\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}} id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} \mbox{\hyperlink{class_order_detail_history_a0f61c9092fdc0a7ec354695cb122f0ff}{PRICESCALE}} = 500
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_order_detail_history_a1ca9243f646c0f0b3f48c986b75256c6}\index{OrderDetailHistory@{OrderDetailHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\index{OrderDetailHistory@{OrderDetailHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{OrderDetailHistory()}{OrderDetailHistory()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a1ca9243f646c0f0b3f48c986b75256c6} 
+Order\+Detail\+History\+::\+Order\+Detail\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_order_detail_history_a6134431de80ddbe9281fa17306fcf30d}\index{OrderDetailHistory@{OrderDetailHistory}!\_printBuyHistory@{\_printBuyHistory}}
+\index{\_printBuyHistory@{\_printBuyHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{\_printBuyHistory()}{\_printBuyHistory()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a6134431de80ddbe9281fa17306fcf30d} 
+void Order\+Detail\+History\+::\+\_\+print\+Buy\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a3e7da6ed4559a65e5f8eb7b7fa550efe}\index{OrderDetailHistory@{OrderDetailHistory}!\_printLiveOrders@{\_printLiveOrders}}
+\index{\_printLiveOrders@{\_printLiveOrders}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{\_printLiveOrders()}{\_printLiveOrders()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a3e7da6ed4559a65e5f8eb7b7fa550efe} 
+void Order\+Detail\+History\+::\+\_\+print\+Live\+Orders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_ae1699409e402747d0249b4cacb69e08b}\index{OrderDetailHistory@{OrderDetailHistory}!\_printPurchaseHistory@{\_printPurchaseHistory}}
+\index{\_printPurchaseHistory@{\_printPurchaseHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{\_printPurchaseHistory()}{\_printPurchaseHistory()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_ae1699409e402747d0249b4cacb69e08b} 
+void Order\+Detail\+History\+::\+\_\+print\+Purchase\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_ab2a02f0281c6bcc0b9fda78f27d6f901}\index{OrderDetailHistory@{OrderDetailHistory}!\_printSellHistory@{\_printSellHistory}}
+\index{\_printSellHistory@{\_printSellHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{\_printSellHistory()}{\_printSellHistory()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_ab2a02f0281c6bcc0b9fda78f27d6f901} 
+void Order\+Detail\+History\+::\+\_\+print\+Sell\+History (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a65eb92a2eb981e3e765ee7e98c00f112}\index{OrderDetailHistory@{OrderDetailHistory}!addOrderToHistory@{addOrderToHistory}}
+\index{addOrderToHistory@{addOrderToHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{addOrderToHistory()}{addOrderToHistory()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a65eb92a2eb981e3e765ee7e98c00f112} 
+void Order\+Detail\+History\+::add\+Order\+To\+History (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_order_type_8hpp_a57124e387290311f33f3b54a54930418}{Order\+Type}}}]{type}{, }\item[{const \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{id}{, }\item[{const \mbox{\hyperlink{_side_8hpp_a8c0137d7160ad71b6ed265c53c99ed00}{Side}}}]{side}{, }\item[{const \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}}]{price}{, }\item[{const \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{qty}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a0209579741cc6ff09b61e37a4d2bda5e}\index{OrderDetailHistory@{OrderDetailHistory}!addOrderToPurchaseHistory@{addOrderToPurchaseHistory}}
+\index{addOrderToPurchaseHistory@{addOrderToPurchaseHistory}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{addOrderToPurchaseHistory()}{addOrderToPurchaseHistory()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a0209579741cc6ff09b61e37a4d2bda5e} 
+void Order\+Detail\+History\+::add\+Order\+To\+Purchase\+History (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}}]{price}{, }\item[{const \mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{qty}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a8c6d46b597381a834d361ee510839c93}\index{OrderDetailHistory@{OrderDetailHistory}!buyHistorySize@{buyHistorySize}}
+\index{buyHistorySize@{buyHistorySize}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{buyHistorySize()}{buyHistorySize()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a8c6d46b597381a834d361ee510839c93} 
+int Order\+Detail\+History\+::buy\+History\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_order_detail_history_a850bb8c0917adec18a552e7a093b0be2}\index{OrderDetailHistory@{OrderDetailHistory}!deleteALiveOrder@{deleteALiveOrder}}
+\index{deleteALiveOrder@{deleteALiveOrder}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{deleteALiveOrder()}{deleteALiveOrder()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a850bb8c0917adec18a552e7a093b0be2} 
+void Order\+Detail\+History\+::delete\+ALive\+Order (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{id}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a2125b507c1f6844d995b2ce67b63f340}\index{OrderDetailHistory@{OrderDetailHistory}!getLiveOrders@{getLiveOrders}}
+\index{getLiveOrders@{getLiveOrders}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{getLiveOrders()}{getLiveOrders()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a2125b507c1f6844d995b2ce67b63f340} 
+std\+::unordered\+\_\+map$<$ \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}, \mbox{\hyperlink{class_order_detail}{Order\+Detail}} $>$ Order\+Detail\+History\+::get\+Live\+Orders (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a7901c7d902a3e0412328432978781da0}\index{OrderDetailHistory@{OrderDetailHistory}!getPrediction@{getPrediction}}
+\index{getPrediction@{getPrediction}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{getPrediction()}{getPrediction()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a7901c7d902a3e0412328432978781da0} 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} Order\+Detail\+History\+::get\+Prediction (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_ace0afa64e4e248705363c6e35fc9dbbc}\index{OrderDetailHistory@{OrderDetailHistory}!getVWAP@{getVWAP}}
+\index{getVWAP@{getVWAP}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{getVWAP()}{getVWAP()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_order_detail_history_ace0afa64e4e248705363c6e35fc9dbbc} 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} Order\+Detail\+History\+::get\+VWAP (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a5e1420836e7f4fdd449e16774eed04cd}\index{OrderDetailHistory@{OrderDetailHistory}!getVWAP@{getVWAP}}
+\index{getVWAP@{getVWAP}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{getVWAP()}{getVWAP()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a5e1420836e7f4fdd449e16774eed04cd} 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} Order\+Detail\+History\+::get\+VWAP (\begin{DoxyParamCaption}\item[{int}]{n}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_add68962f12a00beadf15c2d3f19f2838}\index{OrderDetailHistory@{OrderDetailHistory}!purchaseHistorySize@{purchaseHistorySize}}
+\index{purchaseHistorySize@{purchaseHistorySize}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{purchaseHistorySize()}{purchaseHistorySize()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_add68962f12a00beadf15c2d3f19f2838} 
+int Order\+Detail\+History\+::purchase\+History\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_order_detail_history_a022cf43ca89b41961555b35b38f55111}\index{OrderDetailHistory@{OrderDetailHistory}!removeMatchedOrder@{removeMatchedOrder}}
+\index{removeMatchedOrder@{removeMatchedOrder}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{removeMatchedOrder()}{removeMatchedOrder()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a022cf43ca89b41961555b35b38f55111} 
+void Order\+Detail\+History\+::remove\+Matched\+Order (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{bid\+Id}{, }\item[{const \mbox{\hyperlink{_usings_8hpp_a90716e500cb73455f03ac5b21fc7c219}{Order\+Id}}}]{ask\+ID}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a40d7d4c3578d61c9f151b5cf38c45ce0}\index{OrderDetailHistory@{OrderDetailHistory}!saveHistoryToJson@{saveHistoryToJson}}
+\index{saveHistoryToJson@{saveHistoryToJson}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{saveHistoryToJson()}{saveHistoryToJson()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a40d7d4c3578d61c9f151b5cf38c45ce0} 
+void Order\+Detail\+History\+::save\+History\+To\+Json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{buyfilename}{, }\item[{const std\+::string \&}]{sellfilename}{, }\item[{const std\+::string \&}]{purchasefilename}{}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a8fa375dfc0626eb44346bb12ccd2b77c}\index{OrderDetailHistory@{OrderDetailHistory}!saveHistoryToJson@{saveHistoryToJson}}
+\index{saveHistoryToJson@{saveHistoryToJson}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{saveHistoryToJson()}{saveHistoryToJson()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a8fa375dfc0626eb44346bb12ccd2b77c} 
+void Order\+Detail\+History\+::save\+History\+To\+Json (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{buyfilename}{ = {\ttfamily "{}BuyHistory.json"{}}, }\item[{const std\+::string \&}]{sellfilename}{ = {\ttfamily "{}SellHistory.json"{}}, }\item[{const std\+::string \&}]{purchasefilename}{ = {\ttfamily "{}PurchaseHistory.json"{}}, }\item[{const std\+::string \&}]{live\+Sell\+Orders\+Filename}{ = {\ttfamily "{}LiveSellHistory.json"{}}, }\item[{const std\+::string \&}]{buy\+Sell\+Orders\+Filename}{ = {\ttfamily "{}LiveBuyHistory.json"{}}}\end{DoxyParamCaption})}
+
+\Hypertarget{class_order_detail_history_a6bed3ea20f7b2f16e453fcb5dfed9fd1}\index{OrderDetailHistory@{OrderDetailHistory}!sellHistorySize@{sellHistorySize}}
+\index{sellHistorySize@{sellHistorySize}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{sellHistorySize()}{sellHistorySize()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a6bed3ea20f7b2f16e453fcb5dfed9fd1} 
+int Order\+Detail\+History\+::sell\+History\+Size (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const}
+
+\Hypertarget{class_order_detail_history_addcc5e1737508a1974689610d20d4c27}\index{OrderDetailHistory@{OrderDetailHistory}!updateNeutralNetwork@{updateNeutralNetwork}}
+\index{updateNeutralNetwork@{updateNeutralNetwork}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{updateNeutralNetwork()}{updateNeutralNetwork()}}
+{\footnotesize\ttfamily \label{class_order_detail_history_addcc5e1737508a1974689610d20d4c27} 
+void Order\+Detail\+History\+::update\+Neutral\+Network (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}}}]{price}{, }\item[{\mbox{\hyperlink{_usings_8hpp_a90c79bb14ac40b274a4d20dd85f0469d}{Quantity}}}]{quantity}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{class_order_detail_history_a0f61c9092fdc0a7ec354695cb122f0ff}\index{OrderDetailHistory@{OrderDetailHistory}!PRICESCALE@{PRICESCALE}}
+\index{PRICESCALE@{PRICESCALE}!OrderDetailHistory@{OrderDetailHistory}}
+\doxysubsubsection{\texorpdfstring{PRICESCALE}{PRICESCALE}}
+{\footnotesize\ttfamily \label{class_order_detail_history_a0f61c9092fdc0a7ec354695cb122f0ff} 
+\mbox{\hyperlink{_usings_8hpp_a375e30b119b87df2956b839a36a8d2d5}{Price}} Order\+Detail\+History\+::\+PRICESCALE = 500}
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Orderbook\+Sim/\mbox{\hyperlink{_order_detail_history_8hpp}{Order\+Detail\+History.\+hpp}}\item 
+Orderbook\+Sim/\mbox{\hyperlink{_order_detail_history_8cpp}{Order\+Detail\+History.\+cpp}}\end{DoxyCompactItemize}

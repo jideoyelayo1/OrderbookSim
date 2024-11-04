@@ -1,0 +1,70 @@
+\doxysection{detail\+::out\+\_\+of\+\_\+range Class Reference}
+\hypertarget{classdetail_1_1out__of__range}{}\label{classdetail_1_1out__of__range}\index{detail::out\_of\_range@{detail::out\_of\_range}}
+
+
+exception indicating access out of the defined range  
+
+
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+Inheritance diagram for detail\+::out\+\_\+of\+\_\+range\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{classdetail_1_1out__of__range}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Context , \mbox{\hyperlink{namespacedetail_a469b9c0b78404c24509a221801bc4c26}{enable\+\_\+if\+\_\+t}}$<$ \mbox{\hyperlink{structdetail_1_1is__basic__json__context}{is\+\_\+basic\+\_\+json\+\_\+context}}$<$ Basic\+Json\+Context $>$\mbox{\hyperlink{namespacedetail_a47b1bb0bbd3596589ed9187059c312efa2063c1608d6e0baf80249c42e2be5804}{\+::value}}, int $>$  = 0$>$ }\\static \mbox{\hyperlink{classdetail_1_1out__of__range}{out\+\_\+of\+\_\+range}} \mbox{\hyperlink{classdetail_1_1out__of__range_a79ea0d3ec02a853629dc827e045ecff5}{create}} (int id\+\_\+, const std\+::string \&what\+\_\+arg, Basic\+Json\+Context context)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+const char \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{classdetail_1_1exception_ae75d7315f5f2d85958da6d961375caf0}{what}} () const noexcept override
+\begin{DoxyCompactList}\small\item\em returns the explanatory string \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+const int \mbox{\hyperlink{classdetail_1_1exception_a63b819fbb2ef34df9dad1e309207fa24}{id}}
+\begin{DoxyCompactList}\small\item\em the id of the exception \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classdetail_1_1exception_a528d6bc77e88490bbb84cde2222b7ff0}{exception}} (int id\+\_\+, const char \texorpdfstring{$\ast$}{*}what\+\_\+arg)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Member Functions inherited from \mbox{\hyperlink{classdetail_1_1exception}{detail\+::exception}}}
+\begin{DoxyCompactItemize}
+\item 
+static std\+::string \mbox{\hyperlink{classdetail_1_1exception_a8f1eb56b9964c8dd84d89d0da98d883b}{name}} (const std\+::string \&ename, int id\+\_\+)
+\item 
+static std\+::string \mbox{\hyperlink{classdetail_1_1exception_a6b4a786b5c1c25dd3edaceb1bf2d5120}{diagnostics}} (std\+::nullptr\+\_\+t)
+\item 
+{\footnotesize template$<$typename Basic\+Json\+Type $>$ }\\static std\+::string \mbox{\hyperlink{classdetail_1_1exception_af3739c53fe56a1712754d13dfa561f80}{diagnostics}} (const Basic\+Json\+Type \texorpdfstring{$\ast$}{*}leaf\+\_\+element)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+exception indicating access out of the defined range 
+
+\begin{DoxySeeAlso}{See also}
+\href{https://json.nlohmann.me/api/basic_json/out_of_range/}{\texttt{ https\+://json.\+nlohmann.\+me/api/basic\+\_\+json/out\+\_\+of\+\_\+range/}} 
+\end{DoxySeeAlso}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{classdetail_1_1out__of__range_a79ea0d3ec02a853629dc827e045ecff5}\index{detail::out\_of\_range@{detail::out\_of\_range}!create@{create}}
+\index{create@{create}!detail::out\_of\_range@{detail::out\_of\_range}}
+\doxysubsubsection{\texorpdfstring{create()}{create()}}
+{\footnotesize\ttfamily \label{classdetail_1_1out__of__range_a79ea0d3ec02a853629dc827e045ecff5} 
+template$<$typename Basic\+Json\+Context , \mbox{\hyperlink{namespacedetail_a469b9c0b78404c24509a221801bc4c26}{enable\+\_\+if\+\_\+t}}$<$ \mbox{\hyperlink{structdetail_1_1is__basic__json__context}{is\+\_\+basic\+\_\+json\+\_\+context}}$<$ Basic\+Json\+Context $>$\mbox{\hyperlink{namespacedetail_a47b1bb0bbd3596589ed9187059c312efa2063c1608d6e0baf80249c42e2be5804}{\+::value}}, int $>$  = 0$>$ \\
+static \mbox{\hyperlink{classdetail_1_1out__of__range}{out\+\_\+of\+\_\+range}} detail\+::out\+\_\+of\+\_\+range\+::create (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+}{, }\item[{const std\+::string \&}]{what\+\_\+arg}{, }\item[{Basic\+Json\+Context}]{context}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [static]}}
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Orderbook\+Sim/\mbox{\hyperlink{json_8hpp}{json.\+hpp}}\end{DoxyCompactItemize}

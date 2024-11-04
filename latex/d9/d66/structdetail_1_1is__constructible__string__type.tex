@@ -1,0 +1,50 @@
+\doxysection{detail\+::is\+\_\+constructible\+\_\+string\+\_\+type\texorpdfstring{$<$}{<} Basic\+Json\+Type, Constructible\+String\+Type \texorpdfstring{$>$}{>} Struct Template Reference}
+\hypertarget{structdetail_1_1is__constructible__string__type}{}\label{structdetail_1_1is__constructible__string__type}\index{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$@{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$}}
+
+
+{\ttfamily \#include $<$json.\+hpp$>$}
+
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+using \mbox{\hyperlink{structdetail_1_1is__constructible__string__type_a100e49fd7347418eb9756dc859f04ec9}{laundered\+\_\+type}} = Constructible\+String\+Type
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static constexpr auto \mbox{\hyperlink{structdetail_1_1is__constructible__string__type_a3ab988387e9dd3f525b4042a20dcabc0}{value}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Typedef Documentation}
+\Hypertarget{structdetail_1_1is__constructible__string__type_a100e49fd7347418eb9756dc859f04ec9}\index{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$@{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$}!laundered\_type@{laundered\_type}}
+\index{laundered\_type@{laundered\_type}!detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$@{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$}}
+\doxysubsubsection{\texorpdfstring{laundered\_type}{laundered\_type}}
+{\footnotesize\ttfamily \label{structdetail_1_1is__constructible__string__type_a100e49fd7347418eb9756dc859f04ec9} 
+template$<$typename Basic\+Json\+Type , typename Constructible\+String\+Type $>$ \\
+using \mbox{\hyperlink{structdetail_1_1is__constructible__string__type}{detail\+::is\+\_\+constructible\+\_\+string\+\_\+type}}$<$ Basic\+Json\+Type, Constructible\+String\+Type $>$\+::laundered\+\_\+type = Constructible\+String\+Type}
+
+
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{structdetail_1_1is__constructible__string__type_a3ab988387e9dd3f525b4042a20dcabc0}\index{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$@{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$}!value@{value}}
+\index{value@{value}!detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$@{detail::is\_constructible\_string\_type$<$ BasicJsonType, ConstructibleStringType $>$}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily \label{structdetail_1_1is__constructible__string__type_a3ab988387e9dd3f525b4042a20dcabc0} 
+template$<$typename Basic\+Json\+Type , typename Constructible\+String\+Type $>$ \\
+auto \mbox{\hyperlink{structdetail_1_1is__constructible__string__type}{detail\+::is\+\_\+constructible\+\_\+string\+\_\+type}}$<$ Basic\+Json\+Type, Constructible\+String\+Type $>$\+::value\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [constexpr]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{=}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ conjunction\ <}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ is\_constructible<laundered\_type,\ typename\ BasicJsonType::string\_t>,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacedetail_a41e28f61731099e2ab777c3d001906dd}{is\_detected\_exact}}<\textcolor{keyword}{typename}\ BasicJsonType::string\_t::value\_type,}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \mbox{\hyperlink{namespacedetail_a2e47d793fa2685a15f6d2c75114b7759}{value\_type\_t}},\ \mbox{\hyperlink{structdetail_1_1is__constructible__string__type_a100e49fd7347418eb9756dc859f04ec9}{laundered\_type}}\ >>\mbox{\hyperlink{structdetail_1_1is__constructible__string__type_a3ab988387e9dd3f525b4042a20dcabc0}{::value}}}
+
+\end{DoxyCode}
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+Orderbook\+Sim/\mbox{\hyperlink{json_8hpp}{json.\+hpp}}\end{DoxyCompactItemize}

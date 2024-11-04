@@ -1,0 +1,30 @@
+\doxysection{Orderbook\+Sim/\+Orderbook.hpp File Reference}
+\hypertarget{_orderbook_8hpp}{}\label{_orderbook_8hpp}\index{OrderbookSim/Orderbook.hpp@{OrderbookSim/Orderbook.hpp}}
+
+
+Defines the \doxylink{class_orderbook}{Orderbook} class for managing orders and trades in a trading system.  
+
+
+{\ttfamily \#include "{}Order.\+hpp"{}}\newline
+{\ttfamily \#include "{}Trade.\+hpp"{}}\newline
+{\ttfamily \#include "{}Usings.\+hpp"{}}\newline
+{\ttfamily \#include "{}Order\+Modify.\+hpp"{}}\newline
+{\ttfamily \#include "{}Orderbook\+Level\+Infos.\+hpp"{}}\newline
+{\ttfamily \#include "{}Order\+Detail\+History.\+hpp"{}}\newline
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$unordered\+\_\+map$>$}\newline
+{\ttfamily \#include $<$optional$>$}\newline
+{\ttfamily \#include $<$mutex$>$}\newline
+{\ttfamily \#include $<$condition\+\_\+variable$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+\doxysubsubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_orderbook}{Orderbook}}
+\begin{DoxyCompactList}\small\item\em Manages and matches orders in a trading environment. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Defines the \doxylink{class_orderbook}{Orderbook} class for managing orders and trades in a trading system. 
+
+This file contains the \doxylink{class_orderbook}{Orderbook} class, which handles the management, matching, and cancellation of orders. It includes private and public member functions for maintaining an orderbook, updating levels, handling Good For Day orders, and saving order data to JSON files. 
