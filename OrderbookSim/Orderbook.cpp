@@ -9,8 +9,6 @@
 
 #include "Orderbook.hpp"
 
-#include <mutex>
-
 /*!
  * @brief Checks if an order can match based on side and price.
  *
@@ -41,6 +39,21 @@ bool Orderbook::canMatch(Side side, Price price) const {
  * @return A vector of Trades that were executed.
  */
 Trades Orderbook::MatchOrders()
+{
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return MatchOrdersUnlocked();
+}
+
+
+/*!
+ * @brief Matches orders unlocked in the orderbook.
+ *
+ * Iteratively matches buy and sell orders in the orderbook until no more matches
+ * can be made. Updates order quantities, removes filled orders, and records trades.
+ *
+ * @return A vector of Trades that were executed.
+ */
+Trades Orderbook::MatchOrdersUnlocked()
 {
     Trades trades;
     trades.reserve(_orders.size());
@@ -81,10 +94,9 @@ Trades Orderbook::MatchOrders()
             trades.push_back(Trade{
                 TradeInfo{ bid->getOrderId(), bid->getPrice(), quantity },
                 TradeInfo{ ask->getOrderId(), ask->getPrice(), quantity }
-                });
+            });
 
             Price purchasedPrice = 0;
-
             switch (_executionType) {
             case ExecutionTypes::BuyersPrice:
                 purchasedPrice = std::max(ask->getPrice(), bid->getPrice());
@@ -95,13 +107,14 @@ Trades Orderbook::MatchOrders()
             case ExecutionTypes::MidPrice:
                 purchasedPrice = (ask->getPrice() + bid->getPrice()) / 2;
                 break;
-            default: break;
+            default:
+                break;
             }
-            
+
             _orderDetailHistory.removeMatchedOrder(bid->getOrderId(), ask->getOrderId());
 
             onOrderMatched(bid->getPrice(), quantity, bid->isFilled());
-            onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(), purchasedPrice); // we are purchasing at the max price
+            onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(), purchasedPrice);
         }
 
         if (bids.empty())
@@ -122,7 +135,7 @@ Trades Orderbook::MatchOrders()
         auto& [_, bids] = *_bids.begin();
         auto& order = bids.front();
         if (order->getOrderType() == OrderType::FillAndKill)
-            CancelOrder(order->getOrderId());
+            CancelOrderInternal(order->getOrderId()); // safe: lock already held
     }
 
     if (!_asks.empty())
@@ -130,11 +143,12 @@ Trades Orderbook::MatchOrders()
         auto& [_, asks] = *_asks.begin();
         auto& order = asks.front();
         if (order->getOrderType() == OrderType::FillAndKill)
-            CancelOrder(order->getOrderId());
+            CancelOrderInternal(order->getOrderId()); // safe: lock already held
     }
 
     return trades;
 }
+
 
 /*!
  * @brief Cancels multiple orders by their IDs.

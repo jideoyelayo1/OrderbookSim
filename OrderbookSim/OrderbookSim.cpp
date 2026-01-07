@@ -59,10 +59,11 @@ void randomOrderSimulation(const int n) {
         orderbook.addOrder(intToOrdertType(type(gen)), i, side(gen) == 1 ? Side::Buy : Side::Sell, price(gen), quantity(gen));
 
         // Optional delay for monitoring large simulations (commented out in default usage)
+        /*
         if (false && i % 1000 == 0) {
             std::this_thread::sleep_for(std::chrono::seconds(1));
             std::cout << ".";
-        }
+        }*/
     }
     std::cout << std::endl;
 

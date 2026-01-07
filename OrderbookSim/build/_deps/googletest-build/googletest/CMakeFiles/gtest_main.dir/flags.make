@@ -6,7 +6,7 @@ CXX_DEFINES =
 
 CXX_INCLUDES = -isystem /Users/jideoyelayo/Documents/Programming/AITradingSim/OrderbookSim/OrderbookSim/build/_deps/googletest-src/googletest/include -isystem /Users/jideoyelayo/Documents/Programming/AITradingSim/OrderbookSim/OrderbookSim/build/_deps/googletest-src/googletest
 
-CXX_FLAGSarm64 = -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1  
+CXX_FLAGSarm64 = -std=c++2b -arch arm64  -DGTEST_HAS_PTHREAD=1  
 
-CXX_FLAGS = -std=c++20 -arch arm64  -DGTEST_HAS_PTHREAD=1  
+CXX_FLAGS = -std=c++2b -arch arm64  -DGTEST_HAS_PTHREAD=1  
 

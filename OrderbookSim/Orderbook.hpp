@@ -105,6 +105,8 @@ private:
 
     // Private methods for managing Good For Day orders
     void PruneGoodForDayOrders();
+    Trades MatchOrdersUnlocked();
+
 
 public:
     /*!

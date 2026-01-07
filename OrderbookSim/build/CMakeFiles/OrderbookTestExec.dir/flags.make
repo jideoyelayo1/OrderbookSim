@@ -6,7 +6,7 @@ CXX_DEFINES = -DTEST_FILES_DIR=\"/Users/jideoyelayo/Documents/Programming/AITrad
 
 CXX_INCLUDES = -I/Users/jideoyelayo/Documents/Programming/AITradingSim/OrderbookSim/OrderbookSim -I/Users/jideoyelayo/Documents/Programming/AITradingSim/OrderbookSim/OrderbookSim/OrderbookTest -isystem /Users/jideoyelayo/Documents/Programming/AITradingSim/OrderbookSim/OrderbookSim/build/_deps/googletest-src/googletest/include -isystem /Users/jideoyelayo/Documents/Programming/AITradingSim/OrderbookSim/OrderbookSim/build/_deps/googletest-src/googletest
 
-CXX_FLAGSarm64 = -std=gnu++20 -arch arm64
+CXX_FLAGSarm64 = -std=gnu++2b -arch arm64
 
-CXX_FLAGS = -std=gnu++20 -arch arm64
+CXX_FLAGS = -std=gnu++2b -arch arm64
 
