@@ -16,6 +16,11 @@
 #include "NeuralNetwork.hpp"
 #include "OrderDetail.hpp"
 #include "MatchedOrderDetails.hpp"
+#include <chrono>
+#include <ctime>
+#include <iomanip>
+#include <sstream>
+
 
 /*!
  * @class OrderDetailHistory
@@ -100,19 +105,19 @@ public:
      * @brief Returns the size of the buy history.
      * @return The number of buy orders in the history.
      */
-    int buyHistorySize() const;
+    size_t buyHistorySize() const;
 
     /*!
      * @brief Returns the size of the sell history.
      * @return The number of sell orders in the history.
      */
-    int sellHistorySize() const;
+    size_t sellHistorySize() const;
 
     /*!
      * @brief Returns the size of the purchase history.
      * @return The number of matched purchase orders in the history.
      */
-    int purchaseHistorySize() const;
+    size_t purchaseHistorySize() const;
 
     /*!
      * @brief Updates the neural network with the latest order price and quantity data.
@@ -192,4 +197,20 @@ public:
      * @brief Deletes a live order by ID.
      */
     void deleteALiveOrder(OrderId id);
+
+    /*!
+     * @brief Get PRICESCALE.
+     */
+    constexpr Price getPRICESCALE() noexcept{
+        return PRICESCALE;
+    }
+
+
+    /*!
+     * @brief Set PRICESCALE.
+     */
+    void setPRICESCALE(Price pricescale) noexcept{
+        PRICESCALE = pricescale;
+    }
+    
 };

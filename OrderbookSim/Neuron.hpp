@@ -11,7 +11,11 @@
 
 #include <vector>
 #include <random>
+#include <cstdlib> 
+
 #include "Connection.hpp"
+
+class Neuron;  
 
 /*!
  * @typedef Layer

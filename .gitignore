@@ -6,3 +6,7 @@ BuyHistory
 SellHistory
 PurchaseHistory
 /OrderbookSim/.vs/OrderbookSim
+/build
+# *.vcxproj
+# *.user
+# *.sln

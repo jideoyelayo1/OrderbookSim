@@ -214,3 +214,121 @@ void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity) {
     loadHistoryToNeuralNetwork({ static_cast<int>(getCurrentTimeAsFractionOfDay()) * 100, static_cast<int>(quantity) }, { price });
 }
 
+/*!
+ * @brief prints an order detail.
+ *
+ * @param history A vector of order details.
+ */
+void OrderDetailHistory::_printAHistory(const std::vector<OrderDetail>& history) {
+    for (const OrderDetail& orderDetail : history) {
+        std::cout << "Price: " << orderDetail.getPrice() << " "
+                  << "Quantity: " << orderDetail.getQuantity() << " "
+                  << "Time: " << orderDetail.getTime() << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+
+// 5-file save wrapper used by Orderbook::saveToJson
+void OrderDetailHistory::saveHistoryToJson(
+    const std::string& buyfilename,
+    const std::string& sellfilename,
+    const std::string& purchasefilename,
+    const std::string& sellLivefilename,
+    const std::string& buyLivefilename)
+{
+    // Buy and sell history
+    saveHistoryToJson(buyfilename, buyHistory);
+    saveHistoryToJson(sellfilename, sellHistory);
+
+    // Purchase history: MatchedOrderDetail vector
+    nlohmann::json purchaseJson = nlohmann::json::array();
+    for (const MatchedOrderDetail& detail : _purchaseHistory) {
+        purchaseJson.push_back({
+            {"price", detail.getPrice()},
+            {"quantity", detail.getQuantity()},
+            {"time", detail.getTime()}
+        });
+    }
+    {
+        std::ofstream f(purchasefilename);
+        f << purchaseJson.dump(4);
+    }
+
+    // Live orders split into buy / sell JSON
+    nlohmann::json liveSell = nlohmann::json::array();
+    nlohmann::json liveBuy  = nlohmann::json::array();
+
+    for (const auto& [id, detail] : _liveOrders) {
+        nlohmann::json obj = {
+            {"order_type", detail.getOrderType()},
+            {"order_id",   detail.getOrderId()},
+            {"side",       detail.getSide()},
+            {"price",      detail.getPrice()},
+            {"quantity",   detail.getQuantity()},
+            {"time",       detail.getTime()}
+        };
+
+        if (detail.Side() == Side::Sell)
+            liveSell.push_back(obj);
+        else
+            liveBuy.push_back(obj);
+    }
+
+    {
+        std::ofstream f(sellLivefilename);
+        f << liveSell.dump(4);
+    }
+    {
+        std::ofstream f(buyLivefilename);
+        f << liveBuy.dump(4);
+    }
+}
+
+// Simple sizes for histories
+std::size_t OrderDetailHistory::buyHistorySize() const {
+    return buyHistory.size();
+}
+
+std::size_t OrderDetailHistory::sellHistorySize() const {
+    return sellHistory.size();
+}
+
+std::size_t OrderDetailHistory::purchaseHistorySize() const {
+    return _purchaseHistory.size();
+}
+
+// Time of day in [0,1)
+double OrderDetailHistory::getCurrentTimeAsFractionOfDay() {
+    using namespace std::chrono;
+
+    auto now   = system_clock::now();
+    auto now_c = system_clock::to_time_t(now);
+    std::tm tm{};
+
+#if defined(_WIN32)
+    localtime_s(&tm, &now_c);
+#else
+    localtime_r(&now_c, &tm);
+#endif
+
+    int secondsSinceMidnight =
+        tm.tm_hour * 3600 +
+        tm.tm_min  * 60 +
+        tm.tm_sec;
+
+    return static_cast<double>(secondsSinceMidnight) / 86400.0;
+}
+
+// Minimal NN hook so things link and lastPrediction is updated
+void OrderDetailHistory::loadHistoryToNeuralNetwork(
+    std::vector<int> inputs,
+    std::vector<int> outputs)
+{
+    // TODO: wire into real Net / NeuralNetwork if you want NN active.
+    // For now just keep lastPrediction reasonable.
+    (void)inputs;
+    if (!outputs.empty()) {
+        lastPrediction = outputs.back();
+    }
+}

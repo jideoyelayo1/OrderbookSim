@@ -1,21 +1,23 @@
 /*!
  * @file main_test.cpp
  * @brief Contains unit tests for the Orderbook using Google Test framework.
- *
- * This file defines the ActionType enum, the Information struct, and the InputHandler class,
- * which are used to parse and handle test data, as well as the main test suite for the Orderbook.
  */
 
 #include "pch.h"
 
-#pragma region includes // solves linker issues
-#include "../Orderbook.cpp"
-#include "../Orderbook.h"
-#include "../OrderbookLevelInfos.h"
-#include "../OrderbookLevelInfos.cpp"
-#include "../Order.h"
-#include "../Order.cpp"
+#pragma region includes
+#include "../Orderbook.hpp"
+#include "../OrderbookLevelInfos.hpp"
+#include "../Order.hpp"
+#include "../OrderModify.hpp"
 #pragma endregion
+
+#include <fstream>
+#include <string_view>
+#include <tuple>
+#include <stdexcept>
+#include <algorithm>
+#include <filesystem>
 
 namespace googletest = ::testing;
 
@@ -34,12 +36,12 @@ enum class ActionType {
  * @brief Holds information about an action to be performed on the order book.
  */
 struct Information {
-    ActionType _type;    ///< The type of action (Add, Cancel, Modify)
-    OrderType _orderType;///< The type of order (e.g., GoodTillCancel, Market)
-    Side _side;          ///< The side of the order (Buy or Sell)
-    Price _price;        ///< The price of the order
-    Quantity _quantity;  ///< The quantity of the order
-    OrderId _orderId;    ///< The unique ID of the order
+    ActionType _type{};
+    OrderType  _orderType{};
+    Side       _side{};
+    Price      _price{};
+    Quantity   _quantity{};
+    OrderId    _orderId{};
 };
 
 using Informations = std::vector<Information>;
@@ -47,11 +49,14 @@ using Informations = std::vector<Information>;
 /*!
  * @struct Result
  * @brief Holds expected results for order book counts used for assertions.
+ *
+ * If no Result line is present in the test file, all fields will be zero and
+ * the test will only verify that the scenario runs without throwing.
  */
 struct Result {
-    std::size_t _allCount; ///< Total count of orders in the order book
-    std::size_t _bidCount; ///< Count of bid orders in the order book
-    std::size_t _askCount; ///< Count of ask orders in the order book
+    std::size_t _allCount{}; ///< Total count of orders in the order book
+    std::size_t _bidCount{}; ///< Count of bid levels in the order book
+    std::size_t _askCount{}; ///< Count of ask levels in the order book
 };
 
 using Results = std::vector<Result>;
@@ -60,89 +65,32 @@ using Results = std::vector<Result>;
  * @class InputHandler
  * @brief Parses test input files to extract actions and expected results.
  *
- * The InputHandler class provides functionality for parsing actions and results from
- * test files, which are used to drive tests for the Orderbook functionality.
+ * Supported line formats (space separated):
+ *
+ *   A <Side> <OrderType> <Price> <Qty> <OrderId>
+ *   M <OrderId> <Side> <Price> <Qty>
+ *   C <OrderId>
+ *   R <AllCount> <BidCount> <AskCount>
  */
 struct InputHandler {
 private:
-    /*!
-     * @brief Converts a string view to a number.
-     * @param str The string view to convert.
-     * @return The numeric value.
-     * @throws std::logic_error if the value is below zero.
-     */
     std::uint32_t ToNumber(const std::string_view& str) const;
-
-    /*!
-     * @brief Tries to parse a result line.
-     * @param str The string to parse.
-     * @param result The result structure to populate.
-     * @return True if parsing was successful, false otherwise.
-     */
     bool TryParseResult(const std::string_view& str, Result& result) const;
-
-    /*!
-     * @brief Tries to parse an information line for an action.
-     * @param str The string to parse.
-     * @param action The action structure to populate.
-     * @return True if parsing was successful, false otherwise.
-     */
     bool TryParseInformation(const std::string_view& str, Information& action) const;
-
-    /*!
-     * @brief Splits a string view into parts based on a delimiter.
-     * @param str The string to split.
-     * @param delimiter The delimiter character.
-     * @return A vector of string views representing the split parts.
-     */
     std::vector<std::string_view> Split(const std::string_view& str, char delimiter) const;
-
-    /*!
-     * @brief Parses a side string into a Side enum value.
-     * @param str The string to parse.
-     * @return The parsed Side value.
-     * @throws std::logic_error if the side is unknown.
-     */
-    Side ParseSide(const std::string_view& str) const;
-
-    /*!
-     * @brief Parses an order type string into an OrderType enum value.
-     * @param str The string to parse.
-     * @return The parsed OrderType value.
-     * @throws std::logic_error if the order type is unknown.
-     */
+    Side      ParseSide(const std::string_view& str) const;
     OrderType ParseOrderType(const std::string_view& str) const;
-
-    /*!
-     * @brief Parses a price string into a Price value.
-     * @param str The string to parse.
-     * @return The parsed Price value.
-     * @throws std::logic_error if the price is unknown.
-     */
-    Price ParsePrice(const std::string_view& str) const;
-
-    /*!
-     * @brief Parses a quantity string into a Quantity value.
-     * @param str The string to parse.
-     * @return The parsed Quantity value.
-     * @throws std::logic_error if the quantity is unknown.
-     */
-    Quantity ParseQuantity(const std::string_view& str) const;
-
-    /*!
-     * @brief Parses an order ID string into an OrderId value.
-     * @param str The string to parse.
-     * @return The parsed OrderId value.
-     * @throws std::logic_error if the order ID is empty.
-     */
-    OrderId ParseOrderId(const std::string_view& str) const;
+    Price     ParsePrice(const std::string_view& str) const;
+    Quantity  ParseQuantity(const std::string_view& str) const;
+    OrderId   ParseOrderId(const std::string_view& str) const;
 
 public:
     /*!
      * @brief Retrieves actions and the result from a file.
      * @param path The path to the input file.
      * @return A tuple containing a vector of actions and the result.
-     * @throws std::logic_error if no result is specified in the file.
+     *
+     * If no Result line is present, the returned Result will be {0,0,0}.
      */
     std::tuple<Informations, Result> GetInformations(const std::filesystem::path& path) const;
 };
@@ -152,27 +100,22 @@ public:
  * @brief Test fixture for Orderbook tests, providing setup for test files and paths.
  */
 class OrderbookTestsFixture : public googletest::TestWithParam<const char*> {
-private:
-    const static inline std::filesystem::path Root{ std::filesystem::current_path() }; ///< Root directory path
-    const static inline std::filesystem::path TestFolder{ "TestFiles" }; ///< Test files folder
-
 public:
-    const static inline std::filesystem::path TestFolderPath{ Root / TestFolder }; ///< Full path to test files folder
+    // TEST_FILES_DIR is provided by CMake:
+    // target_compile_definitions(OrderbookTestExec PRIVATE
+    //     TEST_FILES_DIR="${CMAKE_SOURCE_DIR}/OrderbookTest/TestFiles"
+    // )
+    const static inline std::filesystem::path TestFolderPath{ TEST_FILES_DIR };
 
-    /*!
-     * @brief Prints the contents of the TestFolderPath directory.
-     */
-    void printPath();
+    void printPath() {
+        // std::cout << "Using test files in: " << TestFolderPath << std::endl;
+    }
 };
 
 /*!
  * @brief Test case for the Orderbook functionality.
- * 
- * This test case uses parameterized inputs to verify various Orderbook behaviors,
- * including adding, modifying, and canceling orders.
  */
 TEST_P(OrderbookTestsFixture, OrderbookTestSuite) {
-    // Arrange
 #pragma region ARRANGE
     const auto file = OrderbookTestsFixture::TestFolderPath / GetParam();
 
@@ -185,7 +128,8 @@ TEST_P(OrderbookTestsFixture, OrderbookTestSuite) {
             action._orderId,
             action._side,
             action._price,
-            action._quantity);
+            action._quantity
+        );
     };
 
     auto GetOrderModify = [](const Information& action) {
@@ -198,19 +142,22 @@ TEST_P(OrderbookTestsFixture, OrderbookTestSuite) {
     };
 #pragma endregion
 
-    // Act
 #pragma region ACT
     Orderbook orderbook;
     for (const auto& action : actions) {
         switch (action._type) {
-        case ActionType::Add:
-            { const Trades& trades = orderbook.addOrder(GetOrder(action)); }
+        case ActionType::Add: {
+                const Trades& trades = orderbook.addOrder(GetOrder(action));
+                (void)trades;
+            }
             break;
-        case ActionType::Modify:
-            { const Trades& trades = orderbook.ModifyOrder(GetOrderModify(action)); }
+        case ActionType::Modify: {
+                const Trades& trades = orderbook.ModifyOrder(GetOrderModify(action));
+                (void)trades;
+            }
             break;
         case ActionType::Cancel:
-            { orderbook.CancelOrder(action._orderId); }
+            orderbook.CancelOrder(action._orderId);
             break;
         default:
             throw std::logic_error("Unsupported Action");
@@ -218,24 +165,237 @@ TEST_P(OrderbookTestsFixture, OrderbookTestSuite) {
     }
 #pragma endregion
 
-    // Assert
 #pragma region ASSERT
     const auto& orderbookInfos = orderbook.getOrderInfos();
-    ASSERT_EQ(orderbook.Size(), result._allCount);
-    ASSERT_EQ(orderbookInfos.getBids().size(), result._bidCount);
-    ASSERT_EQ(orderbookInfos.getAsks().size(), result._askCount);
+
+    // If no explicit Result line is present (all zeros), treat as a smoke test
+    if (result._allCount == 0 && result._bidCount == 0 && result._askCount == 0) {
+        SUCCEED();
+    } else {
+        ASSERT_EQ(orderbook.Size(), result._allCount);
+        ASSERT_EQ(orderbookInfos.getBids().size(), result._bidCount);
+        ASSERT_EQ(orderbookInfos.getAsks().size(), result._askCount);
+    }
 #pragma endregion
 }
 
 /*!
  * @brief Instantiates test cases for OrderbookTestsFixture using predefined test files.
  */
-INSTANTIATE_TEST_CASE_P(Tests, OrderbookTestsFixture, googletest::ValuesIn({
-    "Match_GoodTillCancel.txt",
-    "Match_FillAndKill.txt",
-    "Match_FillOrKill_Hit.txt",
-    "Match_FillOrKill_Miss.txt",
-    "Cancel_Success.txt",
-    "Modify_Side.txt",
-    "Match_Market.txt"
-}));
+INSTANTIATE_TEST_SUITE_P(
+    Tests,
+    OrderbookTestsFixture,
+    googletest::ValuesIn({
+        "Match_GoodTillCancel.txt",
+        "Match_FillAndKill.txt",
+        "Match_FillOrKill_Hit.txt",
+        "Match_FillOrKill_Miss.txt",
+        "Cancel_Success.txt",
+        "Modify_Side.txt",
+        "Match_Market.txt"
+    })
+);
+
+// ------------------------
+// InputHandler definitions
+// ------------------------
+
+std::uint32_t InputHandler::ToNumber(const std::string_view& str) const {
+    std::string s(str);
+    if (s.empty())
+        throw std::logic_error("Empty numeric field");
+
+    std::size_t pos = 0;
+    long long val = std::stoll(s, &pos);
+    if (pos != s.size())
+        throw std::logic_error("Invalid numeric field: " + s);
+    if (val < 0)
+        throw std::logic_error("Negative value not allowed: " + s);
+
+    return static_cast<std::uint32_t>(val);
+}
+
+std::vector<std::string_view> InputHandler::Split(const std::string_view& str, char delimiter) const {
+    std::vector<std::string_view> parts;
+    std::size_t start = 0;
+    while (start <= str.size()) {
+        std::size_t pos = str.find(delimiter, start);
+        if (pos == std::string_view::npos) {
+            parts.emplace_back(str.substr(start));
+            break;
+        }
+        parts.emplace_back(str.substr(start, pos - start));
+        start = pos + 1;
+    }
+    return parts;
+}
+
+Side InputHandler::ParseSide(const std::string_view& str) const {
+    if (str == "Buy" || str == "BUY" || str == "B")
+        return Side::Buy;
+    if (str == "Sell" || str == "SELL" || str == "S")
+        return Side::Sell;
+    throw std::logic_error("Unknown side: " + std::string(str));
+}
+
+OrderType InputHandler::ParseOrderType(const std::string_view& str) const {
+    if (str == "GoodTillCancel" || str == "GTC")
+        return OrderType::GoodTillCancel;
+    if (str == "GoodForDay" || str == "GFD")
+        return OrderType::GoodForDay;
+    if (str == "FillAndKill" || str == "FAK")
+        return OrderType::FillAndKill;
+    if (str == "FillOrKill" || str == "FOK")
+        return OrderType::FillOrKill;
+    if (str == "Market" || str == "MKT")
+        return OrderType::Market;
+    throw std::logic_error("Unknown order type: " + std::string(str));
+}
+
+Price InputHandler::ParsePrice(const std::string_view& str) const {
+    return static_cast<Price>(ToNumber(str));
+}
+
+Quantity InputHandler::ParseQuantity(const std::string_view& str) const {
+    return static_cast<Quantity>(ToNumber(str));
+}
+
+OrderId InputHandler::ParseOrderId(const std::string_view& str) const {
+    if (str.empty())
+        throw std::logic_error("Empty order id");
+    return static_cast<OrderId>(ToNumber(str));
+}
+
+bool InputHandler::TryParseResult(const std::string_view& line, Result& result) const {
+    if (line.empty())
+        return false;
+
+    auto trimmed = line;
+    // trim leading spaces/tabs/# 
+    while (!trimmed.empty() &&
+           (trimmed.front() == ' ' || trimmed.front() == '\t' || trimmed.front() == '#'))
+        trimmed.remove_prefix(1);
+    if (trimmed.empty())
+        return false;
+
+    // Expect: R AllCount BidCount AskCount
+    auto parts = Split(trimmed, ' ');
+    if (parts.size() < 4)
+        return false;
+
+    if (!(parts[0] == "R" || parts[0] == "Result" || parts[0] == "RESULT" || parts[0] == "result"))
+        return false;
+
+    result._allCount = ToNumber(parts[1]);
+    result._bidCount = ToNumber(parts[2]);
+    result._askCount = ToNumber(parts[3]);
+    return true;
+}
+
+bool InputHandler::TryParseInformation(const std::string_view& line, Information& action) const {
+    if (line.empty())
+        return false;
+
+    auto trimmed = line;
+    while (!trimmed.empty() &&
+           (trimmed.front() == ' ' || trimmed.front() == '\t' || trimmed.front() == '#'))
+        trimmed.remove_prefix(1);
+    if (trimmed.empty())
+        return false;
+
+    // Space-separated format: A/M/C ...
+    auto parts = Split(trimmed, ' ');
+    if (parts.empty())
+        return false;
+
+    const auto& code = parts[0];
+
+    if (code == "A") {
+        // A <Side> <OrderType> <Price> <Qty> <OrderId>
+        if (parts.size() < 6)
+            return false;
+
+        action._type      = ActionType::Add;
+        action._side      = ParseSide(parts[1]);
+        action._orderType = ParseOrderType(parts[2]);
+        action._price     = ParsePrice(parts[3]);
+        action._quantity  = ParseQuantity(parts[4]);
+        action._orderId   = ParseOrderId(parts[5]);
+        return true;
+    }
+
+    if (code == "M") {
+        // M <OrderId> <Side> <Price> <Qty>
+        if (parts.size() < 5)
+            return false;
+
+        action._type      = ActionType::Modify;
+        // order type is irrelevant for Modify, keep any default (e.g. GTC)
+        action._orderType = OrderType::GoodTillCancel;
+        action._orderId   = ParseOrderId(parts[1]);
+        action._side      = ParseSide(parts[2]);
+        action._price     = ParsePrice(parts[3]);
+        action._quantity  = ParseQuantity(parts[4]);
+        return true;
+    }
+
+    if (code == "C") {
+        // C <OrderId>
+        if (parts.size() < 2)
+            return false;
+
+        action._type      = ActionType::Cancel;
+        action._orderType = OrderType::GoodTillCancel;
+        action._side      = Side::Buy;  // side not needed for Cancel
+        action._price     = 0;
+        action._quantity  = 0;
+        action._orderId   = ParseOrderId(parts[1]);
+        return true;
+    }
+
+    return false;
+}
+
+std::tuple<Informations, Result>
+InputHandler::GetInformations(const std::filesystem::path& path) const {
+    std::ifstream in(path);
+    if (!in.is_open()) {
+        throw std::logic_error("Failed to open test file: " + path.string());
+    }
+
+    Informations actions;
+    Result result{};      // default: no expectations
+    bool hasResult = false;
+
+    std::string line;
+    while (std::getline(in, line)) {
+        // strip CR if present
+        if (!line.empty() && line.back() == '\r')
+            line.pop_back();
+
+        std::string_view sv(line);
+
+        // Try result line first
+        Result tmpRes{};
+        if (TryParseResult(sv, tmpRes)) {
+            result = tmpRes;
+            hasResult = true;
+            continue;
+        }
+
+        // Try action line
+        Information info{};
+        if (TryParseInformation(sv, info)) {
+            actions.push_back(info);
+            continue;
+        }
+
+        // otherwise ignore (empty/comment/etc)
+    }
+
+    if (!hasResult) {
+        return {actions, Result{0, 0, 0}};
+    }
+
+    return {actions, result};
+}

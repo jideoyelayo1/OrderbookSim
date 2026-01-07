@@ -69,9 +69,16 @@ public:
     std::string getTime() const {
         std::time_t timeT = std::chrono::system_clock::to_time_t(_time);
         std::tm tm;
-        localtime_s(&tm, &timeT);  // Use localtime_s instead of localtime for thread safety
+
+        #if defined(_WIN32)
+            localtime_s(&tm, &timeT);
+        #else
+            localtime_r(&timeT, &tm);
+        #endif
+
         std::ostringstream oss;
         oss << std::put_time(&tm, "%Y-%m-%d %H:%M:%S");
         return oss.str();
     }
+
 };

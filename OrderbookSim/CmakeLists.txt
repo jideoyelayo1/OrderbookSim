@@ -4,11 +4,10 @@ project(OrderbookSim)
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Add pybind11 subdirectory
-add_subdirectory(pybind11)
-
-# List all source files
-set(SOURCES
+# -------------------------
+# Core sources (shared by exe + tests)
+# -------------------------
+set(CORE_SOURCES
     OrderDetailHistory.cpp
     OrderModify.cpp
     MatchedOrderDetails.cpp
@@ -20,12 +19,63 @@ set(SOURCES
     OrderDetail.cpp
     Trade.cpp
     TrainingData.cpp
-    orderbook_pybind.cpp
     Net.cpp
 )
 
-# Create the Python extension module
-pybind11_add_module(orderbook ${SOURCES})
+# -------------------------
+# Main simulator executable
+# -------------------------
+add_executable(OrderbookSimExec
+    OrderbookSim.cpp
+    ${CORE_SOURCES}
+)
 
-# Include directories
-include_directories(${CMAKE_SOURCE_DIR})
+target_include_directories(OrderbookSimExec PRIVATE
+    ${CMAKE_SOURCE_DIR}
+)
+
+# -------------------------
+# GoogleTest via FetchContent
+# -------------------------
+include(FetchContent)
+
+FetchContent_Declare(
+    googletest
+    URL https://github.com/google/googletest/archive/refs/tags/v1.14.0.zip
+)
+
+# For macOS / non-MSVC we generally need pthread for gtest
+set(BUILD_GMOCK OFF CACHE BOOL "" FORCE)
+set(INSTALL_GTEST OFF CACHE BOOL "" FORCE)
+
+FetchContent_MakeAvailable(googletest)
+
+enable_testing()
+
+# -------------------------
+# Test executable
+# -------------------------
+add_executable(OrderbookTestExec
+    OrderbookTest/test.cpp      # or main_test.cpp if you rename it
+    ${CORE_SOURCES}
+)
+
+target_include_directories(OrderbookTestExec PRIVATE
+    ${CMAKE_SOURCE_DIR}
+    ${CMAKE_SOURCE_DIR}/OrderbookTest
+)
+
+target_link_libraries(OrderbookTestExec PRIVATE
+    GTest::gtest
+    GTest::gtest_main
+)
+
+add_test(
+    NAME OrderbookCoreTests
+    COMMAND OrderbookTestExec
+    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}/OrderbookTest  # so TestFiles/*.txt resolve
+)
+
+target_compile_definitions(OrderbookTestExec PRIVATE
+    TEST_FILES_DIR="${CMAKE_SOURCE_DIR}/OrderbookTest/TestFiles"
+)

@@ -109,3 +109,26 @@ void Net::feedForward(const std::vector<double>& inputVals) {
         }
     }
 }
+
+
+void Net::loadTopology(const std::vector<unsigned> topology) {
+    _layers.clear();
+    _layers.reserve(topology.size());
+
+    for (std::size_t layerNum = 0; layerNum < topology.size(); ++layerNum) {
+        _layers.emplace_back(); // add new layer
+        Layer& layer = _layers.back();
+
+        unsigned numOutputs = (layerNum == topology.size() - 1)
+            ? 0
+            : topology[layerNum + 1];
+
+        // +1 for bias neuron
+        for (unsigned neuronNum = 0; neuronNum <= topology[layerNum]; ++neuronNum) {
+            layer.emplace_back(numOutputs, neuronNum);
+        }
+
+        // Set bias neuron's output to 1.0
+        layer.back().setOutputVal(1.0);
+    }
+}
