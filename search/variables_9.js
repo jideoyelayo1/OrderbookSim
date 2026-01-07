@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['lines_5fread_1693',['lines_read',['../df/dbb/structdetail_1_1position__t.html#a9ec1ac6600d1364f4d1c9f67de6a670b',1,'detail::position_t']]],
-  ['live_5fbuy_5forder_5fheaders_1694',['live_buy_order_headers',['../dd/dc0/namespaceOrderbookView.html#a8ce17437237c4a3bbf50ab1477ac8397',1,'OrderbookView']]],
-  ['live_5fsell_5forder_5fheaders_1695',['live_sell_order_headers',['../dd/dc0/namespaceOrderbookView.html#a752075df2e96e939d1071ed0f21dd1cb',1,'OrderbookView']]],
-  ['loc_1696',['loc',['../d1/d62/classdetail_1_1serializer.html#a80ca90565eec446d377ab65a023297ab',1,'detail::serializer']]]
+  ['m_5fdata_0',['m_data',['../d1/d72/classbasic__json.html#a4f7fd3c3afd2abb77797652506ab6bc0',1,'basic_json']]],
+  ['m_5fit_1',['m_it',['../d7/d0e/classdetail_1_1iter__impl.html#a79b7b8c6b778d9f7e76b086b45d9ea2e',1,'detail::iter_impl']]],
+  ['m_5fvalue_2',['m_value',['../d1/d72/classbasic__json.html#acd0f167153f047a246b51858d7c921b8',1,'basic_json']]],
+  ['master_3',['master',['../d0/d71/classaddOrder_1_1OrderEntryGUI.html#a54f94706543f1071f78b59c082ab468e',1,'addOrder::OrderEntryGUI']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['key_1900',['key',['../dd/d39/namespacedetail.html#a47b1bb0bbd3596589ed9187059c312efa3c6e0b8a9c15224a8228b9a98ca1531d',1,'detail']]]
+  ['market_0',['Market',['../df/ddb/OrderType_8hpp.html#a57124e387290311f33f3b54a54930418a31840a66a8d6d223e5b0540138768838',1,'OrderType.hpp']]],
+  ['modify_1',['Modify',['../df/dac/test_8cpp.html#a21d5e8f8cdaa838586b31007df0a950ba7f090bbab1cc7f9c08bf4e54d932d3c0',1,'test.cpp']]]
 ];

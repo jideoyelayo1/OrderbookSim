@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['input_5fformat_5ft_1870',['input_format_t',['../dd/d39/namespacedetail.html#a0ab3b338d0eadc6890b72cccef0ea04f',1,'detail']]]
+  ['ordertype_0',['OrderType',['../df/ddb/OrderType_8hpp.html#a57124e387290311f33f3b54a54930418',1,'OrderType.hpp']]]
 ];

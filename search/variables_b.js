@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['notebook_1702',['notebook',['../dd/dc0/namespaceOrderbookView.html#af45489e04c629bc436ebed552f417da5',1,'OrderbookView']]],
-  ['number_5fbuffer_1703',['number_buffer',['../d1/d62/classdetail_1_1serializer.html#ace18a55b8304310fee309d31e54a3e27',1,'detail::serializer']]]
+  ['object_5fiterator_0',['object_iterator',['../d5/d82/structdetail_1_1internal__iterator.html#acf787101c4778e750cfdb0f44066a6ef',1,'detail::internal_iterator']]],
+  ['order_5fid_5fcounter_1',['order_id_counter',['../d0/d71/classaddOrder_1_1OrderEntryGUI.html#a23f5017bb9582ad1b532d1560d3b998a',1,'addOrder::OrderEntryGUI']]],
+  ['order_5ftype_5fmapping_2',['order_type_mapping',['../d0/d71/classaddOrder_1_1OrderEntryGUI.html#a0c23a14b6d01e8ddd43c1c8b7a9bf312',1,'addOrder::OrderEntryGUI']]],
+  ['orderbook_3',['orderbook',['../d0/d71/classaddOrder_1_1OrderEntryGUI.html#ad65b0f17f77590075869438987b164a5',1,'addOrder::OrderEntryGUI']]]
 ];
