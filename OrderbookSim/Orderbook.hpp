@@ -82,7 +82,8 @@ private:
     std::unordered_map<Price, LevelData> _data; ///< Data about levels by price.
 
     mutable std::mutex _ordersMutex; ///< Mutex for synchronizing orderbook operations.
-    std::thread _ordersPruneThread; ///< Thread for pruning Good For Day orders.
+    std::thread _ordersPruneThread; ///< Thread for pruning Good For Day orders (lazy-started).
+    std::once_flag _pruneThreadOnce; ///< Ensures the pruning thread starts only once.
     std::condition_variable _shutdownConditionVariable; ///< Condition variable for shutdown signaling.
     std::atomic<bool> _shutdown{ false }; ///< Shutdown flag.
 
@@ -104,15 +105,16 @@ private:
     Trades MatchOrder(OrderModify order);
 
     // Private methods for managing Good For Day orders
+    void StartPruneThread();
     void PruneGoodForDayOrders();
     Trades MatchOrdersUnlocked();
 
 
 public:
     /*!
-     * @brief Default constructor, initializes the Good For Day order pruning thread.
+     * @brief Default constructor.
      */
-    Orderbook() : _ordersPruneThread{ [this] { PruneGoodForDayOrders(); } } {}
+    Orderbook() = default;
 
     // Deleted copy and move constructors and operators to prevent copying
     Orderbook(const Orderbook&) = delete;
@@ -126,7 +128,9 @@ public:
     ~Orderbook() {
         _shutdown.store(true, std::memory_order_release);
         _shutdownConditionVariable.notify_one();
-        _ordersPruneThread.join();
+        if (_ordersPruneThread.joinable()) {
+            _ordersPruneThread.join();
+        }
     }
 
     /*!
