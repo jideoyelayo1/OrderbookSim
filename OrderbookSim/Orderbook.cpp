@@ -53,7 +53,7 @@ Trades Orderbook::MatchOrders()
         auto& [bidPrice, bids] = *_bids.begin();
         auto& [askPrice, asks] = *_asks.begin();
 
-        if (bidPrice > askPrice) // for some reasoon this works: bidPrice > askPrice should be the other way around
+        if (bidPrice < askPrice)
             break;
 
         while (!bids.empty() && !asks.empty())

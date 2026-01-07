@@ -73,8 +73,8 @@ private:
         };
     };
 
-    std::map<Price, OrderPtrs, std::greater<Price>> _asks; ///< Ask orders sorted by price.
-    std::map<Price, OrderPtrs, std::less<Price>> _bids; ///< Bid orders sorted by price.
+    std::map<Price, OrderPtrs, std::less<Price>> _asks; ///< Ask orders sorted by price.
+    std::map<Price, OrderPtrs, std::greater<Price>> _bids; ///< Bid orders sorted by price.
     std::unordered_map<OrderId, OrderEntry> _orders; ///< All active orders by ID.
     std::unordered_map<Price, LevelData> _data; ///< Data about levels by price.
 
