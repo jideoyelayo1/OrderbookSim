@@ -121,7 +121,10 @@ public:
      * @brief Destructor, joins the pruning thread and signals shutdown.
      */
     ~Orderbook() {
-        _shutdown.store(true, std::memory_order_release);
+        {   // set under the mutex so the flag cannot change between the pruner's check and its wait
+            std::scoped_lock ordersLock{ _ordersMutex };
+            _shutdown.store(true, std::memory_order_release);
+        }
         _shutdownConditionVariable.notify_one();
         _ordersPruneThread.join();
     }

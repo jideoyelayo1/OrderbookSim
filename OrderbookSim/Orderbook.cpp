@@ -337,8 +337,8 @@ void Orderbook::PruneGoodForDayOrders() {
 
         { // we don't want this thread to alter the state of our data structures at the same time
             std::unique_lock ordersLock{ _ordersMutex };
-            if (_shutdown.load(std::memory_order_acquire)
-                || _shutdownConditionVariable.wait_for(ordersLock, till) == std::cv_status::no_timeout)
+            // predicate form: a spurious wake-up must not end the thread
+            if (_shutdownConditionVariable.wait_for(ordersLock, till, [this] { return _shutdown.load(std::memory_order_acquire); }))
                 return;
         }
 
