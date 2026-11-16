@@ -1,0 +1,172 @@
+# ctest at commit 96ac420 (tests added, no fixes yet); Release build, Apple clang version 21.0.0 (clang-2100.3.34.2)
+# command: ctest --test-dir build -j 6 --output-on-failure
+Test project <repo>/build
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+ 1/36 Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................***Failed    0.02 sec
+Running main() from <repo>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Modify.ChangesQuantityAndKeepsOrderType
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Modify
+[ RUN      ] Modify.ChangesQuantityAndKeepsOrderType
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:406: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 1
+  0u
+    Which is: 0
+a modified Good-For-Day order is still Good-For-Day
+
+[  FAILED  ] Modify.ChangesQuantityAndKeepsOrderType (1 ms)
+[----------] 1 test from Modify (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Modify.ChangesQuantityAndKeepsOrderType
+
+ 1 FAILED TEST
+
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+ 2/36 Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................***Failed    0.02 sec
+Running main() from <repo>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GoodForDay
+[ RUN      ] GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:331: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 2
+  1u
+    Which is: 1
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:335: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 2
+  0u
+    Which is: 0
+
+[  FAILED  ] GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders (1 ms)
+[----------] 1 test from GoodForDay (1 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (1 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+
+ 1 FAILED TEST
+
+ 3/36 Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.02 sec
+ 4/36 Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.02 sec
+      Start 30: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+ 5/36 Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+ 6/36 Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+ 7/36 Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+ 8/36 Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+ 9/36 Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+10/36 Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+11/36 Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+12/36 Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+      Start 17: Market.SellSweepsBidsBestFirst
+13/36 Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+14/36 Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+15/36 Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+16/36 Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+17/36 Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+18/36 Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+19/36 Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+20/36 Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+21/36 Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+22/36 Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+23/36 Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+24/36 Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+25/36 Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+26/36 Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+27/36 Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+28/36 Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+29/36 Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+30/36 Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+31/36 Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+32/36 Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+33/36 Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................***Timeout  20.07 sec
+Running main() from <repo>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FillAndKill.PartialFillThenRemainderIsCancelled
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FillAndKill
+[ RUN      ] FillAndKill.PartialFillThenRemainderIsCancelled
+
+34/36 Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................***Timeout  20.13 sec
+Running main() from <repo>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RandomFlow.ContractHoldsAfterEveryOperation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RandomFlow
+[ RUN      ] RandomFlow.ContractHoldsAfterEveryOperation
+
+35/36 Test #30: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....***Timeout  20.12 sec
+Running main() from <repo>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Tests/OrderbookTestsFixture.OrderbookTestSuite/0
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Tests/OrderbookTestsFixture
+[ RUN      ] Tests/OrderbookTestsFixture.OrderbookTestSuite/0
+
+36/36 Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................***Timeout  20.11 sec
+Running main() from <repo>/build/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PricePriority.AggressorWalksLevelsBestToWorst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PricePriority
+[ RUN      ] PricePriority.AggressorWalksLevelsBestToWorst
+
+
+83% tests passed, 6 tests failed out of 36
+
+Total Test time (real) =  20.14 sec
+
+The following tests FAILED:
+	  3 - PricePriority.AggressorWalksLevelsBestToWorst (Timeout)
+	  9 - FillAndKill.PartialFillThenRemainderIsCancelled (Timeout)
+	 21 - GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders (Failed)
+	 27 - Modify.ChangesQuantityAndKeepsOrderType (Failed)
+	 29 - RandomFlow.ContractHoldsAfterEveryOperation (Timeout)
+	 30 - Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" (Timeout)
+Errors while running CTest

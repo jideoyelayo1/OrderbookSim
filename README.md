@@ -4,6 +4,30 @@
 
 OrderbookSim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-weighted average price (VWAP). The project also includes a neural network built from scratch to predict sell prices, and now features GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.
 
+## Building and testing
+Requires CMake 3.25 or later and a C++20 compiler. From the repository root:
+
+```bash
+cmake -S OrderbookSim -B build -DCMAKE_BUILD_TYPE=Release
+cmake --build build -j 8
+ctest --test-dir build
+```
+
+This builds the order book as a static library, the `OrderbookSimExec` simulation, the
+GoogleTest suite (`OrderbookTests`; GoogleTest 1.14.0 is downloaded at configure time) and the
+`orderbook_bench` benchmark. The Python module is built only when the `pybind11` submodule is
+checked out. Use a build directory outside `OrderbookSim/`: `OrderbookSim/build/` holds an
+older Windows build of the Python module and its CMake cache.
+
+To run the tests under AddressSanitizer and UndefinedBehaviorSanitizer:
+
+```bash
+cmake -S OrderbookSim -B build-asan -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-fsanitize=address,undefined -fno-omit-frame-pointer"
+cmake --build build-asan -j 8 --target OrderbookTests && ctest --test-dir build-asan
+```
+
+The Visual Studio project files have not been updated since the headers were renamed to `.hpp`.
+
 ## Running the program
 In order to run the otherbook stimulation navigate to build 
 
@@ -227,7 +251,7 @@ if __name__ == "__main__":
 Here's a simple example of how to use the order book:
 
 ```cpp
-#include "Orderbook.h"
+#include "Orderbook.hpp"
 
 int main() {
     Orderbook orderbook;
@@ -250,7 +274,7 @@ The `OrderbookSim.cpp` file contains the main function and a simulation function
 
 ```cpp
 #include <iostream>
-#include "Orderbook.h"
+#include "Orderbook.hpp"
 #include <random>
 
 void randomOrderSimulation(const int n);
@@ -273,7 +297,7 @@ void randomOrderSimulation(const int n) {
     std::uniform_int_distribution<> quantity(1, 500);
 
     for (int i = 0; i < n; i++) {
-        orderbook.addOrder(intToOrderType(type(gen)), i, side(gen) == 1 ? Side::Buy : Side::Sell, price(gen), quantity(gen));
+        orderbook.addOrder(intToOrdertType(type(gen)), i, side(gen) == 1 ? Side::Buy : Side::Sell, price(gen), quantity(gen));
     }
 
     orderbook.printAllOrders();
@@ -285,12 +309,39 @@ void randomOrderSimulation(const int n) {
 To use the neural network for predicting sell prices, you need to provide training data and configure the network parameters. The neural network implementation is integrated into the project to enhance the simulation's predictive capabilities.
 
 ## Dependencies
-The project relies on standard C++ libraries and includes the Google Test framework for testing purposes.
+The project relies on standard C++ libraries, nlohmann/json (vendored as `json.hpp`), GoogleTest
+for the tests (fetched by CMake) and, for the Python module only, pybind11 (submodule).
 
 ## Testing
-The project includes comprehensive unit tests implemented using the Google Test framework to ensure correctness and reliability. To run the tests, use the following file:
+`ctest --test-dir build` runs 37 GoogleTest cases:
 
-- `test.cpp`
+- `OrderbookTest/test.cpp`: seven data-driven cases from `OrderbookTest/TestFiles/`; they check
+  only order and level counts.
+- `OrderbookTest/MatchingContractTests.cpp`: price priority on both sides, FIFO within a level,
+  no trade without a cross, each order type (Good-Till-Cancel, Fill-and-Kill, Fill-or-Kill,
+  Market, Good-For-Day with `EndOfDay`), cancel, modify, a seeded 20,000-call random flow
+  checked after every call, and destroying many books.
+
+With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 fail while all seven data-driven
+cases still pass. The suite is behavioural: it does not cover concurrent callers or the 16:00
+Good-For-Day pruning thread. Logs are in `OrderbookSim/bench/results/`.
+
+## Performance
+Measured with `OrderbookSim/bench/run.sh --reps 10 --seed 42` on an Apple M1 Pro (macOS 27.0.1,
+Apple clang 21, `-O3`), 1,000,000 measured calls per repetition with about 640 resting orders
+over about 38 price levels per side. Median over 10 repetitions:
+
+| call | p50 | p99 | p99.9 | allocations per call |
+|---|---:|---:|---:|---:|
+| add (rests) | 208 ns | 625 ns | 833 ns | 5.49 |
+| cancel | 125 ns | 333 ns | 459 ns | 0 |
+| match (about 3 trades; any order type) | 1,667–1,708 ns | 4,062–4,125 ns | 5,333–5,438 ns | 20.8 |
+
+Throughput of the mixed flow: 2.60 million calls per second. The timer resolution is 41.67 ns,
+the machine was not isolated, and the slowest add in each repetition (11.5–18.6 ms) is a rehash of
+the history's live-order map, which keeps cancelled orders. Most of a match's time is history and
+neural-network bookkeeping rather than the `std::map` price levels. Method, workload, raw data
+and caveats: [`OrderbookSim/bench/RESULTS.md`](OrderbookSim/bench/RESULTS.md).
 
 ## Contributing
 Contributions are welcome! Feel free to open issues or pull requests for any improvements or bug fixes.

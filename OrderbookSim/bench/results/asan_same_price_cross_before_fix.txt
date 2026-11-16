@@ -1,0 +1,75 @@
+# AddressSanitizer+UBSan Debug build at 96ac420; command: OrderbookTests --gtest_filter=FillOrKill.SeesQuantityRestingAfterSamePriceCross
+Running main() from <repo>/build-asan/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FillOrKill.SeesQuantityRestingAfterSamePriceCross
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FillOrKill
+[ RUN      ] FillOrKill.SeesQuantityRestingAfterSamePriceCross
+=================================================================
+==8294==ERROR: AddressSanitizer: heap-use-after-free on address 0x606000001000 at pc 0x000100a5e4d0 bp 0x00016f54a880 sp 0x00016f54a878
+READ of size 4 at 0x606000001000 thread T0
+    #2 0x000100a5d334 in unsigned long std::__1::__hash_table<std::__1::__hash_value_type<int, Orderbook::LevelData>, std::__1::__unordered_map_hasher<int, std::__1::pair<int const, Orderbook::LevelData>, std::__1::hash<int>, std::__1::equal_to<int>>, std::__1::__unordered_map_equal<int, std::__1::pair<int const, Orderbook::LevelData>, std::__1::equal_to<int>, std::__1::hash<int>>, std::__1::allocator<std::__1::pair<int const, Orderbook::LevelData>>>::__erase_unique<int>(int const&) __hash_table:1928
+    #4 0x000100a26d64 in Orderbook::MatchOrders() Orderbook.cpp:110
+    #5 0x000100a306c4 in Orderbook::addOrder(std::__1::shared_ptr<Order>) Orderbook.cpp:458
+    #6 0x000100937afc in (anonymous namespace)::gtc(Orderbook&, unsigned long long, Side, int, unsigned int) MatchingContractTests.cpp:26
+    #7 0x00010094a2a8 in FillOrKill_SeesQuantityRestingAfterSamePriceCross_Test::TestBody() MatchingContractTests.cpp:251
+    #14 0x000100c8a3cc in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) gtest.cc:2612
+    #15 0x000100b9c758 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) gtest.cc:2648
+    #17 0x000100b0854c in RUN_ALL_TESTS() gtest.h:2317
+
+0x606000001000 is located 32 bytes inside of 64-byte region [0x606000000fe0,0x606000001020)
+freed by thread T0 here:
+    #0 0x000101878558 in _ZdlPv+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50558)
+    #1 0x0001008fbb4c in void std::__1::__libcpp_deallocate[abi:nqe220106]<std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>>(std::__1::__type_identity<std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>>::type*, std::__1::__element_count, unsigned long) allocate.h:80
+    #5 0x000100a55644 in unsigned long std::__1::__tree<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__map_value_compare<int, std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::greater<int>>, std::__1::allocator<std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>>>::__erase_unique<int>(int const&) __tree:2128
+    #7 0x000100a26cd8 in Orderbook::MatchOrders() Orderbook.cpp:109
+    #8 0x000100a306c4 in Orderbook::addOrder(std::__1::shared_ptr<Order>) Orderbook.cpp:458
+    #9 0x000100937afc in (anonymous namespace)::gtc(Orderbook&, unsigned long long, Side, int, unsigned int) MatchingContractTests.cpp:26
+    #10 0x00010094a2a8 in FillOrKill_SeesQuantityRestingAfterSamePriceCross_Test::TestBody() MatchingContractTests.cpp:251
+    #17 0x000100c8a3cc in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) gtest.cc:2612
+    #18 0x000100b9c758 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) gtest.cc:2648
+    #20 0x000100b0854c in RUN_ALL_TESTS() gtest.h:2317
+
+previously allocated by thread T0 here:
+    #0 0x000101878150 in _Znwm+0x74 (libclang_rt.asan_osx_dynamic.dylib:arm64e+0x50150)
+    #7 0x000100a70490 in decltype(std::declval<std::__1::pair<std::__1::__tree_iterator<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>*, long>, bool> std::__1::__tree<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__map_value_compare<int, std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::greater<int>>, std::__1::allocator<std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>>>::__emplace_unique[abi:nqe220106]<std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>, std::__1::tuple<>>(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&)::'lambda'(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&)>()(std::declval<std::__1::piecewise_construct_t const&>(), std::declval<std::__1::tuple<int&&>>(), std::declval<std::__1::tuple<>>())) std::__1::__try_key_extraction[abi:nqe220106]<int, std::__1::pair<std::__1::__tree_iterator<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>*, long>, bool> std::__1::__tree<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__map_value_compare<int, std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::greater<int>>, std::__1::allocator<std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>>>::__emplace_unique[abi:nqe220106]<std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>, std::__1::tuple<>>(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&)::'lambda'(int const&, std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&), std::__1::pair<std::__1::__tree_iterator<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>*, long>, bool> std::__1::__tree<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__map_value_compare<int, std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::greater<int>>, std::__1::allocator<std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>>>::__emplace_unique[abi:nqe220106]<std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>, std::__1::tuple<>>(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&)::'lambda'(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&), std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>, std::__1::tuple<>>(std::__1::pair<std::__1::__tree_iterator<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>*, long>, bool> std::__1::__tree<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__map_value_compare<int, std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::greater<int>>, std::__1::allocator<std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>>>::__emplace_unique[abi:nqe220106]<std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>, std::__1::tuple<>>(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&)::'lambda'(int const&, std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&), std::__1::pair<std::__1::__tree_iterator<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__tree_node<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, void*>*, long>, bool> std::__1::__tree<std::__1::__value_type<int, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::__map_value_compare<int, std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>, std::__1::greater<int>>, std::__1::allocator<std::__1::pair<int const, std::__1::list<std::__1::shared_ptr<Order>, std::__1::allocator<std::__1::shared_ptr<Order>>>>>>::__emplace_unique[abi:nqe220106]<std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>, std::__1::tuple<>>(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&)::'lambda'(std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&), std::__1::piecewise_construct_t const&, std::__1::tuple<int&&>&&, std::__1::tuple<>&&) try_key_extraction.h:108
+    #10 0x000100a300e0 in Orderbook::addOrder(std::__1::shared_ptr<Order>) Orderbook.cpp:445
+    #11 0x000100937afc in (anonymous namespace)::gtc(Orderbook&, unsigned long long, Side, int, unsigned int) MatchingContractTests.cpp:26
+    #12 0x00010094a280 in FillOrKill_SeesQuantityRestingAfterSamePriceCross_Test::TestBody() MatchingContractTests.cpp:250
+    #19 0x000100c8a3cc in bool testing::internal::HandleSehExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) gtest.cc:2612
+    #20 0x000100b9c758 in bool testing::internal::HandleExceptionsInMethodIfSupported<testing::internal::UnitTestImpl, bool>(testing::internal::UnitTestImpl*, bool (testing::internal::UnitTestImpl::*)(), char const*) gtest.cc:2648
+    #22 0x000100b0854c in RUN_ALL_TESTS() gtest.h:2317
+
+SUMMARY: AddressSanitizer: heap-use-after-free unordered_map:658 in std::__1::__unordered_map_hasher<int, std::__1::pair<int const, Orderbook::LevelData>, std::__1::hash<int>, std::__1::equal_to<int>>::operator()[abi:nqe220106](int const&) const
+Shadow bytes around the buggy address:
+  0x606000000d80: fa fa fa fa 00 00 00 00 00 00 00 fa fa fa fa fa
+  0x606000000e00: 00 00 00 00 00 00 fc fc fa fa fa fa 00 00 00 00
+  0x606000000e80: 00 00 fc fc fa fa fa fa 00 00 00 00 00 00 fc fc
+  0x606000000f00: fa fa fa fa fd fd fd fd fd fd fd fd fa fa fa fa
+  0x606000000f80: fd fd fd fd fd fd fd fd fa fa fa fa fd fd fd fd
+=>0x606000001000:[fd]fd fd fd fa fa fa fa 00 00 00 00 00 00 00 00
+  0x606000001080: fa fa fa fa 00 00 00 00 00 00 00 00 fa fa fa fa
+  0x606000001100: 00 00 00 00 00 00 00 00 fa fa fa fa 00 00 00 00
+  0x606000001180: fc fc fc fc fa fa fa fa fa fa fa fa fa fa fa fa
+  0x606000001200: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+  0x606000001280: fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa fa
+Shadow byte legend (one shadow byte represents 8 application bytes):
+  Addressable:           00
+  Partially addressable: 01 02 03 04 05 06 07 
+  Heap left redzone:       fa
+  Freed heap region:       fd
+  Stack left redzone:      f1
+  Stack mid redzone:       f2
+  Stack right redzone:     f3
+  Stack after return:      f5
+  Stack use after scope:   f8
+  Global redzone:          f9
+  Global init order:       f6
+  Poisoned by user:        f7
+  Container overflow:      fc
+  Array cookie:            ac
+  Intra object redzone:    bb
+  ASan internal:           fe
+  Left alloca redzone:     ca
+  Right alloca redzone:    cb
+==8294==ABORTING

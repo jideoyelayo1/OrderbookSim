@@ -1,0 +1,15 @@
+start_utc: 2026-11-16T22:06:51Z
+local_time: 22:06 (the Good-For-Day pruning thread acts at 16:00 local)
+git_revision: 432ef48ffc47afff592fbe03e7588701ac9d6565
+os: Darwin 27.0.0 arm64
+macos: 27.0.1 (26A434)
+cpu: Apple M1 Pro
+logical_cpus: 10
+memory_bytes: 17179869184
+compiler: /usr/bin/c++ (Apple clang version 21.0.0 (clang-2100.3.34.2))
+compile_command_Orderbook.cpp: /usr/bin/c++  -I<repo>/OrderbookSim -O3 -DNDEBUG -std=gnu++20 -arch arm64 -fPIC -o CMakeFiles/orderbook_core.dir/Orderbook.cpp.o -c <repo>/OrderbookSim/Orderbook.cpp
+load_average_before: 19.35 26.14 26.27
+power: Now drawing from 'AC Power'
+bench_options: --reps 10 --seed 42 --levels 10 --target 200
+end_utc: 2026-11-16T22:07:00Z
+load_average_after: 18.29 25.69 26.11

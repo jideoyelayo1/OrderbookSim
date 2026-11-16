@@ -1,0 +1,1487 @@
+# ctest at d3c7f24 (all fixes); Release build, Apple clang version 21.0.0 (clang-2100.3.34.2)
+# command: ctest --test-dir build -j 6 --repeat until-fail:20  (each test run 20 times)
+Test project <repo>/build
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.03 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.01 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+    Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+    Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.00 sec
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+ 1/37 Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+    Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+ 2/37 Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+ 3/37 Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+ 4/37 Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+ 5/37 Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.01 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+    Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+    Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+    Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+    Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.01 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+ 6/37 Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.01 sec
+    Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.01 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+ 7/37 Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.01 sec
+ 8/37 Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+ 9/37 Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+10/37 Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.01 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.01 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.01 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.01 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+    Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+    Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+    Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+    Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+    Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+11/37 Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+12/37 Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+13/37 Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+14/37 Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+15/37 Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.01 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.01 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.01 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.01 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.01 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+    Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+    Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+    Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+16/37 Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start 17: Market.SellSweepsBidsBestFirst
+17/37 Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+18/37 Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+19/37 Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+20/37 Test #17: Market.SellSweepsBidsBestFirst ...............................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.01 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.01 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.01 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.01 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.01 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.01 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.01 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.01 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.01 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.01 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.01 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.01 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.01 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.01 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.00 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.01 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.01 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.01 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.01 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.01 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+    Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+    Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.01 sec
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+    Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.01 sec
+      Start  7: Crossing.EqualPricesTrade
+    Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.01 sec
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+    Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.01 sec
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+21/37 Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+22/37 Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+23/37 Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+24/37 Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................   Passed    0.00 sec
+25/37 Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.01 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.01 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.01 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+    Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 25: Modify.LosesTimePriority
+    Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+    Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+    Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.00 sec
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+26/37 Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+27/37 Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.01 sec
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+28/37 Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+29/37 Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+30/37 Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.01 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.01 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.01 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.01 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.01 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+    Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+    Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+    Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+    Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+31/37 Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 28: Modify.UnknownIdIsANoOp
+32/37 Test #26: Modify.NewPriceCanCrossAndTrade ..............................................   Passed    0.00 sec
+33/37 Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+34/37 Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+35/37 Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+36/37 Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................   Passed    0.04 sec
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.32 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.30 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.33 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.41 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.34 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.38 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.44 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.29 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.28 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.25 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.25 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.27 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.28 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.27 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.26 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.27 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.24 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.25 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+    Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.28 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+37/37 Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.28 sec
+
+100% tests passed out of 37
+
+Total Test time (real) =   6.74 sec

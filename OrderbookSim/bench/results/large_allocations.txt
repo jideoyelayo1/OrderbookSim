@@ -1,0 +1,23 @@
+# Allocations of 1 MiB or more during one repetition (generation + latency pass + throughput pass), main configuration.
+# command: sed 's/    ++g_allocs;/    ++g_allocs; if (n >= (1u << 20)) std::fprintf(stderr, "alloc %zu\n", n);/' OrderbookSim/bench/bench.cpp > bench_big.cpp
+#          clang++ -std=c++20 -O2 -IOrderbookSim bench_big.cpp build/liborderbook_core.a -o bench_big && ./bench_big --reps 1 --out /tmp/x 2>&1 | grep ^alloc | sort | uniq -c
+# element sizes (Apple clang 21, arm64): OrderDetail 40, MatchedOrderDetail 16, Trade 32, from
+#   printf '#include "OrderDetail.hpp"\n#include "MatchedOrderDetails.hpp"\n#include "Trade.hpp"\n#include <cstdio>\nint main(){std::printf("%%zu %%zu %%zu\\n",sizeof(OrderDetail),sizeof(MatchedOrderDetail),sizeof(Trade));}' > sz.cpp && clang++ -std=c++20 -IOrderbookSim sz.cpp -o sz && ./sz
+# reading: 40 x 2^k = buy/sell history vectors (OrderDetail); 16 x 2^k = purchase history (MatchedOrderDetail);
+#          8 x prime (205,759 and 411,527 buckets) = unordered_map rehash of the live-order map;
+#          4,000,000 / 16,000,000 / 44,040,000 = the benchmark's own clock, sample and event buffers.
+# count bytes
+5 1048576
+6 1310720
+3 1646072
+5 2097152
+6 2621440
+3 3292216
+1 4000000
+4 4194304
+6 5242880
+3 8388608
+6 10485760
+1 16000000
+6 20971520
+1 44040000
