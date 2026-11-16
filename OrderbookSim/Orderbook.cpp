@@ -122,7 +122,7 @@ Trades Orderbook::MatchOrders()
         auto& [_, bids] = *_bids.begin();
         auto& order = bids.front();
         if (order->getOrderType() == OrderType::FillAndKill)
-            CancelOrder(order->getOrderId());
+            CancelOrderInternal(order->getOrderId()); // addOrder already holds _ordersMutex
     }
 
     if (!_asks.empty())
@@ -130,7 +130,7 @@ Trades Orderbook::MatchOrders()
         auto& [_, asks] = *_asks.begin();
         auto& order = asks.front();
         if (order->getOrderType() == OrderType::FillAndKill)
-            CancelOrder(order->getOrderId());
+            CancelOrderInternal(order->getOrderId()); // addOrder already holds _ordersMutex
     }
 
     return trades;
