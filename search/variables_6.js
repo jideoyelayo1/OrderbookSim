@@ -5,5 +5,6 @@ var searchData=
   ['frame_5flive_5fbuy_5forders_2',['frame_live_buy_orders',['../dd/dc0/namespaceOrderbookView.html#a4d8f7445ff3b91539172389b045a7aef',1,'OrderbookView']]],
   ['frame_5flive_5fsell_5forders_3',['frame_live_sell_orders',['../dd/dc0/namespaceOrderbookView.html#a4d677998207b0bb239ced01db403a2f0',1,'OrderbookView']]],
   ['frame_5fpurchases_4',['frame_purchases',['../dd/dc0/namespaceOrderbookView.html#ae5e1cbeaff22ccd3f8a3cba6fe6dc54f',1,'OrderbookView']]],
-  ['frame_5fsell_5forders_5',['frame_sell_orders',['../dd/dc0/namespaceOrderbookView.html#a948f64d0d943b96f44b6b00366e27224',1,'OrderbookView']]]
+  ['frame_5fsell_5forders_5',['frame_sell_orders',['../dd/dc0/namespaceOrderbookView.html#a948f64d0d943b96f44b6b00366e27224',1,'OrderbookView']]],
+  ['frames_6',['FRAMES',['../d2/da5/namespaceprofile__summary.html#a3d18ded2fdf3948affa47064b635c4da',1,'profile_summary']]]
 ];
