@@ -56,6 +56,7 @@ FetchContent_MakeAvailable(googletest)
 enable_testing()
 add_executable(OrderbookTests
     OrderbookTest/test.cpp
+    OrderbookTest/MatchingContractTests.cpp
 )
 target_include_directories(OrderbookTests PRIVATE OrderbookTest)
 target_link_libraries(OrderbookTests PRIVATE orderbook_core GTest::gtest_main)
