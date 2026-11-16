@@ -67,3 +67,6 @@ gtest_discover_tests(OrderbookTests
     PROPERTIES TIMEOUT 20
 )
 
+# Latency / throughput / allocation benchmark (see bench/RESULTS.md)
+add_executable(orderbook_bench bench/bench.cpp)
+target_link_libraries(orderbook_bench PRIVATE orderbook_core)
