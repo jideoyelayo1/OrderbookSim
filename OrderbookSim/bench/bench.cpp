@@ -293,7 +293,7 @@ int main(int argc, char** argv) {
     std::fclose(wl);
 
     std::FILE* lat = openOut(cfg, "latency_per_rep.csv",
-        "rep,op,n,mean_ns,p25_ns,p50_ns,p75_ns,p90_ns,p99_ns,p999_ns,max_ns,allocs_per_op,bytes_per_op,max_allocs\n");
+        "rep,op,n,mean_ns,p25_ns,p50_ns,p75_ns,p90_ns,p99_ns,p999_ns,max_ns,allocs_per_op,bytes_per_op,max_allocs,slowest_call_bytes\n");
     std::FILE* thr = openOut(cfg, "throughput_per_rep.csv", "rep,calls,seconds,calls_per_second\n");
 
     // log-spaced histogram, 20 bins per decade from 1 ns, pooled over repetitions
@@ -320,7 +320,8 @@ int main(int argc, char** argv) {
         for (int c = 0; c < NumCategories; ++c) {
             std::vector<std::uint32_t> ns;
             std::uint64_t allocs = 0, bytes = 0, sum = 0;
-            std::uint32_t maxAllocs = 0;
+            std::uint32_t maxAllocs = 0, slowest = 0;
+            std::uint64_t slowestBytes = 0; // bytes allocated by the slowest call: explains the max
             for (std::size_t i = measuredFrom; i < total; ++i) {
                 if (w.events[i].category != c) continue;
                 const Sample& s = samples[i - measuredFrom];
@@ -329,15 +330,16 @@ int main(int argc, char** argv) {
                 allocs += s.allocs;
                 bytes += s.bytes;
                 maxAllocs = std::max(maxAllocs, s.allocs);
+                if (s.ns >= slowest) { slowest = s.ns; slowestBytes = s.bytes; }
                 const int bin = s.ns == 0 ? 0 : std::clamp(static_cast<int>(std::floor(std::log10(double(s.ns)) * kBinsPerDecade)), 0, kBins - 1);
                 ++hist[c * kBins + bin];
             }
             if (ns.empty()) continue;
             std::sort(ns.begin(), ns.end());
             const double n = double(ns.size());
-            std::fprintf(lat, "%d,%s,%zu,%.1f,%.0f,%.0f,%.0f,%.0f,%.0f,%.0f,%u,%.3f,%.1f,%u\n", rep, kCategoryNames[c], ns.size(),
+            std::fprintf(lat, "%d,%s,%zu,%.1f,%.0f,%.0f,%.0f,%.0f,%.0f,%.0f,%u,%.3f,%.1f,%u,%llu\n", rep, kCategoryNames[c], ns.size(),
                 sum / n, percentile(ns, 25), percentile(ns, 50), percentile(ns, 75), percentile(ns, 90), percentile(ns, 99),
-                percentile(ns, 99.9), ns.back(), allocs / n, bytes / n, maxAllocs);
+                percentile(ns, 99.9), ns.back(), allocs / n, bytes / n, maxAllocs, (unsigned long long)slowestBytes);
         }
         {   // throughput pass
             Orderbook book;
