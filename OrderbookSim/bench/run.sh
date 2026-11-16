@@ -14,7 +14,7 @@ cmake --build "$build" --target orderbook_bench -j 8 > /dev/null
 mkdir -p "$out"
 
 {
-    echo "date_utc: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+    echo "start_utc: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
     echo "local_time: $(date +%H:%M) (the Good-For-Day pruning thread acts at 16:00 local)"
     echo "git_revision: $(git -C "$root" rev-parse HEAD)$(git -C "$root" diff --quiet HEAD -- "$src" || echo ' (uncommitted changes)')"
     echo "os: $(uname -srm)"
@@ -30,6 +30,6 @@ mkdir -p "$out"
 } | sed "s#$root#<repo>#g" > "$out/environment.txt"
 
 "$build/orderbook_bench" --out "$out" "$@"
-echo "load_average_after: $(uptime | sed 's/.*load averages*: //')" >> "$out/environment.txt"
+{ echo "end_utc: $(date -u +%Y-%m-%dT%H:%M:%SZ)"; echo "load_average_after: $(uptime | sed 's/.*load averages*: //')"; } >> "$out/environment.txt"
 python3 "$here/summarise.py" "$out" > "$out/summary.md"
 cat "$out/summary.md"
