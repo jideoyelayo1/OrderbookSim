@@ -104,17 +104,12 @@ Trades Orderbook::MatchOrders()
             onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(), purchasedPrice); // we are purchasing at the max price
         }
 
+        // UpdateLevelData already drops a price's level data when its last order goes
         if (bids.empty())
-        {
             _bids.erase(bidPrice);
-            _data.erase(bidPrice);
-        }
 
         if (asks.empty())
-        {
             _asks.erase(askPrice);
-            _data.erase(askPrice);
-        }
     }
 
     if (!_bids.empty())
