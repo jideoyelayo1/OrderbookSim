@@ -585,61 +585,16 @@ void Orderbook::changeExecutionType(int type) {
  * Cancels GoodForDay orders and cleans up orders and order entries.
  */
 void Orderbook::EndOfDay() {
-    std::unordered_map<OrderId, bool> goodToCancels;
+    std::scoped_lock ordersLock{ _ordersMutex };
 
-    // Handle live orders
-    for (const auto& m : _orderDetailHistory.getLiveOrders()) {
-        if (m.second.OrderType() != OrderType::GoodForDay) continue;
-        goodToCancels[m.first] = true;
-        _orderDetailHistory.deleteALiveOrder(m.first);
-    }
+    OrderIds goodForDays;
+    for (const auto& [id, entry] : _orders)
+        if (entry._order->getOrderType() == OrderType::GoodForDay) goodForDays.push_back(id);
 
-    // Remove orders not in goodToCancels
-    for (auto it = _orders.begin(); it != _orders.end(); ) {
-        if (goodToCancels.find(it->first) != goodToCancels.end()) {
-            ++it;
-        }
-        else {
-            it = _orders.erase(it);
-        }
-    }
-
-    // Clean up bids
-    for (auto it = _bids.begin(); it != _bids.end(); ) {
-        auto& orderptrs = it->second;
-        for (auto orderIt = orderptrs.begin(); orderIt != orderptrs.end(); ) {
-            if (goodToCancels.find((*orderIt)->getOrderId()) != goodToCancels.end()) {
-                orderIt = orderptrs.erase(orderIt);
-            }
-            else {
-                ++orderIt;
-            }
-        }
-        if (orderptrs.empty()) {
-            it = _bids.erase(it);
-        }
-        else {
-            ++it;
-        }
-    }
-
-    // Clean up asks
-    for (auto it = _asks.begin(); it != _asks.end(); ) {
-        auto& orderptrs = it->second;
-        for (auto orderIt = orderptrs.begin(); orderIt != orderptrs.end(); ) {
-            if (goodToCancels.find((*orderIt)->getOrderId()) != goodToCancels.end()) {
-                orderIt = orderptrs.erase(orderIt);
-            }
-            else {
-                ++orderIt;
-            }
-        }
-        if (orderptrs.empty()) {
-            it = _asks.erase(it);
-        }
-        else {
-            ++it;
-        }
+    // CancelOrderInternal keeps _orders, the price levels and the level data consistent
+    for (const auto id : goodForDays) {
+        CancelOrderInternal(id);
+        _orderDetailHistory.deleteALiveOrder(id);
     }
 }
 
