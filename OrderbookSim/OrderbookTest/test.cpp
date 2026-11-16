@@ -8,13 +8,11 @@
 
 #include "pch.h"
 
-#pragma region includes // solves linker issues
-#include "../Orderbook.cpp"
-#include "../Orderbook.h"
-#include "../OrderbookLevelInfos.h"
-#include "../OrderbookLevelInfos.cpp"
-#include "../Order.h"
-#include "../Order.cpp"
+#pragma region includes
+#include "../Orderbook.hpp"
+#include "../OrderbookLevelInfos.hpp"
+#include "../Order.hpp"
+#include "../OrderModify.hpp"
 #pragma endregion
 
 namespace googletest = ::testing;
@@ -63,88 +61,170 @@ using Results = std::vector<Result>;
  * The InputHandler class provides functionality for parsing actions and results from
  * test files, which are used to drive tests for the Orderbook functionality.
  */
-struct InputHandler {
+struct InputHandler
+{
 private:
-    /*!
-     * @brief Converts a string view to a number.
-     * @param str The string view to convert.
-     * @return The numeric value.
-     * @throws std::logic_error if the value is below zero.
-     */
-    std::uint32_t ToNumber(const std::string_view& str) const;
+    std::uint32_t ToNumber(const std::string_view& str) const
+    {
+        std::int64_t value{};
+        std::from_chars(str.data(), str.data() + str.size(), value);
+        if (value < 0)
+            throw std::logic_error("Value is below zero.");
+        return static_cast<std::uint32_t>(value);
+    }
 
-    /*!
-     * @brief Tries to parse a result line.
-     * @param str The string to parse.
-     * @param result The result structure to populate.
-     * @return True if parsing was successful, false otherwise.
-     */
-    bool TryParseResult(const std::string_view& str, Result& result) const;
+    bool TryParseResult(const std::string_view& str, Result& result) const
+    {
+        if (str.at(0) != 'R')
+            return false;
 
-    /*!
-     * @brief Tries to parse an information line for an action.
-     * @param str The string to parse.
-     * @param action The action structure to populate.
-     * @return True if parsing was successful, false otherwise.
-     */
-    bool TryParseInformation(const std::string_view& str, Information& action) const;
+        auto values = Split(str, ' ');
+        result._allCount = ToNumber(values[1]);
+        result._bidCount = ToNumber(values[2]);
+        result._askCount = ToNumber(values[3]);
 
-    /*!
-     * @brief Splits a string view into parts based on a delimiter.
-     * @param str The string to split.
-     * @param delimiter The delimiter character.
-     * @return A vector of string views representing the split parts.
-     */
-    std::vector<std::string_view> Split(const std::string_view& str, char delimiter) const;
+        return true;
+    }
 
-    /*!
-     * @brief Parses a side string into a Side enum value.
-     * @param str The string to parse.
-     * @return The parsed Side value.
-     * @throws std::logic_error if the side is unknown.
-     */
-    Side ParseSide(const std::string_view& str) const;
+    bool TryParseInformation(const std::string_view& str, Information& action) const
+    {
+        auto value = str.at(0);
+        auto values = Split(str, ' ');
+        if (value == 'A')
+        {
+            action._type = ActionType::Add;
+            action._side = ParseSide(values[1]);
+            action._orderType = ParseOrderType(values[2]);
+            action._price = ParsePrice(values[3]);
+            action._quantity = ParseQuantity(values[4]);
+            action._orderId = ParseOrderId(values[5]);
+        }
+        else if (value == 'M')
+        {
+            action._type = ActionType::Modify;
+            action._orderId = ParseOrderId(values[1]);
+            action._side = ParseSide(values[2]);
+            action._price = ParsePrice(values[3]);
+            action._quantity = ParseQuantity(values[4]);
+        }
+        else if (value == 'C')
+        {
+            action._type = ActionType::Cancel;
+            action._orderId = ParseOrderId(values[1]);
+        }
+        else return false;
 
-    /*!
-     * @brief Parses an order type string into an OrderType enum value.
-     * @param str The string to parse.
-     * @return The parsed OrderType value.
-     * @throws std::logic_error if the order type is unknown.
-     */
-    OrderType ParseOrderType(const std::string_view& str) const;
+        return true;
+    }
 
-    /*!
-     * @brief Parses a price string into a Price value.
-     * @param str The string to parse.
-     * @return The parsed Price value.
-     * @throws std::logic_error if the price is unknown.
-     */
-    Price ParsePrice(const std::string_view& str) const;
+    std::vector<std::string_view> Split(const std::string_view& str, char delimeter) const
+    {
+        std::vector<std::string_view> columns;
+        columns.reserve(5);
+        std::size_t start_index{}, end_index{};
+        while ((end_index = str.find(delimeter, start_index)) && end_index != std::string::npos)
+        {
+            auto distance = end_index - start_index;
+            auto column = str.substr(start_index, distance);
+            start_index = end_index + 1;
+            columns.push_back(column);
+        }
+        columns.push_back(str.substr(start_index));
+        return columns;
+    }
 
-    /*!
-     * @brief Parses a quantity string into a Quantity value.
-     * @param str The string to parse.
-     * @return The parsed Quantity value.
-     * @throws std::logic_error if the quantity is unknown.
-     */
-    Quantity ParseQuantity(const std::string_view& str) const;
+    Side ParseSide(const std::string_view& str) const
+    {
+        if (str == "B")
+            return Side::Buy;
+        else if (str == "S")
+            return Side::Sell;
+        else throw std::logic_error("Unknown Side");
+    }
 
-    /*!
-     * @brief Parses an order ID string into an OrderId value.
-     * @param str The string to parse.
-     * @return The parsed OrderId value.
-     * @throws std::logic_error if the order ID is empty.
-     */
-    OrderId ParseOrderId(const std::string_view& str) const;
+    OrderType ParseOrderType(const std::string_view& str) const
+    {
+        if (str == "FillAndKill")
+            return OrderType::FillAndKill;
+        else if (str == "GoodTillCancel")
+            return OrderType::GoodTillCancel;
+        else if (str == "GoodForDay")
+            return OrderType::GoodForDay;
+        else if (str == "FillOrKill")
+            return OrderType::FillOrKill;
+        else if (str == "Market")
+            return OrderType::Market;
+        else throw std::logic_error("Unknown OrderType");
+    }
+
+    Price ParsePrice(const std::string_view& str) const
+    {
+        if (str.empty())
+            throw std::logic_error("Unknown Price");
+
+        return ToNumber(str);
+    }
+
+    Quantity ParseQuantity(const std::string_view& str) const
+    {
+        if (str.empty())
+            throw std::logic_error("Unknown Quantity");
+
+        return ToNumber(str);
+    }
+
+    OrderId ParseOrderId(const std::string_view& str) const
+    {
+        if (str.empty())
+            throw std::logic_error("Empty OrderId");
+
+        return static_cast<OrderId>(ToNumber(str));
+    }
 
 public:
-    /*!
-     * @brief Retrieves actions and the result from a file.
-     * @param path The path to the input file.
-     * @return A tuple containing a vector of actions and the result.
-     * @throws std::logic_error if no result is specified in the file.
-     */
-    std::tuple<Informations, Result> GetInformations(const std::filesystem::path& path) const;
+    std::tuple<Informations, Result> GetInformations(const std::filesystem::path& path) const
+    {
+        Informations actions;
+        actions.reserve(1'000);
+
+        std::string line;
+        std::ifstream file{ path };
+        while (std::getline(file, line))
+        {
+            if (line.empty())
+                break;
+
+            const bool isResult = line.at(0) == 'R';
+            const bool isAction = !isResult;
+
+            if (isAction)
+            {
+                Information action;
+
+                auto isValid = TryParseInformation(line, action);
+                if (!isValid)
+                    continue;
+
+                actions.push_back(action);
+            }
+            else
+            {
+                if (!file.eof())
+                    throw std::logic_error("Result should only be specified at the end.");
+
+                Result result;
+
+                auto isValid = TryParseResult(line, result);
+                if (!isValid)
+                    continue;
+
+                return { actions, result };
+            }
+
+        }
+
+        throw std::logic_error("No result specified.");
+    }
 };
 
 /*!
@@ -162,7 +242,18 @@ public:
     /*!
      * @brief Prints the contents of the TestFolderPath directory.
      */
-    void printPath();
+    void printPath() {
+        std::cout << "THIS DIRECTORY" << std::endl;
+        if (std::filesystem::exists(TestFolderPath) && std::filesystem::is_directory(TestFolderPath)) {
+            // Iterate over the directory and print each entry
+            for (const auto& entry : std::filesystem::directory_iterator(TestFolderPath)) {
+                std::cout << entry.path() << std::endl;
+            }
+        }
+        else {
+            std::cout << "Directory does not exist or is not a directory." << std::endl;
+        }
+    }
 };
 
 /*!

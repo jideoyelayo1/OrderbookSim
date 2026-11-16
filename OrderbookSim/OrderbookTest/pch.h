@@ -15,3 +15,4 @@
 #include <filesystem>  ///< Classes and functions for filesystem operations
 #include <iostream>    ///< Input and output stream operations
 #include <fstream>     ///< File input and output stream operations
+#include <charconv>    ///< std::from_chars used by the test input parser

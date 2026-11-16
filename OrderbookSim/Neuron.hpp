@@ -13,6 +13,8 @@
 #include <random>
 #include "Connection.hpp"
 
+class Neuron;
+
 /*!
  * @typedef Layer
  * @brief Represents a layer of neurons in the neural network.

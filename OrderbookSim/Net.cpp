@@ -109,3 +109,18 @@ void Net::feedForward(const std::vector<double>& inputVals) {
         }
     }
 }
+
+// Dropped by the Doxygen pass in 13ea126 (was inline in Net.hpp); restored from 13ea126^.
+void Net::loadTopology(const std::vector<unsigned> topology) {
+    unsigned numLayers = topology.size();
+    for (unsigned layerNum = 0; layerNum < numLayers; ++layerNum) {
+        _layers.push_back(Layer());
+        unsigned numOutputs = (layerNum == topology.size() - 1) ? 0 : topology[layerNum + 1];
+
+        for (unsigned neuronNum = 0; neuronNum <= topology[layerNum]; ++neuronNum) { // one more for bias
+            _layers.back().push_back(Neuron(numOutputs, neuronNum));
+        }
+        // force bias to 1.0
+        _layers.back().back().setOutputVal(1.0);
+    }
+}

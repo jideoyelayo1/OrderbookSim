@@ -320,7 +320,11 @@ void Orderbook::PruneGoodForDayOrders() {
         const auto now = system_clock::now();
         const auto now_c = system_clock::to_time_t(now);
         std::tm now_parts;
-        localtime_s(&now_parts, &now_c);
+        #if defined(_WIN32)
+            localtime_s(&now_parts, &now_c);
+        #else
+            localtime_r(&now_c, &now_parts);
+        #endif
 
         if (now_parts.tm_hour >= end.count()) now_parts.tm_mday++;
 
