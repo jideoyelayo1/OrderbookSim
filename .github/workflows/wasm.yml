@@ -13,6 +13,7 @@ permissions:
 
 env:
   EMSDK_VERSION: 6.0.13 # the version in the README; changing it changes the artefact
+  EMSDK_COMMIT: 35659964bc2762fffec0d257997fb61475f765b7 # emsdk's tag 6.0.13; a tag can be moved, a commit cannot
 
 jobs:
   build:
@@ -31,9 +32,15 @@ jobs:
 
       - name: Install Emscripten
         run: |
-          git clone --depth 1 --branch "$EMSDK_VERSION" https://github.com/emscripten-core/emsdk.git "$RUNNER_TEMP/emsdk"
-          "$RUNNER_TEMP/emsdk/emsdk" install "$EMSDK_VERSION"
-          "$RUNNER_TEMP/emsdk/emsdk" activate "$EMSDK_VERSION"
+          git init -q "$RUNNER_TEMP/emsdk"
+          cd "$RUNNER_TEMP/emsdk"
+          git fetch -q --depth 1 https://github.com/emscripten-core/emsdk.git "$EMSDK_COMMIT"
+          git checkout -q FETCH_HEAD
+          head=$(git rev-parse HEAD)
+          echo "emsdk at $head"
+          [ "$head" = "$EMSDK_COMMIT" ]
+          ./emsdk install "$EMSDK_VERSION"
+          ./emsdk activate "$EMSDK_VERSION"
 
       - name: Build the WebAssembly module
         run: |

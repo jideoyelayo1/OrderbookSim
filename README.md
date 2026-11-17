@@ -30,7 +30,9 @@ The Visual Studio project files have not been updated since the headers were ren
 
 ### WebAssembly build
 Needs [emsdk](https://github.com/emscripten-core/emsdk) with Emscripten 6.0.13 (the version CI
-uses) activated in the shell. From the repository root:
+uses) activated in the shell. CI checks out emsdk at commit
+`35659964bc2762fffec0d257997fb61475f765b7`, its tag `6.0.13`, and checks `git rev-parse HEAD`
+before installing. From the repository root:
 
 ```bash
 source path/to/emsdk/emsdk_env.sh
