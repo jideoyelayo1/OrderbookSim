@@ -52,7 +52,8 @@ by `EndOfDay()`. Without the flag the thread starts with the first Good-For-Day 
 
 `web/test.mjs` replays a seeded 20,000-call flow through the WebAssembly module and through the
 native `orderbook_parity` driver and requires identical ids, statuses, trades, levels, sizes and
-VWAP. The network's prediction and error start from `rand()` weights and see the wall clock, so
+VWAP. CMake compiles the driver from the sources with `ORDERBOOK_SINGLE_THREADED`, as
+`web/build.sh` compiles the module, so neither side has the 16:00 pruning thread. The network's prediction and error start from `rand()` weights and see the wall clock, so
 they are only required to be finite. It uses Node built-ins only.
 
 ### JavaScript binding
@@ -97,7 +98,8 @@ records the trade at the bid's price, which is the price VWAP and the network us
 | `modify` | `rejected` if the id is not resting, otherwise as for the order's type |
 
 Ids cross as JavaScript numbers (exact below 2^53), not BigInt. A C++ exception, which the order
-book does not throw in normal use, reaches JavaScript as a `CppException`.
+book does not throw in normal use, reaches JavaScript as a `CppException`. `Book` is not
+thread-safe: use each one from one thread at a time (the WebAssembly module has only one).
 
 Prices and quantities above 1,000,000 are `invalid` (`Book::maxPrice` and `Book::maxQuantity`).
 The cap keeps one trade's price × quantity at or below 10^12, so the 64-bit VWAP sums stay exact

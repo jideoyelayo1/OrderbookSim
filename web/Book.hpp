@@ -42,6 +42,9 @@ struct BookResult {
 /*!
  * @class Book
  * @brief An Orderbook that numbers its own orders and reports each order's outcome.
+ *
+ * Not thread-safe: the id counter and the check of whether an order still rests after a call
+ * are not locked, so use each Book from one thread at a time (the WebAssembly module has one).
  */
 class Book {
 public:
