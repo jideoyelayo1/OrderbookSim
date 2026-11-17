@@ -499,6 +499,47 @@ Trades Orderbook::ModifyOrder(OrderModify order) {
 std::size_t Orderbook::Size() const { return _orders.size(); }
 
 /*!
+ * @brief Checks whether an order is resting in the orderbook.
+ *
+ * @param orderId The ID of the order.
+ * @return True if the order is in the book.
+ */
+bool Orderbook::hasOrder(OrderId orderId) const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orders.contains(orderId);
+}
+
+/*!
+ * @brief Retrieves the neural network's prediction for the most recent trade.
+ *
+ * @return The predicted price, 0 before the first trade.
+ */
+Price Orderbook::getPrediction() const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orderDetailHistory.getPrediction();
+}
+
+/*!
+ * @brief Retrieves the neural network's recent average error.
+ *
+ * @return The recent average error, 0 before the first trade.
+ */
+double Orderbook::getRecentAverageError() const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orderDetailHistory.getNeuralNetwork().getNet().getRecentAverageError();
+}
+
+/*!
+ * @brief Retrieves the volume-weighted average price of all trades.
+ *
+ * @return The VWAP, truncated to a whole price; 0 before the first trade.
+ */
+double Orderbook::getVWAP() const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orderDetailHistory.getVWAP();
+}
+
+/*!
  * @brief Retrieves aggregated orderbook level information.
  *
  * Provides information about the bid and ask levels in the orderbook,

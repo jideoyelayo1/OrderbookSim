@@ -234,6 +234,35 @@ public:
     std::size_t Size() const;
 
     /*!
+     * @brief Checks whether an order is resting in the orderbook.
+     *
+     * @param orderId The ID of the order.
+     * @return True if the order is in the book, false if it was never added, filled, killed or cancelled.
+     */
+    bool hasOrder(OrderId orderId) const;
+
+    /*!
+     * @brief Retrieves the neural network's prediction for the most recent trade, made before training on it.
+     *
+     * @return The predicted price, 0 before the first trade.
+     */
+    Price getPrediction() const;
+
+    /*!
+     * @brief Retrieves the neural network's recent average error (smoothed RMS, in units of price / PRICESCALE).
+     *
+     * @return The recent average error, 0 before the first trade.
+     */
+    double getRecentAverageError() const;
+
+    /*!
+     * @brief Retrieves the volume-weighted average price of all trades.
+     *
+     * @return The VWAP, truncated to a whole price; 0 before the first trade.
+     */
+    double getVWAP() const;
+
+    /*!
      * @brief Retrieves aggregated orderbook level information.
      *
      * Provides information about the bid and ask levels in the orderbook,

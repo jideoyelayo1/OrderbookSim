@@ -182,7 +182,7 @@ public:
      * @brief Calculates the Volume-Weighted Average Price (VWAP) of all purchases.
      * @return The VWAP of all purchases.
      */
-    Price getVWAP();
+    Price getVWAP() const;
 
     /*!
      * @brief Calculates the VWAP of the last `n` purchases.
@@ -194,7 +194,7 @@ public:
      * @brief Retrieves the last prediction from the neural network.
      * @return The predicted price.
      */
-    Price getPrediction();
+    Price getPrediction() const;
 
     /*!
      * @brief Retrieves a map of all currently live orders.

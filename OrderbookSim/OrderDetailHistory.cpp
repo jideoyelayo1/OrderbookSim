@@ -127,7 +127,7 @@ void OrderDetailHistory::_printPurchaseHistory() {
  *
  * @return The VWAP of all purchases.
  */
-Price OrderDetailHistory::getVWAP() {
+Price OrderDetailHistory::getVWAP() const {
     if (_purchaseHistory.empty()) return 0;
     long long num = 0, dom = 0;
     for (const MatchedOrderDetail& sold : _purchaseHistory) {
@@ -182,7 +182,7 @@ void OrderDetailHistory::saveHistoryToJson(const std::string& filename, const st
  *
  * @return The most recent prediction from the neural network.
  */
-Price OrderDetailHistory::getPrediction() {
+Price OrderDetailHistory::getPrediction() const {
     return lastPrediction;
 }
 

@@ -1,6 +1,7 @@
 /*!
  * @file HistoryTests.cpp
- * @brief Tests for the trade history: the neural network's inputs and training.
+ * @brief Tests for the trade history: the neural network's inputs and training, and the
+ *        Orderbook read-outs (resting orders, prediction, recent error, VWAP).
  *
  * The network has topology {2, 3, 1}: inputs are the time of day and the traded quantity,
  * the target is the trade price, all divided by OrderDetailHistory::PRICESCALE.
@@ -8,8 +9,10 @@
 
 #include "pch.h"
 
-#include "../OrderDetailHistory.hpp"
+#include "../Orderbook.hpp"
 
+#include <cmath>
+#include <memory>
 #include <vector>
 
 namespace {
@@ -47,4 +50,61 @@ TEST(NeuralNetworkInput, TrainingMovesTheTimeInputWeights) {
     history.updateNeutralNetwork(100, 10, 0.5);
     const auto trained = timeInputWeights(history);
     for (std::size_t n = 0; n < initial.size(); ++n) EXPECT_NE(trained[n], initial[n]) << "hidden neuron " << n;
+}
+
+namespace {
+
+Trades gtc(Orderbook& book, OrderId id, Side side, Price price, Quantity qty) {
+    return book.addOrder(std::make_shared<Order>(OrderType::GoodTillCancel, id, side, price, qty));
+}
+
+} // namespace
+
+TEST(Readouts, HasOrderOnlyWhileResting) {
+    Orderbook book;
+    gtc(book, 1, Side::Buy, 100, 5);
+    gtc(book, 2, Side::Buy, 99, 5);
+    EXPECT_TRUE(book.hasOrder(1));
+    EXPECT_FALSE(book.hasOrder(3)) << "never added";
+
+    gtc(book, 3, Side::Sell, 100, 5); // fills 1 and 3
+    EXPECT_FALSE(book.hasOrder(1));
+    EXPECT_FALSE(book.hasOrder(3));
+
+    book.CancelOrder(2);
+    EXPECT_FALSE(book.hasOrder(2));
+}
+
+TEST(Readouts, ZeroBeforeAnyTrade) {
+    Orderbook book;
+    gtc(book, 1, Side::Buy, 100, 5);
+    EXPECT_EQ(book.getPrediction(), 0);
+    EXPECT_EQ(book.getRecentAverageError(), 0.0);
+    EXPECT_EQ(book.getVWAP(), 0.0);
+}
+
+TEST(Readouts, VwapWeightsTradesByQuantity) {
+    Orderbook book;
+    gtc(book, 1, Side::Sell, 100, 10);
+    gtc(book, 2, Side::Buy, 100, 10);
+    EXPECT_EQ(book.getVWAP(), 100.0);
+    gtc(book, 3, Side::Sell, 110, 30);
+    gtc(book, 4, Side::Buy, 110, 30);
+    EXPECT_EQ(book.getVWAP(), 107.0) << "(100 * 10 + 110 * 30) / 40 = 107.5, truncated";
+}
+
+TEST(Readouts, PredictionLearnsARepeatedTradePrice) {
+    Orderbook book;
+    gtc(book, 1, Side::Sell, 100, 1);
+    gtc(book, 2, Side::Buy, 100, 1);
+    const double firstError = book.getRecentAverageError();
+    EXPECT_GT(firstError, 0.0);
+    EXPECT_TRUE(std::isfinite(firstError));
+
+    for (OrderId id = 3; id < 2003; id += 2) {
+        gtc(book, id, Side::Sell, 100, 1);
+        gtc(book, id + 1, Side::Buy, 100, 1);
+    }
+    EXPECT_NEAR(book.getPrediction(), 100, 2);
+    EXPECT_LT(book.getRecentAverageError(), firstError);
 }
