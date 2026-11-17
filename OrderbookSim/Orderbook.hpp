@@ -107,9 +107,10 @@ private:
 
 public:
     /*!
-     * @brief Default constructor, initializes the Good For Day order pruning thread.
+     * @brief Default constructor. The Good For Day pruning thread starts with the first Good For Day
+     * order; with ORDERBOOK_SINGLE_THREADED defined it never starts and only EndOfDay() clears them.
      */
-    Orderbook() : _ordersPruneThread{ [this] { PruneGoodForDayOrders(); } } {}
+    Orderbook() = default;
 
     // Deleted copy and move constructors and operators to prevent copying
     Orderbook(const Orderbook&) = delete;
@@ -126,7 +127,7 @@ public:
             _shutdown.store(true, std::memory_order_release);
         }
         _shutdownConditionVariable.notify_one();
-        _ordersPruneThread.join();
+        if (_ordersPruneThread.joinable()) _ordersPruneThread.join();
     }
 
     /*!

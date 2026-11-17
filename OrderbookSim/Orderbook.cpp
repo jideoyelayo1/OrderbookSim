@@ -435,6 +435,12 @@ Trades Orderbook::addOrder(OrderPtr order) {
     if (order->getOrderType() == OrderType::FillAndKill && !canMatch(order->getSide(), order->getPrice())) return { };
     if (order->getOrderType() == OrderType::FillOrKill && !canFullyFill(order->getSide(), order->getPrice(), order->getInitialQty())) return { };
 
+#ifndef ORDERBOOK_SINGLE_THREADED
+    // started under _ordersMutex, so at most one pruner; it waits on the mutex until this call returns
+    if (order->getOrderType() == OrderType::GoodForDay && !_ordersPruneThread.joinable())
+        _ordersPruneThread = std::thread{ [this] { PruneGoodForDayOrders(); } };
+#endif
+
     OrderPtrs::iterator iter;
     if (order->getSide() == Side::Buy) {
         auto& orders = _bids[order->getPrice()];
