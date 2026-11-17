@@ -398,7 +398,7 @@ The project relies on standard C++ libraries, nlohmann/json (vendored as `json.h
 for the tests (fetched by CMake) and, for the Python module only, pybind11 (submodule).
 
 ## Testing
-`ctest --test-dir build` runs 58 GoogleTest cases:
+`ctest --test-dir build` runs 59 GoogleTest cases:
 
 - `OrderbookTest/test.cpp`: seven data-driven cases from `OrderbookTest/TestFiles/`; they check
   only order and level counts.

@@ -13,6 +13,7 @@
 
 #include <cmath>
 #include <memory>
+#include <random>
 #include <vector>
 
 namespace {
@@ -99,6 +100,18 @@ TEST(Readouts, VwapDoesNotWrapAtLargeQuantities) {
     gtc(book, 1, Side::Sell, 100, 50'000'000);
     gtc(book, 2, Side::Buy, 100, 50'000'000);
     EXPECT_EQ(book.getVWAP(), 100.0);
+}
+
+// getVWAP() keeps running sums; getVWAP(n) with n = every trade rescans the history.
+TEST(Readouts, RunningVwapEqualsARescan) {
+    OrderDetailHistory history;
+    std::mt19937 rng(20241117);
+    std::uniform_int_distribution<Price> price(1, 1'000'000);
+    std::uniform_int_distribution<Quantity> qty(1, 1'000'000);
+    for (int trades = 1; trades <= 5000; ++trades) {
+        history.addOrderToPurchaseHistory(price(rng), qty(rng));
+        ASSERT_EQ(history.getVWAP(), history.getVWAP(trades)) << "after " << trades << " trades";
+    }
 }
 
 TEST(Readouts, PredictionLearnsARepeatedTradePrice) {

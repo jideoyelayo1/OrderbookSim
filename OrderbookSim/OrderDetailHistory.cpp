@@ -91,6 +91,8 @@ void OrderDetailHistory::addOrderToHistory(const OrderType type, const OrderId i
 void OrderDetailHistory::addOrderToPurchaseHistory(const Price price, const Quantity qty) {
     auto newPurchasedOrder = MatchedOrderDetail(price, qty);
     _purchaseHistory.push_back(newPurchasedOrder);
+    _tradedValue += static_cast<long long>(price) * qty;
+    _tradedQuantity += qty;
 }
 
 /*!
@@ -123,18 +125,15 @@ void OrderDetailHistory::_printPurchaseHistory() {
 }
 
 /*!
- * @brief Calculates the Volume-Weighted Average Price (VWAP) of all purchases.
+ * @brief Returns the Volume-Weighted Average Price (VWAP) of all purchases.
  *
- * @return The VWAP of all purchases.
+ * Constant time: addOrderToPurchaseHistory keeps the sums. The purchase history is never
+ * cleared, only replaced with the whole object, which starts the sums again at 0.
+ *
+ * @return The VWAP of all purchases, truncated; 0 before the first.
  */
 Price OrderDetailHistory::getVWAP() const {
-    if (_purchaseHistory.empty()) return 0;
-    long long num = 0, dom = 0;
-    for (const MatchedOrderDetail& sold : _purchaseHistory) {
-        num += static_cast<long long>(sold.getPrice()) * sold.getQuantity(); // int32 * uint32 would wrap in 32 bits
-        dom += sold.getQuantity();
-    }
-    return dom != 0 ? num / dom : 0;
+    return _tradedQuantity != 0 ? static_cast<Price>(_tradedValue / _tradedQuantity) : 0;
 }
 
 /*!
