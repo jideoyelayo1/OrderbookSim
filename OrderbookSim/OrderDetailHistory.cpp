@@ -214,3 +214,109 @@ void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity) {
     loadHistoryToNeuralNetwork({ static_cast<int>(getCurrentTimeAsFractionOfDay()) * 100, static_cast<int>(quantity) }, { price });
 }
 
+// The definitions below were dropped by the Doxygen pass in 13ea126; restored from 13ea126^.
+
+void OrderDetailHistory::_printAHistory(const std::vector<OrderDetail>& history) {
+    for (const OrderDetail& detail : history) {
+        std::cout << "OrderType: " << detail.getOrderType() << " ";
+        std::cout << "Id: " << detail.getOrderId() << " ";
+        std::cout << "Side: " << detail.getSide() << " ";
+        std::cout << "Price: " << detail.getPrice() << " ";
+        std::cout << "Quantity: " << detail.getQuantity() << " ";
+        std::cout << "Time: " << detail.getTime() << std::endl;
+    }
+    std::cout << std::endl;
+}
+
+void OrderDetailHistory::saveHistoryToJson(const std::string& filename, const std::vector<MatchedOrderDetail> history) {
+    nlohmann::json jsonHistory = nlohmann::json::array();
+    for (const MatchedOrderDetail& detail : history) {
+        jsonHistory.push_back({
+            {"price", detail.getPrice()},
+            {"quantity", detail.getQuantity()},
+            {"time", detail.getTime()}
+        });
+    }
+    std::ofstream file(filename);
+    file << jsonHistory.dump(4);
+}
+
+void OrderDetailHistory::saveHistoryToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename) {
+    saveHistoryToJson(buyfilename, buyHistory);
+    saveHistoryToJson(sellfilename, sellHistory);
+    saveHistoryToJson(purchasefilename, _purchaseHistory);
+}
+
+void OrderDetailHistory::saveHistoryToJson(const std::string& buyfilename, const std::string& sellfilename, const std::string& purchasefilename, const std::string& liveSellOrdersFilename, const std::string& buySellOrdersFilename) {
+    saveHistoryToJson(buyfilename, buyHistory);
+    saveHistoryToJson(sellfilename, sellHistory);
+    saveHistoryToJson(purchasefilename, _purchaseHistory);
+    _printLiveOrders(liveSellOrdersFilename, buySellOrdersFilename);
+}
+
+std::pair<std::vector<OrderDetail>, std::vector<OrderDetail>> OrderDetailHistory::_getLiveOrders() const {
+    std::vector<OrderDetail> _currentLiveBuys, _currentLiveSells;
+    for (const std::pair<const OrderId, OrderDetail>& p : _liveOrders) {
+        if (p.second.Side() == Side::Buy) { _currentLiveBuys.push_back(p.second); }
+        else if (p.second.Side() == Side::Sell) { _currentLiveSells.push_back(p.second); }
+    }
+    return std::make_pair(_currentLiveSells, _currentLiveBuys);
+}
+
+void OrderDetailHistory::_loadJsonLiveOrders(const std::string& SellFilename, const std::string& buyFilename) {
+    const auto [liveSells, liveBuys] = _getLiveOrders();
+    saveHistoryToJson(SellFilename, liveSells);
+    saveHistoryToJson(buyFilename, liveBuys);
+}
+
+void OrderDetailHistory::_printLiveOrders() {
+    const auto [liveSells, liveBuys] = _getLiveOrders();
+    std::cout << "Live Sell Orders" << std::endl;
+    _printAHistory(liveSells);
+    std::cout << "Live Buys Orders" << std::endl;
+    _printAHistory(liveBuys);
+}
+
+void OrderDetailHistory::_printLiveOrders(const std::string& SellFilename, const std::string& buyFilename) {
+    const auto [liveSells, liveBuys] = _getLiveOrders();
+    saveHistoryToJson(SellFilename, liveSells);
+    saveHistoryToJson(buyFilename, liveBuys);
+    std::cout << "Live Sell Orders" << std::endl;
+    _printAHistory(liveSells);
+    std::cout << "Live Buys Orders" << std::endl;
+    _printAHistory(liveBuys);
+}
+
+void OrderDetailHistory::loadHistoryToNeuralNetwork(std::vector<Price> inputPrice, std::vector<Price> outputPrice) {
+    Price SCALE = PRICESCALE;
+
+    std::vector<double> inputs(inputPrice.size());
+    std::vector<double> targets(outputPrice.size());
+
+    std::transform(inputPrice.begin(), inputPrice.end(), inputs.begin(), [SCALE](Price p) { return static_cast<double>(p) / SCALE; });
+    std::transform(outputPrice.begin(), outputPrice.end(), targets.begin(), [SCALE](Price p) { return static_cast<double>(p) / SCALE; });
+
+    std::vector<double> results;
+    neutralNetwork.Run(inputs, targets, results);
+
+    if (!results.empty()) lastPrediction = results[0] * SCALE;
+}
+
+double OrderDetailHistory::getCurrentTimeAsFractionOfDay() {
+    time_t now_c = std::chrono::system_clock::to_time_t(std::chrono::system_clock::now());
+    tm local_tm;
+    #if defined(_WIN32)
+        localtime_s(&local_tm, &now_c);
+    #else
+        localtime_r(&now_c, &local_tm);
+    #endif
+    int seconds_since_midnight = local_tm.tm_hour * 3600 + local_tm.tm_min * 60 + local_tm.tm_sec;
+    return static_cast<double>(seconds_since_midnight) / (24 * 3600);
+}
+
+int OrderDetailHistory::buyHistorySize() const { return buyHistory.size(); }
+
+int OrderDetailHistory::sellHistorySize() const { return sellHistory.size(); }
+
+int OrderDetailHistory::purchaseHistorySize() const { return _purchaseHistory.size(); }
+

@@ -104,17 +104,12 @@ Trades Orderbook::MatchOrders()
             onOrderMatchedWithHistoryUpdate(ask->getPrice(), quantity, ask->isFilled(), purchasedPrice); // we are purchasing at the max price
         }
 
+        // UpdateLevelData already drops a price's level data when its last order goes
         if (bids.empty())
-        {
             _bids.erase(bidPrice);
-            _data.erase(bidPrice);
-        }
 
         if (asks.empty())
-        {
             _asks.erase(askPrice);
-            _data.erase(askPrice);
-        }
     }
 
     if (!_bids.empty())
@@ -122,7 +117,7 @@ Trades Orderbook::MatchOrders()
         auto& [_, bids] = *_bids.begin();
         auto& order = bids.front();
         if (order->getOrderType() == OrderType::FillAndKill)
-            CancelOrder(order->getOrderId());
+            CancelOrderInternal(order->getOrderId()); // addOrder already holds _ordersMutex
     }
 
     if (!_asks.empty())
@@ -130,7 +125,7 @@ Trades Orderbook::MatchOrders()
         auto& [_, asks] = *_asks.begin();
         auto& order = asks.front();
         if (order->getOrderType() == OrderType::FillAndKill)
-            CancelOrder(order->getOrderId());
+            CancelOrderInternal(order->getOrderId()); // addOrder already holds _ordersMutex
     }
 
     return trades;
@@ -320,7 +315,11 @@ void Orderbook::PruneGoodForDayOrders() {
         const auto now = system_clock::now();
         const auto now_c = system_clock::to_time_t(now);
         std::tm now_parts;
-        localtime_s(&now_parts, &now_c);
+        #if defined(_WIN32)
+            localtime_s(&now_parts, &now_c);
+        #else
+            localtime_r(&now_c, &now_parts);
+        #endif
 
         if (now_parts.tm_hour >= end.count()) now_parts.tm_mday++;
 
@@ -333,8 +332,8 @@ void Orderbook::PruneGoodForDayOrders() {
 
         { // we don't want this thread to alter the state of our data structures at the same time
             std::unique_lock ordersLock{ _ordersMutex };
-            if (_shutdown.load(std::memory_order_acquire)
-                || _shutdownConditionVariable.wait_for(ordersLock, till) == std::cv_status::no_timeout)
+            // predicate form: a spurious wake-up must not end the thread
+            if (_shutdownConditionVariable.wait_for(ordersLock, till, [this] { return _shutdown.load(std::memory_order_acquire); }))
                 return;
         }
 
@@ -581,61 +580,16 @@ void Orderbook::changeExecutionType(int type) {
  * Cancels GoodForDay orders and cleans up orders and order entries.
  */
 void Orderbook::EndOfDay() {
-    std::unordered_map<OrderId, bool> goodToCancels;
+    std::scoped_lock ordersLock{ _ordersMutex };
 
-    // Handle live orders
-    for (const auto& m : _orderDetailHistory.getLiveOrders()) {
-        if (m.second.OrderType() != OrderType::GoodForDay) continue;
-        goodToCancels[m.first] = true;
-        _orderDetailHistory.deleteALiveOrder(m.first);
-    }
+    OrderIds goodForDays;
+    for (const auto& [id, entry] : _orders)
+        if (entry._order->getOrderType() == OrderType::GoodForDay) goodForDays.push_back(id);
 
-    // Remove orders not in goodToCancels
-    for (auto it = _orders.begin(); it != _orders.end(); ) {
-        if (goodToCancels.find(it->first) != goodToCancels.end()) {
-            ++it;
-        }
-        else {
-            it = _orders.erase(it);
-        }
-    }
-
-    // Clean up bids
-    for (auto it = _bids.begin(); it != _bids.end(); ) {
-        auto& orderptrs = it->second;
-        for (auto orderIt = orderptrs.begin(); orderIt != orderptrs.end(); ) {
-            if (goodToCancels.find((*orderIt)->getOrderId()) != goodToCancels.end()) {
-                orderIt = orderptrs.erase(orderIt);
-            }
-            else {
-                ++orderIt;
-            }
-        }
-        if (orderptrs.empty()) {
-            it = _bids.erase(it);
-        }
-        else {
-            ++it;
-        }
-    }
-
-    // Clean up asks
-    for (auto it = _asks.begin(); it != _asks.end(); ) {
-        auto& orderptrs = it->second;
-        for (auto orderIt = orderptrs.begin(); orderIt != orderptrs.end(); ) {
-            if (goodToCancels.find((*orderIt)->getOrderId()) != goodToCancels.end()) {
-                orderIt = orderptrs.erase(orderIt);
-            }
-            else {
-                ++orderIt;
-            }
-        }
-        if (orderptrs.empty()) {
-            it = _asks.erase(it);
-        }
-        else {
-            ++it;
-        }
+    // CancelOrderInternal keeps _orders, the price levels and the level data consistent
+    for (const auto id : goodForDays) {
+        CancelOrderInternal(id);
+        _orderDetailHistory.deleteALiveOrder(id);
     }
 }
 

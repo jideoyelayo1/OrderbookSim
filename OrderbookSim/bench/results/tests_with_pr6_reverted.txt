@@ -1,0 +1,577 @@
+# ctest at d3c7f24 with PR #6 (comparator + crossing fix) reverted in the working tree: git diff 7a8ef42^1 7a8ef42 | git apply -R
+# Release build, Apple clang version 21.0.0 (clang-2100.3.34.2); command: ctest --test-dir build-pr6-reverted -j 6 --output-on-failure
+Test project <repo>/build-pr6-reverted
+      Start  1: PricePriority.SellAggressorHitsHighestBidFirst
+      Start  2: PricePriority.BuyAggressorLiftsLowestAskFirst
+      Start  3: PricePriority.AggressorWalksLevelsBestToWorst
+      Start  4: PricePriority.LevelsAreReportedBestFirst
+      Start  5: TimePriority.FirstInFirstOutWithinALevel
+      Start  6: Crossing.NonCrossingOrdersRestWithoutTrading
+ 1/37 Test  #2: PricePriority.BuyAggressorLiftsLowestAskFirst ................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PricePriority.BuyAggressorLiftsLowestAskFirst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PricePriority
+[ RUN      ] PricePriority.BuyAggressorLiftsLowestAskFirst
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:99: Failure
+Expected equality of these values:
+  trades[0].getAskTrade()._orderId
+    Which is: 1
+  2u
+    Which is: 2
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:100: Failure
+Expected equality of these values:
+  trades[0].getAskTrade()._price
+    Which is: 103
+  101
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:101: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getAsks())
+    Which is: { 102, 101 }
+  (std::vector<Price>{ 102, 103 })
+    Which is: { 102, 103 }
+
+[  FAILED  ] PricePriority.BuyAggressorLiftsLowestAskFirst (0 ms)
+[----------] 1 test from PricePriority (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PricePriority.BuyAggressorLiftsLowestAskFirst
+
+ 1 FAILED TEST
+
+      Start  7: Crossing.EqualPricesTrade
+ 2/37 Test  #1: PricePriority.SellAggressorHitsHighestBidFirst ...............................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PricePriority.SellAggressorHitsHighestBidFirst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PricePriority
+[ RUN      ] PricePriority.SellAggressorHitsHighestBidFirst
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:83: Failure
+Expected equality of these values:
+  trades[0].getBidTrade()._orderId
+    Which is: 1
+  2u
+    Which is: 2
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:84: Failure
+Expected equality of these values:
+  trades[0].getBidTrade()._price
+    Which is: 99
+  101
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:87: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getBids())
+    Which is: { 100, 101 }
+  (std::vector<Price>{ 100, 99 })
+    Which is: { 100, 99 }
+
+[  FAILED  ] PricePriority.SellAggressorHitsHighestBidFirst (0 ms)
+[----------] 1 test from PricePriority (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PricePriority.SellAggressorHitsHighestBidFirst
+
+ 1 FAILED TEST
+
+ 3/37 Test  #3: PricePriority.AggressorWalksLevelsBestToWorst ................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PricePriority.AggressorWalksLevelsBestToWorst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PricePriority
+[ RUN      ] PricePriority.AggressorWalksLevelsBestToWorst
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:112: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 1
+  3u
+    Which is: 3
+
+[  FAILED  ] PricePriority.AggressorWalksLevelsBestToWorst (0 ms)
+[----------] 1 test from PricePriority (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PricePriority.AggressorWalksLevelsBestToWorst
+
+ 1 FAILED TEST
+
+      Start  8: GoodTillCancel.RemainderRestsAtItsLimit
+      Start  9: FillAndKill.PartialFillThenRemainderIsCancelled
+ 4/37 Test  #5: TimePriority.FirstInFirstOutWithinALevel .....................................   Passed    0.00 sec
+ 5/37 Test  #6: Crossing.NonCrossingOrdersRestWithoutTrading .................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Crossing.NonCrossingOrdersRestWithoutTrading
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Crossing
+[ RUN      ] Crossing.NonCrossingOrdersRestWithoutTrading
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:161: Failure
+Value of: gtc(book, 2, Side::Sell, 101, 10).empty()
+  Actual: false
+Expected: true
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:163: Failure
+Value of: gtc(book, 4, Side::Sell, 100 + 1, 10).empty()
+  Actual: false
+Expected: true
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:164: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 0
+  4u
+    Which is: 4
+
+[  FAILED  ] Crossing.NonCrossingOrdersRestWithoutTrading (0 ms)
+[----------] 1 test from Crossing (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Crossing.NonCrossingOrdersRestWithoutTrading
+
+ 1 FAILED TEST
+
+ 6/37 Test  #4: PricePriority.LevelsAreReportedBestFirst .....................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = PricePriority.LevelsAreReportedBestFirst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from PricePriority
+[ RUN      ] PricePriority.LevelsAreReportedBestFirst
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:130: Failure
+Expected equality of these values:
+  prices(infos.getBids())
+    Which is: {}
+  (std::vector<Price>{ 99, 98, 97 })
+    Which is: { 99, 98, 97 }
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:131: Failure
+Expected equality of these values:
+  prices(infos.getAsks())
+    Which is: {}
+  (std::vector<Price>{ 101, 102, 103 })
+    Which is: { 101, 102, 103 }
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:132: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 0
+  6u
+    Which is: 6
+
+[  FAILED  ] PricePriority.LevelsAreReportedBestFirst (0 ms)
+[----------] 1 test from PricePriority (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] PricePriority.LevelsAreReportedBestFirst
+
+ 1 FAILED TEST
+
+      Start 10: FillAndKill.RejectedWhenNothingCrosses
+      Start 11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+      Start 12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched
+ 7/37 Test  #7: Crossing.EqualPricesTrade ....................................................   Passed    0.00 sec
+      Start 13: FillOrKill.IgnoresQuantityBeyondItsLimit
+ 8/37 Test  #8: GoodTillCancel.RemainderRestsAtItsLimit ......................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GoodTillCancel.RemainderRestsAtItsLimit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GoodTillCancel
+[ RUN      ] GoodTillCancel.RemainderRestsAtItsLimit
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:182: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 0
+  1u
+    Which is: 1
+
+[  FAILED  ] GoodTillCancel.RemainderRestsAtItsLimit (0 ms)
+[----------] 1 test from GoodTillCancel (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] GoodTillCancel.RemainderRestsAtItsLimit
+
+ 1 FAILED TEST
+
+      Start 14: FillOrKill.SellSideUsesBidsAtOrAboveLimit
+ 9/37 Test  #9: FillAndKill.PartialFillThenRemainderIsCancelled ..............................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FillAndKill.PartialFillThenRemainderIsCancelled
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FillAndKill
+[ RUN      ] FillAndKill.PartialFillThenRemainderIsCancelled
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:194: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 0
+  1u
+    Which is: 1
+
+[  FAILED  ] FillAndKill.PartialFillThenRemainderIsCancelled (0 ms)
+[----------] 1 test from FillAndKill (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] FillAndKill.PartialFillThenRemainderIsCancelled
+
+ 1 FAILED TEST
+
+      Start 15: FillOrKill.SeesQuantityRestingAfterSamePriceCross
+10/37 Test #10: FillAndKill.RejectedWhenNothingCrosses .......................................   Passed    0.00 sec
+      Start 16: Market.BuySweepsAsksBestFirstAndDoesNotRest
+11/37 Test #11: FillOrKill.FillsAcrossLevelsWhenEnoughQuantity ...............................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FillOrKill
+[ RUN      ] FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:213: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 0
+  2u
+    Which is: 2
+
+[  FAILED  ] FillOrKill.FillsAcrossLevelsWhenEnoughQuantity (0 ms)
+[----------] 1 test from FillOrKill (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] FillOrKill.FillsAcrossLevelsWhenEnoughQuantity
+
+ 1 FAILED TEST
+
+      Start 17: Market.SellSweepsBidsBestFirst
+12/37 Test #12: FillOrKill.RejectedWhenQuantityShortAndBookUntouched .........................   Passed    0.00 sec
+      Start 18: Market.RejectedWhenOppositeSideEmpty
+13/37 Test #13: FillOrKill.IgnoresQuantityBeyondItsLimit .....................................   Passed    0.00 sec
+      Start 19: Market.RemainderRestsAtWorstOppositePrice
+14/37 Test #14: FillOrKill.SellSideUsesBidsAtOrAboveLimit ....................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = FillOrKill.SellSideUsesBidsAtOrAboveLimit
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from FillOrKill
+[ RUN      ] FillOrKill.SellSideUsesBidsAtOrAboveLimit
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:243: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 0
+  2u
+    Which is: 2
+
+[  FAILED  ] FillOrKill.SellSideUsesBidsAtOrAboveLimit (0 ms)
+[----------] 1 test from FillOrKill (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] FillOrKill.SellSideUsesBidsAtOrAboveLimit
+
+ 1 FAILED TEST
+
+      Start 20: GoodForDay.RestsAndMatchesLikeGoodTillCancel
+15/37 Test #15: FillOrKill.SeesQuantityRestingAfterSamePriceCross ............................   Passed    0.00 sec
+      Start 21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+16/37 Test #16: Market.BuySweepsAsksBestFirstAndDoesNotRest ..................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Market.BuySweepsAsksBestFirstAndDoesNotRest
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Market
+[ RUN      ] Market.BuySweepsAsksBestFirstAndDoesNotRest
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:268: Failure
+Expected equality of these values:
+  trades[0].getAskTrade()._price
+    Which is: 102
+  100
+
+[  FAILED  ] Market.BuySweepsAsksBestFirstAndDoesNotRest (0 ms)
+[----------] 1 test from Market (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Market.BuySweepsAsksBestFirstAndDoesNotRest
+
+ 1 FAILED TEST
+
+      Start 22: Cancel.RemovesOrderAndEmptyLevelOnly
+17/37 Test #17: Market.SellSweepsBidsBestFirst ...............................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Market.SellSweepsBidsBestFirst
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Market
+[ RUN      ] Market.SellSweepsBidsBestFirst
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:283: Failure
+Expected equality of these values:
+  trades[0].getBidTrade()._price
+    Which is: 98
+  100
+
+[  FAILED  ] Market.SellSweepsBidsBestFirst (0 ms)
+[----------] 1 test from Market (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Market.SellSweepsBidsBestFirst
+
+ 1 FAILED TEST
+
+      Start 23: Cancel.MiddleOfQueueKeepsOthersInOrder
+18/37 Test #18: Market.RejectedWhenOppositeSideEmpty .........................................   Passed    0.00 sec
+      Start 24: Cancel.UnknownOrAlreadyFilledIdIsANoOp
+19/37 Test #19: Market.RemainderRestsAtWorstOppositePrice ....................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Market.RemainderRestsAtWorstOppositePrice
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Market
+[ RUN      ] Market.RemainderRestsAtWorstOppositePrice
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:304: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getBids())
+    Which is: { 100 }
+  (std::vector<Price>{ 101 })
+    Which is: { 101 }
+
+[  FAILED  ] Market.RemainderRestsAtWorstOppositePrice (0 ms)
+[----------] 1 test from Market (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Market.RemainderRestsAtWorstOppositePrice
+
+ 1 FAILED TEST
+
+      Start 25: Modify.LosesTimePriority
+20/37 Test #20: GoodForDay.RestsAndMatchesLikeGoodTillCancel .................................   Passed    0.00 sec
+      Start 26: Modify.NewPriceCanCrossAndTrade
+21/37 Test #21: GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders ...............................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from GoodForDay
+[ RUN      ] GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:326: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 0
+  2u
+    Which is: 2
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:327: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getBids())
+    Which is: {}
+  (std::vector<Price>{ 99 })
+    Which is: { 99 }
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:328: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getAsks())
+    Which is: {}
+  (std::vector<Price>{ 106 })
+    Which is: { 106 }
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:332: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 0
+  1u
+    Which is: 1
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:334: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 0
+  1u
+    Which is: 1
+
+[  FAILED  ] GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders (0 ms)
+[----------] 1 test from GoodForDay (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders
+
+ 1 FAILED TEST
+
+      Start 27: Modify.ChangesQuantityAndKeepsOrderType
+22/37 Test #22: Cancel.RemovesOrderAndEmptyLevelOnly .........................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Cancel.RemovesOrderAndEmptyLevelOnly
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Cancel
+[ RUN      ] Cancel.RemovesOrderAndEmptyLevelOnly
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:347: Failure
+Expected equality of these values:
+  book.Size()
+    Which is: 0
+  2u
+    Which is: 2
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:348: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getBids())
+    Which is: {}
+  (std::vector<Price>{ 99 })
+    Which is: { 99 }
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:349: Failure
+Expected equality of these values:
+  prices(book.getOrderInfos().getAsks())
+    Which is: {}
+  (std::vector<Price>{ 101 })
+    Which is: { 101 }
+
+[  FAILED  ] Cancel.RemovesOrderAndEmptyLevelOnly (0 ms)
+[----------] 1 test from Cancel (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Cancel.RemovesOrderAndEmptyLevelOnly
+
+ 1 FAILED TEST
+
+      Start 28: Modify.UnknownIdIsANoOp
+23/37 Test #23: Cancel.MiddleOfQueueKeepsOthersInOrder .......................................   Passed    0.00 sec
+      Start 29: RandomFlow.ContractHoldsAfterEveryOperation
+24/37 Test #24: Cancel.UnknownOrAlreadyFilledIdIsANoOp .......................................   Passed    0.00 sec
+      Start 30: Lifecycle.DestroyingManyBooksDoesNotHang
+25/37 Test #25: Modify.LosesTimePriority .....................................................   Passed    0.00 sec
+      Start 31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt"
+26/37 Test #26: Modify.NewPriceCanCrossAndTrade ..............................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = Modify.NewPriceCanCrossAndTrade
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from Modify
+[ RUN      ] Modify.NewPriceCanCrossAndTrade
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:395: Failure
+Expected equality of these values:
+  trades.size()
+    Which is: 0
+  1u
+    Which is: 1
+
+[  FAILED  ] Modify.NewPriceCanCrossAndTrade (0 ms)
+[----------] 1 test from Modify (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] Modify.NewPriceCanCrossAndTrade
+
+ 1 FAILED TEST
+
+      Start 32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt"
+27/37 Test #27: Modify.ChangesQuantityAndKeepsOrderType ......................................   Passed    0.00 sec
+      Start 33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt"
+28/37 Test #28: Modify.UnknownIdIsANoOp ......................................................   Passed    0.00 sec
+      Start 34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt"
+29/37 Test #29: RandomFlow.ContractHoldsAfterEveryOperation ..................................***Failed    0.00 sec
+Running main() from <repo>/build-pr6-reverted/_deps/googletest-src/googletest/src/gtest_main.cc
+Note: Google Test filter = RandomFlow.ContractHoldsAfterEveryOperation
+[==========] Running 1 test from 1 test suite.
+[----------] Global test environment set-up.
+[----------] 1 test from RandomFlow
+[ RUN      ] RandomFlow.ContractHoldsAfterEveryOperation
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:63: Failure
+Value of: std::is_sorted(asks.begin(), asks.end())
+  Actual: false
+Expected: true
+asks must be best (lowest) first
+
+<repo>/OrderbookSim/OrderbookTest/MatchingContractTests.cpp:475: Failure
+Failed
+first failure at step 1
+
+[  FAILED  ] RandomFlow.ContractHoldsAfterEveryOperation (0 ms)
+[----------] 1 test from RandomFlow (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 1 test from 1 test suite ran. (0 ms total)
+[  PASSED  ] 0 tests.
+[  FAILED  ] 1 test, listed below:
+[  FAILED  ] RandomFlow.ContractHoldsAfterEveryOperation
+
+ 1 FAILED TEST
+
+      Start 35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt"
+30/37 Test #31: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_GoodTillCancel.txt" ....   Passed    0.00 sec
+      Start 36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt"
+31/37 Test #32: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillAndKill.txt" .......   Passed    0.00 sec
+      Start 37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt"
+32/37 Test #33: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Hit.txt" ....   Passed    0.00 sec
+33/37 Test #34: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_FillOrKill_Miss.txt" ...   Passed    0.00 sec
+34/37 Test #35: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Cancel_Success.txt" ..........   Passed    0.00 sec
+35/37 Test #36: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Modify_Side.txt" .............   Passed    0.00 sec
+36/37 Test #37: Tests/OrderbookTestsFixture.OrderbookTestSuite/"Match_Market.txt" ............   Passed    0.00 sec
+37/37 Test #30: Lifecycle.DestroyingManyBooksDoesNotHang .....................................   Passed    0.25 sec
+
+57% tests passed, 16 tests failed out of 37
+
+Total Test time (real) =   0.27 sec
+
+The following tests FAILED:
+	  1 - PricePriority.SellAggressorHitsHighestBidFirst (Failed)
+	  2 - PricePriority.BuyAggressorLiftsLowestAskFirst (Failed)
+	  3 - PricePriority.AggressorWalksLevelsBestToWorst (Failed)
+	  4 - PricePriority.LevelsAreReportedBestFirst (Failed)
+	  6 - Crossing.NonCrossingOrdersRestWithoutTrading (Failed)
+	  8 - GoodTillCancel.RemainderRestsAtItsLimit (Failed)
+	  9 - FillAndKill.PartialFillThenRemainderIsCancelled (Failed)
+	 11 - FillOrKill.FillsAcrossLevelsWhenEnoughQuantity (Failed)
+	 14 - FillOrKill.SellSideUsesBidsAtOrAboveLimit (Failed)
+	 16 - Market.BuySweepsAsksBestFirstAndDoesNotRest (Failed)
+	 17 - Market.SellSweepsBidsBestFirst (Failed)
+	 19 - Market.RemainderRestsAtWorstOppositePrice (Failed)
+	 21 - GoodForDay.EndOfDayCancelsOnlyGoodForDayOrders (Failed)
+	 22 - Cancel.RemovesOrderAndEmptyLevelOnly (Failed)
+	 26 - Modify.NewPriceCanCrossAndTrade (Failed)
+	 29 - RandomFlow.ContractHoldsAfterEveryOperation (Failed)
+Errors while running CTest

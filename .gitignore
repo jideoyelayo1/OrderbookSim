@@ -6,3 +6,7 @@ BuyHistory
 SellHistory
 PurchaseHistory
 /OrderbookSim/.vs/OrderbookSim
+
+# CMake build trees (see README)
+/build/
+/build-*/

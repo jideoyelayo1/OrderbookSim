@@ -33,7 +33,6 @@ private:
 
     NeuralNetwork neutralNetwork;                      ///< Neural network for predicting prices.
     Price lastPrediction = 0;                          ///< Last predicted price from the neural network.
-    Price PRICESCALE = 500;                            ///< Scale factor for price normalization in predictions.
 
     /*!
      * @brief Retrieves the current live orders separated into buy and sell orders.
@@ -88,6 +87,8 @@ private:
     void loadHistoryToNeuralNetwork(std::vector<Price> inputPrice, std::vector<Price> outputPrice);
 
 public:
+    Price PRICESCALE = 500;                            ///< Scale factor for price normalization in predictions.
+
     /*!
      * @brief Default constructor that initializes the neural network with a predefined topology.
      */
