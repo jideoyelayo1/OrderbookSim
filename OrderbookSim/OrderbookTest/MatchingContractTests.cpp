@@ -478,14 +478,14 @@ TEST(RandomFlow, ContractHoldsAfterEveryOperation) {
 
 // ---------------------------------------------------------------- lifecycle
 
-// Every Orderbook starts a Good-For-Day pruning thread. Destroying a book must not wait for the
+// The first Good-For-Day order starts the pruning thread. Destroying a book must not wait for the
 // next 16:00. Before the fix the shutdown flag could be set and notified between the pruner's
 // check and its wait (a lost wake-up), leaving the destructor blocked in join(). The varying
 // delay sweeps the destructor across the pruner's start-up so that window is hit.
 TEST(Lifecycle, DestroyingManyBooksDoesNotHang) {
     for (OrderId i = 0; i < 2000; ++i) {
         Orderbook book;
-        gtc(book, i, Side::Buy, 100, 1);
+        book.addOrder(makeOrder(OrderType::GoodForDay, i, Side::Buy, 100, 1));
         const auto until = std::chrono::steady_clock::now() + std::chrono::microseconds(i % 200);
         while (std::chrono::steady_clock::now() < until) {}
     }

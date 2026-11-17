@@ -1,0 +1,6 @@
+[submodule "OrderbookSim/json"]
+	path = OrderbookSim/json
+	url = https://github.com/nlohmann/json.git
+[submodule "OrderbookSim/pybind11"]
+	path = OrderbookSim/pybind11
+	url = https://github.com/pybind/pybind11.git

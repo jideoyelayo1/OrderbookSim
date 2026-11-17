@@ -29,6 +29,8 @@ private:
     std::vector<OrderDetail> buyHistory;               ///< History of buy orders.
     std::vector<OrderDetail> sellHistory;              ///< History of sell orders.
     std::vector<MatchedOrderDetail> _purchaseHistory;  ///< History of matched purchase orders.
+    long long _tradedValue = 0;                        ///< Sum of price * quantity over _purchaseHistory, for getVWAP().
+    long long _tradedQuantity = 0;                     ///< Sum of quantity over _purchaseHistory, for getVWAP().
     std::unordered_map<OrderId, OrderDetail> _liveOrders; ///< Map of currently live orders.
 
     NeuralNetwork neutralNetwork;                      ///< Neural network for predicting prices.
@@ -121,6 +123,19 @@ public:
     void updateNeutralNetwork(Price price, Quantity quantity);
 
     /*!
+     * @brief Trains the neural network once on (time of day, quantity) -> price.
+     *
+     * @param fractionOfDay Local time of day as a fraction in [0, 1); the network sees it in steps of 1/100.
+     */
+    void updateNeutralNetwork(Price price, Quantity quantity, double fractionOfDay);
+
+    /*!
+     * @brief Retrieves the neural network.
+     * @return The neural network.
+     */
+    const NeuralNetwork& getNeuralNetwork() const { return neutralNetwork; }
+
+    /*!
      * @brief Adds an order to the appropriate history (buy or sell) based on its side.
      */
     void addOrderToHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty);
@@ -166,10 +181,10 @@ public:
     void _printLiveOrders();
 
     /*!
-     * @brief Calculates the Volume-Weighted Average Price (VWAP) of all purchases.
-     * @return The VWAP of all purchases.
+     * @brief Returns the Volume-Weighted Average Price (VWAP) of all purchases, from running sums.
+     * @return The VWAP of all purchases, truncated; 0 before the first.
      */
-    Price getVWAP();
+    Price getVWAP() const;
 
     /*!
      * @brief Calculates the VWAP of the last `n` purchases.
@@ -181,7 +196,7 @@ public:
      * @brief Retrieves the last prediction from the neural network.
      * @return The predicted price.
      */
-    Price getPrediction();
+    Price getPrediction() const;
 
     /*!
      * @brief Retrieves a map of all currently live orders.

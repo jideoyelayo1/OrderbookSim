@@ -61,7 +61,7 @@ private:
      * @brief Contains information about order levels, including quantity and count.
      */
     struct LevelData {
-        Quantity _quantity{}; ///< Total quantity at the level.
+        std::uint64_t _quantity{}; ///< Total quantity at the level; 64-bit, as a sum of 32-bit quantities can pass 2^32.
         Quantity _count{};    ///< Count of orders at the level.
 
         /*!
@@ -107,9 +107,10 @@ private:
 
 public:
     /*!
-     * @brief Default constructor, initializes the Good For Day order pruning thread.
+     * @brief Default constructor. The Good For Day pruning thread starts with the first Good For Day
+     * order; with ORDERBOOK_SINGLE_THREADED defined it never starts and only EndOfDay() clears them.
      */
-    Orderbook() : _ordersPruneThread{ [this] { PruneGoodForDayOrders(); } } {}
+    Orderbook() = default;
 
     // Deleted copy and move constructors and operators to prevent copying
     Orderbook(const Orderbook&) = delete;
@@ -126,7 +127,7 @@ public:
             _shutdown.store(true, std::memory_order_release);
         }
         _shutdownConditionVariable.notify_one();
-        _ordersPruneThread.join();
+        if (_ordersPruneThread.joinable()) _ordersPruneThread.join();
     }
 
     /*!
@@ -231,6 +232,35 @@ public:
      * @return The size of the orderbook.
      */
     std::size_t Size() const;
+
+    /*!
+     * @brief Checks whether an order is resting in the orderbook.
+     *
+     * @param orderId The ID of the order.
+     * @return True if the order is in the book, false if it was never added, filled, killed or cancelled.
+     */
+    bool hasOrder(OrderId orderId) const;
+
+    /*!
+     * @brief Retrieves the neural network's prediction for the most recent trade, made before training on it.
+     *
+     * @return The predicted price, 0 before the first trade.
+     */
+    Price getPrediction() const;
+
+    /*!
+     * @brief Retrieves the neural network's recent average error (smoothed RMS, in units of price / PRICESCALE).
+     *
+     * @return The recent average error, 0 before the first trade.
+     */
+    double getRecentAverageError() const;
+
+    /*!
+     * @brief Retrieves the volume-weighted average price of all trades.
+     *
+     * @return The VWAP, truncated to a whole price; 0 before the first trade.
+     */
+    double getVWAP() const;
 
     /*!
      * @brief Retrieves aggregated orderbook level information.

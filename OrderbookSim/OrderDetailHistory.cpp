@@ -91,6 +91,8 @@ void OrderDetailHistory::addOrderToHistory(const OrderType type, const OrderId i
 void OrderDetailHistory::addOrderToPurchaseHistory(const Price price, const Quantity qty) {
     auto newPurchasedOrder = MatchedOrderDetail(price, qty);
     _purchaseHistory.push_back(newPurchasedOrder);
+    _tradedValue += static_cast<long long>(price) * qty;
+    _tradedQuantity += qty;
 }
 
 /*!
@@ -123,18 +125,15 @@ void OrderDetailHistory::_printPurchaseHistory() {
 }
 
 /*!
- * @brief Calculates the Volume-Weighted Average Price (VWAP) of all purchases.
+ * @brief Returns the Volume-Weighted Average Price (VWAP) of all purchases.
  *
- * @return The VWAP of all purchases.
+ * Constant time: addOrderToPurchaseHistory keeps the sums. The purchase history is never
+ * cleared, only replaced with the whole object, which starts the sums again at 0.
+ *
+ * @return The VWAP of all purchases, truncated; 0 before the first.
  */
-Price OrderDetailHistory::getVWAP() {
-    if (_purchaseHistory.empty()) return 0;
-    long long num = 0, dom = 0;
-    for (const MatchedOrderDetail& sold : _purchaseHistory) {
-        num += sold.getPrice() * sold.getQuantity();
-        dom += sold.getQuantity();
-    }
-    return dom != 0 ? num / dom : 0;
+Price OrderDetailHistory::getVWAP() const {
+    return _tradedQuantity != 0 ? static_cast<Price>(_tradedValue / _tradedQuantity) : 0;
 }
 
 /*!
@@ -149,7 +148,7 @@ Price OrderDetailHistory::getVWAP(int n) {
 
     long long num = 0, dom = 0;
     for (int i = historySize - 1; i >= historySize - n; --i) {
-        num += _purchaseHistory[i].getPrice() * _purchaseHistory[i].getQuantity();
+        num += static_cast<long long>(_purchaseHistory[i].getPrice()) * _purchaseHistory[i].getQuantity();
         dom += _purchaseHistory[i].getQuantity();
     }
     return dom != 0 ? num / dom : 0;
@@ -182,7 +181,7 @@ void OrderDetailHistory::saveHistoryToJson(const std::string& filename, const st
  *
  * @return The most recent prediction from the neural network.
  */
-Price OrderDetailHistory::getPrediction() {
+Price OrderDetailHistory::getPrediction() const {
     return lastPrediction;
 }
 
@@ -211,7 +210,19 @@ void OrderDetailHistory::deleteALiveOrder(OrderId id) {
  * @param quantity The quantity of the latest matched order.
  */
 void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity) {
-    loadHistoryToNeuralNetwork({ static_cast<int>(getCurrentTimeAsFractionOfDay()) * 100, static_cast<int>(quantity) }, { price });
+    updateNeutralNetwork(price, quantity, getCurrentTimeAsFractionOfDay());
+}
+
+/*!
+ * @brief Trains the neural network once on (time of day, quantity) -> price.
+ *
+ * @param price The price of the latest matched order.
+ * @param quantity The quantity of the latest matched order.
+ * @param fractionOfDay Local time of day as a fraction in [0, 1).
+ */
+void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity, double fractionOfDay) {
+    // scale before the cast: casting the fraction first made the time input 0 at every time of day
+    loadHistoryToNeuralNetwork({ static_cast<int>(fractionOfDay * 100), static_cast<int>(quantity) }, { price });
 }
 
 // The definitions below were dropped by the Doxygen pass in 13ea126; restored from 13ea126^.

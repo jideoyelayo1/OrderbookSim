@@ -20,7 +20,7 @@
  */
 struct LevelInfo {
     Price _price;       ///< The price at this level in the order book.
-    Quantity _quantity; ///< The quantity available at this price level.
+    std::uint64_t _quantity; ///< The quantity available at this price level: a sum of order quantities, so 64-bit.
 };
 
 /*!

@@ -242,9 +242,9 @@ void Orderbook::onOrderAdded(OrderPtr order) {
 void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled, Price purchasePrice) {
     if (purchasePrice == 0) {/*DO NOTHING*/; }
     else if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, quantity);
-    else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, std::min(quantity, _data[price]._quantity));
+    else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, static_cast<Quantity>(std::min<std::uint64_t>(quantity, _data[price]._quantity)));
 
-    _orderDetailHistory.updateNeutralNetwork(purchasePrice, std::min(quantity, _data[price]._quantity));
+    _orderDetailHistory.updateNeutralNetwork(purchasePrice, static_cast<Quantity>(std::min<std::uint64_t>(quantity, _data[price]._quantity)));
 
     UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
 }
@@ -435,6 +435,12 @@ Trades Orderbook::addOrder(OrderPtr order) {
     if (order->getOrderType() == OrderType::FillAndKill && !canMatch(order->getSide(), order->getPrice())) return { };
     if (order->getOrderType() == OrderType::FillOrKill && !canFullyFill(order->getSide(), order->getPrice(), order->getInitialQty())) return { };
 
+#ifndef ORDERBOOK_SINGLE_THREADED
+    // started under _ordersMutex, so at most one pruner; it waits on the mutex until this call returns
+    if (order->getOrderType() == OrderType::GoodForDay && !_ordersPruneThread.joinable())
+        _ordersPruneThread = std::thread{ [this] { PruneGoodForDayOrders(); } };
+#endif
+
     OrderPtrs::iterator iter;
     if (order->getSide() == Side::Buy) {
         auto& orders = _bids[order->getPrice()];
@@ -493,6 +499,47 @@ Trades Orderbook::ModifyOrder(OrderModify order) {
 std::size_t Orderbook::Size() const { return _orders.size(); }
 
 /*!
+ * @brief Checks whether an order is resting in the orderbook.
+ *
+ * @param orderId The ID of the order.
+ * @return True if the order is in the book.
+ */
+bool Orderbook::hasOrder(OrderId orderId) const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orders.contains(orderId);
+}
+
+/*!
+ * @brief Retrieves the neural network's prediction for the most recent trade.
+ *
+ * @return The predicted price, 0 before the first trade.
+ */
+Price Orderbook::getPrediction() const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orderDetailHistory.getPrediction();
+}
+
+/*!
+ * @brief Retrieves the neural network's recent average error.
+ *
+ * @return The recent average error, 0 before the first trade.
+ */
+double Orderbook::getRecentAverageError() const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orderDetailHistory.getNeuralNetwork().getNet().getRecentAverageError();
+}
+
+/*!
+ * @brief Retrieves the volume-weighted average price of all trades.
+ *
+ * @return The VWAP, truncated to a whole price; 0 before the first trade.
+ */
+double Orderbook::getVWAP() const {
+    std::scoped_lock ordersLock{ _ordersMutex };
+    return _orderDetailHistory.getVWAP();
+}
+
+/*!
  * @brief Retrieves aggregated orderbook level information.
  *
  * Provides information about the bid and ask levels in the orderbook,
@@ -507,8 +554,8 @@ OrderbookLevelInfos Orderbook::getOrderInfos() const {
 
     auto CreateLevelInfos = [](Price price, const OrderPtrs& orders)
         {
-            return LevelInfo{ price, std::accumulate(orders.begin(), orders.end(), (Quantity)0,
-                [](Quantity runningSum, const OrderPtr& order)
+            return LevelInfo{ price, std::accumulate(orders.begin(), orders.end(), std::uint64_t{ 0 },
+                [](std::uint64_t runningSum, const OrderPtr& order)
                 { return runningSum + order->getRemainingQty(); }) };
         };
 

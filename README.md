@@ -2,7 +2,7 @@
 
 ## Overview
 
-OrderbookSim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-weighted average price (VWAP). The project also includes a neural network built from scratch to predict sell prices, and now features GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.
+OrderbookSim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-weighted average price (VWAP). The project also includes a small online neural network, written from scratch, that learns the trade price from each trade, a WebAssembly build with a JavaScript binding, and GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.
 
 ## Building and testing
 Requires CMake 3.25 or later and a C++20 compiler. From the repository root:
@@ -28,6 +28,95 @@ cmake --build build-asan -j 8 --target OrderbookTests && ctest --test-dir build-
 
 The Visual Studio project files have not been updated since the headers were renamed to `.hpp`.
 
+### WebAssembly build
+Needs [emsdk](https://github.com/emscripten-core/emsdk) with Emscripten 6.0.13 (the version CI
+uses) activated in the shell. CI checks out emsdk at commit
+`35659964bc2762fffec0d257997fb61475f765b7`, its tag `6.0.13`, and checks `git rev-parse HEAD`
+before installing. From the repository root:
+
+```bash
+source path/to/emsdk/emsdk_env.sh
+web/build.sh                 # writes web/dist/orderbook.mjs and web/dist/orderbook.wasm
+cmake --build build --target orderbook_parity
+node web/test.mjs            # parity test against the native build
+```
+
+`web/build.sh` calls `em++` on the nine sources the order book needs plus `web/orderbook_wasm.cpp`,
+with `-O2 -fexceptions -DORDERBOOK_SINGLE_THREADED`, as an ES module (`-sMODULARIZE
+-sEXPORT_ES6`) for browsers and Node, with no filesystem. With Emscripten 6.0.13 the output is
+56,241 bytes of JavaScript and 403,047 bytes of WebAssembly (13,835 and 155,739 gzipped at
+level 9). `web/dist/` is not committed: a `v*` tag makes CI attach `orderbook.mjs`,
+`orderbook.wasm` and `SHA256SUMS` to a GitHub Release.
+
+`ORDERBOOK_SINGLE_THREADED` stops the order book from starting its Good-For-Day pruning thread,
+which a single-threaded WebAssembly module cannot run; Good-For-Day orders are then cancelled only
+by `EndOfDay()`. Without the flag the thread starts with the first Good-For-Day order.
+
+`web/test.mjs` replays a seeded 20,000-call flow through the WebAssembly module and through the
+native `orderbook_parity` driver and requires identical ids, statuses, trades, levels, sizes and
+VWAP. CMake compiles the driver from the sources with `ORDERBOOK_SINGLE_THREADED`, as
+`web/build.sh` compiles the module, so neither side has the 16:00 pruning thread. The network's prediction and error start from `rand()` weights and see the wall clock, so
+they are only required to be finite. Because both sides share `Book.hpp`, the test also pins the
+flow's trade count and its count of each outcome, and checks malformed JavaScript calls on the
+WebAssembly side (wrong types, missing arguments, values over the limits). It uses Node built-ins
+only.
+
+### JavaScript binding
+`web/orderbook_wasm.cpp` binds `Book` (`web/Book.hpp`), a wrapper that assigns its own order ids
+(1, 2, 3, ... per valid add; never reused) and checks every argument:
+
+```js
+import createModule from './orderbook.mjs';
+
+const { Book } = await createModule();
+const book = new Book();
+book.add('GoodTillCancel', 'Sell', 100, 5); // { id: 1, status: 'resting', restingQuantity: 5, trades: [] }
+book.add('FillAndKill', 'Buy', 101, 8);     // { id: 2, status: 'partial', restingQuantity: 0, trades: [{ bidId: 2, bidPrice: 101, askId: 1, askPrice: 100, quantity: 5 }] }
+book.delete();                              // frees the C++ object
+```
+
+| method | returns |
+|---|---|
+| `add(type, side, price, qty)` | `{ id, status, restingQuantity, trades }`. `type` is `GoodTillCancel`, `FillAndKill`, `Market`, `GoodForDay` or `FillOrKill`; `side` is `Buy` or `Sell`; `price` and `qty` are whole numbers from 1 to 1,000,000 (`price` is ignored for `Market`) |
+| `cancel(id)` | `true` if the order was resting and is now cancelled |
+| `modify(id, side, price, qty)` | as `add`; the order keeps its id and type and loses time priority |
+| `endOfDay()` | nothing; cancels every Good-For-Day order |
+| `levels()` | `{ bids: [{ price, quantity }], asks: [...] }`, best price first |
+| `size()` | number of resting orders |
+| `prediction()` | the network's prediction for the latest trade, made before training on it (0 before any trade) |
+| `recentError()` | the network's smoothed RMS error, in units of price / 500 |
+| `vwap()` | volume-weighted average trade price, truncated to a whole price (0 before any trade) |
+| `reset()` | nothing; replaces the book and the network with new ones and restarts ids at 1 |
+
+`status` is `filled` (all of the quantity traded), `partial` (some traded), `resting` (none
+traded, the order rests), `rejected` (none traded, nothing rests) or `invalid` (bad arguments:
+the book is untouched, no id is used and `id` is 0). `restingQuantity` is how much of the order is
+left in the book. Each trade names the bid and the ask by id and limit price; the order book
+records the trade at the bid's price, which is the price VWAP and the network use. By order type:
+
+| type | outcomes |
+|---|---|
+| `GoodTillCancel`, `GoodForDay` | `resting`, `partial` with the remainder resting, `filled` |
+| `FillAndKill` | `rejected` if nothing crosses, `partial` with `restingQuantity` 0 (the remainder is cancelled), `filled` |
+| `FillOrKill` | `rejected` unless the whole quantity can trade, otherwise `filled` |
+| `Market` | `rejected` if the opposite side is empty, `filled`, or `partial` with the remainder resting at the worst opposite price |
+| `modify` | `rejected` if the id is not resting, otherwise as for the order's type |
+
+Ids cross as JavaScript numbers (exact below 2^53), not BigInt. A C++ exception, which the order
+book does not throw in normal use, reaches JavaScript as a `CppException`. `Book` is not
+thread-safe: use each one from one thread at a time (the WebAssembly module has only one).
+
+Number arguments must be JavaScript numbers and string arguments JavaScript strings. Anything
+else (`'5'`, `true`, `null`, `undefined`, a missing argument, a BigInt) makes `add` and `modify`
+return `invalid` and `cancel` return `false`; it is not coerced, and no method throws for bad
+arguments.
+
+Prices and quantities above 1,000,000 are `invalid` (`Book::maxPrice` and `Book::maxQuantity`).
+The cap keeps one trade's price × quantity at or below 10^12, so the 64-bit VWAP sums stay exact
+for 9,223,372 trades even at the maximum price and quantity, and the quantity the network receives
+stays far inside an `int`. A level's total quantity is a 64-bit sum, so it does not wrap
+however many orders rest at one price.
+
 ## Running the program
 In order to run the otherbook stimulation navigate to build 
 
@@ -49,7 +138,7 @@ The project supports various order types including:
 - **Good Till Cancel**: The order remains active until filled, canceled, or it expires.
 - **Fill and Kill**: The order is filled as much as possible, and any remaining quantity is canceled immediately.
 - **Market Order**: Filled at the best available price.
-- **Good For Day**: Similar to Good Till Cancel, but automatically canceled at the end of the trading day.
+- **Good For Day**: Similar to Good Till Cancel, but cancelled by `EndOfDay()` and, except in `ORDERBOOK_SINGLE_THREADED` builds, by a thread at 16:00 local time that starts with the first Good-For-Day order.
 - **Fill or Kill**: Must be filled immediately and entirely or canceled.
 
 ### Order Modify
@@ -62,7 +151,13 @@ Represents a trade executed between a buy and sell order.
 Calculates the average price of orders based on their volume.
 
 ### Neural Network for Price Prediction
-A custom-built neural network designed to predict sell prices based on historical order data. This neural network provides a foundation for applying machine learning to financial market simulations.
+A small online model written from scratch: a fully connected network with two inputs, one
+hidden layer of three tanh neurons and one output, trained by one step of backpropagation on
+every trade. Its two inputs are the local time of day (in whole hundredths of a day) and the traded
+quantity; its target is the trade price; all three are divided by `PRICESCALE` (500 by default).
+Because the output is a tanh, predictions stay within ±`PRICESCALE`. The weights start from
+`rand()`. `Orderbook` exposes the prediction for the latest trade (made before training on it),
+the network's recent average error and the VWAP.
 
 ## GUI Integration
 
@@ -306,25 +401,33 @@ void randomOrderSimulation(const int n) {
 ```
 
 ### Neural Network Price Prediction
-To use the neural network for predicting sell prices, you need to provide training data and configure the network parameters. The neural network implementation is integrated into the project to enhance the simulation's predictive capabilities.
+The network trains itself as orders match; there is nothing to configure. Read it with
+`orderbook.getPrediction()` and `orderbook.getRecentAverageError()`, and the VWAP with
+`orderbook.getVWAP()`.
 
 ## Dependencies
 The project relies on standard C++ libraries, nlohmann/json (vendored as `json.hpp`), GoogleTest
 for the tests (fetched by CMake) and, for the Python module only, pybind11 (submodule).
 
 ## Testing
-`ctest --test-dir build` runs 37 GoogleTest cases:
+`ctest --test-dir build` runs 59 GoogleTest cases:
 
 - `OrderbookTest/test.cpp`: seven data-driven cases from `OrderbookTest/TestFiles/`; they check
   only order and level counts.
 - `OrderbookTest/MatchingContractTests.cpp`: price priority on both sides, FIFO within a level,
   no trade without a cross, each order type (Good-Till-Cancel, Fill-and-Kill, Fill-or-Kill,
   Market, Good-For-Day with `EndOfDay`), cancel, modify, a seeded 20,000-call random flow
-  checked after every call, and destroying many books.
+  checked after every call, and destroying many books that each started a pruning thread.
+- `OrderbookTest/HistoryTests.cpp`: the network's time-of-day input and its training, and the
+  `hasOrder`, prediction, error and VWAP read-outs.
+- `OrderbookTest/BookTests.cpp`: the JavaScript binding's `Book` run natively: the statuses of
+  each order type, ids, reset, argument checks and the price and quantity limits.
 
-With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 fail while all seven data-driven
-cases still pass. The suite is behavioural: it does not cover concurrent callers or the 16:00
-Good-For-Day pruning thread. Logs are in `OrderbookSim/bench/results/`.
+With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 cases in the first two files fail
+while all seven data-driven cases still pass. The suite is behavioural: it does not cover
+concurrent callers or the 16:00 Good-For-Day pruning thread. Logs are in
+`OrderbookSim/bench/results/`. The WebAssembly parity test is described under
+[WebAssembly build](#webassembly-build).
 
 ## Performance
 Measured with `OrderbookSim/bench/run.sh --reps 10 --seed 42` on an Apple M1 Pro (macOS 27.0.1,

@@ -57,6 +57,8 @@ enable_testing()
 add_executable(OrderbookTests
     OrderbookTest/test.cpp
     OrderbookTest/MatchingContractTests.cpp
+    OrderbookTest/HistoryTests.cpp
+    OrderbookTest/BookTests.cpp
 )
 target_include_directories(OrderbookTests PRIVATE OrderbookTest)
 target_link_libraries(OrderbookTests PRIVATE orderbook_core GTest::gtest_main)
@@ -66,6 +68,14 @@ gtest_discover_tests(OrderbookTests
     WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/OrderbookTest
     PROPERTIES TIMEOUT 20
 )
+
+# Native side of the WebAssembly parity test: node web/test.mjs (see README). Compiled from the sources
+# with ORDERBOOK_SINGLE_THREADED, as web/build.sh compiles the module, so neither side runs the
+# 16:00 Good-For-Day pruning thread and a run that crosses 16:00 compares like with like.
+add_executable(orderbook_parity ../web/parity_driver.cpp ${SOURCES})
+target_include_directories(orderbook_parity PRIVATE ${CMAKE_CURRENT_SOURCE_DIR})
+target_compile_definitions(orderbook_parity PRIVATE ORDERBOOK_SINGLE_THREADED)
+target_link_libraries(orderbook_parity PRIVATE Threads::Threads)
 
 # Latency / throughput / allocation benchmark (see bench/RESULTS.md)
 add_executable(orderbook_bench bench/bench.cpp)

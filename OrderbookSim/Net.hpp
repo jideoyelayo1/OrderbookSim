@@ -92,6 +92,14 @@ public:
      */
     double getRecentAverageError() const { return _recentAverageError; }
 
+    /*!
+     * @brief Retrieves a layer of the network; layer 0 holds the inputs of the last feedForward().
+     *
+     * @param n The index of the layer.
+     * @return The layer's neurons, bias last.
+     */
+    const Layer& getLayer(unsigned n) const { return _layers[n]; }
+
 private:
     std::vector<Layer> _layers; ///< Layers of the network, where each layer contains neurons.
     double _error = 0; ///< The root mean square error of the network on the most recent iteration.
