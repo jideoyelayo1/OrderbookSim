@@ -10,3 +10,6 @@ PurchaseHistory
 # CMake build trees (see README)
 /build/
 /build-*/
+
+# WebAssembly build output (web/build.sh); releases publish it
+/web/dist/
