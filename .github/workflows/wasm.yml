@@ -1,5 +1,5 @@
-# Native tests, the WebAssembly build (web/build.sh) and the parity test (web/test.mjs) on every
-# pull request. A v* tag on a commit that is on main also publishes orderbook.mjs, orderbook.wasm
+# Native tests (Release, single-threaded and ThreadSanitizer builds), the WebAssembly build
+# (web/build.sh) and the parity test (web/test.mjs) on every pull request. A v* tag on a commit that is on main also publishes orderbook.mjs, orderbook.wasm
 # and SHA256SUMS as a release.
 name: WebAssembly
 
@@ -29,6 +29,21 @@ jobs:
           cmake -S OrderbookSim -B build -DCMAKE_BUILD_TYPE=Release
           cmake --build build -j 4 --target OrderbookTests orderbook_parity
           ctest --test-dir build --output-on-failure
+
+      # the WebAssembly module's configuration: no Good-For-Day pruning thread
+      - name: Native tests, ORDERBOOK_SINGLE_THREADED
+        run: |
+          cmake -S OrderbookSim -B build-st -DCMAKE_BUILD_TYPE=Release -DCMAKE_CXX_FLAGS=-DORDERBOOK_SINGLE_THREADED
+          cmake --build build-st -j 4 --target OrderbookTests
+          ctest --test-dir build-st --output-on-failure
+
+      - name: Native tests under ThreadSanitizer
+        env:
+          TSAN_OPTIONS: halt_on_error=1 # any report fails its test
+        run: |
+          cmake -S OrderbookSim -B build-tsan -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS="-fsanitize=thread -fno-omit-frame-pointer"
+          cmake --build build-tsan -j 4 --target OrderbookTests
+          ctest --test-dir build-tsan --output-on-failure
 
       - name: Install Emscripten
         run: |
