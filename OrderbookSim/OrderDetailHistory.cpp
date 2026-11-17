@@ -211,7 +211,19 @@ void OrderDetailHistory::deleteALiveOrder(OrderId id) {
  * @param quantity The quantity of the latest matched order.
  */
 void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity) {
-    loadHistoryToNeuralNetwork({ static_cast<int>(getCurrentTimeAsFractionOfDay()) * 100, static_cast<int>(quantity) }, { price });
+    updateNeutralNetwork(price, quantity, getCurrentTimeAsFractionOfDay());
+}
+
+/*!
+ * @brief Trains the neural network once on (time of day, quantity) -> price.
+ *
+ * @param price The price of the latest matched order.
+ * @param quantity The quantity of the latest matched order.
+ * @param fractionOfDay Local time of day as a fraction in [0, 1).
+ */
+void OrderDetailHistory::updateNeutralNetwork(Price price, Quantity quantity, double fractionOfDay) {
+    // scale before the cast: casting the fraction first made the time input 0 at every time of day
+    loadHistoryToNeuralNetwork({ static_cast<int>(fractionOfDay * 100), static_cast<int>(quantity) }, { price });
 }
 
 // The definitions below were dropped by the Doxygen pass in 13ea126; restored from 13ea126^.

@@ -56,6 +56,14 @@ public:
     double getOutputVal() const { return _outputVal; }
 
     /*!
+     * @brief Retrieves the weight of the connection to a neuron in the next layer.
+     *
+     * @param n The index of the neuron in the next layer.
+     * @return The connection weight.
+     */
+    double getOutputWeight(unsigned n) const { return _outputWeights[n].weight; }
+
+    /*!
      * @brief Feeds the input values forward through the neuron.
      *
      * Calculates the neuron's output by summing the products of inputs and weights,

@@ -121,6 +121,19 @@ public:
     void updateNeutralNetwork(Price price, Quantity quantity);
 
     /*!
+     * @brief Trains the neural network once on (time of day, quantity) -> price.
+     *
+     * @param fractionOfDay Local time of day as a fraction in [0, 1); the network sees it in steps of 1/100.
+     */
+    void updateNeutralNetwork(Price price, Quantity quantity, double fractionOfDay);
+
+    /*!
+     * @brief Retrieves the neural network.
+     * @return The neural network.
+     */
+    const NeuralNetwork& getNeuralNetwork() const { return neutralNetwork; }
+
+    /*!
      * @brief Adds an order to the appropriate history (buy or sell) based on its side.
      */
     void addOrderToHistory(const OrderType type, const OrderId id, const Side side, const Price price, const Quantity qty);

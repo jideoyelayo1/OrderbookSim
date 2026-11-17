@@ -70,4 +70,11 @@ public:
      * @return A vector containing the output values from the network after running.
      */
     std::vector<double> RunWithReturn(std::vector<double>& inputVals, std::vector<double>& targetVals, std::vector<double>& resultVals);
+
+    /*!
+     * @brief Retrieves the underlying network.
+     *
+     * @return The network.
+     */
+    const Net& getNet() const { return myNet; }
 };
