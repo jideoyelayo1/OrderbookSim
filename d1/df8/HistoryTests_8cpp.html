@@ -86,6 +86,7 @@ $(function() {
 <code>#include &quot;<a class="el" href="../../d6/da7/Orderbook_8hpp_source.html">../Orderbook.hpp</a>&quot;</code><br />
 <code>#include &lt;cmath&gt;</code><br />
 <code>#include &lt;memory&gt;</code><br />
+<code>#include &lt;random&gt;</code><br />
 <code>#include &lt;vector&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
@@ -100,6 +101,10 @@ Functions</h2></td></tr>
 <tr class="separator:a64a9220f66f4bb59c794bb0446bfc194"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a302f07b947d2e59fc6ce810441726d2b" id="r_a302f07b947d2e59fc6ce810441726d2b"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df8/HistoryTests_8cpp.html#a302f07b947d2e59fc6ce810441726d2b">TEST</a> (Readouts, VwapWeightsTradesByQuantity)</td></tr>
 <tr class="separator:a302f07b947d2e59fc6ce810441726d2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ca97d4efc9e75cc0a5f0e5dd890297" id="r_a60ca97d4efc9e75cc0a5f0e5dd890297"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df8/HistoryTests_8cpp.html#a60ca97d4efc9e75cc0a5f0e5dd890297">TEST</a> (Readouts, VwapDoesNotWrapAtLargeQuantities)</td></tr>
+<tr class="separator:a60ca97d4efc9e75cc0a5f0e5dd890297"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aada2c01cab63f9d703f51512c7f8d0cf" id="r_aada2c01cab63f9d703f51512c7f8d0cf"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df8/HistoryTests_8cpp.html#aada2c01cab63f9d703f51512c7f8d0cf">TEST</a> (Readouts, RunningVwapEqualsARescan)</td></tr>
+<tr class="separator:aada2c01cab63f9d703f51512c7f8d0cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aeeed325175c2914dff630b9720b74b1e" id="r_aeeed325175c2914dff630b9720b74b1e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/df8/HistoryTests_8cpp.html#aeeed325175c2914dff630b9720b74b1e">TEST</a> (Readouts, PredictionLearnsARepeatedTradePrice)</td></tr>
 <tr class="separator:aeeed325175c2914dff630b9720b74b1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -108,7 +113,7 @@ Functions</h2></td></tr>
 <p>The network has topology {2, 3, 1}: inputs are the time of day and the traded quantity, the target is the trade price, all divided by <a class="el" href="../../d3/d35/classOrderDetailHistory.html#a0f61c9092fdc0a7ec354695cb122f0ff" title="Scale factor for price normalization in predictions.">OrderDetailHistory::PRICESCALE</a>. </p>
 </div><h2 class="groupheader">Function Documentation</h2>
 <a id="a29e8224be4ba00d8b8aba7c4e80b0cb3" name="a29e8224be4ba00d8b8aba7c4e80b0cb3"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a29e8224be4ba00d8b8aba7c4e80b0cb3">&#9670;&#160;</a></span>TEST() <span class="overload">[1/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a29e8224be4ba00d8b8aba7c4e80b0cb3">&#9670;&#160;</a></span>TEST() <span class="overload">[1/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +141,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a87eae74a4d2a186e2b50262fe584bb3e" name="a87eae74a4d2a186e2b50262fe584bb3e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a87eae74a4d2a186e2b50262fe584bb3e">&#9670;&#160;</a></span>TEST() <span class="overload">[2/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a87eae74a4d2a186e2b50262fe584bb3e">&#9670;&#160;</a></span>TEST() <span class="overload">[2/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -164,7 +169,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="ad2e8fd0436f9f84de6611471c112e2b2" name="ad2e8fd0436f9f84de6611471c112e2b2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad2e8fd0436f9f84de6611471c112e2b2">&#9670;&#160;</a></span>TEST() <span class="overload">[3/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#ad2e8fd0436f9f84de6611471c112e2b2">&#9670;&#160;</a></span>TEST() <span class="overload">[3/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -192,7 +197,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="aeeed325175c2914dff630b9720b74b1e" name="aeeed325175c2914dff630b9720b74b1e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeeed325175c2914dff630b9720b74b1e">&#9670;&#160;</a></span>TEST() <span class="overload">[4/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#aeeed325175c2914dff630b9720b74b1e">&#9670;&#160;</a></span>TEST() <span class="overload">[4/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -219,8 +224,64 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="aada2c01cab63f9d703f51512c7f8d0cf" name="aada2c01cab63f9d703f51512c7f8d0cf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aada2c01cab63f9d703f51512c7f8d0cf">&#9670;&#160;</a></span>TEST() <span class="overload">[5/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Readouts&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">RunningVwapEqualsARescan&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a60ca97d4efc9e75cc0a5f0e5dd890297" name="a60ca97d4efc9e75cc0a5f0e5dd890297"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60ca97d4efc9e75cc0a5f0e5dd890297">&#9670;&#160;</a></span>TEST() <span class="overload">[6/8]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">TEST </td>
+          <td>(</td>
+          <td class="paramtype">Readouts&#160;</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">VwapDoesNotWrapAtLargeQuantities&#160;</td>
+          <td class="paramname">&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <a id="a302f07b947d2e59fc6ce810441726d2b" name="a302f07b947d2e59fc6ce810441726d2b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a302f07b947d2e59fc6ce810441726d2b">&#9670;&#160;</a></span>TEST() <span class="overload">[5/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a302f07b947d2e59fc6ce810441726d2b">&#9670;&#160;</a></span>TEST() <span class="overload">[7/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -248,7 +309,7 @@ Functions</h2></td></tr>
 </div>
 </div>
 <a id="a64a9220f66f4bb59c794bb0446bfc194" name="a64a9220f66f4bb59c794bb0446bfc194"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64a9220f66f4bb59c794bb0446bfc194">&#9670;&#160;</a></span>TEST() <span class="overload">[6/6]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a64a9220f66f4bb59c794bb0446bfc194">&#9670;&#160;</a></span>TEST() <span class="overload">[8/8]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

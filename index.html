@@ -90,14 +90,14 @@ Building and testing</h1>
 </div><!-- fragment --><p>The Visual Studio project files have not been updated since the headers were renamed to <code>.hpp</code>.</p>
 <h2><a class="anchor" id="autotoc_md16"></a>
 WebAssembly build</h2>
-<p>Needs <a href="https://github.com/emscripten-core/emsdk">emsdk</a> with Emscripten 6.0.13 (the version CI uses) activated in the shell. From the repository root:</p>
+<p>Needs <a href="https://github.com/emscripten-core/emsdk">emsdk</a> with Emscripten 6.0.13 (the version CI uses) activated in the shell. CI checks out emsdk at commit <code>35659964bc2762fffec0d257997fb61475f765b7</code>, its tag <code>6.0.13</code>, and checks <code>git rev-parse HEAD</code> before installing. From the repository root:</p>
 <div class="fragment"><div class="line">source path/to/emsdk/emsdk_env.sh</div>
 <div class="line">web/build.sh                 # writes web/dist/orderbook.mjs and web/dist/orderbook.wasm</div>
 <div class="line">cmake --build build --target orderbook_parity</div>
 <div class="line">node web/test.mjs            # parity test against the native build</div>
 </div><!-- fragment --><p><code>web/build.sh</code> calls <code>em++</code> on the nine sources the order book needs plus <code>web/orderbook_wasm.cpp</code>, with <code>-O2 -fexceptions -DORDERBOOK_SINGLE_THREADED</code>, as an ES module (<code>-sMODULARIZE -sEXPORT_ES6</code>) for browsers and Node, with no filesystem. With Emscripten 6.0.13 the output is 56,065 bytes of JavaScript and 401,753 bytes of WebAssembly (13,803 and 155,507 gzipped at level 9). <code>web/dist/</code> is not committed: a <code>v*</code> tag makes CI attach <code>orderbook.mjs</code>, <code>orderbook.wasm</code> and <code>SHA256SUMS</code> to a GitHub Release.</p>
 <p><code>ORDERBOOK_SINGLE_THREADED</code> stops the order book from starting its Good-For-Day pruning thread, which a single-threaded WebAssembly module cannot run; Good-For-Day orders are then cancelled only by <code>EndOfDay()</code>. Without the flag the thread starts with the first Good-For-Day order.</p>
-<p><code>web/test.mjs</code> replays a seeded 20,000-call flow through the WebAssembly module and through the native <code>orderbook_parity</code> driver and requires identical ids, statuses, trades, levels, sizes and VWAP. The network's prediction and error start from <code>rand()</code> weights and see the wall clock, so they are only required to be finite. It uses Node built-ins only.</p>
+<p><code>web/test.mjs</code> replays a seeded 20,000-call flow through the WebAssembly module and through the native <code>orderbook_parity</code> driver and requires identical ids, statuses, trades, levels, sizes and VWAP. CMake compiles the driver from the sources with <code>ORDERBOOK_SINGLE_THREADED</code>, as <code>web/build.sh</code> compiles the module, so neither side has the 16:00 pruning thread. The network's prediction and error start from <code>rand()</code> weights and see the wall clock, so they are only required to be finite. Because both sides share <code>Book.hpp</code>, the test also pins the flow's trade count and its count of each outcome, and checks malformed JavaScript calls on the WebAssembly side (wrong types, missing arguments, values over the limits). It uses Node built-ins only.</p>
 <h2><a class="anchor" id="autotoc_md17"></a>
 JavaScript binding</h2>
 <p><code>web/orderbook_wasm.cpp</code> binds <code>Book</code> (<code>web/Book.hpp</code>), a wrapper that assigns its own order ids (1, 2, 3, ... per valid add; never reused) and checks every argument:</p>
@@ -112,7 +112,7 @@ JavaScript binding</h2>
 <tr class="markdownTableHead">
 <th class="markdownTableHeadNone">method   </th><th class="markdownTableHeadNone">returns    </th></tr>
 <tr class="markdownTableRowOdd">
-<td class="markdownTableBodyNone"><code>add(type, side, price, qty)</code>   </td><td class="markdownTableBodyNone"><code>{ id, status, restingQuantity, trades }</code>. <code>type</code> is <code>GoodTillCancel</code>, <code>FillAndKill</code>, <code>Market</code>, <code>GoodForDay</code> or <code>FillOrKill</code>; <code>side</code> is <code>Buy</code> or <code>Sell</code>; <code>price</code> and <code>qty</code> are whole numbers from 1 (<code>price</code> is ignored for <code>Market</code>)    </td></tr>
+<td class="markdownTableBodyNone"><code>add(type, side, price, qty)</code>   </td><td class="markdownTableBodyNone"><code>{ id, status, restingQuantity, trades }</code>. <code>type</code> is <code>GoodTillCancel</code>, <code>FillAndKill</code>, <code>Market</code>, <code>GoodForDay</code> or <code>FillOrKill</code>; <code>side</code> is <code>Buy</code> or <code>Sell</code>; <code>price</code> and <code>qty</code> are whole numbers from 1 to 1,000,000 (<code>price</code> is ignored for <code>Market</code>)    </td></tr>
 <tr class="markdownTableRowEven">
 <td class="markdownTableBodyNone"><code>cancel(id)</code>   </td><td class="markdownTableBodyNone"><code>true</code> if the order was resting and is now cancelled    </td></tr>
 <tr class="markdownTableRowOdd">
@@ -147,7 +147,9 @@ JavaScript binding</h2>
 <tr class="markdownTableRowOdd">
 <td class="markdownTableBodyNone"><code>modify</code>   </td><td class="markdownTableBodyNone"><code>rejected</code> if the id is not resting, otherwise as for the order's type   </td></tr>
 </table>
-<p>Ids cross as JavaScript numbers (exact below 2^53), not BigInt. A C++ exception, which the order book does not throw in normal use, reaches JavaScript as a <code>CppException</code>.</p>
+<p>Ids cross as JavaScript numbers (exact below 2^53), not BigInt. A C++ exception, which the order book does not throw in normal use, reaches JavaScript as a <code>CppException</code>. <code>Book</code> is not thread-safe: use each one from one thread at a time (the WebAssembly module has only one).</p>
+<p>Number arguments must be JavaScript numbers and string arguments JavaScript strings. Anything else (&lsquo;'5&rsquo;<code>,</code>true<code>,</code>null<code>,</code>undefined<code>, a missing argument, a BigInt) makes</code>add<code>and</code>modify<code> return</code>invalid<code>and</code>cancel<code>return</code>false`; it is not coerced, and no method throws for bad arguments.</p>
+<p>Prices and quantities above 1,000,000 are <code>invalid</code> (<code>Book::maxPrice</code> and <code>Book::maxQuantity</code>). The cap keeps one trade's price × quantity at or below 10^12, so the 64-bit VWAP sums stay exact for 9,223,372 trades even at the maximum price and quantity, and the quantity the network receives stays far inside an <code>int</code>. A level's total quantity is a 64-bit sum, so it does not wrap however many orders rest at one price.</p>
 <h1><a class="anchor" id="autotoc_md18"></a>
 Running the program</h1>
 <p>In order to run the otherbook stimulation navigate to build</p>
@@ -434,12 +436,12 @@ Dependencies</h1>
 <p>The project relies on standard C++ libraries, nlohmann/json (vendored as <code><a class="el" href="d5/db8/json_8hpp.html">json.hpp</a></code>), GoogleTest for the tests (fetched by CMake) and, for the Python module only, pybind11 (submodule).</p>
 <h1><a class="anchor" id="autotoc_md36"></a>
 Testing</h1>
-<p><code>ctest --test-dir build</code> runs 54 GoogleTest cases:</p>
+<p><code>ctest --test-dir build</code> runs 59 GoogleTest cases:</p>
 <ul>
 <li><code><a class="el" href="df/dac/test_8cpp.html">OrderbookTest/test.cpp</a></code>: seven data-driven cases from <code>OrderbookTest/TestFiles/</code>; they check only order and level counts.</li>
 <li><code><a class="el" href="d4/d49/MatchingContractTests_8cpp.html" title="Tests that pin the matching contract: price-time priority, no crossed book, each order type,...">OrderbookTest/MatchingContractTests.cpp</a></code>: price priority on both sides, FIFO within a level, no trade without a cross, each order type (Good-Till-Cancel, Fill-and-Kill, Fill-or-Kill, Market, Good-For-Day with <code>EndOfDay</code>), cancel, modify, a seeded 20,000-call random flow checked after every call, and destroying many books that each started a pruning thread.</li>
 <li><code><a class="el" href="d1/df8/HistoryTests_8cpp.html" title="Tests for the trade history: the neural network&#39;s inputs and training, and the Orderbook read-outs (r...">OrderbookTest/HistoryTests.cpp</a></code>: the network's time-of-day input and its training, and the <code>hasOrder</code>, prediction, error and VWAP read-outs.</li>
-<li><code><a class="el" href="d3/d29/BookTests_8cpp.html" title="Tests for Book (web/Book.hpp), the wrapper behind the JavaScript binding: the status it reports for e...">OrderbookTest/BookTests.cpp</a></code>: the JavaScript binding's <code>Book</code> run natively: the statuses of each order type, ids, reset and argument checks.</li>
+<li><code><a class="el" href="d3/d29/BookTests_8cpp.html" title="Tests for Book (web/Book.hpp), the wrapper behind the JavaScript binding: the status it reports for e...">OrderbookTest/BookTests.cpp</a></code>: the JavaScript binding's <code>Book</code> run natively: the statuses of each order type, ids, reset, argument checks and the price and quantity limits.</li>
 </ul>
 <p>With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 cases in the first two files fail while all seven data-driven cases still pass. The suite is behavioural: it does not cover concurrent callers or the 16:00 Good-For-Day pruning thread. Logs are in <code>OrderbookSim/bench/results/</code>. The WebAssembly parity test is described under WebAssembly build.</p>
 <h1><a class="anchor" id="autotoc_md37"></a>

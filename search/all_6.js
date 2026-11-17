@@ -16,7 +16,7 @@ var searchData=
   ['_5fprintliveorders_13',['_printLiveOrders',['../d3/d35/classOrderDetailHistory.html#a3e7da6ed4559a65e5f8eb7b7fa550efe',1,'OrderDetailHistory']]],
   ['_5fprintpurchasehistory_14',['_printPurchaseHistory',['../d3/d35/classOrderDetailHistory.html#ae1699409e402747d0249b4cacb69e08b',1,'OrderDetailHistory']]],
   ['_5fprintsellhistory_15',['_printSellHistory',['../d3/d35/classOrderDetailHistory.html#ab2a02f0281c6bcc0b9fda78f27d6f901',1,'OrderDetailHistory']]],
-  ['_5fquantity_16',['_quantity',['../de/d3c/structLevelInfo.html#a46c35c36a41cf4199697796f6876b5ee',1,'LevelInfo::_quantity'],['../d2/def/structInformation.html#aaef01d0cd06fc3773ac7f5699ffdd349',1,'Information::_quantity'],['../d2/d3c/structTradeInfo.html#a11f591f32b0d5081e5a82fc1da141910',1,'TradeInfo::_quantity']]],
+  ['_5fquantity_16',['_quantity',['../de/d3c/structLevelInfo.html#aec97ae07ca4442e780f249e31ef95f2f',1,'LevelInfo::_quantity'],['../d2/def/structInformation.html#aaef01d0cd06fc3773ac7f5699ffdd349',1,'Information::_quantity'],['../d2/d3c/structTradeInfo.html#a11f591f32b0d5081e5a82fc1da141910',1,'TradeInfo::_quantity']]],
   ['_5fside_17',['_side',['../d2/def/structInformation.html#af558224c62d01bfdcdcab4a0919db0da',1,'Information']]],
   ['_5ftype_18',['_type',['../d2/def/structInformation.html#af93b41c0a29982373e82b318fd6b058d',1,'Information']]]
 ];

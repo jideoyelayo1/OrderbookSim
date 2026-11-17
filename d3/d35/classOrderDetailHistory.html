@@ -134,7 +134,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a3e7da6ed4559a65e5f8eb7b7fa550efe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the live orders to the console.  <br /></td></tr>
 <tr class="separator:a3e7da6ed4559a65e5f8eb7b7fa550efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a25f4db2795cd08211b0f83610ecc7729" id="r_a25f4db2795cd08211b0f83610ecc7729"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a25f4db2795cd08211b0f83610ecc7729">getVWAP</a> () const</td></tr>
-<tr class="memdesc:a25f4db2795cd08211b0f83610ecc7729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Volume-Weighted Average Price (VWAP) of all purchases.  <br /></td></tr>
+<tr class="memdesc:a25f4db2795cd08211b0f83610ecc7729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Volume-Weighted Average Price (VWAP) of all purchases, from running sums.  <br /></td></tr>
 <tr class="separator:a25f4db2795cd08211b0f83610ecc7729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e1420836e7f4fdd449e16774eed04cd" id="r_a5e1420836e7f4fdd449e16774eed04cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a5e1420836e7f4fdd449e16774eed04cd">getVWAP</a> (int n)</td></tr>
 <tr class="memdesc:a5e1420836e7f4fdd449e16774eed04cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the VWAP of the last <code>n</code> purchases.  <br /></td></tr>
@@ -498,8 +498,11 @@ The most recent prediction from the neural network. </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the Volume-Weighted Average Price (VWAP) of all purchases. </p>
-<dl class="section return"><dt>Returns</dt><dd>The VWAP of all purchases. </dd></dl>
+<p>Returns the Volume-Weighted Average Price (VWAP) of all purchases, from running sums. </p>
+<p>Returns the Volume-Weighted Average Price (VWAP) of all purchases.</p>
+<dl class="section return"><dt>Returns</dt><dd>The VWAP of all purchases, truncated; 0 before the first.</dd></dl>
+<p>Constant time: addOrderToPurchaseHistory keeps the sums. The purchase history is never cleared, only replaced with the whole object, which starts the sums again at 0.</p>
+<dl class="section return"><dt>Returns</dt><dd>The VWAP of all purchases, truncated; 0 before the first. </dd></dl>
 
 </div>
 </div>

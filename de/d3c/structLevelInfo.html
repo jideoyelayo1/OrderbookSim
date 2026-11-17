@@ -87,9 +87,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:ad16045ea5efc7d895e90311e85101183" id="r_ad16045ea5efc7d895e90311e85101183"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3c/structLevelInfo.html#ad16045ea5efc7d895e90311e85101183">_price</a></td></tr>
 <tr class="memdesc:ad16045ea5efc7d895e90311e85101183"><td class="mdescLeft">&#160;</td><td class="mdescRight">The price at this level in the order book.  <br /></td></tr>
 <tr class="separator:ad16045ea5efc7d895e90311e85101183"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46c35c36a41cf4199697796f6876b5ee" id="r_a46c35c36a41cf4199697796f6876b5ee"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#ac0db6497e7e2001a03e28be383ac983f">Quantity</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3c/structLevelInfo.html#a46c35c36a41cf4199697796f6876b5ee">_quantity</a></td></tr>
-<tr class="memdesc:a46c35c36a41cf4199697796f6876b5ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">The quantity available at this price level.  <br /></td></tr>
-<tr class="separator:a46c35c36a41cf4199697796f6876b5ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aec97ae07ca4442e780f249e31ef95f2f" id="r_aec97ae07ca4442e780f249e31ef95f2f"><td class="memItemLeft" align="right" valign="top">std::uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d3c/structLevelInfo.html#aec97ae07ca4442e780f249e31ef95f2f">_quantity</a></td></tr>
+<tr class="memdesc:aec97ae07ca4442e780f249e31ef95f2f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The quantity available at this price level: a sum of order quantities, so 64-bit.  <br /></td></tr>
+<tr class="separator:aec97ae07ca4442e780f249e31ef95f2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a price level in an order book, including its price and quantity. </p>
@@ -111,19 +111,19 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a id="a46c35c36a41cf4199697796f6876b5ee" name="a46c35c36a41cf4199697796f6876b5ee"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a46c35c36a41cf4199697796f6876b5ee">&#9670;&#160;</a></span>_quantity</h2>
+<a id="aec97ae07ca4442e780f249e31ef95f2f" name="aec97ae07ca4442e780f249e31ef95f2f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec97ae07ca4442e780f249e31ef95f2f">&#9670;&#160;</a></span>_quantity</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../de/d50/Usings_8hpp.html#ac0db6497e7e2001a03e28be383ac983f">Quantity</a> LevelInfo::_quantity</td>
+          <td class="memname">std::uint64_t LevelInfo::_quantity</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>The quantity available at this price level. </p>
+<p>The quantity available at this price level: a sum of order quantities, so 64-bit. </p>
 
 </div>
 </div>

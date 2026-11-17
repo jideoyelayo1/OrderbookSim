@@ -10,7 +10,7 @@ var searchData=
   ['_5forderid_7',['_orderid',['../d2/d3c/structTradeInfo.html#a001a1afc04bdb3b2c680ceff6b16cf09',1,'TradeInfo::_orderId'],['../d2/def/structInformation.html#aea950606f6401680f053ce6ed25b4782',1,'Information::_orderId']]],
   ['_5fordertype_8',['_orderType',['../d2/def/structInformation.html#ad6af139a8b68b9e27efa5a851b5bf4f1',1,'Information']]],
   ['_5fprice_9',['_price',['../de/d3c/structLevelInfo.html#ad16045ea5efc7d895e90311e85101183',1,'LevelInfo::_price'],['../d2/def/structInformation.html#a1eb994450657e50f216fa4e1056d0d7c',1,'Information::_price'],['../d2/d3c/structTradeInfo.html#aefd3bc0d9a78d6f18c9174728b71270c',1,'TradeInfo::_price']]],
-  ['_5fquantity_10',['_quantity',['../de/d3c/structLevelInfo.html#a46c35c36a41cf4199697796f6876b5ee',1,'LevelInfo::_quantity'],['../d2/def/structInformation.html#aaef01d0cd06fc3773ac7f5699ffdd349',1,'Information::_quantity'],['../d2/d3c/structTradeInfo.html#a11f591f32b0d5081e5a82fc1da141910',1,'TradeInfo::_quantity']]],
+  ['_5fquantity_10',['_quantity',['../de/d3c/structLevelInfo.html#aec97ae07ca4442e780f249e31ef95f2f',1,'LevelInfo::_quantity'],['../d2/def/structInformation.html#aaef01d0cd06fc3773ac7f5699ffdd349',1,'Information::_quantity'],['../d2/d3c/structTradeInfo.html#a11f591f32b0d5081e5a82fc1da141910',1,'TradeInfo::_quantity']]],
   ['_5fside_11',['_side',['../d2/def/structInformation.html#af558224c62d01bfdcdcab4a0919db0da',1,'Information']]],
   ['_5ftype_12',['_type',['../d2/def/structInformation.html#af93b41c0a29982373e82b318fd6b058d',1,'Information']]]
 ];
