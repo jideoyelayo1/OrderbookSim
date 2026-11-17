@@ -58,6 +58,7 @@ add_executable(OrderbookTests
     OrderbookTest/test.cpp
     OrderbookTest/MatchingContractTests.cpp
     OrderbookTest/HistoryTests.cpp
+    OrderbookTest/BookTests.cpp
 )
 target_include_directories(OrderbookTests PRIVATE OrderbookTest)
 target_link_libraries(OrderbookTests PRIVATE orderbook_core GTest::gtest_main)
