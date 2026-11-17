@@ -44,7 +44,7 @@ node web/test.mjs            # parity test against the native build
 `web/build.sh` calls `em++` on the nine sources the order book needs plus `web/orderbook_wasm.cpp`,
 with `-O2 -fexceptions -DORDERBOOK_SINGLE_THREADED`, as an ES module (`-sMODULARIZE
 -sEXPORT_ES6`) for browsers and Node, with no filesystem. With Emscripten 6.0.13 the output is
-56,065 bytes of JavaScript and 401,753 bytes of WebAssembly (13,803 and 155,507 gzipped at
+56,241 bytes of JavaScript and 403,047 bytes of WebAssembly (13,835 and 155,739 gzipped at
 level 9). `web/dist/` is not committed: a `v*` tag makes CI attach `orderbook.mjs`,
 `orderbook.wasm` and `SHA256SUMS` to a GitHub Release.
 
