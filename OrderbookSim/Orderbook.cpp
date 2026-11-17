@@ -322,6 +322,12 @@ Trades Orderbook::MatchOrder(OrderModify order) {
     return addOrder(order.toOrderPtr(existingOrder->getOrderType()));
 }
 
+void Orderbook::StartPruneThread() {
+    std::call_once(_pruneThreadOnce, [this] {
+        _ordersPruneThread = std::thread([this] { PruneGoodForDayOrders(); });
+    });
+}
+
 /*!
  * @brief Prunes GoodForDay orders at the end of the trading day.
  *
@@ -455,6 +461,9 @@ Trades Orderbook::addOrder(OrderPtr order) {
 
     if (order->getOrderType() == OrderType::FillAndKill && !canMatch(order->getSide(), order->getPrice())) return { };
     if (order->getOrderType() == OrderType::FillOrKill && !canFullyFill(order->getSide(), order->getPrice(), order->getInitialQty())) return { };
+    if (order->getOrderType() == OrderType::GoodForDay) {
+        StartPruneThread();
+    }
 
     OrderPtrs::iterator iter;
     if (order->getSide() == Side::Buy) {
