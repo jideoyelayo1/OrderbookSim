@@ -131,7 +131,7 @@ Price OrderDetailHistory::getVWAP() const {
     if (_purchaseHistory.empty()) return 0;
     long long num = 0, dom = 0;
     for (const MatchedOrderDetail& sold : _purchaseHistory) {
-        num += sold.getPrice() * sold.getQuantity();
+        num += static_cast<long long>(sold.getPrice()) * sold.getQuantity(); // int32 * uint32 would wrap in 32 bits
         dom += sold.getQuantity();
     }
     return dom != 0 ? num / dom : 0;
@@ -149,7 +149,7 @@ Price OrderDetailHistory::getVWAP(int n) {
 
     long long num = 0, dom = 0;
     for (int i = historySize - 1; i >= historySize - n; --i) {
-        num += _purchaseHistory[i].getPrice() * _purchaseHistory[i].getQuantity();
+        num += static_cast<long long>(_purchaseHistory[i].getPrice()) * _purchaseHistory[i].getQuantity();
         dom += _purchaseHistory[i].getQuantity();
     }
     return dom != 0 ? num / dom : 0;

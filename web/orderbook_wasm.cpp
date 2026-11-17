@@ -19,7 +19,7 @@ val levelsToJs(const LevelInfos& levels) {
     for (const auto& level : levels) {
         val entry = val::object();
         entry.set("price", level._price);
-        entry.set("quantity", level._quantity);
+        entry.set("quantity", static_cast<double>(level._quantity)); // a 64-bit sum; as a double, not a BigInt
         out.call<void>("push", entry);
     }
     return out;

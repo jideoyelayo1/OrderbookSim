@@ -242,9 +242,9 @@ void Orderbook::onOrderAdded(OrderPtr order) {
 void Orderbook::onOrderMatchedWithHistoryUpdate(Price price, Quantity quantity, bool isFullyFilled, Price purchasePrice) {
     if (purchasePrice == 0) {/*DO NOTHING*/; }
     else if (isFullyFilled) _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, quantity);
-    else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, std::min(quantity, _data[price]._quantity));
+    else _orderDetailHistory.addOrderToPurchaseHistory(purchasePrice, static_cast<Quantity>(std::min<std::uint64_t>(quantity, _data[price]._quantity)));
 
-    _orderDetailHistory.updateNeutralNetwork(purchasePrice, std::min(quantity, _data[price]._quantity));
+    _orderDetailHistory.updateNeutralNetwork(purchasePrice, static_cast<Quantity>(std::min<std::uint64_t>(quantity, _data[price]._quantity)));
 
     UpdateLevelData(price, quantity, isFullyFilled ? LevelData::Action::Remove : LevelData::Action::Match);
 }
@@ -554,8 +554,8 @@ OrderbookLevelInfos Orderbook::getOrderInfos() const {
 
     auto CreateLevelInfos = [](Price price, const OrderPtrs& orders)
         {
-            return LevelInfo{ price, std::accumulate(orders.begin(), orders.end(), (Quantity)0,
-                [](Quantity runningSum, const OrderPtr& order)
+            return LevelInfo{ price, std::accumulate(orders.begin(), orders.end(), std::uint64_t{ 0 },
+                [](std::uint64_t runningSum, const OrderPtr& order)
                 { return runningSum + order->getRemainingQty(); }) };
         };
 

@@ -93,6 +93,14 @@ TEST(Readouts, VwapWeightsTradesByQuantity) {
     EXPECT_EQ(book.getVWAP(), 107.0) << "(100 * 10 + 110 * 30) / 40 = 107.5, truncated";
 }
 
+// 100 * 50,000,000 passes 2^32; multiplied in 32 bits it wrapped and VWAP came out as 14.
+TEST(Readouts, VwapDoesNotWrapAtLargeQuantities) {
+    Orderbook book;
+    gtc(book, 1, Side::Sell, 100, 50'000'000);
+    gtc(book, 2, Side::Buy, 100, 50'000'000);
+    EXPECT_EQ(book.getVWAP(), 100.0);
+}
+
 TEST(Readouts, PredictionLearnsARepeatedTradePrice) {
     Orderbook book;
     gtc(book, 1, Side::Sell, 100, 1);

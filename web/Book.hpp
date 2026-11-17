@@ -5,6 +5,12 @@
  * Book assigns its own order ids, validates arguments arriving from JavaScript and reports
  * what happened to each order. It has no Emscripten dependency, so the native tests and the
  * parity driver use the same class as orderbook_wasm.cpp.
+ *
+ * Prices and quantities are whole numbers from 1 to 1,000,000 (Book::maxPrice, Book::maxQuantity).
+ * The cap keeps one trade's price * quantity at or below 10^12, so the 64-bit VWAP sums stay exact
+ * for 9,223,372 trades even at the maximum price and quantity, and it keeps the quantity the
+ * network receives as an int far from overflow. A level's total is a 64-bit sum, so no cap on
+ * the number of resting orders is needed.
  */
 
 #pragma once
@@ -12,7 +18,6 @@
 #include "Orderbook.hpp"
 
 #include <cmath>
-#include <limits>
 #include <memory>
 #include <optional>
 #include <string>
@@ -39,6 +44,10 @@ struct BookResult {
  * @brief An Orderbook that numbers its own orders and reports each order's outcome.
  */
 class Book {
+public:
+    static constexpr double maxPrice = 1'000'000;    ///< Largest price add and modify accept.
+    static constexpr double maxQuantity = 1'000'000; ///< Largest quantity add and modify accept.
+
 private:
     std::unique_ptr<Orderbook> _book = std::make_unique<Orderbook>(); ///< The order book.
     OrderId _nextId = 1; ///< Id of the next valid add; never reused, unlike Size() + 1.
@@ -62,8 +71,8 @@ private:
         return std::nullopt;
     }
 
-    static bool isPrice(double price) { return isWhole(price, 1, std::numeric_limits<Price>::max()); }
-    static bool isQuantity(double qty) { return isWhole(qty, 1, std::numeric_limits<Quantity>::max()); }
+    static bool isPrice(double price) { return isWhole(price, 1, maxPrice); }
+    static bool isQuantity(double qty) { return isWhole(qty, 1, maxQuantity); }
     static bool isId(double id) { return isWhole(id, 1, 9007199254740992.0); } // ids cross to JavaScript as doubles: exact up to 2^53
 
     /*!
@@ -84,8 +93,8 @@ public:
      *
      * @param type GoodTillCancel, FillAndKill, Market, GoodForDay or FillOrKill.
      * @param side Buy or Sell.
-     * @param price Limit price, a whole number from 1; ignored for Market orders.
-     * @param qty Quantity, a whole number from 1.
+     * @param price Limit price, a whole number from 1 to maxPrice; ignored for Market orders.
+     * @param qty Quantity, a whole number from 1 to maxQuantity.
      * @return The order's id and outcome; invalid arguments do not use up an id.
      */
     BookResult add(const std::string& type, const std::string& side, double price, double qty) {

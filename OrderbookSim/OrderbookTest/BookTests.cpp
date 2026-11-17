@@ -138,6 +138,9 @@ TEST(BookArguments, InvalidAddsLeaveTheBookAndIdsAlone) {
              book.add("GoodTillCancel", "Buy", std::nan(""), 5),
              book.add("GoodTillCancel", "Buy", 2147483648.0, 5),
              book.add("Market", "Sell", 0, 4294967296.0),
+             book.add("GoodTillCancel", "Buy", Book::maxPrice + 1, 5),
+             book.add("GoodTillCancel", "Buy", 100, Book::maxQuantity + 1),
+             book.add("Market", "Sell", 0, Book::maxQuantity + 1),
          }) {
         EXPECT_EQ(result.status, "invalid");
         EXPECT_EQ(result.id, 0u);
@@ -157,4 +160,35 @@ TEST(BookArguments, CancelAndModifyCheckIds) {
     EXPECT_EQ(book.modify(static_cast<double>(bid.id), "Buy", 100, 0).status, "invalid");
     EXPECT_TRUE(book.cancel(static_cast<double>(bid.id)));
     EXPECT_FALSE(book.cancel(static_cast<double>(bid.id)));
+}
+
+TEST(BookArguments, PriceAndQuantityUpToOneMillion) {
+    Book book;
+    EXPECT_EQ(Book::maxPrice, 1'000'000);
+    EXPECT_EQ(Book::maxQuantity, 1'000'000);
+    const auto bid = book.add("GoodTillCancel", "Buy", Book::maxPrice, Book::maxQuantity);
+    expectOutcome(bid, "resting", 1'000'000, 0);
+    const auto id = static_cast<double>(bid.id);
+    EXPECT_EQ(book.modify(id, "Buy", Book::maxPrice + 1, 5).status, "invalid");
+    EXPECT_EQ(book.modify(id, "Buy", 5, Book::maxQuantity + 1).status, "invalid");
+    expectOutcome(book.modify(id, "Buy", Book::maxPrice - 1, Book::maxQuantity - 1), "resting", 999'999, 0);
+}
+
+// One trade's price * quantity is 10^12 here; multiplied in 32 bits it wrapped and VWAP came out as 3,567.
+TEST(BookLimits, VwapAtTheLimitsDoesNotWrap) {
+    Book book;
+    book.add("GoodTillCancel", "Sell", Book::maxPrice, Book::maxQuantity);
+    expectOutcome(book.add("GoodTillCancel", "Buy", Book::maxPrice, Book::maxQuantity), "filled", 0, 1);
+    EXPECT_EQ(book.vwap(), Book::maxPrice);
+    EXPECT_TRUE(std::isfinite(book.recentError()));
+}
+
+// 4,295 orders of 1,000,000 at one price pass 2^32; a 32-bit level total wrapped and Fill-or-Kill saw too little.
+TEST(BookLimits, LevelTotalsPass2To32) {
+    Book book;
+    for (int i = 0; i < 4295; ++i) book.add("GoodTillCancel", "Sell", 100, Book::maxQuantity);
+    const auto asks = book.levels().getAsks();
+    ASSERT_EQ(asks.size(), 1u);
+    EXPECT_EQ(asks[0]._quantity, 4'295'000'000u);
+    expectOutcome(book.add("FillOrKill", "Buy", 100, 10), "filled", 0, 1);
 }

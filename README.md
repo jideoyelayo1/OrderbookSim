@@ -71,7 +71,7 @@ book.delete();                              // frees the C++ object
 
 | method | returns |
 |---|---|
-| `add(type, side, price, qty)` | `{ id, status, restingQuantity, trades }`. `type` is `GoodTillCancel`, `FillAndKill`, `Market`, `GoodForDay` or `FillOrKill`; `side` is `Buy` or `Sell`; `price` and `qty` are whole numbers from 1 (`price` is ignored for `Market`) |
+| `add(type, side, price, qty)` | `{ id, status, restingQuantity, trades }`. `type` is `GoodTillCancel`, `FillAndKill`, `Market`, `GoodForDay` or `FillOrKill`; `side` is `Buy` or `Sell`; `price` and `qty` are whole numbers from 1 to 1,000,000 (`price` is ignored for `Market`) |
 | `cancel(id)` | `true` if the order was resting and is now cancelled |
 | `modify(id, side, price, qty)` | as `add`; the order keeps its id and type and loses time priority |
 | `endOfDay()` | nothing; cancels every Good-For-Day order |
@@ -98,6 +98,12 @@ records the trade at the bid's price, which is the price VWAP and the network us
 
 Ids cross as JavaScript numbers (exact below 2^53), not BigInt. A C++ exception, which the order
 book does not throw in normal use, reaches JavaScript as a `CppException`.
+
+Prices and quantities above 1,000,000 are `invalid` (`Book::maxPrice` and `Book::maxQuantity`).
+The cap keeps one trade's price × quantity at or below 10^12, so the 64-bit VWAP sums stay exact
+for 9,223,372 trades even at the maximum price and quantity, and the quantity the network receives
+stays far inside an `int`. A level's total quantity is a 64-bit sum, so it does not wrap
+however many orders rest at one price.
 
 ## Running the program
 In order to run the otherbook stimulation navigate to build 
@@ -392,7 +398,7 @@ The project relies on standard C++ libraries, nlohmann/json (vendored as `json.h
 for the tests (fetched by CMake) and, for the Python module only, pybind11 (submodule).
 
 ## Testing
-`ctest --test-dir build` runs 54 GoogleTest cases:
+`ctest --test-dir build` runs 58 GoogleTest cases:
 
 - `OrderbookTest/test.cpp`: seven data-driven cases from `OrderbookTest/TestFiles/`; they check
   only order and level counts.
@@ -403,7 +409,7 @@ for the tests (fetched by CMake) and, for the Python module only, pybind11 (subm
 - `OrderbookTest/HistoryTests.cpp`: the network's time-of-day input and its training, and the
   `hasOrder`, prediction, error and VWAP read-outs.
 - `OrderbookTest/BookTests.cpp`: the JavaScript binding's `Book` run natively: the statuses of
-  each order type, ids, reset and argument checks.
+  each order type, ids, reset, argument checks and the price and quantity limits.
 
 With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 cases in the first two files fail
 while all seven data-driven cases still pass. The suite is behavioural: it does not cover

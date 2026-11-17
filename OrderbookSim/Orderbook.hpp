@@ -61,7 +61,7 @@ private:
      * @brief Contains information about order levels, including quantity and count.
      */
     struct LevelData {
-        Quantity _quantity{}; ///< Total quantity at the level.
+        std::uint64_t _quantity{}; ///< Total quantity at the level; 64-bit, as a sum of 32-bit quantities can pass 2^32.
         Quantity _count{};    ///< Count of orders at the level.
 
         /*!
