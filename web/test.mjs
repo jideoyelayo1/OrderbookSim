@@ -2,6 +2,8 @@
 // web/build.sh) and through the native build of the same Book (orderbook_parity, from CMake) and
 // requires identical output. The network read-outs are the exception: they start from rand()
 // weights and see the wall clock, so they are only required to be finite on both sides.
+// Both sides share Book.hpp, so the flow's trade and outcome counts are pinned as well, and a
+// WebAssembly-only section checks how the binding treats arguments of the wrong JavaScript type.
 //
 // Usage, from the repository root: node web/test.mjs [path/to/orderbook_parity]
 // No dependencies beyond Node.
@@ -113,14 +115,67 @@ for (let i = 0; i < calls.length; i++) {
   }
 }
 
+// The flow is fixed by SEED, so these are too; a change in Book that both builds share shows here.
+const EXPECTED_TRADES = 10745;
+const EXPECTED_OUTCOMES = {
+  'FillAndKill filled': 589, 'FillAndKill partial': 212, 'FillAndKill rejected': 1263,
+  'FillOrKill filled': 516, 'FillOrKill invalid': 39, 'FillOrKill rejected': 1459,
+  'GoodForDay filled': 516, 'GoodForDay invalid': 47, 'GoodForDay partial': 203, 'GoodForDay resting': 1294,
+  'GoodTillCancel filled': 2060, 'GoodTillCancel invalid': 47, 'GoodTillCancel partial': 743, 'GoodTillCancel resting': 4328,
+  'Limit invalid': 59,
+  'Market filled': 1641, 'Market partial': 161, 'Market rejected': 195,
+  'modify filled': 42, 'modify partial': 12, 'modify rejected': 879, 'modify resting': 93,
+};
+if (trades !== EXPECTED_TRADES) fail(`trades: ${trades}, expected ${EXPECTED_TRADES}`);
+for (const key of new Set([...Object.keys(EXPECTED_OUTCOMES), ...Object.keys(outcomes)]))
+  if (outcomes[key] !== EXPECTED_OUTCOMES[key]) fail(`outcome ${key}: ${outcomes[key] ?? 0}, expected ${EXPECTED_OUTCOMES[key] ?? 0}`);
+
+// WebAssembly only (the native driver reads text): a number argument must be a JavaScript number
+// and a string argument a JavaScript string. Anything else is invalid or false, throws nothing and
+// uses no id; '5', true and 1n are not coerced. The adds come first, so the valid add must get id 1.
+const loose = new Module.Book();
+const malformed = [
+  ['add qty NaN', () => loose.add('GoodTillCancel', 'Buy', 100, NaN).status, 'invalid'],
+  ['add qty undefined', () => loose.add('GoodTillCancel', 'Buy', 100, undefined).status, 'invalid'],
+  ['add qty missing', () => loose.add('GoodTillCancel', 'Buy', 100).status, 'invalid'],
+  ['add price -100', () => loose.add('GoodTillCancel', 'Buy', -100, 5).status, 'invalid'],
+  ['add price null', () => loose.add('GoodTillCancel', 'Buy', null, 5).status, 'invalid'],
+  ['add price Infinity', () => loose.add('GoodTillCancel', 'Buy', Infinity, 5).status, 'invalid'],
+  ["add qty '5'", () => loose.add('GoodTillCancel', 'Buy', 100, '5').status, 'invalid'],
+  ['add qty true', () => loose.add('GoodTillCancel', 'Buy', 100, true).status, 'invalid'],
+  ['add qty 5n', () => loose.add('GoodTillCancel', 'Buy', 100, 5n).status, 'invalid'],
+  ['add qty 1000001', () => loose.add('GoodTillCancel', 'Buy', 100, 1_000_001).status, 'invalid'],
+  ['add type 1', () => loose.add(1, 'Buy', 100, 5).status, 'invalid'],
+  ['add side null', () => loose.add('GoodTillCancel', null, 100, 5).status, 'invalid'],
+  ['add at the limits', () => JSON.stringify(loose.add('GoodTillCancel', 'Buy', 1_000_000, 1_000_000)),
+    '{"id":1,"status":"resting","restingQuantity":1000000,"trades":[]}'],
+  ["modify id '1'", () => loose.modify('1', 'Buy', 100, 5).status, 'invalid'],
+  ['modify price 5n', () => loose.modify(1, 'Buy', 5n, 5).status, 'invalid'],
+  ['cancel true', () => loose.cancel(true), false],
+  ["cancel '1'", () => loose.cancel('1'), false],
+  ['cancel 1n', () => loose.cancel(1n), false],
+  ['cancel 1', () => loose.cancel(1), true],
+];
+for (const [label, call, expected] of malformed) {
+  let got;
+  try {
+    got = call();
+  } catch (error) {
+    got = `throws ${error?.name}`;
+  }
+  if (got !== expected) fail(`${label}: ${JSON.stringify(got)}, expected ${JSON.stringify(expected)}`);
+}
+loose.delete();
+
 const [finalLevels, finalReadouts] = actual.slice(-2);
 console.log(`calls: ${calls.length}, trades: ${trades}`);
 console.log(`final ${finalLevels}`);
 console.log(`final ${finalReadouts}`);
 console.log('outcomes:');
 for (const key of Object.keys(outcomes).sort()) console.log(`  ${key}: ${outcomes[key]}`);
+console.log(`malformed calls checked: ${malformed.length}`);
 if (failures) {
-  console.error(`FAIL: ${failures} difference(s) between the WebAssembly and native builds`);
+  console.error(`FAIL: ${failures} failure(s)`);
   process.exit(1);
 }
-console.log('PASS: WebAssembly and native outputs are identical (network read-outs finite on both sides)');
+console.log('PASS: WebAssembly and native outputs are identical (network read-outs finite on both sides), counts as pinned, malformed calls as expected');

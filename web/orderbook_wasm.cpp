@@ -4,15 +4,26 @@
  *
  * Ids cross as doubles (exact below 2^53), not BigInt. Every returned object is a fresh JavaScript
  * value; only the Book itself is a C++ object and needs delete().
+ *
+ * Arguments arrive as val and are checked for their JavaScript type: a number argument must be a
+ * JavaScript number and a string argument a JavaScript string. Anything else (a numeric string,
+ * a boolean, null, undefined, a BigInt) reaches Book as NaN or "" and so gives "invalid" or false,
+ * rather than being coerced (embind's double would turn '5' into 5 and true into 1) or throwing.
  */
 
 #include "Book.hpp"
 
 #include <emscripten/bind.h>
 
+#include <cmath>
+#include <string>
+
 using emscripten::val;
 
 namespace {
+
+double number(const val& value) { return value.isNumber() ? value.as<double>() : std::nan(""); }
+std::string text(const val& value) { return value.isString() ? value.as<std::string>() : std::string{}; }
 
 val levelsToJs(const LevelInfos& levels) {
     val out = val::array();
@@ -51,12 +62,12 @@ EMSCRIPTEN_BINDINGS(orderbook) {
 
     emscripten::class_<Book>("Book")
         .constructor<>()
-        .function("add", optional_override([](Book& book, const std::string& type, const std::string& side, double price, double qty) {
-            return resultToJs(book.add(type, side, price, qty));
+        .function("add", optional_override([](Book& book, val type, val side, val price, val qty) {
+            return resultToJs(book.add(text(type), text(side), number(price), number(qty)));
         }))
-        .function("cancel", &Book::cancel)
-        .function("modify", optional_override([](Book& book, double id, const std::string& side, double price, double qty) {
-            return resultToJs(book.modify(id, side, price, qty));
+        .function("cancel", optional_override([](Book& book, val id) { return book.cancel(number(id)); }))
+        .function("modify", optional_override([](Book& book, val id, val side, val price, val qty) {
+            return resultToJs(book.modify(number(id), text(side), number(price), number(qty)));
         }))
         .function("endOfDay", &Book::endOfDay)
         .function("levels", optional_override([](const Book& book) {
