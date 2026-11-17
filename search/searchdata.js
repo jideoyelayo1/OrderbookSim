@@ -3,7 +3,7 @@ var indexSectionsWithContent =
   0: "12348:_abcdefghijklmnopqrstuvwx~",
   1: "abcdeghijlmnoprstv",
   2: ":adlops",
-  3: "abcjlmnoprstu",
+  3: "abchjlmnoprstu",
   4: "_abcdefghijklmnoprstuvw~",
   5: "_abcdefilmnopqrstuvwx",
   6: "abcdefghijklmnopqrstuv",

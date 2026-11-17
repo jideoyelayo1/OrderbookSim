@@ -100,6 +100,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:addcc5e1737508a1974689610d20d4c27" id="r_addcc5e1737508a1974689610d20d4c27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#addcc5e1737508a1974689610d20d4c27">updateNeutralNetwork</a> (<a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a> price, <a class="el" href="../../de/d50/Usings_8hpp.html#ac0db6497e7e2001a03e28be383ac983f">Quantity</a> quantity)</td></tr>
 <tr class="memdesc:addcc5e1737508a1974689610d20d4c27"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the neural network with the latest order price and quantity data.  <br /></td></tr>
 <tr class="separator:addcc5e1737508a1974689610d20d4c27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07165e555951ae1ee97d65b689f3ee06" id="r_a07165e555951ae1ee97d65b689f3ee06"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a07165e555951ae1ee97d65b689f3ee06">updateNeutralNetwork</a> (<a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a> price, <a class="el" href="../../de/d50/Usings_8hpp.html#ac0db6497e7e2001a03e28be383ac983f">Quantity</a> quantity, double fractionOfDay)</td></tr>
+<tr class="memdesc:a07165e555951ae1ee97d65b689f3ee06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Trains the neural network once on (time of day, quantity) -&gt; price.  <br /></td></tr>
+<tr class="separator:a07165e555951ae1ee97d65b689f3ee06"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2412c72cc4c74916fbc95ad19ac6137f" id="r_a2412c72cc4c74916fbc95ad19ac6137f"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../d0/d37/classNeuralNetwork.html">NeuralNetwork</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a2412c72cc4c74916fbc95ad19ac6137f">getNeuralNetwork</a> () const</td></tr>
+<tr class="memdesc:a2412c72cc4c74916fbc95ad19ac6137f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the neural network.  <br /></td></tr>
+<tr class="separator:a2412c72cc4c74916fbc95ad19ac6137f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65eb92a2eb981e3e765ee7e98c00f112" id="r_a65eb92a2eb981e3e765ee7e98c00f112"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a65eb92a2eb981e3e765ee7e98c00f112">addOrderToHistory</a> (const <a class="el" href="../../df/ddb/OrderType_8hpp.html#a57124e387290311f33f3b54a54930418">OrderType</a> type, const <a class="el" href="../../de/d50/Usings_8hpp.html#ae86e4e82ad3118d7ab38599202a53db4">OrderId</a> id, const <a class="el" href="../../d3/d6c/Side_8hpp.html#a8c0137d7160ad71b6ed265c53c99ed00">Side</a> side, const <a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a> price, const <a class="el" href="../../de/d50/Usings_8hpp.html#ac0db6497e7e2001a03e28be383ac983f">Quantity</a> qty)</td></tr>
 <tr class="memdesc:a65eb92a2eb981e3e765ee7e98c00f112"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an order to the appropriate history (buy or sell) based on its side.  <br /></td></tr>
 <tr class="separator:a65eb92a2eb981e3e765ee7e98c00f112"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -127,15 +133,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a3e7da6ed4559a65e5f8eb7b7fa550efe" id="r_a3e7da6ed4559a65e5f8eb7b7fa550efe"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a3e7da6ed4559a65e5f8eb7b7fa550efe">_printLiveOrders</a> ()</td></tr>
 <tr class="memdesc:a3e7da6ed4559a65e5f8eb7b7fa550efe"><td class="mdescLeft">&#160;</td><td class="mdescRight">Prints the live orders to the console.  <br /></td></tr>
 <tr class="separator:a3e7da6ed4559a65e5f8eb7b7fa550efe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ace0afa64e4e248705363c6e35fc9dbbc" id="r_ace0afa64e4e248705363c6e35fc9dbbc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#ace0afa64e4e248705363c6e35fc9dbbc">getVWAP</a> ()</td></tr>
-<tr class="memdesc:ace0afa64e4e248705363c6e35fc9dbbc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Volume-Weighted Average Price (VWAP) of all purchases.  <br /></td></tr>
-<tr class="separator:ace0afa64e4e248705363c6e35fc9dbbc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25f4db2795cd08211b0f83610ecc7729" id="r_a25f4db2795cd08211b0f83610ecc7729"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a25f4db2795cd08211b0f83610ecc7729">getVWAP</a> () const</td></tr>
+<tr class="memdesc:a25f4db2795cd08211b0f83610ecc7729"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the Volume-Weighted Average Price (VWAP) of all purchases.  <br /></td></tr>
+<tr class="separator:a25f4db2795cd08211b0f83610ecc7729"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e1420836e7f4fdd449e16774eed04cd" id="r_a5e1420836e7f4fdd449e16774eed04cd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a5e1420836e7f4fdd449e16774eed04cd">getVWAP</a> (int n)</td></tr>
 <tr class="memdesc:a5e1420836e7f4fdd449e16774eed04cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the VWAP of the last <code>n</code> purchases.  <br /></td></tr>
 <tr class="separator:a5e1420836e7f4fdd449e16774eed04cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7901c7d902a3e0412328432978781da0" id="r_a7901c7d902a3e0412328432978781da0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a7901c7d902a3e0412328432978781da0">getPrediction</a> ()</td></tr>
-<tr class="memdesc:a7901c7d902a3e0412328432978781da0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the last prediction from the neural network.  <br /></td></tr>
-<tr class="separator:a7901c7d902a3e0412328432978781da0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01b8ce793ac17c7aabf7d0ac30167fa7" id="r_a01b8ce793ac17c7aabf7d0ac30167fa7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a01b8ce793ac17c7aabf7d0ac30167fa7">getPrediction</a> () const</td></tr>
+<tr class="memdesc:a01b8ce793ac17c7aabf7d0ac30167fa7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the last prediction from the neural network.  <br /></td></tr>
+<tr class="separator:a01b8ce793ac17c7aabf7d0ac30167fa7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2125b507c1f6844d995b2ce67b63f340" id="r_a2125b507c1f6844d995b2ce67b63f340"><td class="memItemLeft" align="right" valign="top">std::unordered_map&lt; <a class="el" href="../../de/d50/Usings_8hpp.html#ae86e4e82ad3118d7ab38599202a53db4">OrderId</a>, <a class="el" href="../../d5/ddf/classOrderDetail.html">OrderDetail</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/d35/classOrderDetailHistory.html#a2125b507c1f6844d995b2ce67b63f340">getLiveOrders</a> ()</td></tr>
 <tr class="memdesc:a2125b507c1f6844d995b2ce67b63f340"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a map of all currently live orders.  <br /></td></tr>
 <tr class="separator:a2125b507c1f6844d995b2ce67b63f340"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -426,8 +432,36 @@ A map of live orders indexed by order ID. </dd></dl>
 
 </div>
 </div>
-<a id="a7901c7d902a3e0412328432978781da0" name="a7901c7d902a3e0412328432978781da0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7901c7d902a3e0412328432978781da0">&#9670;&#160;</a></span>getPrediction()</h2>
+<a id="a2412c72cc4c74916fbc95ad19ac6137f" name="a2412c72cc4c74916fbc95ad19ac6137f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2412c72cc4c74916fbc95ad19ac6137f">&#9670;&#160;</a></span>getNeuralNetwork()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../d0/d37/classNeuralNetwork.html">NeuralNetwork</a> &amp; OrderDetailHistory::getNeuralNetwork </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the neural network. </p>
+<dl class="section return"><dt>Returns</dt><dd>The neural network. </dd></dl>
+
+</div>
+</div>
+<a id="a01b8ce793ac17c7aabf7d0ac30167fa7" name="a01b8ce793ac17c7aabf7d0ac30167fa7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a01b8ce793ac17c7aabf7d0ac30167fa7">&#9670;&#160;</a></span>getPrediction()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -436,7 +470,7 @@ A map of live orders indexed by order ID. </dd></dl>
           <td class="memname"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a> OrderDetailHistory::getPrediction </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -449,8 +483,8 @@ The most recent prediction from the neural network. </dd></dl>
 
 </div>
 </div>
-<a id="ace0afa64e4e248705363c6e35fc9dbbc" name="ace0afa64e4e248705363c6e35fc9dbbc"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ace0afa64e4e248705363c6e35fc9dbbc">&#9670;&#160;</a></span>getVWAP() <span class="overload">[1/2]</span></h2>
+<a id="a25f4db2795cd08211b0f83610ecc7729" name="a25f4db2795cd08211b0f83610ecc7729"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25f4db2795cd08211b0f83610ecc7729">&#9670;&#160;</a></span>getVWAP() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -459,7 +493,7 @@ The most recent prediction from the neural network. </dd></dl>
           <td class="memname"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a> OrderDetailHistory::getVWAP </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -661,7 +695,7 @@ The most recent prediction from the neural network. </dd></dl>
 </div>
 </div>
 <a id="addcc5e1737508a1974689610d20d4c27" name="addcc5e1737508a1974689610d20d4c27"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#addcc5e1737508a1974689610d20d4c27">&#9670;&#160;</a></span>updateNeutralNetwork()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#addcc5e1737508a1974689610d20d4c27">&#9670;&#160;</a></span>updateNeutralNetwork() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -692,6 +726,51 @@ The most recent prediction from the neural network. </dd></dl>
   <table class="params">
     <tr><td class="paramname">price</td><td>The price of the latest matched order. </td></tr>
     <tr><td class="paramname">quantity</td><td>The quantity of the latest matched order. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="a07165e555951ae1ee97d65b689f3ee06" name="a07165e555951ae1ee97d65b689f3ee06"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07165e555951ae1ee97d65b689f3ee06">&#9670;&#160;</a></span>updateNeutralNetwork() <span class="overload">[2/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void OrderDetailHistory::updateNeutralNetwork </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d50/Usings_8hpp.html#a7d2b0fb86ba9178f6925043f7d0fa283">Price</a>&#160;</td>
+          <td class="paramname"><em>price</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../de/d50/Usings_8hpp.html#ac0db6497e7e2001a03e28be383ac983f">Quantity</a>&#160;</td>
+          <td class="paramname"><em>quantity</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>fractionOfDay</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Trains the neural network once on (time of day, quantity) -&gt; price. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fractionOfDay</td><td>Local time of day as a fraction in [0, 1); the network sees it in steps of 1/100.</td></tr>
+    <tr><td class="paramname">price</td><td>The price of the latest matched order. </td></tr>
+    <tr><td class="paramname">quantity</td><td>The quantity of the latest matched order. </td></tr>
+    <tr><td class="paramname">fractionOfDay</td><td>Local time of day as a fraction in [0, 1). </td></tr>
   </table>
   </dd>
 </dl>

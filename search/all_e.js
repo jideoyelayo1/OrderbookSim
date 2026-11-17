@@ -10,6 +10,8 @@ var searchData=
   ['has_5fto_5fjson_7',['has_to_json',['../d3/d9e/structdetail_1_1has__to__json.html',1,'detail']]],
   ['has_5fto_5fjson_3c_20basicjsontype_2c_20t_2c_20enable_5fif_5ft_3c_20_21is_5fbasic_5fjson_3c_20t_20_3e_3a_3avalue_20_3e_20_3e_8',['has_to_json&lt; BasicJsonType, T, enable_if_t&lt; !is_basic_json&lt; T &gt;::value &gt; &gt;',['../d3/d8b/structdetail_1_1has__to__json_3_01BasicJsonType_00_01T_00_01enable__if__t_3_01_9is__basic__json_3_01T_01_4_1_1value_01_4_01_4.html',1,'detail']]],
   ['hash_3c_20nlohmann_3a_3anlohmann_5fbasic_5fjson_5ftpl_20_3e_9',['hash&lt; nlohmann::NLOHMANN_BASIC_JSON_TPL &gt;',['../d4/d87/structstd_1_1hash_3_01nlohmann_1_1NLOHMANN__BASIC__JSON__TPL_01_4.html',1,'std']]],
-  ['here_10',['Not measured here',['../d1/dfa/md_OrderbookSim_2bench_2RESULTS.html#autotoc_md9',1,'']]],
-  ['hex_11',['hex',['../d9/d4b/CMakeCCompilerId_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCCompilerId.c'],['../d6/d83/CMakeCXXCompilerId_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCXXCompilerId.cpp']]]
+  ['hasorder_10',['hasOrder',['../d4/d04/classOrderbook.html#abcc6f7f74e6042cd3191dbb03697ea20',1,'Orderbook']]],
+  ['here_11',['Not measured here',['../d1/dfa/md_OrderbookSim_2bench_2RESULTS.html#autotoc_md9',1,'']]],
+  ['hex_12',['hex',['../d9/d4b/CMakeCCompilerId_8c.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCCompilerId.c'],['../d6/d83/CMakeCXXCompilerId_8cpp.html#a46d5d95daa1bef867bd0179594310ed5',1,'HEX:&#160;CMakeCXXCompilerId.cpp']]],
+  ['historytests_2ecpp_13',['HistoryTests.cpp',['../d1/df8/HistoryTests_8cpp.html',1,'']]]
 ];

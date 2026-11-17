@@ -8,7 +8,7 @@ var searchData=
   ['levelinfos_5',['LevelInfos',['../d2/d03/LevelInfo_8hpp.html#aa6489bf3e4dd892cda247c68aadff273',1,'LevelInfo.hpp']]],
   ['lexer_6',['lexer',['../d0/d02/classdetail_1_1lexer.html',1,'detail::lexer&lt; BasicJsonType, InputAdapterType &gt;'],['../d0/d02/classdetail_1_1lexer.html#a384af885c37d58c963b902008c279fd6',1,'detail::lexer::lexer(InputAdapterType &amp;&amp;adapter, bool ignore_comments_=false) noexcept'],['../d0/d02/classdetail_1_1lexer.html#a963dce44c9d66c9a7c9d3206e1cff2ed',1,'detail::lexer::lexer(const lexer &amp;)=delete'],['../d0/d02/classdetail_1_1lexer.html#a79ce2eb7f127977f1d2499a1f10aa262',1,'detail::lexer::lexer(lexer &amp;&amp;)=default']]],
   ['lexer_5fbase_7',['lexer_base',['../d7/d1a/classdetail_1_1lexer__base.html',1,'detail']]],
-  ['license_8',['License',['../index.html#autotoc_md37',1,'']]],
+  ['license_8',['License',['../index.html#autotoc_md39',1,'']]],
   ['line_9',['LINE',['../d2/da5/namespaceprofile__summary.html#ac59c2814450fb187d6df65121eac1a30',1,'profile_summary']]],
   ['lines_5fread_10',['lines_read',['../df/dbb/structdetail_1_1position__t.html#a9ec1ac6600d1364f4d1c9f67de6a670b',1,'detail::position_t']]],
   ['list_11',['Deprecated List',['../da/d58/deprecated.html',1,'']]],

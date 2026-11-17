@@ -76,7 +76,7 @@ $(function() {
 <div class="textblock"><p><a class="anchor" id="md_README"></a> </p>
 <h1><a class="anchor" id="autotoc_md14"></a>
 Overview</h1>
-<p>OrderbookSim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-weighted average price (VWAP). The project also includes a neural network built from scratch to predict sell prices, and now features GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.</p>
+<p>OrderbookSim is a C++ application that simulates an order book used in financial markets. It efficiently manages and matches buy and sell orders, and calculates the volume-weighted average price (VWAP). The project also includes a small online neural network, written from scratch, that learns the trade price from each trade, a WebAssembly build with a JavaScript binding, and GUIs for adding and viewing the order book in Python. This simulation helps users understand how order books work and how neural networks can be applied to financial data.</p>
 <h1><a class="anchor" id="autotoc_md15"></a>
 Building and testing</h1>
 <p>Requires CMake 3.25 or later and a C++20 compiler. From the repository root:</p>
@@ -88,43 +88,103 @@ Building and testing</h1>
 <div class="fragment"><div class="line">cmake -S OrderbookSim -B build-asan -DCMAKE_BUILD_TYPE=Debug -DCMAKE_CXX_FLAGS=&quot;-fsanitize=address,undefined -fno-omit-frame-pointer&quot;</div>
 <div class="line">cmake --build build-asan -j 8 --target OrderbookTests &amp;&amp; ctest --test-dir build-asan</div>
 </div><!-- fragment --><p>The Visual Studio project files have not been updated since the headers were renamed to <code>.hpp</code>.</p>
-<h1><a class="anchor" id="autotoc_md16"></a>
+<h2><a class="anchor" id="autotoc_md16"></a>
+WebAssembly build</h2>
+<p>Needs <a href="https://github.com/emscripten-core/emsdk">emsdk</a> with Emscripten 6.0.13 (the version CI uses) activated in the shell. From the repository root:</p>
+<div class="fragment"><div class="line">source path/to/emsdk/emsdk_env.sh</div>
+<div class="line">web/build.sh                 # writes web/dist/orderbook.mjs and web/dist/orderbook.wasm</div>
+<div class="line">cmake --build build --target orderbook_parity</div>
+<div class="line">node web/test.mjs            # parity test against the native build</div>
+</div><!-- fragment --><p><code>web/build.sh</code> calls <code>em++</code> on the nine sources the order book needs plus <code>web/orderbook_wasm.cpp</code>, with <code>-O2 -fexceptions -DORDERBOOK_SINGLE_THREADED</code>, as an ES module (<code>-sMODULARIZE -sEXPORT_ES6</code>) for browsers and Node, with no filesystem. With Emscripten 6.0.13 the output is 56,065 bytes of JavaScript and 401,753 bytes of WebAssembly (13,803 and 155,507 gzipped at level 9). <code>web/dist/</code> is not committed: a <code>v*</code> tag makes CI attach <code>orderbook.mjs</code>, <code>orderbook.wasm</code> and <code>SHA256SUMS</code> to a GitHub Release.</p>
+<p><code>ORDERBOOK_SINGLE_THREADED</code> stops the order book from starting its Good-For-Day pruning thread, which a single-threaded WebAssembly module cannot run; Good-For-Day orders are then cancelled only by <code>EndOfDay()</code>. Without the flag the thread starts with the first Good-For-Day order.</p>
+<p><code>web/test.mjs</code> replays a seeded 20,000-call flow through the WebAssembly module and through the native <code>orderbook_parity</code> driver and requires identical ids, statuses, trades, levels, sizes and VWAP. The network's prediction and error start from <code>rand()</code> weights and see the wall clock, so they are only required to be finite. It uses Node built-ins only.</p>
+<h2><a class="anchor" id="autotoc_md17"></a>
+JavaScript binding</h2>
+<p><code>web/orderbook_wasm.cpp</code> binds <code>Book</code> (<code>web/Book.hpp</code>), a wrapper that assigns its own order ids (1, 2, 3, ... per valid add; never reused) and checks every argument:</p>
+<div class="fragment"><div class="line">import createModule from &#39;./orderbook.mjs&#39;;</div>
+<div class="line"> </div>
+<div class="line">const { Book } = await createModule();</div>
+<div class="line">const book = new Book();</div>
+<div class="line">book.add(&#39;GoodTillCancel&#39;, &#39;Sell&#39;, 100, 5); // { id: 1, status: &#39;resting&#39;, restingQuantity: 5, trades: [] }</div>
+<div class="line">book.add(&#39;FillAndKill&#39;, &#39;Buy&#39;, 101, 8);     // { id: 2, status: &#39;partial&#39;, restingQuantity: 0, trades: [{ bidId: 2, bidPrice: 101, askId: 1, askPrice: 100, quantity: 5 }] }</div>
+<div class="line">book.delete();                              // frees the C++ object</div>
+</div><!-- fragment --><table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">method   </th><th class="markdownTableHeadNone">returns    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>add(type, side, price, qty)</code>   </td><td class="markdownTableBodyNone"><code>{ id, status, restingQuantity, trades }</code>. <code>type</code> is <code>GoodTillCancel</code>, <code>FillAndKill</code>, <code>Market</code>, <code>GoodForDay</code> or <code>FillOrKill</code>; <code>side</code> is <code>Buy</code> or <code>Sell</code>; <code>price</code> and <code>qty</code> are whole numbers from 1 (<code>price</code> is ignored for <code>Market</code>)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>cancel(id)</code>   </td><td class="markdownTableBodyNone"><code>true</code> if the order was resting and is now cancelled    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>modify(id, side, price, qty)</code>   </td><td class="markdownTableBodyNone">as <code>add</code>; the order keeps its id and type and loses time priority    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>endOfDay()</code>   </td><td class="markdownTableBodyNone">nothing; cancels every Good-For-Day order    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>levels()</code>   </td><td class="markdownTableBodyNone"><code>{ bids: [{ price, quantity }], asks: [...] }</code>, best price first    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>size()</code>   </td><td class="markdownTableBodyNone">number of resting orders    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>prediction()</code>   </td><td class="markdownTableBodyNone">the network's prediction for the latest trade, made before training on it (0 before any trade)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>recentError()</code>   </td><td class="markdownTableBodyNone">the network's smoothed RMS error, in units of price / 500    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>vwap()</code>   </td><td class="markdownTableBodyNone">volume-weighted average trade price, truncated to a whole price (0 before any trade)    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>reset()</code>   </td><td class="markdownTableBodyNone">nothing; replaces the book and the network with new ones and restarts ids at 1   </td></tr>
+</table>
+<p><code>status</code> is <code>filled</code> (all of the quantity traded), <code>partial</code> (some traded), <code>resting</code> (none traded, the order rests), <code>rejected</code> (none traded, nothing rests) or <code>invalid</code> (bad arguments: the book is untouched, no id is used and <code>id</code> is 0). <code>restingQuantity</code> is how much of the order is left in the book. Each trade names the bid and the ask by id and limit price; the order book records the trade at the bid's price, which is the price VWAP and the network use. By order type:</p>
+<table class="markdownTable">
+<tr class="markdownTableHead">
+<th class="markdownTableHeadNone">type   </th><th class="markdownTableHeadNone">outcomes    </th></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>GoodTillCancel</code>, <code>GoodForDay</code>   </td><td class="markdownTableBodyNone"><code>resting</code>, <code>partial</code> with the remainder resting, <code>filled</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>FillAndKill</code>   </td><td class="markdownTableBodyNone"><code>rejected</code> if nothing crosses, <code>partial</code> with <code>restingQuantity</code> 0 (the remainder is cancelled), <code>filled</code>    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>FillOrKill</code>   </td><td class="markdownTableBodyNone"><code>rejected</code> unless the whole quantity can trade, otherwise <code>filled</code>    </td></tr>
+<tr class="markdownTableRowEven">
+<td class="markdownTableBodyNone"><code>Market</code>   </td><td class="markdownTableBodyNone"><code>rejected</code> if the opposite side is empty, <code>filled</code>, or <code>partial</code> with the remainder resting at the worst opposite price    </td></tr>
+<tr class="markdownTableRowOdd">
+<td class="markdownTableBodyNone"><code>modify</code>   </td><td class="markdownTableBodyNone"><code>rejected</code> if the id is not resting, otherwise as for the order's type   </td></tr>
+</table>
+<p>Ids cross as JavaScript numbers (exact below 2^53), not BigInt. A C++ exception, which the order book does not throw in normal use, reaches JavaScript as a <code>CppException</code>.</p>
+<h1><a class="anchor" id="autotoc_md18"></a>
 Running the program</h1>
 <p>In order to run the otherbook stimulation navigate to build</p>
 <div class="fragment"><div class="line">python .\OrderbookView.py # to view orders</div>
 <div class="line">python .\addOrder.py</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md17"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md19"></a>
 Key Components</h1>
-<h2><a class="anchor" id="autotoc_md18"></a>
+<h2><a class="anchor" id="autotoc_md20"></a>
 Orderbook</h2>
 <p>The main class representing the order book. It manages buy and sell orders, matches them based on price-time priority, maintains an order history, and calculates VWAP.</p>
-<h2><a class="anchor" id="autotoc_md19"></a>
+<h2><a class="anchor" id="autotoc_md21"></a>
 Order</h2>
 <p>Represents an individual order with attributes such as order type, side (buy/sell), price, and quantity.</p>
-<h2><a class="anchor" id="autotoc_md20"></a>
+<h2><a class="anchor" id="autotoc_md22"></a>
 Order Types</h2>
 <p>The project supports various order types including:</p><ul>
 <li><b>Good Till Cancel</b>: The order remains active until filled, canceled, or it expires.</li>
 <li><b>Fill and Kill</b>: The order is filled as much as possible, and any remaining quantity is canceled immediately.</li>
 <li><b>Market <a class="el" href="d5/d6b/classOrder.html" title="Represents a trading order with attributes and functionality to manage its state.">Order</a></b>: Filled at the best available price.</li>
-<li><b>Good For Day</b>: Similar to Good Till Cancel, but automatically canceled at the end of the trading day.</li>
+<li><b>Good For Day</b>: Similar to Good Till Cancel, but cancelled by <code>EndOfDay()</code> and, except in <code>ORDERBOOK_SINGLE_THREADED</code> builds, by a thread at 16:00 local time that starts with the first Good-For-Day order.</li>
 <li><b>Fill or Kill</b>: Must be filled immediately and entirely or canceled.</li>
 </ul>
-<h2><a class="anchor" id="autotoc_md21"></a>
+<h2><a class="anchor" id="autotoc_md23"></a>
 Order Modify</h2>
 <p>Handles modifications to existing orders, such as price or quantity adjustments.</p>
-<h2><a class="anchor" id="autotoc_md22"></a>
+<h2><a class="anchor" id="autotoc_md24"></a>
 Trade</h2>
 <p>Represents a trade executed between a buy and sell order.</p>
-<h2><a class="anchor" id="autotoc_md23"></a>
+<h2><a class="anchor" id="autotoc_md25"></a>
 VWAP (Volume-Weighted Average Price)</h2>
 <p>Calculates the average price of orders based on their volume.</p>
-<h2><a class="anchor" id="autotoc_md24"></a>
-Neural Network for Price Prediction</h2>
-<p>A custom-built neural network designed to predict sell prices based on historical order data. This neural network provides a foundation for applying machine learning to financial market simulations.</p>
-<h1><a class="anchor" id="autotoc_md25"></a>
-GUI Integration</h1>
 <h2><a class="anchor" id="autotoc_md26"></a>
+Neural Network for Price Prediction</h2>
+<p>A small online model written from scratch: a fully connected network with two inputs, one hidden layer of three tanh neurons and one output, trained by one step of backpropagation on every trade. Its two inputs are the local time of day (in whole hundredths of a day) and the traded quantity; its target is the trade price; all three are divided by <code>PRICESCALE</code> (500 by default). Because the output is a tanh, predictions stay within ±<code>PRICESCALE</code>. The weights start from <code>rand()</code>. <code><a class="el" href="d4/d04/classOrderbook.html" title="Manages and matches orders in a trading environment.">Orderbook</a></code> exposes the prediction for the latest trade (made before training on it), the network's recent average error and the VWAP.</p>
+<h1><a class="anchor" id="autotoc_md27"></a>
+GUI Integration</h1>
+<h2><a class="anchor" id="autotoc_md28"></a>
 Python Bindings</h2>
 <p>OrderbookSim now includes Python bindings using Pybind11, allowing for integration with Python GUIs.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;pybind11/pybind11.h&gt;</span></div>
@@ -141,9 +201,9 @@ Python Bindings</h2>
 <div class="line">        .def(<span class="stringliteral">&quot;loadToJson&quot;</span>, &amp;<a class="code hl_function" href="d4/d04/classOrderbook.html#a9702e3466bf51d56b6c05573271f9547">Orderbook::saveToJson</a>);</div>
 <div class="line">}</div>
 <div class="ttc" id="aclassOrderbook_html_a01b99124d091e1ceab16c44c15e67513"><div class="ttname"><a href="d4/d04/classOrderbook.html#a01b99124d091e1ceab16c44c15e67513">Orderbook::addOrderViaPython</a></div><div class="ttdeci">void addOrderViaPython(int type, int id, int side, int price, int qty)</div><div class="ttdoc">Adds an order to the orderbook via Python interface.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:397</div></div>
-<div class="ttc" id="aclassOrderbook_html_a9702e3466bf51d56b6c05573271f9547"><div class="ttname"><a href="d4/d04/classOrderbook.html#a9702e3466bf51d56b6c05573271f9547">Orderbook::saveToJson</a></div><div class="ttdeci">void saveToJson(const std::string &amp;buyfilename=&quot;BuyHistory.json&quot;, const std::string &amp;sellfilename=&quot;SellHistory.json&quot;, const std::string &amp;purchasefilename=&quot;PurchaseHistory.json&quot;, const std::string &amp;buyLivefilename=&quot;BuyLiveHistory.json&quot;, const std::string &amp;sellLivefilename=&quot;SellLiveHistory.json&quot;)</div><div class="ttdoc">Saves orderbook data to JSON files.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:557</div></div>
+<div class="ttc" id="aclassOrderbook_html_a9702e3466bf51d56b6c05573271f9547"><div class="ttname"><a href="d4/d04/classOrderbook.html#a9702e3466bf51d56b6c05573271f9547">Orderbook::saveToJson</a></div><div class="ttdeci">void saveToJson(const std::string &amp;buyfilename=&quot;BuyHistory.json&quot;, const std::string &amp;sellfilename=&quot;SellHistory.json&quot;, const std::string &amp;purchasefilename=&quot;PurchaseHistory.json&quot;, const std::string &amp;buyLivefilename=&quot;BuyLiveHistory.json&quot;, const std::string &amp;sellLivefilename=&quot;SellLiveHistory.json&quot;)</div><div class="ttdoc">Saves orderbook data to JSON files.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:604</div></div>
 <div class="ttc" id="aorderbook__pybind_8cpp_html_a1a5aa81d812c5def9710c3ce9161846f"><div class="ttname"><a href="dc/d97/orderbook__pybind_8cpp.html#a1a5aa81d812c5def9710c3ce9161846f">PYBIND11_MODULE</a></div><div class="ttdeci">PYBIND11_MODULE(orderbook, handle)</div><div class="ttdoc">Defines the Pybind11 module for the Orderbook class.</div><div class="ttdef"><b>Definition</b> orderbook_pybind.cpp:24</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md27"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md29"></a>
 GUI for Viewing Orderbook</h2>
 <p>A Python GUI to view the order book using Tkinter:</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> json</div>
@@ -216,7 +276,7 @@ GUI for Viewing Orderbook</h2>
 <div class="line">refresh_data()</div>
 <div class="line"> </div>
 <div class="line">root.mainloop()</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md28"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md30"></a>
 GUI for Adding Orders</h2>
 <p>A Python GUI to add orders to the order book using Tkinter:</p>
 <div class="fragment"><div class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</div>
@@ -298,9 +358,9 @@ GUI for Adding Orders</h2>
 <div class="line">    app = OrderEntryGUI(root)</div>
 <div class="line">    root.mainloop()</div>
 <div class="ttc" id="anamespaceaddOrder_html"><div class="ttname"><a href="db/d70/namespaceaddOrder.html">addOrder</a></div><div class="ttdef"><b>Definition</b> addOrder.py:1</div></div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md29"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md31"></a>
 Usage</h1>
-<h2><a class="anchor" id="autotoc_md30"></a>
+<h2><a class="anchor" id="autotoc_md32"></a>
 Example</h2>
 <p>Here's a simple example of how to use the order book:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;<a class="code" href="d6/da7/Orderbook_8hpp.html">Orderbook.hpp</a>&quot;</span></div>
@@ -325,10 +385,10 @@ Example</h2>
 <div class="ttc" id="aSide_8hpp_html_a8c0137d7160ad71b6ed265c53c99ed00a831a28f1e8df07c553fcd59546465d13"><div class="ttname"><a href="d3/d6c/Side_8hpp.html#a8c0137d7160ad71b6ed265c53c99ed00a831a28f1e8df07c553fcd59546465d13">Side::Buy</a></div><div class="ttdeci">@ Buy</div></div>
 <div class="ttc" id="aUsings_8hpp_html_ae86e4e82ad3118d7ab38599202a53db4"><div class="ttname"><a href="de/d50/Usings_8hpp.html#ae86e4e82ad3118d7ab38599202a53db4">OrderId</a></div><div class="ttdeci">std::uint64_t OrderId</div><div class="ttdoc">Represents a unique identifier for an order.</div><div class="ttdef"><b>Definition</b> Usings.hpp:37</div></div>
 <div class="ttc" id="aclassOrderbook_html"><div class="ttname"><a href="d4/d04/classOrderbook.html">Orderbook</a></div><div class="ttdoc">Manages and matches orders in a trading environment.</div><div class="ttdef"><b>Definition</b> Orderbook.hpp:38</div></div>
-<div class="ttc" id="aclassOrderbook_html_a3931170d2aebc21100ca99ee83823d96"><div class="ttname"><a href="d4/d04/classOrderbook.html#a3931170d2aebc21100ca99ee83823d96">Orderbook::CancelOrder</a></div><div class="ttdeci">void CancelOrder(OrderId orderId)</div><div class="ttdoc">Cancels an order by its ID.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:463</div></div>
+<div class="ttc" id="aclassOrderbook_html_a3931170d2aebc21100ca99ee83823d96"><div class="ttname"><a href="d4/d04/classOrderbook.html#a3931170d2aebc21100ca99ee83823d96">Orderbook::CancelOrder</a></div><div class="ttdeci">void CancelOrder(OrderId orderId)</div><div class="ttdoc">Cancels an order by its ID.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:469</div></div>
 <div class="ttc" id="aclassOrderbook_html_aa8ee3a736e8a72797565fdc645361c77"><div class="ttname"><a href="d4/d04/classOrderbook.html#aa8ee3a736e8a72797565fdc645361c77">Orderbook::addOrder</a></div><div class="ttdeci">Trades addOrder(OrderPtr order)</div><div class="ttdoc">Adds an order to the orderbook.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:411</div></div>
-<div class="ttc" id="aclassOrderbook_html_af9aec9503cc33a10d6c5dee925a895fb"><div class="ttname"><a href="d4/d04/classOrderbook.html#af9aec9503cc33a10d6c5dee925a895fb">Orderbook::Size</a></div><div class="ttdeci">std::size_t Size() const</div><div class="ttdoc">Retrieves the number of orders in the orderbook.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:493</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md31"></a>
+<div class="ttc" id="aclassOrderbook_html_af9aec9503cc33a10d6c5dee925a895fb"><div class="ttname"><a href="d4/d04/classOrderbook.html#af9aec9503cc33a10d6c5dee925a895fb">Orderbook::Size</a></div><div class="ttdeci">std::size_t Size() const</div><div class="ttdoc">Retrieves the number of orders in the orderbook.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:499</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md33"></a>
 Simulation</h2>
 <p>The <code><a class="el" href="d0/da8/OrderbookSim_8cpp.html" title="Contains the main function for simulating an orderbook with random orders.">OrderbookSim.cpp</a></code> file contains the main function and a simulation function <code>randomOrderSimulation</code> to generate random orders:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &lt;iostream&gt;</span></div>
@@ -365,22 +425,24 @@ Simulation</h2>
 <div class="ttc" id="aOrderbookSim_8cpp_html_ae52fcd22aaaf890f8cc082e7b5f1088e"><div class="ttname"><a href="d0/da8/OrderbookSim_8cpp.html#ae52fcd22aaaf890f8cc082e7b5f1088e">randomOrderSimulation</a></div><div class="ttdeci">void randomOrderSimulation(const int n)</div><div class="ttdoc">Simulates random order entries in the orderbook.</div><div class="ttdef"><b>Definition</b> OrderbookSim.cpp:46</div></div>
 <div class="ttc" id="aSide_8hpp_html_a8c0137d7160ad71b6ed265c53c99ed00"><div class="ttname"><a href="d3/d6c/Side_8hpp.html#a8c0137d7160ad71b6ed265c53c99ed00">Side</a></div><div class="ttdeci">Side</div><div class="ttdoc">Represents the side of an order in a trading system (either buy or sell).</div><div class="ttdef"><b>Definition</b> Side.hpp:16</div></div>
 <div class="ttc" id="aSide_8hpp_html_a8c0137d7160ad71b6ed265c53c99ed00a3068c5a98c003498f1fec0c489212e8b"><div class="ttname"><a href="d3/d6c/Side_8hpp.html#a8c0137d7160ad71b6ed265c53c99ed00a3068c5a98c003498f1fec0c489212e8b">Side::Sell</a></div><div class="ttdeci">@ Sell</div></div>
-<div class="ttc" id="aclassOrderbook_html_aee40f7d214986ff6b0779fe12c498594"><div class="ttname"><a href="d4/d04/classOrderbook.html#aee40f7d214986ff6b0779fe12c498594">Orderbook::printAllOrders</a></div><div class="ttdeci">void printAllOrders()</div><div class="ttdoc">Prints all orders and orderbook details.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:529</div></div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md32"></a>
+<div class="ttc" id="aclassOrderbook_html_aee40f7d214986ff6b0779fe12c498594"><div class="ttname"><a href="d4/d04/classOrderbook.html#aee40f7d214986ff6b0779fe12c498594">Orderbook::printAllOrders</a></div><div class="ttdeci">void printAllOrders()</div><div class="ttdoc">Prints all orders and orderbook details.</div><div class="ttdef"><b>Definition</b> Orderbook.cpp:576</div></div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md34"></a>
 Neural Network Price Prediction</h2>
-<p>To use the neural network for predicting sell prices, you need to provide training data and configure the network parameters. The neural network implementation is integrated into the project to enhance the simulation's predictive capabilities.</p>
-<h1><a class="anchor" id="autotoc_md33"></a>
+<p>The network trains itself as orders match; there is nothing to configure. Read it with <code>orderbook.getPrediction()</code> and <code>orderbook.getRecentAverageError()</code>, and the VWAP with <code>orderbook.getVWAP()</code>.</p>
+<h1><a class="anchor" id="autotoc_md35"></a>
 Dependencies</h1>
 <p>The project relies on standard C++ libraries, nlohmann/json (vendored as <code><a class="el" href="d5/db8/json_8hpp.html">json.hpp</a></code>), GoogleTest for the tests (fetched by CMake) and, for the Python module only, pybind11 (submodule).</p>
-<h1><a class="anchor" id="autotoc_md34"></a>
+<h1><a class="anchor" id="autotoc_md36"></a>
 Testing</h1>
-<p><code>ctest --test-dir build</code> runs 37 GoogleTest cases:</p>
+<p><code>ctest --test-dir build</code> runs 54 GoogleTest cases:</p>
 <ul>
 <li><code><a class="el" href="df/dac/test_8cpp.html">OrderbookTest/test.cpp</a></code>: seven data-driven cases from <code>OrderbookTest/TestFiles/</code>; they check only order and level counts.</li>
-<li><code><a class="el" href="d4/d49/MatchingContractTests_8cpp.html" title="Tests that pin the matching contract: price-time priority, no crossed book, each order type,...">OrderbookTest/MatchingContractTests.cpp</a></code>: price priority on both sides, FIFO within a level, no trade without a cross, each order type (Good-Till-Cancel, Fill-and-Kill, Fill-or-Kill, Market, Good-For-Day with <code>EndOfDay</code>), cancel, modify, a seeded 20,000-call random flow checked after every call, and destroying many books.</li>
+<li><code><a class="el" href="d4/d49/MatchingContractTests_8cpp.html" title="Tests that pin the matching contract: price-time priority, no crossed book, each order type,...">OrderbookTest/MatchingContractTests.cpp</a></code>: price priority on both sides, FIFO within a level, no trade without a cross, each order type (Good-Till-Cancel, Fill-and-Kill, Fill-or-Kill, Market, Good-For-Day with <code>EndOfDay</code>), cancel, modify, a seeded 20,000-call random flow checked after every call, and destroying many books that each started a pruning thread.</li>
+<li><code><a class="el" href="d1/df8/HistoryTests_8cpp.html" title="Tests for the trade history: the neural network&#39;s inputs and training, and the Orderbook read-outs (r...">OrderbookTest/HistoryTests.cpp</a></code>: the network's time-of-day input and its training, and the <code>hasOrder</code>, prediction, error and VWAP read-outs.</li>
+<li><code><a class="el" href="d3/d29/BookTests_8cpp.html" title="Tests for Book (web/Book.hpp), the wrapper behind the JavaScript binding: the status it reports for e...">OrderbookTest/BookTests.cpp</a></code>: the JavaScript binding's <code>Book</code> run natively: the statuses of each order type, ids, reset and argument checks.</li>
 </ul>
-<p>With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 fail while all seven data-driven cases still pass. The suite is behavioural: it does not cover concurrent callers or the 16:00 Good-For-Day pruning thread. Logs are in <code>OrderbookSim/bench/results/</code>.</p>
-<h1><a class="anchor" id="autotoc_md35"></a>
+<p>With the bid/ask ordering fix of PR #6 reverted, 16 of the 37 cases in the first two files fail while all seven data-driven cases still pass. The suite is behavioural: it does not cover concurrent callers or the 16:00 Good-For-Day pruning thread. Logs are in <code>OrderbookSim/bench/results/</code>. The WebAssembly parity test is described under WebAssembly build.</p>
+<h1><a class="anchor" id="autotoc_md37"></a>
 Performance</h1>
 <p>Measured with <code>OrderbookSim/bench/run.sh --reps 10 --seed 42</code> on an Apple M1 Pro (macOS 27.0.1, Apple clang 21, <code>-O3</code>), 1,000,000 measured calls per repetition with about 640 resting orders over about 38 price levels per side. Median over 10 repetitions:</p>
 <table class="markdownTable">
@@ -394,13 +456,13 @@ Performance</h1>
 <td class="markdownTableBodyNone">match (about 3 trades; any order type)   </td><td class="markdownTableBodyRight">1,667–1,708 ns   </td><td class="markdownTableBodyRight">4,062–4,125 ns   </td><td class="markdownTableBodyRight">5,333–5,438 ns   </td><td class="markdownTableBodyRight">20.8   </td></tr>
 </table>
 <p>Throughput of the mixed flow: 2.60 million calls per second. The timer resolution is 41.67 ns, the machine was not isolated, and the slowest add in each repetition (11.5–18.6 ms) is a rehash of the history's live-order map, which keeps cancelled orders. Most of a match's time is history and neural-network bookkeeping rather than the <code>std::map</code> price levels. Method, workload, raw data and caveats: <a class="el" href="d1/dfa/md_OrderbookSim_2bench_2RESULTS.html">`OrderbookSim/bench/RESULTS.md`</a>.</p>
-<h1><a class="anchor" id="autotoc_md36"></a>
+<h1><a class="anchor" id="autotoc_md38"></a>
 Contributing</h1>
 <p>Contributions are welcome! Feel free to open issues or pull requests for any improvements or bug fixes.</p>
-<h1><a class="anchor" id="autotoc_md37"></a>
+<h1><a class="anchor" id="autotoc_md39"></a>
 License</h1>
 <p>This project is licensed under the MIT License - see the LICENSE file for details.</p>
-<h1><a class="anchor" id="autotoc_md38"></a>
+<h1><a class="anchor" id="autotoc_md40"></a>
 Contact</h1>
 <p>For any inquiries or feedback, please contact [<a href="#" onclick="location.href='mai'+'lto:'+'Jid'+'eO'+'yel'+'ay'+'o1@'+'Gm'+'ail'+'.c'+'om'; return false;">JideO<span class="obfuscator">.nosp@m.</span>yela<span class="obfuscator">.nosp@m.</span>yo1@G<span class="obfuscator">.nosp@m.</span>mail<span class="obfuscator">.nosp@m.</span>.com</a>]. </p>
 </div></div><!-- PageDoc -->

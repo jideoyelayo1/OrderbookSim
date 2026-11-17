@@ -6,7 +6,7 @@ var searchData=
   ['default_5fobject_5fcomparator_5ft_3',['default_object_comparator_t',['../d1/d72/classbasic__json.html#a991d005e7f648cbf37bb36daf85183ca',1,'basic_json']]],
   ['deletealiveorder_4',['deleteALiveOrder',['../d3/d35/classOrderDetailHistory.html#a850bb8c0917adec18a552e7a093b0be2',1,'OrderDetailHistory']]],
   ['deltaweight_5',['deltaWeight',['../db/de1/structConnection.html#a9f74bf311cc02e9f2e17ca28baf74fab',1,'Connection']]],
-  ['dependencies_6',['Dependencies',['../index.html#autotoc_md33',1,'']]],
+  ['dependencies_6',['Dependencies',['../index.html#autotoc_md35',1,'']]],
   ['deprecated_20list_7',['Deprecated List',['../da/d58/deprecated.html',1,'']]],
   ['depth_8',['Sensitivity: seed and book depth',['../d1/dfa/md_OrderbookSim_2bench_2RESULTS.html#autotoc_md6',1,'']]],
   ['detail_9',['detail',['../dd/d39/namespacedetail.html',1,'']]],

@@ -27,7 +27,7 @@ var searchData=
   ['merge_5fpatch_24',['merge_patch',['../d1/d72/classbasic__json.html#a8676ac2433fe299b8d420f00a0741395',1,'basic_json']]],
   ['meta_25',['meta',['../d1/d72/classbasic__json.html#a7b435c2ed2db99cb1daa78ae3c6c4580',1,'basic_json']]],
   ['min_20load_20average_20about_2025_26',['binary: Release build at 881c98c (bench.cpp and book code identical at 432ef48); machine shared, 1-min load average about 25',['../d4/d1c/md_OrderbookSim_2bench_2results_2profile_2summary.html#autotoc_md12',1,'']]],
-  ['modify_27',['modify',['../df/dac/test_8cpp.html#a21d5e8f8cdaa838586b31007df0a950ba7f090bbab1cc7f9c08bf4e54d932d3c0',1,'Modify:&#160;test.cpp'],['../index.html#autotoc_md21',1,'Order Modify']]],
+  ['modify_27',['modify',['../df/dac/test_8cpp.html#a21d5e8f8cdaa838586b31007df0a950ba7f090bbab1cc7f9c08bf4e54d932d3c0',1,'Modify:&#160;test.cpp'],['../index.html#autotoc_md23',1,'Order Modify']]],
   ['modifyorder_28',['ModifyOrder',['../d4/d04/classOrderbook.html#a1acc77c9ffaddc1ca56f02df0a556426',1,'Orderbook']]],
   ['moved_5for_5fcopied_29',['moved_or_copied',['../db/d51/classdetail_1_1json__ref.html#ad37b535229db57173a6cd57aadba9662',1,'detail::json_ref']]]
 ];

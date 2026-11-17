@@ -19,7 +19,7 @@ var searchData=
   ['error_5fhandler_16',['error_handler',['../d1/d62/classdetail_1_1serializer.html#a79d25c7416dd71a0db8b10988ec360f7',1,'detail::serializer']]],
   ['error_5fhandler_5ft_17',['error_handler_t',['../dd/d39/namespacedetail.html#abe7cfa1fd8fa706ff4392bff9d1a8298',1,'detail::error_handler_t'],['../d1/d72/classbasic__json.html#a2ebde9badb4f1b4cf6517f6b8e302d0d',1,'basic_json::error_handler_t']]],
   ['escape_18',['escape',['../dd/d39/namespacedetail.html#af2a9ce4740e0b45d33129e2c8e53a0a8',1,'detail']]],
-  ['example_19',['Example',['../index.html#autotoc_md30',1,'']]],
+  ['example_19',['Example',['../index.html#autotoc_md32',1,'']]],
   ['exception_20',['exception',['../d1/d72/classbasic__json.html#a4ed57fa411e69ae5741bc2f333a967c9',1,'basic_json::exception'],['../d0/d84/classdetail_1_1exception.html#a528d6bc77e88490bbb84cde2222b7ff0',1,'detail::exception::exception()'],['../d0/d84/classdetail_1_1exception.html',1,'detail::exception']]],
   ['expand_21',['expand',['../dd/dc0/namespaceOrderbookView.html#ac34dd727c78cdbf305f2a2ed8123c5a9',1,'OrderbookView']]],
   ['extend_22',['Extend',['../d6/db7/structdetail_1_1utility__internal_1_1Extend.html',1,'detail::utility_internal']]],

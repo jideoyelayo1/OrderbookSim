@@ -105,6 +105,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a7a2293af467ce49eb1d34ed1ceb0401f" id="r_a7a2293af467ce49eb1d34ed1ceb0401f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/de0/classNet.html#a7a2293af467ce49eb1d34ed1ceb0401f">getRecentAverageError</a> () const</td></tr>
 <tr class="memdesc:a7a2293af467ce49eb1d34ed1ceb0401f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the recent average error of the network.  <br /></td></tr>
 <tr class="separator:a7a2293af467ce49eb1d34ed1ceb0401f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63b238ef1e8bb00c2e8c4e4d31a7d1b1" id="r_a63b238ef1e8bb00c2e8c4e4d31a7d1b1"><td class="memItemLeft" align="right" valign="top">const <a class="el" href="../../dc/d08/Neuron_8hpp.html#a9a8118be7780e95363d631cbca7e7800">Layer</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/de0/classNet.html#a63b238ef1e8bb00c2e8c4e4d31a7d1b1">getLayer</a> (unsigned n) const</td></tr>
+<tr class="memdesc:a63b238ef1e8bb00c2e8c4e4d31a7d1b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a layer of the network; layer 0 holds the inputs of the last <a class="el" href="../../df/de0/classNet.html#af8c7da1660da7add164dd875454d21e4" title="Performs forward propagation through the network.">feedForward()</a>.  <br /></td></tr>
+<tr class="separator:a63b238ef1e8bb00c2e8c4e4d31a7d1b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a neural network composed of layers of neurons. </p>
@@ -233,6 +236,41 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="a63b238ef1e8bb00c2e8c4e4d31a7d1b1" name="a63b238ef1e8bb00c2e8c4e4d31a7d1b1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63b238ef1e8bb00c2e8c4e4d31a7d1b1">&#9670;&#160;</a></span>getLayer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const <a class="el" href="../../dc/d08/Neuron_8hpp.html#a9a8118be7780e95363d631cbca7e7800">Layer</a> &amp; Net::getLayer </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves a layer of the network; layer 0 holds the inputs of the last <a class="el" href="../../df/de0/classNet.html#af8c7da1660da7add164dd875454d21e4" title="Performs forward propagation through the network.">feedForward()</a>. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The index of the layer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The layer's neurons, bias last. </dd></dl>
 
 </div>
 </div>

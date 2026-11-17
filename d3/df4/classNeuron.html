@@ -93,6 +93,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aaf2328534be53e01280a141294a0096c" id="r_aaf2328534be53e01280a141294a0096c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/df4/classNeuron.html#aaf2328534be53e01280a141294a0096c">getOutputVal</a> () const</td></tr>
 <tr class="memdesc:aaf2328534be53e01280a141294a0096c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the neuron's output value.  <br /></td></tr>
 <tr class="separator:aaf2328534be53e01280a141294a0096c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752adb387e6560d02d9fd996424918d4" id="r_a752adb387e6560d02d9fd996424918d4"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/df4/classNeuron.html#a752adb387e6560d02d9fd996424918d4">getOutputWeight</a> (unsigned n) const</td></tr>
+<tr class="memdesc:a752adb387e6560d02d9fd996424918d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the weight of the connection to a neuron in the next layer.  <br /></td></tr>
+<tr class="separator:a752adb387e6560d02d9fd996424918d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67c71b826dcfe651bf188869df932f02" id="r_a67c71b826dcfe651bf188869df932f02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/df4/classNeuron.html#a67c71b826dcfe651bf188869df932f02">feedForward</a> (const <a class="el" href="../../dc/d08/Neuron_8hpp.html#a9a8118be7780e95363d631cbca7e7800">Layer</a> &amp;prevLayer)</td></tr>
 <tr class="memdesc:a67c71b826dcfe651bf188869df932f02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Feeds the input values forward through the neuron.  <br /></td></tr>
 <tr class="separator:a67c71b826dcfe651bf188869df932f02"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -271,6 +274,41 @@ Public Member Functions</h2></td></tr>
 
 <p>Retrieves the neuron's output value. </p>
 <dl class="section return"><dt>Returns</dt><dd>The output value of the neuron. </dd></dl>
+
+</div>
+</div>
+<a id="a752adb387e6560d02d9fd996424918d4" name="a752adb387e6560d02d9fd996424918d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752adb387e6560d02d9fd996424918d4">&#9670;&#160;</a></span>getOutputWeight()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Neuron::getOutputWeight </td>
+          <td>(</td>
+          <td class="paramtype">unsigned&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Retrieves the weight of the connection to a neuron in the next layer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The index of the neuron in the next layer. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The connection weight. </dd></dl>
 
 </div>
 </div>
