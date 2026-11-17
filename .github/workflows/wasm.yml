@@ -1,0 +1,72 @@
+# Native tests, the WebAssembly build (web/build.sh) and the parity test (web/test.mjs) on every
+# pull request. A v* tag also publishes orderbook.mjs, orderbook.wasm and SHA256SUMS as a release.
+name: WebAssembly
+
+on:
+  pull_request:
+  push:
+    tags: ['v*']
+
+permissions:
+  contents: read
+
+env:
+  EMSDK_VERSION: 6.0.13 # the version in the README; changing it changes the artefact
+
+jobs:
+  build:
+    # arm64 with Apple clang 21, the toolchain the README's builds and measurements use
+    runs-on: macos-26
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Native build and tests
+        run: |
+          cmake -S OrderbookSim -B build -DCMAKE_BUILD_TYPE=Release
+          cmake --build build -j 4 --target OrderbookTests orderbook_parity
+          ctest --test-dir build --output-on-failure
+
+      - name: Install Emscripten
+        run: |
+          git clone --depth 1 --branch "$EMSDK_VERSION" https://github.com/emscripten-core/emsdk.git "$RUNNER_TEMP/emsdk"
+          "$RUNNER_TEMP/emsdk/emsdk" install "$EMSDK_VERSION"
+          "$RUNNER_TEMP/emsdk/emsdk" activate "$EMSDK_VERSION"
+
+      - name: Build the WebAssembly module
+        run: |
+          source "$RUNNER_TEMP/emsdk/emsdk_env.sh"
+          web/build.sh
+
+      - name: Parity test against the native build
+        run: node web/test.mjs
+
+      - name: Checksums
+        working-directory: web/dist
+        run: shasum -a 256 orderbook.mjs orderbook.wasm | tee SHA256SUMS
+
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: orderbook-wasm
+          path: web/dist/
+          if-no-files-found: error
+
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: build
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: orderbook-wasm
+          path: dist
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" dist/orderbook.mjs dist/orderbook.wasm dist/SHA256SUMS \
+            --title "$GITHUB_REF_NAME" \
+            --notes "WebAssembly build of the order book (web/build.sh, Emscripten $EMSDK_VERSION). Check the files with: sha256sum -c SHA256SUMS"
